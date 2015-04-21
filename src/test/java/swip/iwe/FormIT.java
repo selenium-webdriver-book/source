@@ -23,7 +23,7 @@ public class FormIT<W extends JavascriptExecutor & WebDriver & HasCapabilities> 
 
     @Test
     public void completingAForm() throws Exception {
-        driver.get(baseUrl + "registration-form.html");
+        driver.get(baseUrl + "/registration-form.html");
 
         driver.executeScript("Array.prototype.slice.call(document.getElementsByTagName('input')).forEach(function(e){e.type=e.type=='password'?'text':e.type;});"); // #1 convert passwords into text to prevent the "save password" pop-up
 
