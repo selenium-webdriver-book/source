@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertThat;
@@ -14,10 +15,12 @@ import static org.junit.Assert.assertThat;
 public class PageTitleIT {
     @Inject
     private WebDriver driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void checkThePageTitle() throws Exception {
-        driver.get("http://localhost:8080/styled-elements.html");
+        driver.get(baseUrl + "/styled-elements.html");
 
         assertThat(driver.getTitle(), containsString("Styled Elements"));
     }

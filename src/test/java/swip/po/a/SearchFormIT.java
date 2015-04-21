@@ -6,17 +6,20 @@ import org.openqa.selenium.WebDriver;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 @RunWith(SeleniumWebDriverRunner.class)
 public class SearchFormIT {
 
     @Inject
     private WebDriver driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void search() throws Exception {
 
-        driver.get("http://localhost:8080/search.html");
+        driver.get(baseUrl + "/search.html");
 
         SearchForm searchForm = new SearchForm(driver);
 

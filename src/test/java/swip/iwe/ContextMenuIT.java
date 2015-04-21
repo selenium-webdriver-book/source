@@ -10,6 +10,7 @@ import swip.junit.Config;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 @RunWith(SeleniumWebDriverRunner.class)
 @Config(exclude = {"browserName=safari", "browserName=htmlunit"})
@@ -17,10 +18,12 @@ public class ContextMenuIT {
 
     @Inject
     private WebDriver driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void showContextMenu() throws Exception {
-        driver.get("http://localhost:8080/context-menu.html");
+        driver.get(baseUrl + "/context-menu.html");
 
         new Actions(driver)
                 .contextClick(driver.findElement(By.id("hascontextmenu")))

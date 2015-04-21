@@ -10,6 +10,7 @@ import swip.junit.Config;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 @RunWith(SeleniumWebDriverRunner.class)
 @Config(exclude = {"browserName=safari"})
@@ -17,10 +18,12 @@ public class MouseInputIT {
 
     @Inject
     private WebDriver driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void completeAFormUsingBothMouseAndKeyboard() throws Exception {
-        driver.get("http://localhost:8080/mailing-list.html");
+        driver.get(baseUrl + "/mailing-list.html");
         driver
                 .findElement(By.name("email"))
                 .sendKeys("john.doe@swip.com");

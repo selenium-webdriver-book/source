@@ -9,6 +9,7 @@ import swip.junit.Config;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 @RunWith(SeleniumWebDriverRunner.class)
 @Config(exclude = {"browserName=safari", "browserName=htmlunit"})
@@ -16,10 +17,12 @@ public class WyswygInputIT {
 
     @Inject
     private WebDriver driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void enterTextIntoAWyswgyEditor() throws Exception {
-        driver.get("http://localhost:8080/wyswyg-editor.html");
+        driver.get(baseUrl + "/wyswyg-editor.html");
 
         WebElement editorFrame = driver.findElement(By.id("editor_ifr")); // #1 find the correct iframe
 

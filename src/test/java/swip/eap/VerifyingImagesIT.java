@@ -10,6 +10,7 @@ import swip.junit.Config;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -19,10 +20,12 @@ import static org.junit.Assert.assertTrue;
 public class VerifyingImagesIT<W extends WebDriver & JavascriptExecutor> {
     @Inject
     private W driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void checkTheImagesAreLoaded() throws Exception {
-        driver.get("http://localhost:8080/images.html");
+        driver.get(baseUrl + "/images.html");
 
         assertTrue(isImageLoaded(driver.findElement(By.id("ok"))));
         assertFalse(isImageLoaded(driver.findElement(By.id("broken"))));

@@ -10,6 +10,7 @@ import swip.junit.Config;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 @RunWith(SeleniumWebDriverRunner.class)
 // html unit does not implement RemoteWebDriver
@@ -19,10 +20,12 @@ public class KeyboardInputIT<W extends WebDriver & HasInputDevices> {
     // TODO - cover RemoteWebDriver vs WebDriver
     @Inject
     private W driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void completingAForm() throws Exception {
-        driver.get("http://localhost:8080/mailing-list.html");
+        driver.get(baseUrl + "/mailing-list.html");
         driver
                 .findElement(By.name("email")) // #A locate the email input
                 .sendKeys("john.doe@swip.com"); // #B you enter text here into the input

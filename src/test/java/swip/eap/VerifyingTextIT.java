@@ -8,20 +8,21 @@ import swip.junit.SeleniumWebDriverRunner;
 import swip.le.ElementBy;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 @RunWith(SeleniumWebDriverRunner.class)
 public class VerifyingTextIT {
     @Inject
     private WebDriver driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void easyToFindElement() throws Exception {
-        driver.get("http://localhost:8080/styled-elements.html");
+        driver.get(baseUrl + "/styled-elements.html");
 
         assertThat(driver.findElement(By.tagName("h1")).getText(),
                 containsString("This page contains a variety of styled elements."));
@@ -29,7 +30,7 @@ public class VerifyingTextIT {
 
     @Test
     public void pageSourceMethod() throws Exception {
-        driver.get("http://localhost:8080/styled-elements.html");
+        driver.get(baseUrl + "/styled-elements.html");
 
         assertThat(driver.getPageSource(),
                 containsString("This page contains a variety of styled elements."));
@@ -37,7 +38,7 @@ public class VerifyingTextIT {
 
     @Test
     public void whenPageSourceFails() throws Exception {
-        driver.get("http://localhost:8080/styled-elements.html");
+        driver.get(baseUrl + "/styled-elements.html");
 
         assertThat(driver.getPageSource(),
                 containsString("<!-- a comment about the page -->")); // #A this element is not actually visible, yet this test passes, you might not want that
@@ -45,14 +46,14 @@ public class VerifyingTextIT {
 
     @Test
     public void xpathTextMethod() throws Exception {
-        driver.get("http://localhost:8080/styled-elements.html");
+        driver.get(baseUrl + "/styled-elements.html");
 
         assertNotNull(driver.findElement(ElementBy.partialText("visible paragraph")));
     }
 
     @Test
     public void streamMethod() throws Exception {
-        driver.get("http://localhost:8080/styled-elements.html");
+        driver.get(baseUrl + "/styled-elements.html");
 
         assertTrue(
                 driver

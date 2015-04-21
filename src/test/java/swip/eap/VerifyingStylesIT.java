@@ -30,7 +30,7 @@ public class VerifyingStylesIT {
 
     @Test
     public void cssShortHand() throws Exception {
-        driver.get("http://localhost:8080/styled-elements.html");
+        driver.get("/styled-elements.html");
 
         WebElement div = driver.findElement(By.id("shorthand"));
 

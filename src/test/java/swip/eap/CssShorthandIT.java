@@ -9,6 +9,7 @@ import swip.junit.Config;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,10 +18,12 @@ import static org.junit.Assert.assertEquals;
 public class CssShorthandIT {
     @Inject
     private WebDriver driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void cssShortHandBackground() throws Exception {
-        driver.get("http://localhost:8080/styled-elements.html");
+        driver.get(baseUrl + "/styled-elements.html");
 
         WebElement div = driver.findElement(By.id("shorthand"));
 

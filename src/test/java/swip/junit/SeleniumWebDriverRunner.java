@@ -39,7 +39,7 @@ public class SeleniumWebDriverRunner extends Suite {
 
     /**
      * Allow the required capabilities to change from the command line.
-     *
+     * <p/>
      * {@code webdriver.capabilities.browserName=firefox}
      */
     private static boolean included(DesiredCapabilities desiredCapabilities) {

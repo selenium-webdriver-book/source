@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="webDriverSupplier" class="swip.util.WebDriverSupplier"/> <!-- # a factory to create the driver -->
+    <bean id="webDriverSupplier" class="swip.util.WebDriverSupplier"/>
+    <!-- # a factory to create the driver -->
     <bean id="webDriver" class="org.openqa.selenium.WebDriver"
-          factory-bean="webDriverSupplier" factory-method="get"/> <!-- # use the factory to create the bean. -->
+          factory-bean="webDriverSupplier" factory-method="get"/>
+    <!-- # use the factory to create the bean. -->
 
-    <context:property-placeholder location="classpath:/web-driver.properties"/> <!-- # make available to Spring beans -->
+    <context:property-placeholder location="classpath:/web-driver.properties"/>
+    <!-- # make available to Spring beans -->
 
     <!--
     <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
@@ -20,6 +23,7 @@
     -->
 
     <bean id="baseUrl" class="java.lang.String">
-        <constructor-arg value="${webdriver.baseUrl}"/> <!-- # get the value from the properties -->
+        <constructor-arg value="${webdriver.baseUrl}"/>
+        <!-- # get the value from the properties -->
     </bean>
 </beans>

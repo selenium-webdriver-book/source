@@ -45,8 +45,12 @@ public class WebDriverSupplier {
     }
 
     private static WebDriver augmentedRemoteWebDriver(DesiredCapabilities desiredCapabilities, int port) {
+        return augmentedRemoteDriver("http://localhost:" + port + "/wd/hub", desiredCapabilities);
+    }
+
+    private static WebDriver augmentedRemoteDriver(String url, DesiredCapabilities desiredCapabilities) {
         try {
-            return new Augmenter().augment(new RemoteWebDriver(new URL("http://localhost:" + port + "/wd/hub"), desiredCapabilities));
+            return new Augmenter().augment(new RemoteWebDriver(new URL(url), desiredCapabilities));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -59,9 +63,20 @@ public class WebDriverSupplier {
     public WebDriver get(DesiredCapabilities desiredCapabilities) {
 
         if (!cache.containsKey(desiredCapabilities)) {
-            cache.put(desiredCapabilities, baseUrlDriver(driverWithAddedShutdownHook(newLocalDriver(desiredCapabilities))));
+            cache.put(desiredCapabilities, baseUrlDriver(driverWithAddedShutdownHook(newDriver(desiredCapabilities))));
         }
 
         return cache.get(desiredCapabilities);
+    }
+
+    private WebDriver newDriver(DesiredCapabilities desiredCapabilities) {
+        if (Boolean.getBoolean("webdriver.remote")) {
+            if (desiredCapabilities.getBrowserName().equals(BrowserType.HTMLUNIT)) {
+                return new HtmlUnitDriver(desiredCapabilities);
+            }
+            return augmentedRemoteDriver(System.getProperty("webdriver.remote.url"), desiredCapabilities);
+        } else {
+            return newLocalDriver(desiredCapabilities);
+        }
     }
 }

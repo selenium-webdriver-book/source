@@ -10,6 +10,7 @@ import swip.junit.Config;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 @RunWith(SeleniumWebDriverRunner.class)
 @Config(exclude = {"browserName=safari"})
@@ -17,10 +18,12 @@ public class MouseHoverIT {
 
     @Inject
     private WebDriver driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void hoverOver() throws Exception {
-        driver.get("http://localhost:8080/mouse-hover.html");
+        driver.get(baseUrl + "/mouse-hover.html");
 
         new Actions(driver)
                 .moveToElement(driver.findElement(By.id("target")))

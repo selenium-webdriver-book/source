@@ -12,15 +12,18 @@ import swip.junit.SeleniumWebDriverRunner;
 import swip.le.InputBy;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 @RunWith(SeleniumWebDriverRunner.class)
 public class FormIT<W extends JavascriptExecutor & WebDriver & HasCapabilities> {
     @Inject
     private W driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void completingAForm() throws Exception {
-        driver.get("http://localhost:8080/registration-form.html");
+        driver.get(baseUrl + "registration-form.html");
 
         driver.executeScript("Array.prototype.slice.call(document.getElementsByTagName('input')).forEach(function(e){e.type=e.type=='password'?'text':e.type;});"); // #1 convert passwords into text to prevent the "save password" pop-up
 

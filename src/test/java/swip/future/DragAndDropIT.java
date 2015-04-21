@@ -23,7 +23,7 @@ public class DragAndDropIT<W extends WebDriver & HasInputDevices & JavascriptExe
 
     @Test
     public void dragAndDrop() throws Exception {
-        driver.get("http://localhost:8080/drag-and-drop.html");
+        driver.get("/drag-and-drop.html");
 
         new Actions(driver)
                 .dragAndDrop(
