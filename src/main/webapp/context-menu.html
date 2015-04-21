@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <title>Right-Click Context Menu</title>
+</head>
+<body>
+<div class="container">
+    <h1>Context Menu</h1>
+
+    <div class="well" id="hascontextmenu">
+        Right-click here
+    </div>
+    <ul id="contextmenu" class="nav nav-pills nav-stacked"
+        style="display:none;position:absolute;background-color:#fff;border:1px solid grey;">
+        <li><a href="#">Email</a></li>
+        <li><a href="#">Faceplus</a></li>
+        <li><a href="#">Mybook</a></li>
+        <li><a href="#">Gspace</a></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $('#hascontextmenu').on('contextmenu', function(e) {
+        var m = $('#contextmenu');
+        m.offset({ left: e.pageX-20, top: e.pageY-20});
+        m.show();
+        return false; // block real menu
+    });
+    $('#contextmenu').on('mouseout', function() {
+        $('#contextmenu').hide();
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
+    <title>Drag and Drop</title>
+</head>
+<body>
+<div class="container">
+    <h1>Drag and Drop</h1>
+
+    <DIV id="move" style="width:150px;height:150px;" class="well">Drag Me</DIV>
+    <div id="drop" style="width:200px;height:200px;" class="well">Drop Here</div>
+
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script>
+$(document).ready(function(){
+    $("#move").draggable();
+    $('#drop').droppable({
+        drop: function(e,ui) {
+        console.log('.');
+            $('#drop').css({backgroundColor:'green',color:'white'})
+        }
+    });
+});
+</script>
+</body>
+</html>

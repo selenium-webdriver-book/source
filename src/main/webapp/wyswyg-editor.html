@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <title>WYSWYG Editor</title>
+    <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>WYSWYG Editor</h1>
+
+    <form>
+        <textarea id="editor">Some of this text <b>is in bold</b>.</textarea>
+    </form>
+</div>
+<script>
+      tinymce.init({selector:'#editor'});
+
+
+</script>
+</body>
+</html>
