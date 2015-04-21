@@ -1,3 +1,4 @@
+language: java
 install: true
 script: mvn verify -Dwebdriver.remote -Dwebdriver.remote.url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub -Dwebdriver.baseUrl=http://selenium-webdriver-in-practice.github.io
 env:
