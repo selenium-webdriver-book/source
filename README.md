@@ -14,7 +14,7 @@ Run run all the tests:
 
 To run remotely:
 
-	mvn verify -Dwebdriver.remote -Dwebdriver.remote.url=$WD_URL
+	mvn verify -Premote -Dwebdriver.remote.url=$WD_URL
 
 When not all tests will pass, you can try and get a clearer picture using the site report:
 

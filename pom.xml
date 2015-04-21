@@ -14,6 +14,9 @@
         <selenium.version>2.45.0</selenium.version>
         <jquery-ui.version>1.11.3</jquery-ui.version>
         <jquery.version>2.1.3</jquery.version>
+        <webdriver.remote>false</webdriver.remote>
+        <webdriver.remote.url>http://localhost:5555/wd/hub</webdriver.remote.url>
+        <webdriver.baseUrl>http://localhost:8080</webdriver.baseUrl>
     </properties>
 
     <dependencies>
@@ -174,6 +177,13 @@
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <webdriver.remote>${webdriver.remote}</webdriver.remote>
+                                <webdriver.remote.url>${webdriver.remote.url}</webdriver.remote.url>
+                                <webdriver.baseUrl>${webdriver.baseUrl}</webdriver.baseUrl>
+                            </systemPropertyVariables>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -214,7 +224,7 @@
             <id>remote</id>
             <properties>
                 <webdriver.remote>true</webdriver.remote>
-                <webdrive.baseUrl>http://selenium-webdriver-in-practice.github.io</webdrive.baseUrl>
+                <webdriver.baseUrl>http://selenium-webdriver-in-practice.github.io</webdriver.baseUrl>
             </properties>
             <build>
                 <plugins>
