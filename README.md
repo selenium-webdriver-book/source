@@ -14,7 +14,7 @@ Run run all the tests:
 
 To run remotely:
 
-	mvn verify -Dwebdriver.remote -Dwebdriver.remote.url=$WD_URL -Dwebdriver.baseUrl=http://selenium-webdriver-in-practice.github.io
+	mvn verify -Dwebdriver.remote -Dwebdriver.remote.url=$WD_URL
 
 When not all tests will pass, you can try and get a clearer picture using the site report:
 
@@ -26,6 +26,3 @@ To start the local iPhone driver:
 
 	./bin/ios.sh	
 	
-References
----
-* <http://the-internet.herokuapp.com>
