@@ -14,7 +14,7 @@ import java.net.URI;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
-@Config(exclude = {"browserName=htmlunit", "browserName=firefox"})
+@Config(exclude = {"browserName=safari", "browserName=htmlunit", "browserName=firefox"})
 public class CssShorthandIT {
     @Inject
     private WebDriver driver;
