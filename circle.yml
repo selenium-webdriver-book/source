@@ -11,4 +11,4 @@ test:
        background: true
        pwd: sc-*-linux
    - while [ ! -e ~/sc_ready ]; do sleep 1; done
-   - mvn verify -Premote -Dwebdriver.remote.url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub
+   - mvn verify -Dwebdriver.remote.url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub

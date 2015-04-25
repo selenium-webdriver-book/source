@@ -10,11 +10,11 @@ Ctrl+C to close it. Or you can do this:
 
 Run run all the tests:
 
-	mvn verify -Plocal
+	mvn verify
 
 To run remotely:
 
-	mvn verify -Premote -Dwebdriver.remote.url=$WD_URL
+	mvn verify -Dwebdriver.remote.url=$WD_URL
 
 When not all tests will pass, you can try and get a clearer picture using the site report:
 
