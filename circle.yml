@@ -7,8 +7,8 @@ dependencies:
     - tar -xzf sc-latest-linux.tar.gz
 test:
   override:
-   - ./bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY:
+   - ./bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY -f ~/.sc_ready:
      background: true
      pwd: sc-*-linuxtest
-   - while [ ! -e ~/sc_ready ]; do sleep 1; done
+   - while [ ! -e ~/.sc_ready ]; do sleep 1; done
    - mvn verify -Premote -Dwebdriver.remote.url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub
