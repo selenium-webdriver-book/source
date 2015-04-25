@@ -1,0 +1,3 @@
+test:
+ override:
+  - mvn verify -Premote -Dwebdriver.remote.url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub
