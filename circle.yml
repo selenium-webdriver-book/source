@@ -14,4 +14,4 @@ test:
    - mvn verify -Dwebdriver.remote -Dwebdriver.remote.url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub
   post:
    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-   - find . -type f -regex ".*/target/*-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+   - find . -type f -regex ".*/target/.*-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
