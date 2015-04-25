@@ -38,4 +38,4 @@ done > index.1.html
 mv index.1.html index.html
 
 # dunno where this file comes from
-rm 0
+rm -f 0

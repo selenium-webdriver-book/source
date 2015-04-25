@@ -151,7 +151,7 @@
                                     <fileset
                                             dir="${project.build.directory}/dependency/META-INF/resources/webjars/jquery-ui/${jquery-ui.version}/images"/>
                                 </copy>
-                                <exec executable="./make-index.sh"/>
+                                <exec executable="./make-index.sh" failonerror="true"/>
                             </target>
                         </configuration>
                     </execution>
