@@ -222,15 +222,7 @@
                             <systemPropertyVariables>
                                 <webdriver.remote>true</webdriver.remote>
                                 <webdriver.remote.url>${webdriver.remote.url}</webdriver.remote.url>
-                                <webdriver.baseUrl>http://selenium-webdriver-in-practice.github.io</webdriver.baseUrl>
                             </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.eclipse.jetty</groupId>
-                        <artifactId>jetty-maven-plugin</artifactId>
-                        <configuration>
-                            <skip>true</skip>
                         </configuration>
                     </plugin>
                 </plugins>
