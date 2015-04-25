@@ -3,6 +3,8 @@ package swip.junit;
 import org.junit.runner.Runner;
 import org.junit.runners.Suite;
 import org.junit.runners.model.InitializationError;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import swip.util.WebDriverSupplier;
 
@@ -23,7 +25,7 @@ public class SeleniumWebDriverRunner extends Suite {
         List<Runner> runners = new ArrayList<>();
         for (DesiredCapabilities desiredCapabilities : new DesiredCapabilities[]{
                 DesiredCapabilities.htmlUnit(),
-                DesiredCapabilities.safari(),
+                desiredCapabilitiesMacSafari(),
                 DesiredCapabilities.chrome(),
                 DesiredCapabilities.firefox(),
         }) {
@@ -35,6 +37,13 @@ public class SeleniumWebDriverRunner extends Suite {
             }
         }
         return runners;
+    }
+
+    private static DesiredCapabilities desiredCapabilitiesMacSafari() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setPlatform(Platform.MAC);
+        capabilities.setBrowserName(BrowserType.SAFARI);
+        return capabilities;
     }
 
     /**
