@@ -13,4 +13,5 @@ test:
    - while [ ! -e ~/sc_ready ]; do sleep 1; done
    - mvn verify -Dwebdriver.remote -Dwebdriver.remote.url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub
  post:
-  - cp -v $(find . -path '.*/target/*-reports) $CIRCLE_TEST_REPORTS/
+  - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+  - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
