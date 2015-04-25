@@ -177,15 +177,15 @@
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <webdriver.remote>${webdriver.remote}</webdriver.remote>
-                                <webdriver.remote.url>${webdriver.remote.url}</webdriver.remote.url>
-                                <webdriver.baseUrl>${webdriver.baseUrl}</webdriver.baseUrl>
-                            </systemPropertyVariables>
-                        </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <systemPropertyVariables>
+                        <webdriver.remote>${webdriver.remote}</webdriver.remote>
+                        <webdriver.remote.url>${webdriver.remote.url}</webdriver.remote.url>
+                        <webdriver.baseUrl>${webdriver.baseUrl}</webdriver.baseUrl>
+                    </systemPropertyVariables>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
