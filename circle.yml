@@ -12,6 +12,6 @@ test:
        pwd: sc-*-linux
    - while [ ! -e ~/sc_ready ]; do sleep 1; done
    - mvn verify -Dwebdriver.remote -Dwebdriver.remote.url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub
- post:
-  - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-  - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+  post:
+   - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+   - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
