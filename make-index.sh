@@ -3,12 +3,12 @@ set -eux
 
 cd src/main/webapp
 
-function title() {
+function title {
     P=$1
     cat $P | grep '<title>' | sed "s/<[^>]*>//g"
 }
 
-function printIndex() {
+function printIndex {
     PAGES=$(ls *.html | grep -v index)
     echo "<ul>"
     for P in ${PAGES}; do
