@@ -12,6 +12,10 @@ Run run all the tests:
 
 	mvn verify
 
+On just one browser:
+
+	mvn verify -Dwebdriver.capabilities.browserName=firefox 	 
+
 To run remotely:
 
 	mvn verify -Dwebdriver.remote.url=$WD_URL
