@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import swip.junit.Config;
 import swip.junit.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import java.net.URI;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
+@Config(exclude = {"browserName=safari"})
 public class NewWindowStragtegyIT {
     @Inject
     private WebDriver driver;
