@@ -50,12 +50,12 @@ class DesiredCapabilitiesRunner extends BlockJUnit4ClassRunner {
     @Override
     protected String getName() {
         // # to make sure that the class has a clean name in the IDE
-        return String.format("%s - %s", super.getName(), desiredCapabilities.getBrowserName());
+        return String.format("%s[%s]", super.getName(), desiredCapabilities.getBrowserName());
     }
 
     @Override
     protected String testName(final FrameworkMethod method) {
         // # as above, make sure that the class is clearly named in the IDE
-        return String.format("%s - %s", method.getName(), desiredCapabilities.getBrowserName());
+        return String.format("%s[%s]", method.getName(), desiredCapabilities.getBrowserName());
     }
 }
