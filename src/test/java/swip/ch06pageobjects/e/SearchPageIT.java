@@ -24,5 +24,6 @@ public class SearchPageIT {
         SearchPage searchForm = new SearchPage(driver);
 
         searchForm.assertPageTitleIs("Search");
+        searchForm.verifyPageTitleIs("Search");
     }
 }

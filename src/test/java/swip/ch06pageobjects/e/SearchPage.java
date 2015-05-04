@@ -14,4 +14,11 @@ public class SearchPage {
     public void assertPageTitleIs(String expectedTitle) {
         assertEquals(expectedTitle, driver.getTitle());
     }
+
+    public void verifyPageTitleIs(String expectedTitle) {
+        String actualTitle = driver.getTitle();
+        if (!expectedTitle.equals(actualTitle)) {
+            throw new IllegalStateException("expected " + expectedTitle + " but got " + actualTitle);
+        }
+    }
 }
