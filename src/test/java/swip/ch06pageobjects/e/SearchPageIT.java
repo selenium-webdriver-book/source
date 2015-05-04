@@ -1,4 +1,4 @@
-package swip.po.a;
+package swip.ch06pageobjects.e;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import java.net.URI;
 
 @RunWith(SeleniumWebDriverRunner.class)
-public class SearchFormIT {
+public class SearchPageIT {
 
     @Inject
     private WebDriver driver;
@@ -21,9 +21,8 @@ public class SearchFormIT {
 
         driver.get(baseUrl + "/search.html");
 
-        SearchForm searchForm = new SearchForm(driver);
+        SearchPage searchForm = new SearchPage(driver);
 
-        searchForm.setQuery("funny cats");
-        searchForm.submit();
+        searchForm.assertPageTitleIs("Search");
     }
 }

@@ -1,4 +1,4 @@
-package swip.po.e;
+package swip.ch06pageobjects.c;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +23,6 @@ public class SearchPageIT {
 
         SearchPage searchForm = new SearchPage(driver);
 
-        searchForm.assertPageTitleIs("Search");
+        searchForm.searchFor("funny cats");
     }
 }

@@ -1,4 +1,4 @@
-package swip.po.b;
+package swip.ch06pageobjects.a;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,9 +10,12 @@ public class SearchForm {
         this.driver = driver;
     }
 
-    public void searchFor(String query) {
+    public void setQuery(String query) {
         driver.findElement(By.cssSelector("input[name='q']"))
                 .sendKeys(query);
+    }
+
+    public void submit() {
         driver.findElement(By.cssSelector("input[type='submit']"))
                 .click();
     }

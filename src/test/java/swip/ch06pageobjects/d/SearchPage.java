@@ -1,4 +1,4 @@
-package swip.po.c;
+package swip.ch06pageobjects.d;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +9,9 @@ public class SearchPage {
     private final WebElement submitInput;
 
     public SearchPage(WebDriver driver) {
+        if (!driver.getTitle().equals("Search")) {
+            throw new IllegalArgumentException("page is not search page");
+        }
         queryInput = driver.findElement(By.cssSelector("input[name='q']"));
         submitInput = driver.findElement(By.cssSelector("input[type='submit']"));
     }

@@ -1,4 +1,4 @@
-package swip.po.e;
+package swip.ch06pageobjects.e;
 
 import org.openqa.selenium.WebDriver;
 
