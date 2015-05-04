@@ -1,4 +1,4 @@
-package swip.ch08unicorns;
+package swip.ch08unicorns.windows;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
