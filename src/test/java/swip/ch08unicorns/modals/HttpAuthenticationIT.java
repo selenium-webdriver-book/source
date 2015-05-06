@@ -19,15 +19,10 @@ public class HttpAuthenticationIT<W extends WebDriver & HasInputDevices> {
     private W driver;
 
     @Test
-    public void openNewWindow() throws Exception {
-        new Thread(() -> driver.get("/auth.html")).start();
-
-        //new WebDriverWait(driver,20).until(ExpectedConditions.alertIsPresent());
-
-        Thread.sleep(1000);
-
-        driver.getKeyboard().sendKeys("foo");
-
+    public void authViaUrl() throws Exception {
+        String username = "foo@bar.com";
+        String password = "secret";
+        driver.get("http://" + username + ":" + password + "@localhost:8080/auth.html");
 
         assertEquals("Authentication", driver.findElement(By.tagName("h1")).getText());
 
