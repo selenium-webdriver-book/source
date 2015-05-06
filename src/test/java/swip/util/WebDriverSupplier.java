@@ -1,6 +1,5 @@
 package swip.util;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,19 +10,17 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import static swip.util.Drivers.baseUrlDriver;
+import static swip.util.Drivers.cleaned;
 import static swip.util.Drivers.driverWithAddedShutdownHook;
 
 public class WebDriverSupplier {
-    private static final Logger LOGGER = Logger.getLogger(WebDriverSupplier.class.getName());
     private final Map<DesiredCapabilities, WebDriver> cache = new HashMap<>();
 
     static {
@@ -70,26 +67,7 @@ public class WebDriverSupplier {
             cache.put(desiredCapabilities, baseUrlDriver(driverWithAddedShutdownHook(newDriver(desiredCapabilities))));
         }
 
-        WebDriver driver = cache.get(desiredCapabilities);
-
-        clean(driver);
-
-        return driver;
-    }
-
-    private void clean(WebDriver driver) {
-        // TODO - update managing the driver with clean-up activities
-        try {
-            Alert alert = ExpectedConditions.alertIsPresent().apply(driver);
-            if (alert != null) {
-                alert.dismiss();
-            }
-        } catch (UnsupportedOperationException ignored) {
-            // not all browsers support this
-            LOGGER.info("failed to close alert " + driver + " unsupported operation");
-        }
-        // must delete after alert closed
-        driver.manage().deleteAllCookies();
+        return cleaned(cache.get(desiredCapabilities));
     }
 
     private WebDriver newDriver(DesiredCapabilities desiredCapabilities) {
@@ -97,7 +75,7 @@ public class WebDriverSupplier {
             if (desiredCapabilities.getBrowserName().equals(BrowserType.HTMLUNIT)) {
                 return new HtmlUnitDriver(desiredCapabilities);
             }
-            return augmentedRemoteDriver(System.getProperty("webdriver.remote.url"), desiredCapabilities);
+            return augmentedRemoteDriver(System.getProperty("webdriver.remote.url", "http://localhost:4444/wd/hub"), desiredCapabilities);
         } else {
             return newLocalDriver(desiredCapabilities);
         }

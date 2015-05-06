@@ -1,15 +1,20 @@
 package swip.util;
 
 import org.apache.commons.lang3.ClassUtils;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Drivers {
+    private static final Logger LOGGER = Logger.getLogger(WebDriverSupplier.class.getName());
+
     public static WebDriver driverWithAddedShutdownHook(WebDriver driver) {
         Runtime.getRuntime().addShutdownHook(new Thread(driver::quit)); // # add the shutdown hook to clear up
         return driver;
@@ -41,6 +46,23 @@ public class Drivers {
                     }
                 });
 
+    }
+
+
+    public static WebDriver cleaned(WebDriver driver) {
+        // TODO - update managing the driver with clean-up activities
+        try {
+            Alert alert = ExpectedConditions.alertIsPresent().apply(driver);
+            if (alert != null) {
+                alert.dismiss();
+            }
+        } catch (UnsupportedOperationException ignored) {
+            // not all browsers support this
+            LOGGER.info("failed to close alert " + driver + " unsupported operation");
+        }
+        // must delete after alert closed
+        driver.manage().deleteAllCookies();
+        return driver;
     }
 
 
