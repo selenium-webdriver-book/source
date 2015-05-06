@@ -1,0 +1,7 @@
+ports:
+    - 4444
+healthChecks:
+  pings: 
+    - url: http://localhost:4444/
+      pattern: You are using grid
+    
