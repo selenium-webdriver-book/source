@@ -4,29 +4,18 @@ import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import swip.junit.ConfigFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class Drivers {
-    private static final Logger LOGGER = Logger.getLogger(WebDriverSupplier.class.getName());
-    private static String baseUrl = baseUrl();
 
-    private static String baseUrl() {
-        try {
-            String baseUrl = System.getProperty("webdriver.baseUrl", "http://" + InetAddress.getLocalHost().getCanonicalHostName() + ":8080");
-            LOGGER.info("baseUrl " + baseUrl);
-            return baseUrl;
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private static final Logger LOGGER = Logger.getLogger(Drivers.class.getName());
     public static WebDriver driverWithAddedShutdownHook(WebDriver driver) {
         Runtime.getRuntime().addShutdownHook(new Thread(driver::quit)); // # add the shutdown hook to clear up
         return driver;
@@ -46,7 +35,7 @@ public class Drivers {
                         if (method.getName().equals("get")) { // # if the method we call is the get method
                             String url = args[0].toString();
                             if (!url.contains("://")) { // # and the method's parameter is not an absolute URL
-                                args[0] = baseUrl + url; // # then make it relative to the base URL
+                                args[0] = ConfigFactory.BASE_URL + url; // # then make it relative to the base URL
                             }
                         }
 

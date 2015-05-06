@@ -4,6 +4,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import swip.util.WebDriverSupplier;
 
@@ -14,6 +15,7 @@ import java.net.URI;
 class DesiredCapabilitiesRunner extends BlockJUnit4ClassRunner {
     private final DesiredCapabilities desiredCapabilities;
     private final WebDriverSupplier webDriverSupplier;
+    private WebDriver driver;
 
     DesiredCapabilitiesRunner(DesiredCapabilities desiredCapabilities, Class<?> testClass,
                               WebDriverSupplier webDriverSupplier) throws InitializationError {
@@ -42,15 +44,22 @@ class DesiredCapabilitiesRunner extends BlockJUnit4ClassRunner {
     @Override
     protected Statement withBefores(FrameworkMethod method, Object target, Statement statement) {
         // # inject the web driver and the capabilities into the test class
-        inject(target, webDriverSupplier.get(desiredCapabilities));
-        inject(target, URI.create(System.getProperty("webdriver.baseurl", "http://localhost:8080")));
+        driver = webDriverSupplier.get(desiredCapabilities);
+        inject(target, driver);
+        inject(target, URI.create(ConfigFactory.BASE_URL));
         return super.withBefores(method, target, statement);
+    }
+
+    @Override
+    protected Statement withAfters(FrameworkMethod method, Object target, Statement statement) {
+        return super.withAfters(method, target,
+                new TakeScreenshotStatement(driver, method.getDeclaringClass().getName() + "-" + testName(method), statement));
     }
 
     @Override
     protected String getName() {
         // # to make sure that the class has a clean name in the IDE
-        return String.format("%s[%s]", super.getName(), desiredCapabilities.getBrowserName());
+        return String.format("[%s]", desiredCapabilities.getBrowserName());
     }
 
     @Override
