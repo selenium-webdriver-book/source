@@ -33,7 +33,7 @@ class TakeScreenshotStatement extends Statement {
 
     private void screenshot(File saveAs) throws IOException {
         Files.createDirectories(saveAs.getParentFile().toPath());
-        if (driver instanceof TakesScreenshot) {
+        if (Boolean.getBoolean("webdriver.screenshot") && driver instanceof TakesScreenshot) {
             File file = ((TakesScreenshot) driver)
                     .getScreenshotAs(OutputType.FILE)
                     .getAbsoluteFile();
