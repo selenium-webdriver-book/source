@@ -8,13 +8,13 @@ import java.util.Collections;
 import java.util.logging.Logger;
 
 public class ConfigFactory {
-    public static final String BASE_URL = baseUrl();
     private static final Logger LOGGER = Logger.getLogger(ConfigFactory.class.getName());
+    public static final String BASE_URL = baseUrl(LOGGER);
 
-    private static String baseUrl() {
+    private static String baseUrl(Logger logger) {
         try {
             String baseUrl = System.getProperty("webdriver.baseUrl", "http://" + getHostName() + ":8080");
-            LOGGER.info("baseUrl " + baseUrl);
+            logger.info("baseUrl " + baseUrl);
             return baseUrl;
         } catch (SocketException | UnknownHostException e) {
             throw new RuntimeException(e);
