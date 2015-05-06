@@ -25,8 +25,8 @@ public class JavaScriptPromptIT {
         driver.findElement(By.linkText("Prompt")).click();
 
         Alert alert = driver.switchTo().alert();
-        assertEquals("text", alert.getText());
         alert.sendKeys("text");
+        assertEquals("Prompt?", alert.getText());
         alert.dismiss();
 
     }
