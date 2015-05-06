@@ -26,7 +26,7 @@ public class ConfigFactory {
                 .list(NetworkInterface.getNetworkInterfaces())
                 .stream()
                 .peek(p -> LOGGER.info(p.getName() + " " + p.getInetAddresses().nextElement().getHostAddress()))
-                .filter(p -> Arrays.asList("vboxnet1").contains(p.getName()))
+                .filter(p -> Arrays.asList("docker0", "vboxnet1").contains(p.getName()))
                 .findFirst()
                 .get()
                 .getInetAddresses()
