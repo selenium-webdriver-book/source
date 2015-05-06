@@ -28,7 +28,7 @@ public class SyntheticModalIT {
         Alert modal = new WebDriverWait(driver, 2).until(Modals.modalIsDisplayed());
 
         modal.sendKeys("some information");
-        assertEquals("some information", modal.getText());
+        assertEquals("Modal", modal.getText());
         modal.dismiss();
 
         assertFalse(driver.findElement(By.className("modal-dialog")).isDisplayed());

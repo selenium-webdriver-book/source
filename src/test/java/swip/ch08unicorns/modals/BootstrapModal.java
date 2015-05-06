@@ -6,7 +6,6 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.security.Credentials;
 
 public class BootstrapModal implements Alert { // implement alert to ensure the interface is familiar
-    public static final By INPUT_SELECTOR = By.cssSelector("input[type='text']");
     private final SearchContext searchContext;
 
     public BootstrapModal(SearchContext searchContext) { // accept just the part of the page we are interested in
@@ -25,12 +24,12 @@ public class BootstrapModal implements Alert { // implement alert to ensure the 
 
     @Override
     public String getText() {
-        return searchContext.findElement(INPUT_SELECTOR).getAttribute("value"); // the input
+        return searchContext.findElement(By.cssSelector("h4.modal-title")).getText(); // the input
     }
 
     @Override
     public void sendKeys(String keysToSend) {
-        searchContext.findElement(INPUT_SELECTOR).sendKeys(keysToSend);
+        searchContext.findElement(By.cssSelector("input[type='text']")).sendKeys(keysToSend);
     }
 
     @Override
