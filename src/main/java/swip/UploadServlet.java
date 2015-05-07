@@ -19,7 +19,12 @@ public class UploadServlet extends HttpServlet {
                     .parseRequest(req)
                     .stream()
                     .filter(i -> !i.isFormField())
-                    .forEach(i -> System.out.printf("uploaded %s%n", i.getName()));
+                    .forEach(i -> {
+                        if (i.getName().isEmpty()) {
+                            throw new IllegalStateException("no name");
+                        }
+                        System.out.printf("uploaded %s%n", i.getName());
+                    });
         } catch (Exception e) {
             throw new ServletException(e);
         }
