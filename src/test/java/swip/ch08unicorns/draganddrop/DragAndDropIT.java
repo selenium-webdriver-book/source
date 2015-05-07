@@ -1,4 +1,4 @@
-package swip.future;
+package swip.ch08unicorns.draganddrop;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
