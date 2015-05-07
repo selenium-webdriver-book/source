@@ -1,5 +1,5 @@
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
-
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xmlns="http://java.sun.com/xml/ns/j2ee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>Test Realm</realm-name>
@@ -14,5 +14,14 @@
             <role-name>TEST_ROLE</role-name>
         </auth-constraint>
     </security-constraint>
+
+    <servlet>
+        <servlet-name>upload</servlet-name>
+        <servlet-class>swip.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>upload</servlet-name>
+        <url-pattern>/upload.html</url-pattern>
+    </servlet-mapping>
 
 </web-app>
