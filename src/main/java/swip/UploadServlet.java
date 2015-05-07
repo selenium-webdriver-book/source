@@ -1,6 +1,5 @@
 package swip;
 
-import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
@@ -15,11 +14,8 @@ public class UploadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        FileItemFactory factory = new DiskFileItemFactory();
-        ServletFileUpload upload = new ServletFileUpload(factory);
-
         try {
-            upload
+            new ServletFileUpload(new DiskFileItemFactory())
                     .parseRequest(req)
                     .stream()
                     .filter(i -> !i.isFormField())
