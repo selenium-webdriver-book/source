@@ -1,4 +1,4 @@
-package swip.mwd;
+package swip.ch07managingwebdriver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

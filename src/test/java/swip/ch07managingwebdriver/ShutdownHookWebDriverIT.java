@@ -1,4 +1,4 @@
-package swip.mwd;
+package swip.ch07managingwebdriver;
 
 import org.junit.Before;
 import org.junit.Ignore;

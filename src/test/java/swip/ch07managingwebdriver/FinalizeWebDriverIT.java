@@ -1,20 +1,14 @@
-package swip.mwd;
+package swip.ch07managingwebdriver;
 
-import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 @Ignore("will not run on CI")
-public class CommonWebDriverIT {
+public class FinalizeWebDriverIT {
 
     private final WebDriver driver = new FirefoxDriver();
-
-    @After
-    public void tearDown() throws Exception {
-        driver.quit();
-    }
 
     @Override
     protected void finalize() throws Throwable {
