@@ -1,4 +1,4 @@
-package swip.iwe;
+package swip.ch03interacting;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

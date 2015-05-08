@@ -1,4 +1,4 @@
-package swip.iwe;
+package swip.ch03interacting;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
