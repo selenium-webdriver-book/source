@@ -1,4 +1,4 @@
-package swip.le;
+package swip.ch02locatingelements;
 
 import com.google.common.base.Supplier;
 import org.openqa.selenium.By;

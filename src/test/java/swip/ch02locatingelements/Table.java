@@ -1,4 +1,4 @@
-package swip.le;
+package swip.ch02locatingelements;
 
 import org.openqa.selenium.WebElement;
 

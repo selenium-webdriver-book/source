@@ -4,14 +4,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import swip.ch02locatingelements.ElementBy;
 import swip.junit.SeleniumWebDriverRunner;
-import swip.le.ElementBy;
 
 import javax.inject.Inject;
 import java.net.URI;
 
 import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SeleniumWebDriverRunner.class)
 public class VerifyingTextIT {

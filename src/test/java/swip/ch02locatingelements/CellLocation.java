@@ -1,4 +1,4 @@
-package swip.le;
+package swip.ch02locatingelements;
 
 public class CellLocation {
     public final int rowNumber, columnNumber;

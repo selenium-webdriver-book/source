@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import swip.ch02locatingelements.InputBy;
 import swip.junit.SeleniumWebDriverRunner;
-import swip.le.InputBy;
 
 import javax.inject.Inject;
 import java.util.Arrays;
