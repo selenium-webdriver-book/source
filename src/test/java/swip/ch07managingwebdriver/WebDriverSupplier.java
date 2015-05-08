@@ -1,4 +1,4 @@
-package swip.util;
+package swip.ch07managingwebdriver;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -16,16 +16,16 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import static swip.util.Drivers.baseUrlDriver;
-import static swip.util.Drivers.cleaned;
-import static swip.util.Drivers.driverWithAddedShutdownHook;
+import static swip.ch07managingwebdriver.Drivers.baseUrlDriver;
+import static swip.ch07managingwebdriver.Drivers.cleaned;
+import static swip.ch07managingwebdriver.Drivers.driverWithAddedShutdownHook;
 
 public class WebDriverSupplier {
-    private final Map<DesiredCapabilities, WebDriver> cache = new HashMap<>();
-
     static {
         System.setProperty("webdriver.chrome.driver", "bin/chromedriver");
     }
+
+    private final Map<DesiredCapabilities, WebDriver> cache = new HashMap<>();
 
     private static WebDriver newLocalDriver(DesiredCapabilities desiredCapabilities) {
         switch (desiredCapabilities.getBrowserName()) {

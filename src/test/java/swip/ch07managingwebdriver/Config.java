@@ -1,4 +1,4 @@
-package swip.junit;
+package swip.ch07managingwebdriver;
 
 
 import java.lang.annotation.ElementType;

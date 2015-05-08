@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/util
        http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="webDriverSupplier" class="swip.util.WebDriverSupplier"/>
+    <bean id="webDriverSupplier" class="swip.ch07managingwebdriver.WebDriverSupplier"/>
     <!-- # a factory to create the driver -->
     <bean id="webDriver" class="org.openqa.selenium.WebDriver"
           factory-bean="webDriverSupplier" factory-method="get"/>
@@ -24,5 +24,5 @@
     </bean>
     -->
 
-    <util:constant id="baseUrl" static-field="swip.junit.ConfigFactory.BASE_URL"/>
+    <util:constant id="baseUrl" static-field="swip.ch07managingwebdriver.ConfigFactory.BASE_URL"/>
 </beans>

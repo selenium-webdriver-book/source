@@ -1,4 +1,4 @@
-package swip.junit;
+package swip.ch07managingwebdriver;
 
 import org.junit.runners.model.Statement;
 import org.openqa.selenium.OutputType;

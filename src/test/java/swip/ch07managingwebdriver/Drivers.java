@@ -1,10 +1,9 @@
-package swip.util;
+package swip.ch07managingwebdriver;
 
 import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import swip.junit.ConfigFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;

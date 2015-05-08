@@ -1,4 +1,4 @@
-package swip.junit;
+package swip.ch07managingwebdriver;
 
 import org.junit.runner.Runner;
 import org.junit.runners.Suite;
@@ -6,7 +6,6 @@ import org.junit.runners.model.InitializationError;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import swip.util.WebDriverSupplier;
 
 import java.util.ArrayList;
 import java.util.Arrays;

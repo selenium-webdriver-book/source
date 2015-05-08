@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.HasInputDevices;
-import swip.junit.Config;
-import swip.junit.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.Config;
+import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
 import java.net.URI;

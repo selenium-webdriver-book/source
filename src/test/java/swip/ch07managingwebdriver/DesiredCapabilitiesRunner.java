@@ -1,4 +1,4 @@
-package swip.junit;
+package swip.ch07managingwebdriver;
 
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
@@ -6,7 +6,6 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import swip.util.WebDriverSupplier;
 
 import javax.inject.Inject;
 import java.lang.reflect.Field;
