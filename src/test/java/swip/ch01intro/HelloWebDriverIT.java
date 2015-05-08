@@ -1,4 +1,4 @@
-package swip.intro;
+package swip.ch01intro;
 
 import org.junit.After;
 import org.junit.Before;
