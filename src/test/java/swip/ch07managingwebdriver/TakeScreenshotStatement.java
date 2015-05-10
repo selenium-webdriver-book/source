@@ -32,7 +32,6 @@ class TakeScreenshotStatement extends Statement {
     }
 
     private void screenshot(File saveAs) throws IOException {
-        Files.createDirectories(saveAs.getParentFile().toPath());
         if (Boolean.getBoolean("webdriver.screenshot") && driver instanceof TakesScreenshot) {
             File file = ((TakesScreenshot) driver)
                     .getScreenshotAs(OutputType.FILE)
@@ -40,6 +39,7 @@ class TakeScreenshotStatement extends Statement {
             if (saveAs.exists()) {
                 Files.delete(saveAs.toPath());
             }
+            Files.createDirectories(saveAs.getParentFile().toPath());
             Files.move(file.toPath(), saveAs.toPath());
             LOGGER.info("saved " + saveAs);
         }
