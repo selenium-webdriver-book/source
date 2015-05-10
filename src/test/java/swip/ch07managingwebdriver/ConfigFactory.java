@@ -1,10 +1,12 @@
 package swip.ch07managingwebdriver;
 
+import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 public class ConfigFactory {
@@ -22,16 +24,19 @@ public class ConfigFactory {
     }
 
     private static String getHostName() throws UnknownHostException, SocketException {
-        return Collections
+        Optional<NetworkInterface> first = Collections
                 .list(NetworkInterface.getNetworkInterfaces())
                 .stream()
                 .peek(p -> LOGGER.info(p.getName() + " " + p.getInetAddresses().nextElement().getHostAddress()))
                 .filter(p -> Arrays.asList("docker0", "vboxnet1", "vboxnet0").contains(p.getName()))
-                .findFirst()
+                .findFirst();
+        return first.isPresent()
+                ? first
                 .get()
                 .getInetAddresses()
                 .nextElement()
-                .getHostAddress();
+                .getHostAddress()
+                : InetAddress.getLocalHost().getHostAddress();
     }
 
     public static void main(String[] args) throws SocketException, UnknownHostException {
