@@ -17,6 +17,7 @@ public class Tooltip {
             case "title":
                 return element.getAttribute("title");
             case "tooltip":
+                // TODO - Safari failure?
                 new Actions(driver).moveToElement(element).perform();
                 return driver.findElement(By.className("tooltip-inner")).getText();
             case "popover":

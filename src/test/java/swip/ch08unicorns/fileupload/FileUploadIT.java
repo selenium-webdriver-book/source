@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ import java.nio.file.Paths;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
+@Config(exclude = "browserName=safari")
 public class FileUploadIT {
 
     @Inject
