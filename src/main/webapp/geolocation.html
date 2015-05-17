@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <title>Geolocation</title>
+</head>
+<body>
+<div class="container">
+    <h1>Geolocation</h1>
+
+    <p id="status">...</p>
+    <script>
+        $(function() {
+            if (!navigator.geolocation) {
+                $('#status').html('Not supported.')
+            } else {
+                $('#status').html('Loading...')
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var c = position.coords;
+                    $('#status').html('You state you are at + ' + c.latitude + ',' + c.longitude)
+                }, function(e) {
+                    $('#status').html('Error: ' + e.message)
+                });
+            }
+        });
+
+    </script>
+</div>
+</body>
+</html>
