@@ -19,7 +19,7 @@
                 $('#status').html('Loading...')
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var c = position.coords;
-                    $('#status').html('You state you are at + ' + c.latitude + ',' + c.longitude)
+                    $('#status').html('You state you are at + ' + c.latitude + ', ' + c.longitude)
                 }, function(e) {
                     $('#status').html('Error: ' + e.message)
                 });
