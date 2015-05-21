@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class GeolocationIT {
 
     private final WebDriver driver = GeolocationConfigurableWebDriver
-            .create(FirefoxDriver::new, GeolocationStatus.OK, 51.5106766, -0.1231314);
+            .create(FirefoxDriver::new, GeolocationStatus.OK, 51.5106766, -0.1231314); // <1> Set the location.
 
     @After
     public void tearDown() throws Exception {
@@ -21,13 +21,15 @@ public class GeolocationIT {
     }
 
     @Test
-    public void ok() throws Exception {
+    public void firefoxOnly() throws Exception {
 
         driver.get("http://localhost:8080/geolocation.html");
 
+        driver.findElement(By.id("locate")).click();
+
         WebElement statusElement = driver.findElement(By.id("status"));
 
-        new WebDriverWait(driver, 10).until((WebDriver d) -> !statusElement.getText().equals("Loading...")); // You usually need to wait for location to be established.
+        new WebDriverWait(driver, 10).until((WebDriver d) -> !statusElement.getText().equals("Loading...")); // <2> You usually need to wait for location to be established.
 
         assertEquals("You state you are at + 51.5106766, -0.1231314", statusElement.getText());
     }
