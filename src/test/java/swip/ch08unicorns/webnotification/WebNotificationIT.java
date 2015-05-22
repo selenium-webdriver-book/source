@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
@@ -31,8 +30,6 @@ public class WebNotificationIT<W extends WebDriver & JavascriptExecutor> {
         Notification notification = new Notification(driver);
 
         driver.findElement(By.linkText("Show A Web Notification")).click();
-
-        new WebDriverWait(driver, 3).until(notification.isDisplayed());
 
         assertEquals("A Web Notification", notification.getTitle());
     }

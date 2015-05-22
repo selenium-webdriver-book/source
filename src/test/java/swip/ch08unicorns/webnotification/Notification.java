@@ -1,8 +1,6 @@
 package swip.ch08unicorns.webnotification;
 
-import com.google.common.base.Predicate;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 
 
 public class Notification {
@@ -14,7 +12,7 @@ public class Notification {
         this.javascriptExecutor.executeScript(
                 "Notification = function(title, options) { \n" +
                         "    var n = this; \n" +
-                        "    window.notificationTitle = title; \n" +
+                        "    notificationTitle = title; \n" +
                         "    notificationOptions = options;\n" +
                         "    setTimeout(function() { \n" +
                         "        (n.onshow || function() {}) (); \n" +
@@ -23,10 +21,6 @@ public class Notification {
     }
 
     public String getTitle() {
-        return String.valueOf(javascriptExecutor.executeScript("return window.notificationTitle"));
-    }
-
-    public Predicate<WebDriver> isDisplayed() {
-        return (driver) -> !"null".equals(getTitle());
+        return (String) javascriptExecutor.executeScript("return notificationTitle");
     }
 }
