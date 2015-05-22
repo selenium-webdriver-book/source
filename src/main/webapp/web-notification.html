@@ -11,14 +11,22 @@
     <h1>Web Notification</h1>
 
     <p>
-        <a href="javascript:notify('Titan', 'Titan...');" class="btn btn-default">Show Titan</a>
-        <a href="javascript:notify('Gemini', 'Gemini...');" class="btn btn-default">Show Gemini</a>
-        <a href="javascript:notify('Epsilon', 'Epsilon...');" class="btn btn-default">Show Epsilon</a>
+        <a href="javascript:notify('A Web Notification', 'A web notification body.');" class="btn btn-default"
+                >Show A Web Notification</a>
+        <a href="javascript:notify('Another Web Notification.', 'Another web notification body.');"
+           class="btn btn-default"
+                >Show Another Web Notification</a>
     </p>
 </div>
 <script>
     function notify(title, body) {
-        new Notification(title, {body: body}).onshow=function() {console.log(title + " shown");};
+        var n = new Notification(title, {body: body});
+        n.onshow = function() {
+            console.log(title + " shown");
+        };
+        n.onclose = function() {
+            console.log(title + " closed");
+        };
     }
 
     $(function() {
