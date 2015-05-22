@@ -23,7 +23,7 @@ public class Notification {
     }
 
     public String getTitle() {
-        return String.valueOf(javascriptExecutor.executeScript("window.notificationTitle"));
+        return String.valueOf(javascriptExecutor.executeScript("return window.notificationTitle"));
     }
 
     public Predicate<WebDriver> isDisplayed() {
