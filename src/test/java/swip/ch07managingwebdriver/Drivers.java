@@ -50,18 +50,16 @@ public class Drivers {
 
 
     public static WebDriver cleaned(WebDriver driver) {
-        // TODO - update managing the driver with clean-up activities
         try {
             Alert alert = ExpectedConditions.alertIsPresent().apply(driver);
             if (alert != null) {
-                alert.dismiss();
+                alert.dismiss(); // <1> If an alert is present we must close it.
             }
         } catch (UnsupportedOperationException ignored) {
             // not all browsers support this
             LOGGER.info("failed to close alert " + driver + " unsupported operation");
         }
-        // must delete after alert closed
-        driver.manage().deleteAllCookies();
+        driver.manage().deleteAllCookies(); // <2> Delete any cookies that have been set.
         return driver;
     }
 

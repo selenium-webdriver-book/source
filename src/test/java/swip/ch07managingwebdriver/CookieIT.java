@@ -24,7 +24,7 @@ public class CookieIT {
     @Test
     public void oneTest() throws Exception {
 
-        assertEquals("", driver.findElement(By.id("cookieValue")).getText());
+        assertEquals("undefined", driver.findElement(By.id("cookieValue")).getText());
 
         driver.findElement(By.name("cookieValue")).sendKeys("new value");
         driver.findElement(By.className("btn")).click();
@@ -35,7 +35,7 @@ public class CookieIT {
     @Test
     public void anotherTest() throws Exception {
 
-        assertEquals("", driver.findElement(By.id("cookieValue")).getText());
+        assertEquals("undefined", driver.findElement(By.id("cookieValue")).getText());
 
         driver.findElement(By.name("cookieValue")).sendKeys("new value");
         driver.findElement(By.className("btn")).click();
