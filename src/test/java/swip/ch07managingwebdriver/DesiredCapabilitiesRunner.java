@@ -50,9 +50,20 @@ class DesiredCapabilitiesRunner extends BlockJUnit4ClassRunner {
     }
 
     @Override
-    protected Statement withAfters(FrameworkMethod method, Object target, Statement statement) {
-        return super.withAfters(method, target,
-                new TakeScreenshotStatement(driver, method.getDeclaringClass().getName() + "-" + testName(method), statement));
+    protected Statement withAfters(
+            FrameworkMethod method,
+            Object target,
+            Statement statement
+    ) {
+        return super.withAfters(
+                method,
+                target,
+                new TakeScreenshotStatement(
+                        driver,
+                        method.getDeclaringClass().getName() + "-" + testName(method),
+                        statement
+                )
+        );
     }
 
     @Override
