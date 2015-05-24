@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <title>Cookie</title>
+</head>
+<body>
+<div class="container">
+    <h1>Cookie</h1>
+
+    <p>The value of the cookie named <code>myCookie</code> is <code id="cookieValue">...</code>.</p>
+
+    <form role="form" onsubmit="document.cookie = 'myCookie=' + $('#newCookieValue').val(); return true;"
+          class="form-inline">
+        <div class="form-group">
+            <input type="text" id="newCookieValue" class="form-control" placeholder="New cookie value"/>
+            <input type="submit" class="btn btn-primary" value="Set New Cookie Value"/>
+        </div>
+    </form>
+    <script>
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+            }
+            return null;
+        }
+        $(function() {
+            $("#cookieValue").html(getCookie("myCookie"));
+        });
+
+
+    </script>
+</div>
+</body>
+</html>
