@@ -24,7 +24,7 @@ public class GeolocationConfigurableWebDriver {
 
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("geo.wifi.uri", "file://" + GEO_LOCATION_JSON); // <2> Set the location of a geo-location JSON file.
-        profile.setPreference("geo.prompt.testing", "true"); // <3> Enable test mode.
+        profile.setPreference("geo.prompt.testing", true); // <3> Enable test mode.
         profile.setPreference("geo.prompt.testing.allow", status.equals(GeolocationStatus.OK));
 
         try {
