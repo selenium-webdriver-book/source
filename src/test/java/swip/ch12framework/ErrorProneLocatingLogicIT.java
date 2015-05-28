@@ -1,6 +1,5 @@
 package swip.ch12framework;
 
-import com.google.common.base.Function;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -55,35 +54,17 @@ public class ErrorProneLocatingLogicIT {
         webDriver.get("http://www.ticketfly.com");
         webDriver.findElement(linkText("change location")).click();
         WebDriverWait webDriverWait = new WebDriverWait(webDriver, 5);
-        WebElement location = webDriverWait.until(
-                new Function<WebDriver, WebElement>() {
-
-                    @Override
-                    public WebElement apply(WebDriver webDriver) {
-                        return webDriver.findElement(By.id("location"));
-                    }
-                });
+        WebElement location = webDriverWait.until((WebDriver d) -> webDriver.findElement(By.id("location")));
         FluentWait<WebElement> webElementWait
-                = new FluentWait<WebElement>(location)
+                = new FluentWait<>(location)
                 .withTimeout(30, SECONDS)
                 .pollingEvery(5, MILLISECONDS)
                 .ignoring(Exception.class);
         WebElement canada = webElementWait.until(
-                new Function<WebElement, WebElement>() {
-
-                    @Override
-                    public WebElement apply(WebElement element) {
-                        return location.findElement(linkText("CANADA"));
-                    }
-                });
+                (WebElement element) -> location.findElement(linkText("CANADA")));
         canada.click();
         WebElement allCanada = webElementWait.until(
-                new Function<WebElement, WebElement>() {
-                    @Override
-                    public WebElement apply(WebElement element) {
-                        return location.findElement(linkText("Ontario"));
-                    }
-                }
+                (WebElement element) -> location.findElement(linkText("Ontario"))
         );
         allCanada.click();
         assertEquals(0, webDriver.findElements(linkText("Ontario")).size());
