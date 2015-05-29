@@ -10,7 +10,7 @@ import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 import javax.inject.Inject;
 
 @RunWith(SeleniumWebDriverRunner.class)
-@Config(exclude = {"browserName=safari", "browserName=htmlunit"})
+@Config(exclude = {"browserName=safari", "browserName=htmlunit", "browserName=phantomjs"})
 public class JavaScriptConfirmIT {
     @Inject
     private WebDriver driver;

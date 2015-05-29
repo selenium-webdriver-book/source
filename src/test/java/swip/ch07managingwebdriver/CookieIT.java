@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
-@Config(exclude = "browserName=htmlunit")
+@Config(exclude = {"browserName=htmlunit", "browserName=phantomjs"})
 public class CookieIT {
     @Inject
     private WebDriver driver;

@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
-@Config(exclude = {"browserName=safari", "browserName=htmlunit"})
+@Config(exclude = {"browserName=safari", "browserName=htmlunit", "browserName=phantomjs"})
 public class JavaScriptPromptIT {
     @Inject
     private WebDriver driver;

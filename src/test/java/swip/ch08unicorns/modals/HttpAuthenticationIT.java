@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
-@Config(exclude = {"browserName=safari", "browserName=htmlunit", "browserName=chrome"})
+@Config(exclude = {"browserName=safari", "browserName=htmlunit", "browserName=chrome", "browserName=phantomjs"})
 public class HttpAuthenticationIT<W extends WebDriver & HasInputDevices> {
     @Inject
     private W driver;

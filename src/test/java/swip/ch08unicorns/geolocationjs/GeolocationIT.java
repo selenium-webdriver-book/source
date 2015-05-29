@@ -31,7 +31,8 @@ public class GeolocationIT<W extends WebDriver & JavascriptExecutor> {
 
         driver.executeScript(
                 String.format(
-                        "navigator.geolocation.getCurrentPosition = function(ok,err){" +
+                        "navigator.geolocation = navigator.geolocation || {};" +
+                                "navigator.geolocation.getCurrentPosition = function(ok,err){" +
                                 "ok({'coords': {'latitude': %s, 'longitude': %s}});" +
                                 "}",
                         51.5106766,
@@ -52,6 +53,7 @@ public class GeolocationIT<W extends WebDriver & JavascriptExecutor> {
 
         driver.executeScript(
                 String.format(
+                        "navigator.geolocation = navigator.geolocation || {};" +
                         "navigator.geolocation.getCurrentPosition = function(ok,err){err({'error': {'PERMISSION_DENIED': 1, 'POSITION_UNAVAILABLE': 2, 'TIMEOUT': 3}, 'code': %d, 'message': '%s'});}",
                         1,
                         "User denied Geolocation"
