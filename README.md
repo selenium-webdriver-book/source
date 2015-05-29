@@ -1,5 +1,10 @@
-Selenium WebDriver In Practice
-===
+# Selenium WebDriver In Practice
+## Set-up
+
+	brew install phantomjs
+
+Running
+---
 This is an example application with many tests. To run just the application:
 
 	mvn jetty:run

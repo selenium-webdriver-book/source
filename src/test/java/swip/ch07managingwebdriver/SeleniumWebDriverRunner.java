@@ -27,6 +27,7 @@ public class SeleniumWebDriverRunner extends Suite {
                 desiredCapabilitiesMacSafari(),
                 DesiredCapabilities.chrome(),
                 DesiredCapabilities.firefox(),
+                DesiredCapabilities.phantomjs()
         }) {
             if (!excluded(testClass, desiredCapabilities)
                     && included(desiredCapabilities)) {
