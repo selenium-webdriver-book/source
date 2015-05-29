@@ -58,7 +58,7 @@ public class Drivers {
             }
         } catch (UnsupportedOperationException | UnsupportedCommandException ignored) {
             // not all browsers support this
-            LOGGER.info("failed to close alert " + driver + " unsupported operation");
+            LOGGER.info("failed to close alert " + driver + " unsupported operation/command");
         }
         driver.manage().deleteAllCookies(); // <2> Delete any cookies that have been set.
         return driver;
