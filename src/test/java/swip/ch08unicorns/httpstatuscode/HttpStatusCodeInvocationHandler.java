@@ -21,7 +21,9 @@ class HttpStatusCodeInvocationHandler implements InvocationHandler, AutoCloseabl
     HttpStatusCodeInvocationHandler(Function<DesiredCapabilities, WebDriver> driverFactory) {
         server.start();
         server.addResponseInterceptor((BrowserMobHttpResponse httpResponse, Har har) -> {
-            httpStatusCode = httpResponse.getRawResponse().getStatusLine().getStatusCode();
+            if (httpResponse.getRawResponse() != null) {
+                httpStatusCode = httpResponse.getRawResponse().getStatusLine().getStatusCode();
+            }
         });
 
         DesiredCapabilities capabilities = new DesiredCapabilities(); // we need to have a factory here as we need to set the proxy
