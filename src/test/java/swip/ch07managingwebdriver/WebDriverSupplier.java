@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -37,6 +38,8 @@ public class WebDriverSupplier {
                 return new FirefoxDriver(desiredCapabilities);
             case BrowserType.HTMLUNIT:
                 return new HtmlUnitDriver(desiredCapabilities);
+            case BrowserType.PHANTOMJS:
+                return new PhantomJSDriver(desiredCapabilities);
             case BrowserType.IPAD:
             case BrowserType.IPHONE:
                 return augmentedRemoteWebDriver(desiredCapabilities, 5555);

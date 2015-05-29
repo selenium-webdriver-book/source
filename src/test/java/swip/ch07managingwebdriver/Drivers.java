@@ -2,6 +2,7 @@ package swip.ch07managingwebdriver;
 
 import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.UnsupportedCommandException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -55,7 +56,7 @@ public class Drivers {
             if (alert != null) {
                 alert.dismiss(); // <1> If an alert is present we must close it.
             }
-        } catch (UnsupportedOperationException ignored) {
+        } catch (UnsupportedOperationException | UnsupportedCommandException ignored) {
             // not all browsers support this
             LOGGER.info("failed to close alert " + driver + " unsupported operation");
         }
