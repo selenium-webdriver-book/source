@@ -10,3 +10,4 @@
 /bin/*.log*
 .DS_Store
 /docs/_book
+/tmp*.txt
