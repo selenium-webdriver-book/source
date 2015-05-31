@@ -17,7 +17,7 @@ import static org.openqa.selenium.By.linkText;
 
 public class ErrorProneLocatingLogicIT {
 
-    private static final String CHOOSE_LOCATION_PAGE = "http://www.ticketfly.com";
+    private static final String CHOOSE_LOCATION_PAGE = "http://localhost:8080/location-chooser.html";// http://www.ticketfly.com";
     // TODO - xpath vs css selector
     private static final By CHOSEN_LOCATION = By.cssSelector(".tools-location strong"); //By.xpath("div[@class='tools-location']/descendant::strong");
 
