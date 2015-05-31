@@ -1,5 +1,6 @@
 package swip.ch12framework;
 
+import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,10 +15,19 @@ import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
 
 public class ErrorProneLocatingLogicIT {
+    static {
+        System.setProperty("webdriver.chrome.driver", "bin/chromedriver");
+    }
+
+    private final WebDriver webDriver = new ChromeDriver();
+
+    @After
+    public void tearDown() throws Exception {
+        webDriver.quit();
+    }
 
     @Test
     public void errorProneLocatingLogic() {
-        WebDriver webDriver = new ChromeDriver();
         webDriver.get("http://www.ticketfly.com");
         webDriver.findElement(linkText("change location")).click();
         WebElement location = webDriver.findElement(By.id("location"));
@@ -34,7 +44,6 @@ public class ErrorProneLocatingLogicIT {
 
     @Test
     public void usingImplicitWait() {
-        WebDriver webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(30, SECONDS);
         webDriver.get("http://www.ticketfly.com");
         webDriver.findElement(linkText("change location")).click();
@@ -50,7 +59,6 @@ public class ErrorProneLocatingLogicIT {
 
     @Test
     public void usingExplicitWait() {
-        WebDriver webDriver = new ChromeDriver();
         webDriver.get("http://www.ticketfly.com");
         webDriver.findElement(linkText("change location")).click();
         WebDriverWait webDriverWait = new WebDriverWait(webDriver, 5);
