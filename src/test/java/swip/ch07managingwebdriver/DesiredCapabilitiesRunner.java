@@ -9,6 +9,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import javax.inject.Inject;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URI;
 
 class DesiredCapabilitiesRunner extends BlockJUnit4ClassRunner {
@@ -37,6 +39,17 @@ class DesiredCapabilitiesRunner extends BlockJUnit4ClassRunner {
                     throw new RuntimeException(e);
                 }
             }
+        }
+        for (Method method : target.getClass().getDeclaredMethods()) {
+            if (method.getAnnotation(Inject.class) != null && method.getParameterTypes()[0].isAssignableFrom(bean.getClass())) {
+                try {
+                    method.setAccessible(true);
+                    method.invoke(target, bean);
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
         }
     }
 
