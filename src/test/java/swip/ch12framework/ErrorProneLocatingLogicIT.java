@@ -17,76 +17,68 @@ import static org.openqa.selenium.By.linkText;
 
 public class ErrorProneLocatingLogicIT {
 
-    private static final String CHOOSE_LOCATION_PAGE = "http://localhost:8080/location-chooser.html";// http://www.ticketfly.com";
-    // TODO - xpath vs css selector
-    private static final By CHOSEN_LOCATION = By.cssSelector(".tools-location strong"); //By.xpath("div[@class='tools-location']/descendant::strong");
-
     static {
         System.setProperty("webdriver.chrome.driver", "bin/chromedriver");
     }
 
-    private final WebDriver webDriver = new ChromeDriver();
+    private final WebDriver driver = new ChromeDriver();
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        driver.quit();
     }
 
     @Test
     @Ignore("When the location is choose, the menu fades in over a few seconds. This test cannot deal with that.")
     public void errorProneLocatingLogic() {
-        webDriver.get(CHOOSE_LOCATION_PAGE);
-        webDriver.findElement(linkText("change location")).click();
-        WebElement location = webDriver.findElement(By.id("location"));
-        location.findElement(linkText("CANADA")).click();
-        WebElement element = location.findElement(linkText("Ontario"));
-        element.click();
-        assertEquals(0, location.findElements(linkText("Ontario")).size());
-        assertEquals("Ontario", webDriver
-                .findElement(
-                        CHOSEN_LOCATION
-                )
+        driver.get("http://localhost:8080/location-chooser.html");
+        driver.findElement(linkText("change location")).click();
+        WebElement tabMenu = driver.findElement(By.id("location"));
+        tabMenu.findElement(linkText("CANADA")).click();
+        tabMenu.findElement(linkText("Ontario")).click();
+        assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
+        assertEquals("Ontario", driver
+                .findElement(By.cssSelector(".tools-location strong")) // <1>
                 .getText());
     }
 
     @Test
     public void usingImplicitWait() {
-        webDriver.manage().timeouts().implicitlyWait(30, SECONDS);
-        webDriver.get(CHOOSE_LOCATION_PAGE);
-        webDriver.findElement(linkText("change location")).click();
-        WebElement tabMenu = webDriver.findElement(By.id("location"));
+        driver.manage().timeouts().implicitlyWait(30, SECONDS); // <1>
+        driver.get("http://localhost:8080/location-chooser.html");
+        driver.findElement(linkText("change location")).click();
+        WebElement tabMenu = driver.findElement(By.id("location"));
         tabMenu.findElement(linkText("CANADA")).click();
-        WebElement element = tabMenu.findElement(linkText("Ontario"));
-        element.click();
-        // TODO - the next line does not work?
-        // assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
-        assertEquals("Ontario", webDriver
-                .findElement(CHOSEN_LOCATION)
+        tabMenu.findElement(linkText("Ontario")).click();
+        assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
+        assertEquals("Ontario", driver
+                .findElement(By.cssSelector(".tools-location strong"))
                 .getText());
     }
 
     @Test
     public void usingExplicitWait() {
-        webDriver.get(CHOOSE_LOCATION_PAGE);
-        webDriver.findElement(linkText("change location")).click();
-        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 5);
-        WebElement location = webDriverWait.until((WebDriver d) -> webDriver.findElement(By.id("location")));
-        FluentWait<WebElement> webElementWait
-                = new FluentWait<>(location)
+        driver.get("http://localhost:8080/location-chooser.html");
+        driver.findElement(linkText("change location")).click();
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 5); // <1>
+
+        WebElement tabMenu = webDriverWait
+                .until((WebDriver d) -> driver.findElement(By.id("location")));
+
+        FluentWait<WebElement> webElementWait = new FluentWait<>(tabMenu) // <2>
                 .withTimeout(30, SECONDS)
                 .pollingEvery(5, MILLISECONDS)
                 .ignoring(Exception.class);
-        WebElement canada = webElementWait.until(
-                (WebElement element) -> location.findElement(linkText("CANADA")));
-        canada.click();
-        WebElement allCanada = webElementWait.until(
-                (WebElement element) -> location.findElement(linkText("Ontario"))
-        );
-        allCanada.click();
-        // TODO - this next line does not seem to work?
-        // assertEquals(0, webDriver.findElements(linkText("Ontario")).size());
-        assertEquals("Ontario", webDriver
-                .findElement(CHOSEN_LOCATION)
+
+        webElementWait.until(
+                (WebElement element) -> tabMenu.findElement(linkText("CANADA")))
+                .click();
+        webElementWait
+                .until((WebElement element) -> tabMenu.findElement(linkText("Ontario")))
+                .click();
+        assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
+        assertEquals("Ontario", driver
+                .findElement(By.cssSelector(".tools-location strong"))
                 .getText());
     }
 }
