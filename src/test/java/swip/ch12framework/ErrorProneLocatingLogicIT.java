@@ -1,32 +1,29 @@
 package swip.ch12framework;
 
-import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import swip.ch07managingwebdriver.Config;
+import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+
+import javax.inject.Inject;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
 
+@RunWith(SeleniumWebDriverRunner.class)
+@Config(exclude = "browserName=htmlunit")
 public class ErrorProneLocatingLogicIT {
 
-    static {
-        System.setProperty("webdriver.chrome.driver", "bin/chromedriver");
-    }
-
-    private final WebDriver driver = new ChromeDriver();
-
-    @After
-    public void tearDown() throws Exception {
-        driver.quit();
-    }
+    @Inject
+    private WebDriver driver;
 
     @Test
     @Ignore("When the location is choose, the menu fades in over a few seconds. This test cannot deal with that.")
