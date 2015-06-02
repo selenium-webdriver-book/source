@@ -14,7 +14,7 @@
 
     <p class="tools tools-location">
         <strong id="chosenLocation">No location chosen.</strong>
-        <a class="btn btn-primary btn-xs" href="javascript:$('#location').fadeToggle()">change location</a>
+        <a class="btn btn-primary btn-xs" href="#" id="changeLocation">change location</a>
     </p>
 
     <div id="location" style="display:none;" role="tabpanel">
@@ -59,9 +59,9 @@
         console.log("chosen  " + e);
         $('#chosenLocation').html(e);
     }
-
-
-
+    $('#changeLocation').click(function () {
+        $('#location').fadeToggle()
+    })
 </script>
 </body>
 </html>
