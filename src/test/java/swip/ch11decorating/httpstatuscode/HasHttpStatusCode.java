@@ -1,4 +1,4 @@
-package swip.ch08unicorns.httpstatuscode;
+package swip.ch11decorating.httpstatuscode;
 
 public interface HasHttpStatusCode {
     int getHttpStatusCode();

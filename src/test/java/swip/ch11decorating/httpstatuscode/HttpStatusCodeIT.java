@@ -1,4 +1,4 @@
-package swip.ch08unicorns.httpstatuscode;
+package swip.ch11decorating.httpstatuscode;
 
 import org.junit.After;
 import org.junit.Test;

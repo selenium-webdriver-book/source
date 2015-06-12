@@ -1,4 +1,4 @@
-package swip.ch08unicorns.geolocation;
+package swip.ch11decorating.geolocation;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

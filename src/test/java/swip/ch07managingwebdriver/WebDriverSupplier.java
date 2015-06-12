@@ -17,9 +17,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import static swip.ch07managingwebdriver.Drivers.baseUrlDriver;
 import static swip.ch07managingwebdriver.Drivers.cleaned;
 import static swip.ch07managingwebdriver.Drivers.driverWithAddedShutdownHook;
+import static swip.ch11decorating.baseurl.BaseUrlDecorator.baseUrlDriver;
 
 public class WebDriverSupplier {
     static {
