@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/tab.js" type="text/javascript"></script>
+    <title>Location Chooser</title>
+</head>
+<body>
+<div class="container">
+    <h1>Location Chooser</h1>
+
+    <p class="tools tools-location">
+        <strong id="chosenLocation">No location chosen.</strong>
+        <a class="btn btn-primary btn-xs" href="#" id="changeLocation">change location</a>
+    </p>
+
+    <div id="location" style="display:none;" role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#us" aria-controls="us" role="tab" data-toggle="tab">US</a>
+            </li>
+            <li role="presentation">
+                <a href="#canada" aria-controls="canada" role="tab" data-toggle="tab">CANADA</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active fade in" id="us">
+                <p>
+                    <a class="btn btn-default btn-s" href="javascript:choose('East Coast')">East Coast</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Central')">Central</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Mountain')">Mountain</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('South')">South</a>
+                </p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="canada">
+                <p>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Alberta')">Alberta</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Ontario')">Ontario</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Québec')">Québec</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('All Canada')">All Canada</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#location a[role="tab"]').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+        console.log("showing chooser")
+    })
+    function choose(e) {
+        $('#location').hide();
+        console.log("chosen  " + e);
+        $('#chosenLocation').html(e);
+    }
+    $('#changeLocation').click(function () {
+        $('#location').fadeToggle()
+    })
+</script>
+</body>
+</html>
