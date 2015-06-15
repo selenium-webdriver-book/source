@@ -32,6 +32,8 @@ public class VerifyingImagesIT<W extends WebDriver & JavascriptExecutor> {
     }
 
     private boolean isImageLoaded(WebElement image) {
-        return (boolean) driver.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0", image);
+        return (boolean) driver.executeScript("return arguments[0].complete && " +
+                "typeof arguments[0].naturalWidth != 'undefined' && " +
+                "arguments[0].naturalWidth > 0", image);
     }
 }

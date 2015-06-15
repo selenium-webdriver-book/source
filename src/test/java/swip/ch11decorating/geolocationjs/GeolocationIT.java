@@ -54,7 +54,12 @@ public class GeolocationIT<W extends WebDriver & JavascriptExecutor> {
         driver.executeScript(
                 String.format(
                         "navigator.geolocation = navigator.geolocation || {};" +
-                        "navigator.geolocation.getCurrentPosition = function(ok,err){err({'error': {'PERMISSION_DENIED': 1, 'POSITION_UNAVAILABLE': 2, 'TIMEOUT': 3}, 'code': %d, 'message': '%s'});}",
+                        "navigator.geolocation.getCurrentPosition = function(ok,err){" +
+                                "err({'error': {" +
+                                "'PERMISSION_DENIED': 1, " +
+                                "'POSITION_UNAVAILABLE': 2, " +
+                                "'TIMEOUT': 3" +
+                                "}, 'code': %d, 'message': '%s'});}",
                         1,
                         "User denied Geolocation"
                 ));
