@@ -27,7 +27,7 @@ class HttpStatusCodeInvocationHandler implements InvocationHandler, AutoCloseabl
         });
 
         DesiredCapabilities capabilities = new DesiredCapabilities(); // we need to have a factory here as we need to set the proxy
-        capabilities.setCapability(CapabilityType.PROXY, new org.openqa.selenium.Proxy().setHttpProxy("localhost:" + PORT));
+        capabilities.setCapability(CapabilityType.PROXY, server.seleniumProxy());
         driver = driverFactory.apply(capabilities);
     }
 
