@@ -56,10 +56,22 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.detro</groupId>
+            <!-- not-official version -->
+            <groupId>com.codeborne</groupId>
             <artifactId>phantomjsdriver</artifactId>
-            <version>1.2.0</version>
+            <version>1.2.1</version>
             <scope>test</scope>
+            <!-- this will be behind -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-java</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-remote-driver</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
