@@ -1,4 +1,4 @@
-package swip.ch08unicorns.webnotification;
+package swip.ch09javascript.webnotification;
 
 import org.junit.Before;
 import org.junit.Test;

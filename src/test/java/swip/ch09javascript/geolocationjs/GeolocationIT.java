@@ -1,4 +1,4 @@
-package swip.ch11decorating.geolocationjs;
+package swip.ch09javascript.geolocationjs;
 
 import org.junit.Before;
 import org.junit.Test;
