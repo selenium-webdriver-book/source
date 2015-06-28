@@ -8,6 +8,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -65,6 +66,7 @@ public class WebDriverSupplier {
     }
 
     public WebDriver get(DesiredCapabilities desiredCapabilities) {
+        desiredCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
         if (!cache.containsKey(desiredCapabilities)) {
             cache.put(desiredCapabilities, baseUrlDriver(driverWithAddedShutdownHook(newDriver(desiredCapabilities))));
