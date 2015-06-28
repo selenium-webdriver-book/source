@@ -274,19 +274,6 @@
                         <goals>
                             <goal>start</goal>
                         </goals>
-                        <configuration>
-                            <connectors>
-                                <connector implementation="org.eclipse.jetty.server.bio.SocketConnector">
-                                    <port>8080</port>
-                                </connector>
-                                <connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
-                                    <port>8443</port>
-                                    <keystore>${project.build.directory}/jetty-ssl.keystore</keystore>
-                                    <keyPassword>jetty8</keyPassword>
-                                    <password>jetty8</password>
-                                </connector>
-                            </connectors>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>stop</id>
