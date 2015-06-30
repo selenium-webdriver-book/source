@@ -1,0 +1,11 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "win8-ie10"
+  config.vm.box_url = "http://aka.ms/vagrant-win8-ie10"   
+  config.vm.communicator = "winrm"
+
+  config.vm.provider "virtualbox" do |v|
+    v.gui = true
+  end
+
+end
