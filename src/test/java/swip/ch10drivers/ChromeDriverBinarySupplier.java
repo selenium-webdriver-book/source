@@ -34,7 +34,7 @@ public class ChromeDriverBinarySupplier implements WebDriverBinarySupplier {
         Path download = Paths.get(System.getProperty("java.io.tmpdir"), "chrome-driver"); // <3> The name and download destination.
         Path driverPath = driverDir.resolve(os.equals("win") ? "chromedriver.exe" : "chromedriver");
 
-        if (driverPath.toFile().exists()) { // <4> Do not do this if you already have it.
+        if (!driverPath.toFile().exists()) { // <4> Do not do this if you already have it.
 
             URL url = new URL("http://chromedriver.storage.googleapis.com/2.16/chromedriver_" + os + arch + ".zip");
 
