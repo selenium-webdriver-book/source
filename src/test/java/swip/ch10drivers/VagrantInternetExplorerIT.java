@@ -1,5 +1,6 @@
 package swip.ch10drivers;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,6 +20,11 @@ public class VagrantInternetExplorerIT {
         driver = new RemoteWebDriver(
                 new URL("http://localhost:14444/wd/hub"), DesiredCapabilities.internetExplorer()
         );
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        driver.quit();
     }
 
     @Test
