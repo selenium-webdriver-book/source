@@ -35,3 +35,9 @@ To start the local iPhone driver:
 
 	./bin/ios.sh	
 	
+	
+References
+---
+
+* <http://myshittycode.com/2014/06/03/maven-jetty-enabling-ssl-on-jetty-maven-plugin/>
+* <http://juplo.de/configure-https-for-jetty-maven-plugin-9-0-x/> 

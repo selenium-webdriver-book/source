@@ -1,5 +1,6 @@
 package swip.ch07managingwebdriver;
 
+import com.google.common.collect.ImmutableMap;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,12 +9,17 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import swip.ch10drivers.ChromeDriverBinarySupplier;
+import swip.ch10drivers.WebDriverBinarySupplier;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,12 +29,28 @@ import static swip.ch11decorating.baseurl.BaseUrlDecorator.baseUrlDriver;
 
 public class WebDriverSupplier {
     static {
-        System.setProperty("webdriver.chrome.driver", "bin/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "target/chromedriver");
     }
 
     private final Map<DesiredCapabilities, WebDriver> cache = new HashMap<>();
+    private final Map<String, WebDriverBinarySupplier> binarySuppliers = ImmutableMap.of(
+            BrowserType.CHROME, new ChromeDriverBinarySupplier()
+    );
 
-    private static WebDriver newLocalDriver(DesiredCapabilities desiredCapabilities) {
+    private static WebDriver augmentedRemoteWebDriver(DesiredCapabilities desiredCapabilities, int port) {
+        return augmentedRemoteDriver("http://localhost:" + port + "/wd/hub", desiredCapabilities);
+    }
+
+    private static WebDriver augmentedRemoteDriver(String url, DesiredCapabilities desiredCapabilities) {
+        try {
+            return new Augmenter().augment(new RemoteWebDriver(new URL(url), desiredCapabilities));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private WebDriver newLocalDriver(DesiredCapabilities desiredCapabilities) {
+        acquireBinary(desiredCapabilities.getBrowserName());
         switch (desiredCapabilities.getBrowserName()) {
             case BrowserType.SAFARI:
                 return new SafariDriver(desiredCapabilities);
@@ -48,15 +70,13 @@ public class WebDriverSupplier {
         }
     }
 
-    private static WebDriver augmentedRemoteWebDriver(DesiredCapabilities desiredCapabilities, int port) {
-        return augmentedRemoteDriver("http://localhost:" + port + "/wd/hub", desiredCapabilities);
-    }
-
-    private static WebDriver augmentedRemoteDriver(String url, DesiredCapabilities desiredCapabilities) {
-        try {
-            return new Augmenter().augment(new RemoteWebDriver(new URL(url), desiredCapabilities));
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+    private void acquireBinary(String browserName) {
+        if (binarySuppliers.containsKey(browserName)) {
+            try {
+                binarySuppliers.get(browserName).get(Paths.get("target"));
+            } catch (IOException e) {
+                throw new RuntimeException("failed acquire binary", e);
+            }
         }
     }
 
@@ -65,6 +85,7 @@ public class WebDriverSupplier {
     }
 
     public WebDriver get(DesiredCapabilities desiredCapabilities) {
+        desiredCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
         if (!cache.containsKey(desiredCapabilities)) {
             cache.put(desiredCapabilities, baseUrlDriver(driverWithAddedShutdownHook(newDriver(desiredCapabilities))));
