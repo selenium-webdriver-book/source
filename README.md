@@ -15,29 +15,18 @@ Ctrl+C to close it. Or you can do this:
 
 Run run all the tests:
 
-	mvn verify
+	mvn verify -Prun-its
 
 On just one browser:
 
-	mvn verify -Dwebdriver.capabilities.browserName=firefox 	 
+	mvn ... -Dwebdriver.capabilities.browserName=firefox
 
 To run remotely:
 
-	mvn verify -Dwebdriver.remote.url=$WD_URL
+	mvn ... -Dwebdriver.remote.url=$WD_URL
 
 When not all tests will pass, you can try and get a clearer picture using the site report:
 
 	mvn site
 	open target/site/failsafe-report.html
-	
-	
-To start the local iPhone driver:
 
-	./bin/ios.sh	
-	
-	
-References
----
-
-* <http://myshittycode.com/2014/06/03/maven-jetty-enabling-ssl-on-jetty-maven-plugin/>
-* <http://juplo.de/configure-https-for-jetty-maven-plugin-9-0-x/> 
