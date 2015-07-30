@@ -1,4 +1,4 @@
-package swip.ch06pageobjects.pagefactory;
+package swip.ch05pageobjects.pagefactory;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

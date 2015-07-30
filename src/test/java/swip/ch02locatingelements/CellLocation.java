@@ -1,7 +1,8 @@
 package swip.ch02locatingelements;
 
 public class CellLocation {
-    public final int rowNumber, columnNumber;
+    private final int rowNumber;
+    private final int columnNumber;
 
     public CellLocation(int rowNumber, int columnNumber) {
         this.rowNumber = rowNumber;

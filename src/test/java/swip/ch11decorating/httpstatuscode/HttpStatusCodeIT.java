@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class HttpStatusCodeIT<W extends WebDriver & HasHttpStatusCode> { // You can use generics to require a browser with two aspects.
     @Inject
-    private W driver = HttpStatusCodeWebDriverFactory.create(FirefoxDriver::new); // We are using a method reference here. Nothing special, just a Java 8 feature.
+    private final W driver = HttpStatusCodeWebDriverFactory.create(FirefoxDriver::new); // We are using a method reference here. Nothing special, just a Java 8 feature.
 
     @After
     public void tearDown() throws Exception {

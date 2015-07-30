@@ -1,11 +1,11 @@
-package swip.ch06pageobjects.e;
+package swip.ch05pageobjects.e;
 
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertEquals;
 
 public class SearchPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;

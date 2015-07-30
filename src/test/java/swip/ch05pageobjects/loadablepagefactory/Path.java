@@ -1,4 +1,4 @@
-package swip.ch06pageobjects.loadablepagefactory;
+package swip.ch05pageobjects.loadablepagefactory;
 
 
 import java.lang.annotation.ElementType;

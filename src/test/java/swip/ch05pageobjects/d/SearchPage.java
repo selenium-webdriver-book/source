@@ -1,4 +1,4 @@
-package swip.ch06pageobjects.d;
+package swip.ch05pageobjects.d;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

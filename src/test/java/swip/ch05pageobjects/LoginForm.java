@@ -1,4 +1,4 @@
-package swip.ch06pageobjects;
+package swip.ch05pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

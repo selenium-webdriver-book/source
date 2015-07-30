@@ -1,4 +1,4 @@
-package swip.ch06pageobjects.pagefactory.whybad;
+package swip.ch05pageobjects.pagefactory.whybad;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

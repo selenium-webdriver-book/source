@@ -1,4 +1,4 @@
-package swip.ch06pageobjects.c;
+package swip.ch05pageobjects.c;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
