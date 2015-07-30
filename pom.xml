@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium.version>2.45.0</selenium.version>
+        <selenium.version>2.47.0</selenium.version>
         <jquery-ui.version>1.11.3</jquery-ui.version>
         <jquery.version>2.1.3</jquery.version>
         <jetty.version>9.2.3.v20140905</jetty.version>

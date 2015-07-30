@@ -33,6 +33,11 @@ public class BootstrapModal implements Alert { // implement alert to ensure the 
     }
 
     @Override
+    public void setCredentials(Credentials credentials) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public void authenticateUsing(Credentials credentials) {
         throw new UnsupportedOperationException();
     }

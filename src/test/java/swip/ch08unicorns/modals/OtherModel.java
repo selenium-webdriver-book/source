@@ -29,6 +29,11 @@ public class OtherModel implements Alert {
     }
 
     @Override
+    public void setCredentials(Credentials credentials) {
+
+    }
+
+    @Override
     public void authenticateUsing(Credentials credentials) {
 
     }
