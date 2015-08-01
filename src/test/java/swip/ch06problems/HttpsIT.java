@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
@@ -12,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.StringEndsWith.endsWith;
 
 @RunWith(SeleniumWebDriverRunner.class)
-// @Config(exclude = "browserName=htmlunit")
+@Config(exclude = "browserName=safari")
 public class HttpsIT {
     @Inject
     private WebDriver driver;

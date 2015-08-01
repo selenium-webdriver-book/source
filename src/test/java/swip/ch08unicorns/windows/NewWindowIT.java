@@ -64,11 +64,6 @@ public class NewWindowIT {
                             .equals("Thank You!")) // find a window that has the text we want
                     .findFirst();
 
-            try {
-            } finally {
-                driver.close();
-            }
-
         } finally {
             driver.switchTo().window(originalWindowHandle);
         }

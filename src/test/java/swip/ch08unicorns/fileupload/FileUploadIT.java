@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
-@Config(exclude = {"browserName=safari", "browserName=phantomjs"})
+@Config(exclude = {"browserName=safari", "browserName=phantomjs", "browserName=chrome"})
 public class FileUploadIT {
 
     @Inject

@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
 // html unit does not implement RemoteWebDriver
-@Config(exclude = {"browserName=safari", "browserName=iPhone", "browserName=htmlunit"})
+@Config(exclude = {"browserName=safari", "browserName=iPhone", "browserName=htmlunit", "browserName=firefox"})
 public class KeyboardInputIT<W extends WebDriver & HasInputDevices> {
 
     @Inject

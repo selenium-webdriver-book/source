@@ -4,15 +4,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
 
-import static org.junit.Assert.assertEquals;
-
 @RunWith(SeleniumWebDriverRunner.class)
-@Config(exclude = {"browserName=safari"})
+@Config(exclude = {"browserName=htmlunit", "browserName=safari"})
 public class LoginFormIT {
     @Inject
     private WebDriver driver;
@@ -24,6 +24,7 @@ public class LoginFormIT {
         LoginForm loginForm = new LoginForm(driver.findElement(By.id("login")));
         loginForm.loginAs("foo@bar.com", "secret");
 
-        assertEquals("You Are Logged In", driver.getTitle());
+        new WebDriverWait(driver, 1)
+                .until(ExpectedConditions.titleIs("You Are Logged In"));
     }
 }

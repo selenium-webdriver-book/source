@@ -11,8 +11,8 @@ import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 import javax.inject.Inject;
 
 @RunWith(SeleniumWebDriverRunner.class)
-// htmlunit acutally suppport JavaScript, just not these examples.
-@Config(exclude = "browserName=html")
+// htmlunit supports JavaScript, just not these examples.
+@Config(exclude = "browserName=htmlunit")
 public class UsageIT {
     @Inject
     private WebDriver driver;

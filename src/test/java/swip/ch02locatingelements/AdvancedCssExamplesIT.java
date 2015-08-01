@@ -1,15 +1,18 @@
 package swip.ch02locatingelements;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
 
 @RunWith(SeleniumWebDriverRunner.class)
+@Config(exclude = "browserName=htmlunit")
 public class AdvancedCssExamplesIT {
 
     @Inject
@@ -45,11 +48,13 @@ public class AdvancedCssExamplesIT {
         driver.findElement(By.cssSelector("input[name*='sswo']"));
     }
 
+    @Ignore("page changed layout")
     @Test
     public void sibling() throws Exception {
         driver.findElement(By.cssSelector("input[name='password'] + input[type='submit']"));
     }
 
+    @Ignore("page changed layout")
     @Test
     public void looseSibling() throws Exception {
         driver.findElement(By.cssSelector("input[name='email'] ~ input[type='submit']"));

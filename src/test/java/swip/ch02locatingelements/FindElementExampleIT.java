@@ -1,5 +1,6 @@
 package swip.ch02locatingelements;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -15,6 +16,11 @@ public class FindElementExampleIT {
 
     @Inject
     private WebDriver driver;
+
+    @Before
+    public void setUp() throws Exception {
+        driver.get("/index.html");
+    }
 
     @Test
     public void findHeading1Element() throws Exception {

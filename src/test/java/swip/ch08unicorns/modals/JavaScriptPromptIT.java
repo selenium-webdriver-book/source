@@ -5,6 +5,8 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
@@ -23,6 +25,9 @@ public class JavaScriptPromptIT {
         driver.get("/popups.html");
 
         driver.findElement(By.linkText("Prompt")).click();
+
+        new WebDriverWait(driver, 1)
+                .until(ExpectedConditions.alertIsPresent());
 
         Alert alert = driver.switchTo().alert();
         alert.sendKeys("text");
