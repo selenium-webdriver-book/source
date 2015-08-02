@@ -14,7 +14,7 @@ machine:
 #  DOCKER_HOST: tcp://127.0.0.1:2376
 #  DOCKER_CERT_PATH: $HOME/.docker
 #  DOCKER_TLS_VERIFY: 1
-  # dependencies:
+dependencies:
   post:
     - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
     - tar -xzf sc-latest-linux.tar.gz
