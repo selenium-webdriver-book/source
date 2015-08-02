@@ -1,19 +1,6 @@
 machine:
  java:
   version: oraclejdk8
-# pre:
-#  - wget https://github.com/alexec/circleci/archive/1.0.6.tar.gz
-#  - tar -xvf 1.0.6.tar.gz
-#  - ./circleci-1.0.6/install.sh $CIRCLE_PROJECT_REPONAME
-#  - $CIRCLE_PROJECT_REPONAME/circle.sh pre_machine
-# post:
-#  - $CIRCLE_PROJECT_REPONAME/circle.sh post_machine
-# services:
-#  - docker
-# environment:
-#  DOCKER_HOST: tcp://127.0.0.1:2376
-#  DOCKER_CERT_PATH: $HOME/.docker
-#  DOCKER_TLS_VERIFY: 1
 dependencies:
   post:
     - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
@@ -25,7 +12,6 @@ test:
        pwd: sc-*-linux
    - while [ ! -e ~/sc_ready ]; do sleep 1; done
    - mvn verify -Dwebdriver.remote -Dwebdriver.remote.url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub
-#   - mvn verify -Plocal-grid
   post:
    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
    - find . -type f -regex ".*/target/.*-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
