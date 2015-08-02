@@ -1,19 +1,19 @@
 machine:
  java:
   version: oraclejdk8
- pre:
-  - wget https://github.com/alexec/circleci/archive/1.0.6.tar.gz
-  - tar -xvf 1.0.6.tar.gz
-  - ./circleci-1.0.6/install.sh $CIRCLE_PROJECT_REPONAME
-  - $CIRCLE_PROJECT_REPONAME/circle.sh pre_machine
- post:
-  - $CIRCLE_PROJECT_REPONAME/circle.sh post_machine
- services:
-  - docker
- environment:
-  DOCKER_HOST: tcp://127.0.0.1:2376
-  DOCKER_CERT_PATH: $HOME/.docker
-  DOCKER_TLS_VERIFY: 1
+# pre:
+#  - wget https://github.com/alexec/circleci/archive/1.0.6.tar.gz
+#  - tar -xvf 1.0.6.tar.gz
+#  - ./circleci-1.0.6/install.sh $CIRCLE_PROJECT_REPONAME
+#  - $CIRCLE_PROJECT_REPONAME/circle.sh pre_machine
+# post:
+#  - $CIRCLE_PROJECT_REPONAME/circle.sh post_machine
+# services:
+#  - docker
+# environment:
+#  DOCKER_HOST: tcp://127.0.0.1:2376
+#  DOCKER_CERT_PATH: $HOME/.docker
+#  DOCKER_TLS_VERIFY: 1
   # dependencies:
   post:
     - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
