@@ -23,6 +23,6 @@ public class ElementIsPresentIT {
     public void checkingAnElementIsPresent() throws Exception {
         driver.get(baseUrl + "/styled-elements.html");
 
-        assertThat(driver.findElements(By.id("invisible")), hasSize(1)); // #A check the list Of elements will be size 1
+        assertThat(driver.findElements(By.id("invisible")), hasSize(1));
     }
 }
