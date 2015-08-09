@@ -9,8 +9,9 @@ public class SearchPage {
     private final WebElement submitInput;
 
     public SearchPage(WebDriver driver) {
-        if (!driver.getTitle().equals("Search")) {
-            throw new IllegalArgumentException("page is not search page");
+        String pageTitle = driver.getTitle();
+        if (!pageTitle.equals("Search")) {
+            throw new IllegalArgumentException(String.format("page is not search page, it has un-expected title %s", pageTitle));
         }
         queryInput = driver.findElement(By.cssSelector("input[name='q']"));
         submitInput = driver.findElement(By.cssSelector("input[type='submit']"));
