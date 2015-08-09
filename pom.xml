@@ -170,50 +170,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <!-- bootstrap -->
-                                <copy todir="${project.basedir}/src/main/webapp/">
-                                    <fileset
-                                            dir="${project.build.directory}/dependency/META-INF/resources/webjars/bootstrap/3.3.2-1/"/>
-                                </copy>
-                                <!-- jquery -->
-                                <copy todir="${project.basedir}/src/main/webapp/js">
-                                    <fileset
-                                            dir="${project.build.directory}/dependency/META-INF/resources/webjars/jquery/${jquery.version}/"/>
-                                </copy>
-                                <!-- jquery ui -->
-                                <copy todir="${project.basedir}/src/main/webapp/js">
-                                    <fileset
-                                            dir="${project.build.directory}/dependency/META-INF/resources/webjars/jquery-ui/${jquery-ui.version}/">
-                                        <include name="**/*.js"/>
-                                    </fileset>
-                                </copy>
-                                <copy todir="${project.basedir}/src/main/webapp/css">
-                                    <fileset
-                                            dir="${project.build.directory}/dependency/META-INF/resources/webjars/jquery-ui/${jquery-ui.version}/">
-                                        <include name="**/*.css"/>
-                                    </fileset>
-                                </copy>
-                                <copy todir="${project.basedir}/src/main/webapp/css/images">
-                                    <fileset
-                                            dir="${project.build.directory}/dependency/META-INF/resources/webjars/jquery-ui/${jquery-ui.version}/images"/>
-                                </copy>
-                                <exec executable="./make-index.sh" failonerror="true"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>keytool-maven-plugin</artifactId>
                 <version>1.5</version>
@@ -354,6 +310,57 @@
                                 <webdriver.capabilities.browserName>firefox</webdriver.capabilities.browserName>
                             </systemPropertyVariables>
                         </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>create-index-page</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.7</version>
+                        <executions>
+                            <execution>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <!-- bootstrap -->
+                                        <copy todir="${project.basedir}/src/main/webapp/">
+                                            <fileset
+                                                    dir="${project.build.directory}/dependency/META-INF/resources/webjars/bootstrap/3.3.2-1/"/>
+                                        </copy>
+                                        <!-- jquery -->
+                                        <copy todir="${project.basedir}/src/main/webapp/js">
+                                            <fileset
+                                                    dir="${project.build.directory}/dependency/META-INF/resources/webjars/jquery/${jquery.version}/"/>
+                                        </copy>
+                                        <!-- jquery ui -->
+                                        <copy todir="${project.basedir}/src/main/webapp/js">
+                                            <fileset
+                                                    dir="${project.build.directory}/dependency/META-INF/resources/webjars/jquery-ui/${jquery-ui.version}/">
+                                                <include name="**/*.js"/>
+                                            </fileset>
+                                        </copy>
+                                        <copy todir="${project.basedir}/src/main/webapp/css">
+                                            <fileset
+                                                    dir="${project.build.directory}/dependency/META-INF/resources/webjars/jquery-ui/${jquery-ui.version}/">
+                                                <include name="**/*.css"/>
+                                            </fileset>
+                                        </copy>
+                                        <copy todir="${project.basedir}/src/main/webapp/css/images">
+                                            <fileset
+                                                    dir="${project.build.directory}/dependency/META-INF/resources/webjars/jquery-ui/${jquery-ui.version}/images"/>
+                                        </copy>
+                                        <exec executable="./make-index.sh" failonerror="true"/>
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
