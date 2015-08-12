@@ -10,6 +10,7 @@ import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 import javax.inject.Inject;
 import java.net.URI;
 
+import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -43,8 +44,15 @@ public class VerifyingTextIT {
         driver.get(baseUrl + "/styled-elements.html");
 
         assertThat(driver.getPageSource(),
-                containsString("<!-- a comment about the page -->")); // #A this element is not actually visible, yet this test passes, you might not want that
+                anyOf(
+                        containsString("<p id=\"invisible\" style=\"display:none;\">"),
+                        containsString("<p style=\"display:none;\" id=\"invisible\">")
+                )
+        );
+        assertThat(driver.getPageSource(),
+                containsString("<!-- a comment about the page -->"));
     }
+
 
     @Test
     public void xpathTextMethod() throws Exception {
