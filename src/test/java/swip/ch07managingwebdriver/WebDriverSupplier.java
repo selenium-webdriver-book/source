@@ -104,4 +104,5 @@ public class WebDriverSupplier {
             return getLocalDriver(desiredCapabilities);
         }
     }
+
 }

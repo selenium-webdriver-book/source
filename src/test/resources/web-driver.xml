@@ -12,7 +12,7 @@
     <bean id="webDriverSupplier" class="swip.ch07managingwebdriver.WebDriverSupplier"/>
     <!-- # a factory to create the driver -->
     <bean id="webDriver" class="org.openqa.selenium.WebDriver"
-          factory-bean="webDriverSupplier" factory-method="get"/>
+          factory-bean="webDriverSupplier" factory-method="get" destroy-method="quit"/>
     <!-- # use the factory to create the bean. -->
 
     <context:property-placeholder location="classpath:/web-driver.properties"/>
