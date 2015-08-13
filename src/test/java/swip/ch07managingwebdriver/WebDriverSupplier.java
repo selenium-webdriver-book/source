@@ -49,7 +49,7 @@ public class WebDriverSupplier {
         }
     }
 
-    private WebDriver newLocalDriver(DesiredCapabilities desiredCapabilities) {
+    private WebDriver getLocalDriver(DesiredCapabilities desiredCapabilities) {
         acquireBinary(desiredCapabilities.getBrowserName());
         switch (desiredCapabilities.getBrowserName()) {
             case BrowserType.SAFARI:
@@ -88,20 +88,20 @@ public class WebDriverSupplier {
         desiredCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
         if (!cache.containsKey(desiredCapabilities)) {
-            cache.put(desiredCapabilities, baseUrlDriver(driverWithAddedShutdownHook(newDriver(desiredCapabilities))));
+            cache.put(desiredCapabilities, baseUrlDriver(driverWithAddedShutdownHook(getDriver(desiredCapabilities))));
         }
 
         return cleaned(cache.get(desiredCapabilities));
     }
 
-    private WebDriver newDriver(DesiredCapabilities desiredCapabilities) {
+    private WebDriver getDriver(DesiredCapabilities desiredCapabilities) {
         if (Boolean.getBoolean("webdriver.remote")) {
             if (desiredCapabilities.getBrowserName().equals(BrowserType.HTMLUNIT)) {
                 return new HtmlUnitDriver(desiredCapabilities);
             }
             return augmentedRemoteDriver(System.getProperty("webdriver.remote.url", "http://localhost:4444/wd/hub"), desiredCapabilities);
         } else {
-            return newLocalDriver(desiredCapabilities);
+            return getLocalDriver(desiredCapabilities);
         }
     }
 }
