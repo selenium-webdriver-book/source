@@ -13,6 +13,10 @@ Ctrl+C to close it. Or you can do this:
 
 	mvn jetty:stop
 
+To run a single test with Jetty running (using the Maven Failsafe Plugin):
+
+	mvn failsafe:integration-test failsafe:verify -Dit.test=HelloWebDriverIT
+
 Run run all the tests:
 
 	mvn verify -Prun-its
