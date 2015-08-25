@@ -10,6 +10,13 @@ public class CellLocation {
     }
 
     @Override
+    public int hashCode() {
+        int result = rowNumber;
+        result = 31 * result + columnNumber;
+        return result;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
