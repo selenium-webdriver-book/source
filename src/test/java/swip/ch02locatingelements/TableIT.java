@@ -26,12 +26,10 @@ public class TableIT {
     @Test
     public void findCell() throws Exception {
         int columnNumber = 1;
-        for (; ; columnNumber++) {
-            if (driver
+        while (!driver
                     .findElement(By.cssSelector(String.format("table#users-table th:nth-child(%d)", columnNumber)))
                     .getText().equals("Name")) {
-                break;
-            }
+            columnNumber++;
         }
         assertEquals("John Doe",
                 driver.findElement(By.cssSelector(String.format("table#users-table tbody tr:nth-child(1) td:nth-child(%d)", columnNumber)))
