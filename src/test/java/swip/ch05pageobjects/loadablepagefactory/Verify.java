@@ -9,6 +9,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Verify {
     String INVALID_TITLE = "\0";
+    String INVALID_XPATH = "\0";
 
     String title() default INVALID_TITLE;
+
+    String xpath() default INVALID_XPATH;
 }

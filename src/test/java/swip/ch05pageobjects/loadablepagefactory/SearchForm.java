@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Path("/search.html")
-@Verify(title = "Search")
+@Verify(title = "Search", xpath = "//h1[text()='Search']")
 public class SearchForm {
 
     @FindBy(css = "input[name='q']")

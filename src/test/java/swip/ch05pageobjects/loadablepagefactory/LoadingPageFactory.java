@@ -1,5 +1,6 @@
 package swip.ch05pageobjects.loadablepagefactory;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -16,6 +17,12 @@ public class LoadingPageFactory {
             if (!expectedPageTitle.equals(actualPageTitle)) {
                 throw new IllegalStateException(
                         String.format("expected page title %s but was %s", expectedPageTitle, actualPageTitle));
+            }
+        }
+        String xpath = verify.xpath();
+        if (!expectedPageTitle.equals(Verify.INVALID_XPATH)) {
+            if (driver.findElements(By.xpath(xpath)).isEmpty()) {
+                throw new IllegalStateException(String.format("expected XPath %s", xpath));
             }
         }
 
