@@ -1,6 +1,5 @@
 package swip.ch08unicorns.tooltips;
 
-import com.google.common.base.Optional;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +10,11 @@ public class Tooltip {
     public static String tip(WebDriver driver, By by) {
         WebElement element = driver.findElement(by);
 
-        String type = Optional.fromNullable(element.getAttribute("data-toggle")).or("title"); // determine the type of tooltip
+        String type = element.getAttribute("data-toggle");
+
+        if (type == null) {
+            type = "title";
+        }
 
         switch (type) {
             case "title":
