@@ -9,7 +9,7 @@ You'll need to install
 
 Running
 ---
-This is an example application with many tests. To run just the application:
+This is an example application with tests. To run the application:
 
 	mvn jetty:run
 	
@@ -31,3 +31,6 @@ To run remotely:
 
 	mvn ... -Dwebdriver.remote.url=$WD_URL
 
+Problems
+---
+Please let us know in if you have any issues in [the forums](https://forums.manning.com/forums/selenium-webdriver-in-practice). If you are on Windows, then please [read this](https://forums.manning.com/posts/list/36669.page).
