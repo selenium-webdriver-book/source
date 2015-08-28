@@ -1,36 +1,33 @@
 # Selenium WebDriver In Practice
-## Set-up
+## Pre-requisites
 
-	brew install phantomjs
+You'll need to install
+
+* Java 8.
+* Maven.
+* Firefox.
 
 Running
 ---
 This is an example application with many tests. To run just the application:
 
-	mvn jetty:run
+	mvn jetty:start
 	
-Ctrl+C to close it. Or you can do this:
+You can view the sample HTML pages at <http://localhost:8080>.
+
+To stop this web site:
 
 	mvn jetty:stop
-
-To run a single test with Jetty running (using the Maven Failsafe Plugin):
+	
+To run a single test (using the Maven Failsafe Plugin):
 
 	mvn failsafe:integration-test failsafe:verify -Dit.test=HelloWebDriverIT
 
-Run run all the tests:
+On just in another browser, other than Firefox:
 
-	mvn verify -Prun-its
-
-On just one browser:
-
-	mvn ... -Dwebdriver.capabilities.browserName=firefox
+	mvn ... -Dwebdriver.capabilities.browserName=chrome
 
 To run remotely:
 
 	mvn ... -Dwebdriver.remote.url=$WD_URL
-
-When not all tests will pass, you can try and get a clearer picture using the site report:
-
-	mvn site
-	open target/site/failsafe-report.html
 
