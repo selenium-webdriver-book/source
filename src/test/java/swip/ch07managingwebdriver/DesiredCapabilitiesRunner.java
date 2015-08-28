@@ -63,11 +63,7 @@ class DesiredCapabilitiesRunner extends BlockJUnit4ClassRunner {
     }
 
     @Override
-    protected Statement withAfters(
-            FrameworkMethod method,
-            Object target,
-            Statement statement
-    ) {
+    protected Statement withAfters(FrameworkMethod method, Object target, Statement statement) {
         return super.withAfters(
                 method,
                 target,
@@ -77,17 +73,5 @@ class DesiredCapabilitiesRunner extends BlockJUnit4ClassRunner {
                         statement
                 )
         );
-    }
-
-    @Override
-    protected String getName() {
-        // # to make sure that the class has a clean name in the IDE
-        return String.format("[%s]", desiredCapabilities.getBrowserName());
-    }
-
-    @Override
-    protected String testName(final FrameworkMethod method) {
-        // # as above, make sure that the class is clearly named in the IDE
-        return String.format("%s[%s]", method.getName(), desiredCapabilities.getBrowserName());
     }
 }
