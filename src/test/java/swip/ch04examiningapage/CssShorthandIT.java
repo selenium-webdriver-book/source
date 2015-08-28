@@ -1,5 +1,6 @@
 package swip.ch04examiningapage;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -22,6 +23,7 @@ public class CssShorthandIT {
     private URI baseUrl;
 
     @Test
+    @Ignore("this does work in Firefox")
     public void cssShortHandBackground() throws Exception {
         driver.get(baseUrl + "/styled-elements.html");
 

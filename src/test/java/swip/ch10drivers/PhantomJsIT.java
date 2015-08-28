@@ -1,6 +1,7 @@
 package swip.ch10drivers;
 
 import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import static org.junit.Assert.assertEquals;
 
+@Ignore("only runs with PhantomJS")
 public class PhantomJsIT {
     private final WebDriver driver = new PhantomJSDriver();
 

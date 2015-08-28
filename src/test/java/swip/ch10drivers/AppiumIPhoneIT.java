@@ -6,12 +6,14 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
 
+@Ignore("only runs with Appium")
 public class AppiumIPhoneIT {
     private AppiumDriver<MobileElement> driver; // <1>
 

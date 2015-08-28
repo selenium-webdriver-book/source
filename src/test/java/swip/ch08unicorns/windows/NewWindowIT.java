@@ -47,7 +47,7 @@ public class NewWindowIT {
 
     @Test
     public void openWindowUsingName() throws Exception {
-        driver.get("/open-a-new-window.html");
+        driver.get("http://localhost:8080/open-a-new-window.html");
 
         try {
             driver.findElement(By.tagName("a")).click();
@@ -55,8 +55,6 @@ public class NewWindowIT {
             driver.switchTo().window("new-window-name");
 
             assertEquals("You Are In The New Window", driver.findElement(By.tagName("h1")).getText());
-
-            driver.close();
         } finally {
             driver.switchTo().defaultContent();
         }
@@ -67,20 +65,26 @@ public class NewWindowIT {
         driver.get("/open-a-new-window.html");
 
         String originalWindowHandle = driver.getWindowHandle();
+        driver.findElement(By.tagName("a")).click();
+
+        String windowHandle = driver
+                .getWindowHandles()
+                .stream()
+                .filter(handle -> driver
+                        .switchTo()
+                        .window(handle)
+                        .findElement(By.tagName("h1"))
+                        .getText()
+                        .equals("You Are In The New Window")) // find a window that has the text we want
+                .findFirst()
+                .get();
+
         try {
-            driver.findElement(By.tagName("a")).click();
+            driver.switchTo().window(windowHandle);
 
-            driver
-                    .getWindowHandles()
-                    .stream()
-                    .filter(handle -> driver
-                            .switchTo()
-                            .window(handle)
-                            .findElement(By.tagName("h1"))
-                            .getText()
-                            .equals("You Are In A New Window")) // find a window that has the text we want
-                    .findFirst();
+            assertEquals("You Are In The New Window", driver.findElement(By.tagName("h1")).getText());
 
+            driver.close();
         } finally {
             driver.switchTo().window(originalWindowHandle);
         }

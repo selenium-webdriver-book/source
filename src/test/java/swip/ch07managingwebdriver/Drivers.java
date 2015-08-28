@@ -26,6 +26,22 @@ public class Drivers {
             LOGGER.info("failed to close alert " + driver + " unsupported operation/command");
         }
         driver.manage().deleteAllCookies(); // <2> Delete any cookies that have been set.
+
+        if (driver.getWindowHandles().size() > 1) {
+
+            driver.switchTo().defaultContent();
+
+            String topWindowHandle = driver.getWindowHandle();
+
+            for (String windowHandle : driver.getWindowHandles()) {
+                if (!windowHandle.equals(topWindowHandle)) {
+                    LOGGER.info("closing  surplus window " + windowHandle);
+                    driver.switchTo().window(windowHandle);
+                    driver.close();
+                }
+            }
+        }
+
         return driver;
     }
 
