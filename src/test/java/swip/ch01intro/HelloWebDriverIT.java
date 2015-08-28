@@ -2,7 +2,6 @@ package swip.ch01intro;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +10,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.junit.Assert.assertEquals;
 
-@Ignore("will not run on CI")
 public class HelloWebDriverIT { // we use the IT suffix for test in this book, this is the Maven convention for integration tests
 
     private WebDriver driver;
