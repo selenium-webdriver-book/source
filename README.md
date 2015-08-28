@@ -11,11 +11,11 @@ Running
 ---
 This is an example application with many tests. To run just the application:
 
-	mvn jetty:start
+	mvn jetty:run
 	
-You can view the sample HTML pages at <http://localhost:8080>.
+When it is ready you'll see "Started Jetty Server" printed onto the console.  You can then view the sample HTML pages at <http://localhost:8080>.
 
-To stop this web site:
+To stop this web site, Ctrl+C, or:
 
 	mvn jetty:stop
 	
