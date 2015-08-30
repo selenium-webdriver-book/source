@@ -27,9 +27,7 @@ public class NewWindowStrategyIT {
         new WindowHandler(driver)
                 .openWith(() -> driver.findElement(By.tagName("a")).click())
                 .identifiedBy((String handle, String originalWindowHandle) -> !handle.equals(originalWindowHandle))
-                .then(() -> {
-                    assertEquals("Thank You!", driver.findElement(By.tagName("h1")).getText());
-                });
+                .then(() -> assertEquals("You Are In The New Window", driver.findElement(By.tagName("h1")).getText()));
 
     }
 }
