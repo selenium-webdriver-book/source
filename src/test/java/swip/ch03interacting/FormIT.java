@@ -24,7 +24,10 @@ public class FormIT {
     public void completingAForm() throws Exception {
         driver.get(baseUrl + "/registration-form.html");
 
-        ((JavascriptExecutor) driver).executeScript("Array.prototype.slice.call(document.getElementsByTagName('input')).forEach(function(e){e.type=e.type=='password'?'text':e.type;});"); // #1 convert passwords into text to prevent the "save password" pop-up
+        ((JavascriptExecutor) driver).executeScript("Array.prototype.slice.call(" +
+                "document.getElementsByTagName('input')).forEach(function(e){" +
+                "   e.type=e.type=='password'?'text':e.type;" +
+                "});");
 
         driver.findElement(By.name("email")).sendKeys("john@doe.com");
         driver.findElement(By.name("password")).sendKeys("secret");
@@ -32,13 +35,6 @@ public class FormIT {
         new Select(driver.findElement(By.name("hearAbout"))).selectByVisibleText("Friend");
 
         driver.findElement(InputBy.label("email")).click();
-
-        driver.findElements(By.name("contact"))
-                .stream()
-                .filter(e -> "phone".equals(e.getAttribute("value")))
-                .findFirst()
-                .get()
-                .click();
 
         Select interestsSelect = new Select(driver.findElement(By.name("interest")));
         interestsSelect.selectByVisibleText("Movies");
