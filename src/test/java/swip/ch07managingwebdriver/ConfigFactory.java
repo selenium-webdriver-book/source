@@ -1,9 +1,12 @@
 package swip.ch07managingwebdriver;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 
 public class ConfigFactory {
-    private static final Logger LOGGER = Logger.getLogger(ConfigFactory.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConfigFactory.class);
     public static final String BASE_URL = baseUrl(LOGGER);
 
     private static String baseUrl(Logger logger) {
