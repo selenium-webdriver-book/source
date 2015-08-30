@@ -1,0 +1,31 @@
+---
+- hosts: appservers
+  user: ubuntu
+  sudo: true
+  tasks:
+
+    - name: Allow 8080 through firewall
+      command: iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+
+    - name: add Java 8 repo
+      apt_repository: repo=ppa:webupd8team/java
+    - name: Accept Java 8 Licence
+      shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | tee /etc/oracle-java-8-licence-acceptance | /usr/bin/debconf-set-selections
+      args:
+        creates: /etc/oracle-java-8-licence-acceptance
+    - name: Install Oracle Java 8
+      apt: name={{item}} state=installed
+      with_items:
+        - oracle-java8-installer
+        - ca-certificates
+        - oracle-java8-set-default
+
+    - name: Install Jetty
+      apt: name=jetty state=installed
+    - name: Enable Jetty
+      lineinfile: dest=/etc/default/jetty regexp=^NOSTART=1 line=NO_START=0
+    - name: Start Jetty
+      service: name=jetty state=started
+
+    - name: Upload War
+      synchronize: src=target/selenium-webdriver-in-practice.war dest=/usr/share/jetty/webapps/root.war

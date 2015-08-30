@@ -71,14 +71,4 @@ public class TableIT {
         assertEquals(2, table.getBodyHeight());
 
     }
-
-    @Test
-    public void findByStrategy() throws Exception {
-
-        Table table = new SimpleTable(driver.findElement(By.id("users-table")));
-
-        table.getBodyCell((element, location) -> element.getText().equals("Jane Smith"));
-        table.getBodyCell((element, location) -> location.equals(new CellLocation(1, 1)));
-
-    }
 }

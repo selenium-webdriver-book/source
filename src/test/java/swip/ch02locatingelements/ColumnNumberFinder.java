@@ -12,8 +12,7 @@ class ColumnNumberFinder {
     }
 
     public int find(SearchContext context) {
-        int columnNumber = 1;
-        for (; ; columnNumber++) {
+        for (int columnNumber = 1; ; columnNumber++) {
             if (context
                     .findElement(By.cssSelector(String.format("th:nth-child(%d)", columnNumber)))
                     .getText().equals(headerText)) {

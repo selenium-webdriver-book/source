@@ -1,9 +1,8 @@
 package swip.ch02locatingelements;
 
-import com.google.common.base.Supplier;
 import org.openqa.selenium.By;
 
-public enum ShoppingCartBySupplier implements Supplier<By> {
+public enum ShoppingCartBySupplier {
     QUANTITY(By.name("cartDS.shoppingcart_ROW0_m_orderItemVector_ROW0_m_quantity"));
 
     private final By by;
@@ -12,7 +11,6 @@ public enum ShoppingCartBySupplier implements Supplier<By> {
         this.by = by;
     }
 
-    @Override
     public By get() {
         return by;
     }
