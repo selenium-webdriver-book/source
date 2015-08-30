@@ -3,7 +3,6 @@ package swip.ch03interacting;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.HasCapabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -15,9 +14,9 @@ import javax.inject.Inject;
 import java.net.URI;
 
 @RunWith(SeleniumWebDriverRunner.class)
-public class FormIT<W extends JavascriptExecutor & WebDriver & HasCapabilities> {
+public class FormIT {
     @Inject
-    private W driver;
+    private WebDriver driver;
     @Inject
     private URI baseUrl;
 
@@ -25,7 +24,7 @@ public class FormIT<W extends JavascriptExecutor & WebDriver & HasCapabilities> 
     public void completingAForm() throws Exception {
         driver.get(baseUrl + "/registration-form.html");
 
-        driver.executeScript("Array.prototype.slice.call(document.getElementsByTagName('input')).forEach(function(e){e.type=e.type=='password'?'text':e.type;});"); // #1 convert passwords into text to prevent the "save password" pop-up
+        ((JavascriptExecutor) driver).executeScript("Array.prototype.slice.call(document.getElementsByTagName('input')).forEach(function(e){e.type=e.type=='password'?'text':e.type;});"); // #1 convert passwords into text to prevent the "save password" pop-up
 
         driver.findElement(By.name("email")).sendKeys("john@doe.com");
         driver.findElement(By.name("password")).sendKeys("secret");
