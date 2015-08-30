@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import swip.ch07managingwebdriver.Config;
+import swip.ch07managingwebdriver.DirtiesDriver;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
@@ -46,6 +47,7 @@ public class NewWindowIT {
     }
 
     @Test
+    @DirtiesDriver
     public void openWindowUsingName() throws Exception {
         driver.get("http://localhost:8080/open-a-new-window.html");
 

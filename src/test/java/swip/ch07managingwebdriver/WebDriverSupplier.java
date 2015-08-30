@@ -12,7 +12,12 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.SessionNotFoundException;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import swip.ch10drivers.ChromeDriverBinarySupplier;
 import swip.ch10drivers.WebDriverBinarySupplier;
 
@@ -28,6 +33,9 @@ import static swip.ch07managingwebdriver.Drivers.driverWithAddedShutdownHook;
 import static swip.ch11decorating.baseurl.BaseUrlDecorator.baseUrlDriver;
 
 public class WebDriverSupplier {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebDriverSupplier.class);
+
     static {
         System.setProperty("webdriver.chrome.driver", "target/chromedriver");
     }
@@ -88,10 +96,26 @@ public class WebDriverSupplier {
         desiredCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
         if (!cache.containsKey(desiredCapabilities)) {
-            cache.put(desiredCapabilities, baseUrlDriver(driverWithAddedShutdownHook(getDriver(desiredCapabilities))));
+
+            EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(baseUrlDriver(driverWithAddedShutdownHook(getDriver(desiredCapabilities))));
+
+            eventFiringWebDriver.register(new AbstractWebDriverEventListener() {
+                @Override
+                public void afterNavigateTo(String url, WebDriver driver) {
+                    LOGGER.info("opened " + driver.getCurrentUrl());
+                }
+            });
+
+            cache.put(desiredCapabilities, eventFiringWebDriver);
         }
 
-        return cleaned(cache.get(desiredCapabilities));
+        try {
+            return cleaned(cache.get(desiredCapabilities));
+        } catch (SessionNotFoundException e) {
+            LOGGER.warn("unable to connect to driver, removing from cache: " + e.getMessage());
+            cache.remove(desiredCapabilities);
+            return get(desiredCapabilities);
+        }
     }
 
     private WebDriver getDriver(DesiredCapabilities desiredCapabilities) {
