@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
@@ -42,8 +43,11 @@ public class TooltipsIT {
 
         new Actions(driver).moveToElement(element).perform();
 
-        String tip = driver.findElement(By.className("tooltip-inner")).getText();
-        assertEquals("I am the tooltip", tip);
+        WebElement tipElement = driver.findElement(By.className("tooltip-inner"));
+        new WebDriverWait(driver, 1)
+                .until((WebDriver webDriver) -> !tipElement.getText().isEmpty());
+
+        assertEquals("I am the tooltip", tipElement.getText());
     }
 
     @Test
