@@ -2,49 +2,47 @@ package swip.ch08unicorns.windows;
 
 import org.openqa.selenium.WebDriver;
 
-import java.util.function.BiFunction;
-
-public class WindowHandler {
+public abstract class WindowHandler {
     private final WebDriver driver;
-    private Runnable openingBlock; // the block of code needed to open the window
-    private BiFunction<String, String, Boolean> identifier
-            = (windowHandle, originalWindowHandle) -> !windowHandle.equals(originalWindowHandle); // a function to identify the window
 
     public WindowHandler(WebDriver driver) {
         this.driver = driver;
     }
 
-    public WindowHandler identifiedBy(BiFunction<String, String, Boolean> identifier) {
-        this.identifier = identifier;
-        return this;
+    protected abstract void openWindow(WebDriver driver);
+
+    protected boolean isExpectedWindow(WebDriver driver, String originalWindowHandle) {
+        return !driver.getWindowHandle().equals(originalWindowHandle);
     }
 
-    public WindowHandler openWith(Runnable openingBlock) {
-        this.openingBlock = openingBlock;
-        return this;
-    }
+    public abstract void useWindow(WebDriver driver);
 
-    public void then(Runnable operationBlock) {
+    public void run() {
         String originalWindowHandle = driver.getWindowHandle();
-        try {
-            openingBlock.run();
-            String identifiedHandle = driver
-                    .getWindowHandles()
-                    .stream()
-                    .filter(windowHandle -> identifier.apply(windowHandle, originalWindowHandle))
-                    .findFirst()
-                    .get();
 
-            driver.switchTo().window(identifiedHandle);
-            try {
-                operationBlock.run();
-            } finally {
-                if (driver.getWindowHandle().equals(identifiedHandle)) { // only close if it has not already been closed
-                    driver.close();
+        openWindow(driver);
+
+        try {
+
+            for (String windowHandle : driver.getWindowHandles()) {
+
+                driver.switchTo().window(windowHandle);
+
+                if (isExpectedWindow(driver, originalWindowHandle)) {
+
+                    useWindow(driver);
+
+                    if (driver.getWindowHandle().equals(windowHandle)) {
+                        driver.close();
+                    }
+
+                    return;
                 }
             }
+            throw new IllegalStateException("unable to find correct window");
         } finally {
             driver.switchTo().window(originalWindowHandle);
         }
     }
+
 }

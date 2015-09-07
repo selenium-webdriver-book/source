@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import swip.ch07managingwebdriver.Config;
-import swip.ch07managingwebdriver.DirtiesDriver;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
@@ -43,10 +42,10 @@ public class NewWindowIT {
         } finally {
             driver.switchTo().window(originalWindowHandle); // switch back to the original window
         }
+        assertEquals("Open A New Window", driver.findElement(By.tagName("h1")).getText());
     }
 
     @Test
-    @DirtiesDriver
     public void openWindowUsingName() throws Exception {
         driver.get("http://localhost:8080/open-a-new-window.html");
 
@@ -55,10 +54,15 @@ public class NewWindowIT {
 
             driver.switchTo().window("new-window-name");
 
-            assertEquals("You Are In The New Window", driver.findElement(By.tagName("h1")).getText());
+            try {
+                assertEquals("You Are In The New Window", driver.findElement(By.tagName("h1")).getText());
+            } finally {
+                driver.close();
+            }
         } finally {
             driver.switchTo().defaultContent();
         }
+        assertEquals("Open A New Window", driver.findElement(By.tagName("h1")).getText());
     }
 
     @Test
@@ -84,5 +88,6 @@ public class NewWindowIT {
         } finally {
             driver.switchTo().window(originalWindowHandle);
         }
+        assertEquals("Open A New Window", driver.findElement(By.tagName("h1")).getText());
     }
 }
