@@ -26,14 +26,13 @@ public class NewWindowIT {
         try { // wrap the new window operations in a try/finally block
             driver.findElement(By.tagName("a")).click(); // execute an operation to open a new window
 
-            String newHandle = driver
-                    .getWindowHandles()
-                    .stream()
-                    .filter(handle -> !handle.equals(originalWindowHandle)) // find a window that is not the current one
-                    .findFirst()
-                    .get();
+            for (String windowHandle : driver.getWindowHandles()) {
+                if (!windowHandle.equals(originalWindowHandle)) {
+                    driver.switchTo().window(windowHandle);
+                    break;
+                }
+            }
 
-            driver.switchTo().window(newHandle); // switch to the new window
             try {
                 // ... perform operations on the new window
                 assertEquals("You Are In The New Window", driver.findElement(By.tagName("h1")).getText());
