@@ -63,25 +63,20 @@ public class NewWindowIT {
 
     @Test
     public void openNewWindowUsingStrategy() throws Exception {
-        driver.get("/open-a-new-window.html");
+        driver.get("http://localhost:8080/open-a-new-window.html");
 
         String originalWindowHandle = driver.getWindowHandle();
+
         driver.findElement(By.tagName("a")).click();
 
-        String windowHandle = driver
-                .getWindowHandles()
-                .stream()
-                .filter(handle -> driver
-                        .switchTo()
-                        .window(handle)
-                        .findElement(By.tagName("h1"))
-                        .getText()
-                        .equals("You Are In The New Window")) // find a window that has the text we want
-                .findFirst()
-                .get();
-
         try {
-            driver.switchTo().window(windowHandle);
+            for (String windowHandle : driver.getWindowHandles()) {
+                driver.switchTo().window(windowHandle);
+                if (driver.findElement(By.tagName("h1")).getText()
+                        .equals("You Are In The New Window")) {
+                    break;
+                }
+            }
 
             assertEquals("You Are In The New Window", driver.findElement(By.tagName("h1")).getText());
 
