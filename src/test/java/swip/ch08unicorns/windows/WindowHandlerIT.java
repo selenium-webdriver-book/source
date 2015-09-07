@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
 @Config(exclude = {"browserName=safari"})
-public class NewWindowStrategyIT {
+public class WindowHandlerIT {
     @Inject
     private WebDriver driver;
 
