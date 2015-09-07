@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.HasInputDevices;
 import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
@@ -14,17 +13,14 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SeleniumWebDriverRunner.class)
 @Config(exclude = {"browserName=safari", "browserName=htmlunit", "browserName=chrome", "browserName=phantomjs"})
-public class HttpAuthenticationIT<W extends WebDriver & HasInputDevices> {
+public class HttpAuthenticationIT {
     @Inject
-    private W driver;
+    private WebDriver driver;
 
     @Test
     public void authViaUrl() throws Exception {
-        String username = "foo@bar.com";
-        String password = "secret";
-        driver.get("http://" + username + ":" + password + "@localhost:8080/auth.html");
+        driver.get("http://admin:secret@localhost:8080/auth.html");
 
-        assertEquals("Authentication", driver.findElement(By.tagName("h1")).getText());
-
+        assertEquals("You Are Logged In", driver.findElement(By.tagName("h1")).getText());
     }
 }
