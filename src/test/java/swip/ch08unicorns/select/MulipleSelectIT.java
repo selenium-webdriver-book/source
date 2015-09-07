@@ -4,13 +4,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Collectors;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -33,7 +35,7 @@ public class MulipleSelectIT {
 
     @Test
     public void multipleSelect() throws Exception {
-        driver.get("/select-boxes.html");
+        driver.get("http://localhost:8080/select-boxes.html");
 
         Select multiple = new Select(driver.findElement(By.name("multiple")));
 
@@ -41,13 +43,11 @@ public class MulipleSelectIT {
         multiple.selectByVisibleText("Labrador");
         multiple.selectByVisibleText("Sausage Dog");
 
-        assertEquals(
-                Arrays.asList("Labrador", "Sausage Dog"),
-                multiple // use a stream to extract the text values
-                        .getAllSelectedOptions()
-                        .stream()
-                        .map(e -> e.getText())
-                        .collect(Collectors.toList())
-        );
+        List<String> selectedOptions = new ArrayList<>();
+        for (WebElement option : multiple.getAllSelectedOptions()) {
+            selectedOptions.add(option.getText());
+        }
+
+        assertEquals(Arrays.asList("Labrador", "Sausage Dog"), selectedOptions);
     }
 }
