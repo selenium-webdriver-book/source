@@ -25,6 +25,11 @@ public class BrowserIT {
     }
 
     @Test
+    public void textInput() throws Exception {
+        browser.setInputText(By.name("email"), "john.doe@email.com");
+    }
+
+    @Test
     public void checkbox() throws Exception {
         browser.setCheckboxValue(By.name("terms"), true);
     }
