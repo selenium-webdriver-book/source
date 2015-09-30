@@ -5,6 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertEquals;
+
 public class Browser extends DelegatingWebDriver implements ExplicitWait, SearchScope {
 
     public Browser(WebDriver driver) {
@@ -16,10 +20,17 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         return new Element(super.findElement(by));
     }
 
-    public void setInputText(By by, String text) {
-        Element element = untilFound(by);
-        element.clear();
-        element.sendKeys(text);
+    public void setInputText(By by, String value) throws Exception {
+        Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
+
+        retry.attempt(
+                () -> {
+                    Element element = findElement(by);
+                    element.clear();
+                    element.sendKeys(value);
+                    assertEquals(value, element.getAttribute("value"));
+                }
+        );
     }
 
     public void setCheckboxValue(By by, boolean value) {

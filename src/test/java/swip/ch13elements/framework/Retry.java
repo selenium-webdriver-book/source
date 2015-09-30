@@ -13,10 +13,10 @@ public class Retry {
         this.unit = unit;
     }
 
-    public void attempt(Attemptable task) throws Exception {
+    public void attempt(Attemptable attemptable) throws Exception {
         for (int i = 0; i < count; i++) {
             try {
-                task.attempt();
+                attemptable.attempt();
                 return;
             } catch (Exception e) {
                 if (i == count - 1) {
