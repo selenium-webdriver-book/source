@@ -10,6 +10,7 @@ import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SeleniumWebDriverRunner.class)
 public class BrowserIT {
@@ -35,6 +36,7 @@ public class BrowserIT {
     @Test
     public void checkbox() throws Exception {
         browser.setCheckboxValue(By.name("terms"), true);
+        assertTrue(browser.isChecked(By.name("terms")));
     }
 
     @Test

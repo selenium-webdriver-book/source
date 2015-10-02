@@ -44,6 +44,10 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         }
     }
 
+    public boolean isChecked(By by) {
+        return untilFound(by).isSelected();
+    }
+
     public void setRadio(By by, String value) {
         findElements(by)
                 .stream()
