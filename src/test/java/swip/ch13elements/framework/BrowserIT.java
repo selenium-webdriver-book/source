@@ -42,6 +42,7 @@ public class BrowserIT {
     @Test
     public void radio() throws Exception {
         browser.setRadio(By.cssSelector("input[name='contact']"), "email");
+        assertEquals("email", browser.getRadio(By.cssSelector("input[name='contact']")));
     }
 
     @Test

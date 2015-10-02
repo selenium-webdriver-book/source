@@ -57,6 +57,15 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
                 .click();
     }
 
+    public String getRadio(By by) {
+        return findElements(by)
+                .stream()
+                .filter((e) -> e.getAttribute("checked").equals("true"))
+                .findFirst()
+                .get()
+                .getAttribute("value");
+    }
+
     public Select getSelect(By by) {
         Element element = untilFound(by);
         new WebDriverWait(this, 3, 100)
