@@ -30,7 +30,7 @@ public class BrowserIT {
     @Test
     public void textInput() throws Exception {
         browser.setInputText(By.name("email"), "john.doe@email.com");
-        assertEquals("john.doe@email.com", browser.getInputValue(By.name("email")));
+        assertEquals("john.doe@email.com", browser.getInputText(By.name("email")));
     }
 
     @Test

@@ -33,7 +33,7 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         );
     }
 
-    public String getInputValue(By by) {
+    public String getInputText(By by) {
         return untilFound(by).getAttribute("value");
     }
 
