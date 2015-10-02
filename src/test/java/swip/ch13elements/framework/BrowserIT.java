@@ -9,6 +9,8 @@ import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
 
 import javax.inject.Inject;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(SeleniumWebDriverRunner.class)
 public class BrowserIT {
 
@@ -27,6 +29,7 @@ public class BrowserIT {
     @Test
     public void textInput() throws Exception {
         browser.setInputText(By.name("email"), "john.doe@email.com");
+        assertEquals("john.doe@email.com", browser.getInputValue(By.name("email")));
     }
 
     @Test

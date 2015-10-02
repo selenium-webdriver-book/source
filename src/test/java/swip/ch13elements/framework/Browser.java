@@ -33,6 +33,10 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         );
     }
 
+    public String getInputValue(By by) {
+        return untilFound(by).getAttribute("value");
+    }
+
     public void setCheckboxValue(By by, boolean value) {
         Element checkbox = untilFound(by);
         if (checkbox.isSelected() != value) {
@@ -58,4 +62,5 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
                 });
         return new Select(element);
     }
+
 }
