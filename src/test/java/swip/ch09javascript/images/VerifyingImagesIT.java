@@ -1,5 +1,6 @@
 package swip.ch09javascript.images;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -18,10 +19,13 @@ public class VerifyingImagesIT {
     @Inject
     private WebDriver driver;
 
+    @Before
+    public void setUp() throws Exception {
+        driver.get("/images.html");
+    }
+
     @Test
     public void checkTheImagesAreLoaded() throws Exception {
-        driver.get("/images.html");
-
         assertTrue(isImageLoaded(driver.findElement(By.id("ok"))));
         assertFalse(isImageLoaded(driver.findElement(By.id("broken"))));
     }
