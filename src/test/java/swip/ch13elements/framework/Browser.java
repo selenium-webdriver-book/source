@@ -60,12 +60,12 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
     }
 
     public String getRadio(By by) {
-        return findElements(by)
-                .stream()
-                .filter((e) -> e.getAttribute("checked").equals("true"))
-                .findFirst()
-                .get()
-                .getAttribute("value");
+        for (WebElement e : findElements(by)) {
+            if (e.getAttribute("checked").equals("true")) {
+                return e.getAttribute("value");
+            }
+        }
+        throw new IllegalArgumentException("unable to find checked element in group located by " + by);
     }
 
     public Select getSelect(By by) {
