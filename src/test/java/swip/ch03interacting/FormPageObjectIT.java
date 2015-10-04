@@ -2,8 +2,6 @@ package swip.ch03interacting;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.HasCapabilities;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,9 +11,9 @@ import javax.inject.Inject;
 import java.net.URI;
 
 @RunWith(WebDriverRunner.class)
-public class FormPageObjectIT<W extends JavascriptExecutor & WebDriver & HasCapabilities> {
+public class FormPageObjectIT {
     @Inject
-    private W driver;
+    private WebDriver driver;
     @Inject
     private URI baseUrl;
 

@@ -15,9 +15,9 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(WebDriverRunner.class)
 @Config(exclude = "browserName=htmlunit")
-public class WebNotificationIT<W extends WebDriver & JavascriptExecutor> {
+public class WebNotificationIT {
     @Inject
-    private W driver;
+    private WebDriver driver;
 
     @Before
     public void setUp() throws Exception {
@@ -27,7 +27,7 @@ public class WebNotificationIT<W extends WebDriver & JavascriptExecutor> {
     @Test
     public void webNotification() throws Exception {
 
-        Notification notification = new Notification(driver);
+        Notification notification = new Notification((JavascriptExecutor) driver);
 
         driver.findElement(By.linkText("Show A Web Notification")).click();
 

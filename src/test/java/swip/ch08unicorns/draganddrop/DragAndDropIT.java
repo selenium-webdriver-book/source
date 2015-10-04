@@ -3,10 +3,8 @@ package swip.ch08unicorns.draganddrop;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.HasInputDevices;
 import swip.ch07managingwebdriver.Config;
 import swip.ch07managingwebdriver.WebDriverRunner;
 
@@ -16,10 +14,10 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(WebDriverRunner.class)
 @Config(exclude = {"browserName=safari", "browserName=htmlunit"}) // htmlunit does not support jQuery
-public class DragAndDropIT<W extends WebDriver & HasInputDevices & JavascriptExecutor> {
+public class DragAndDropIT {
 
     @Inject
-    private W driver;
+    private WebDriver driver;
 
     @Test
     public void dragAndDrop() throws Exception {

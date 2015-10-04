@@ -9,9 +9,9 @@ import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 
-public class HttpStatusCodeIT<W extends WebDriver & HasHttpStatusCode> { // You can use generics to require a browser with two aspects.
+public class HttpStatusCodeIT {
     @Inject
-    private final W driver = HttpStatusCodeWebDriverFactory.create(FirefoxDriver::new); // We are using a method reference here. Nothing special, just a Java 8 feature.
+    private final WebDriver driver = HttpStatusCodeWebDriverFactory.create(FirefoxDriver::new);
 
     @After
     public void tearDown() throws Exception {
@@ -20,8 +20,8 @@ public class HttpStatusCodeIT<W extends WebDriver & HasHttpStatusCode> { // You 
 
     @Test
     public void notFound() throws Exception {
-        driver.get("http://127.0.0.1:8080/not-found.html"); // You cannot use "localhost" as we get host not defined error. "127.0.0.1" works successfully.
+        driver.get("http://127.0.0.1:8080/not-found.html");
 
-        assertEquals(404, driver.getHttpStatusCode());
+        assertEquals(404, ((HasHttpStatusCode) driver).getHttpStatusCode());
     }
 }

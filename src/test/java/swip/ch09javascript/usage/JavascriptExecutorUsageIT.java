@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 @RunWith(WebDriverRunner.class)
 // htmlunit supports JavaScript, just not these examples.
 @Config(exclude = "browserName=htmlunit")
-public class JavascriptExectorUsageIT {
+public class JavascriptExecutorUsageIT {
     @Inject
     private WebDriver driver;
 
