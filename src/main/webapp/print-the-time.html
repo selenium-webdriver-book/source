@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <title>Print The Time</title>
+</head>
+<body>
+<div class="container">
+    <h1>Print The Time</h1>
+
+    <p><a href="javascript:printTheTime();void(0);" class="btn btn-default">Print The Time</a></p>
+
+    <p id="time"></p>
+    <script>
+        function printTheTime() {
+            var now = new Date();
+            document.getElementById("time").innerHTML
+                    = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+        }
+    </script>
+</div>
+</body>
+</html>
