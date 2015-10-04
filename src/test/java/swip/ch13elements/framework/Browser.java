@@ -65,7 +65,8 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
                 return e.getAttribute("value");
             }
         }
-        throw new IllegalArgumentException("unable to find checked element in group located by " + by);
+        throw new IllegalArgumentException(
+                "unable to find checked element in group located by " + by);
     }
 
     public Select getSelect(By by) {
