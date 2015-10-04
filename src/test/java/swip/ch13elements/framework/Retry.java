@@ -13,17 +13,21 @@ public class Retry {
         this.unit = unit;
     }
 
-    public void attempt(Attemptable attemptable) throws Exception {
+    public void attempt(Attemptable attemptable) {
         for (int i = 0; i < count; i++) {
             try {
                 attemptable.attempt();
                 return;
             } catch (Exception e) {
                 if (i == count - 1) {
-                    throw e;
+                    throw new IllegalStateException(e);
                 }
             }
-            unit.sleep(interval);
+            try {
+                unit.sleep(interval);
+            } catch (InterruptedException e) {
+                throw new IllegalStateException(e);
+            }
         }
     }
 }

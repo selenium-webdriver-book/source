@@ -21,7 +21,7 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         return new Element(super.findElement(by));
     }
 
-    public void setInputText(By by, String value) throws Exception {
+    public void setInputText(By by, String value) {
         Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
 
         retry.attempt(

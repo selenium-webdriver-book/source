@@ -24,7 +24,7 @@ public class OtherInformationForm {
         );
     }
 
-    public void setOtherInformation(OtherInformation otherInformation) throws Exception {
+    public void setOtherInformation(OtherInformation otherInformation) {
         browser.setInputText(By.id("gc-redemption-code"),
                 otherInformation.couponCode);
         browser.setInputText(By.id("billing-email"),
