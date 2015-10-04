@@ -1,6 +1,7 @@
-package swip.vt;
+package swip.misc;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Dimension;
@@ -18,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+@Ignore
 @RunWith(WebDriverRunner.class)
 @Config(exclude = {"browserName=htmlunit"})
 public class VisualTestingIT {
