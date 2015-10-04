@@ -6,11 +6,11 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import swip.ch07managingwebdriver.Config;
-import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.WebDriverRunner;
 
 import javax.inject.Inject;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 // htmlunit supports JavaScript, just not these examples.
 @Config(exclude = "browserName=htmlunit")
 public class UsageIT {

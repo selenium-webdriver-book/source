@@ -5,14 +5,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.WebDriverRunner;
 
 import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 public class BrowserIT {
 
     private Browser browser;

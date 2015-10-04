@@ -3,12 +3,12 @@ package swip.ch05pageobjects.d;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.net.URI;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 public class SearchPageIT {
 
     @Inject

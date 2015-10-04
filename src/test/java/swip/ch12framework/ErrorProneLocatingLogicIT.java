@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.ch07managingwebdriver.Config;
-import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.WebDriverRunner;
 
 import javax.inject.Inject;
 
@@ -18,7 +18,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 @Config(exclude = "browserName=htmlunit")
 public class ErrorProneLocatingLogicIT {
 

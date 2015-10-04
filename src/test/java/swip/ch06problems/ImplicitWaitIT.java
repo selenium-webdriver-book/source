@@ -4,12 +4,12 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.util.concurrent.TimeUnit;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 public class ImplicitWaitIT {
     @Inject
     private WebDriver driver;

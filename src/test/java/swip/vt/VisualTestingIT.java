@@ -8,7 +8,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import swip.ch07managingwebdriver.Config;
-import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.WebDriverRunner;
 
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
@@ -18,7 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 @Config(exclude = {"browserName=htmlunit"})
 public class VisualTestingIT {
     @Inject

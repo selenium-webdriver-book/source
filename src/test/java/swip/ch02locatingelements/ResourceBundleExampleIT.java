@@ -5,14 +5,14 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import swip.ch07managingwebdriver.Config;
-import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.net.URI;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 @Config(exclude = "browserName=htmlunit")
 public class ResourceBundleExampleIT {
 

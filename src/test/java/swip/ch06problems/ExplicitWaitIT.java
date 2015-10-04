@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.ch07managingwebdriver.Config;
-import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.WebDriverRunner;
 
 import javax.inject.Inject;
 
@@ -19,12 +19,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 @Config(exclude = "browserName=htmlunit")
 public class ExplicitWaitIT {
+    private final ExpectedCondition<WebElement> slowLoadingTextIsVisible = ExpectedConditions.visibilityOfElementLocated(By.id("theText"));
     @Inject
     private WebDriver driver;
-    private final ExpectedCondition<WebElement> slowLoadingTextIsVisible = ExpectedConditions.visibilityOfElementLocated(By.id("theText"));
 
     @Test
     public void exampleWebDriverWait() throws Exception {

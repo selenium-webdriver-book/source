@@ -4,14 +4,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import swip.ch07managingwebdriver.SeleniumWebDriverRunner;
+import swip.ch07managingwebdriver.WebDriverRunner;
 import swip.ch13elements.framework.Browser;
 
 import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 public class ShoppingCartPageIT {
     private Browser browser;
 
@@ -21,7 +21,7 @@ public class ShoppingCartPageIT {
     }
 
     @Test
-    public void smoke() throws Exception {
+    public void weShouldBeABleToCompleteOtherInformation() throws Exception {
         browser.get("https://www.manning.com/books/50-android-hacks");
 
         browser.findElement(By.className("btn-primary")).click();

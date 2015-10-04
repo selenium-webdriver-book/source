@@ -8,11 +8,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.Collections;
 import java.util.List;
 
-public class SeleniumWebDriverRunner extends Suite {
+public class WebDriverRunner extends Suite {
 
     private static final WebDriverSupplier WEB_DRIVER_SUPPLIER = new WebDriverSupplier(); // # static to ensure all test share the same drivers
 
-    public SeleniumWebDriverRunner(Class<?> testClass) throws InitializationError {
+    public WebDriverRunner(Class<?> testClass) throws InitializationError {
         super(testClass, createRunners(testClass));
     }
 

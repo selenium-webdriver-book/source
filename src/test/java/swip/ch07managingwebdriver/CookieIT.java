@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SeleniumWebDriverRunner.class)
+@RunWith(WebDriverRunner.class)
 @Config(exclude = {"browserName=htmlunit", "browserName=phantomjs"})
 public class CookieIT {
     public static final String UNDEFINED = "";
