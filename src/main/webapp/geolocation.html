@@ -9,24 +9,24 @@
 <body>
 <div class="container">
     <h1>Geolocation</h1>
-    <p id="status">...</p>
 
     <p><a class="btn btn-primary" id="locate" href="javascript:locate();void(0);">Find Location</a></p>
+
+    <p id="location">...</p>
     <script>
         function locate() {
             if (!navigator.geolocation) {
-                $('#status').html('Not supported.')
+                $('#location').html('Not supported.')
             } else {
-                $('#status').html('Loading...')
+                $('#location').html('Loading...');
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var c = position.coords;
-                    $('#status').html('You state you are at + ' + c.latitude + ', ' + c.longitude)
+                    $('#location').html('You state you are at + ' + c.latitude + ', ' + c.longitude)
                 }, function(e) {
-                    $('#status').html('Error: ' + e.code + ' '  + e.message)
+                    $('#location').html('Error: ' + e.code + ' ' + e.message)
                 });
             }
         }
-
     </script>
 </div>
 </body>
