@@ -22,9 +22,4 @@ public enum MailingOption {
                 .findFirst()
                 .get();
     }
-
-    @Override
-    public String toString() {
-        return string;
-    }
 }
