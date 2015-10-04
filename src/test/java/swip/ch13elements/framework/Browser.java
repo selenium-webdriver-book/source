@@ -2,6 +2,7 @@ package swip.ch13elements.framework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -49,12 +50,13 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
     }
 
     public void setRadio(By by, String value) {
-        findElements(by)
-                .stream()
-                .filter((e) -> e.getAttribute("value").equals(value))
-                .findFirst()
-                .get()
-                .click();
+        for (WebElement e : findElements(by)) {
+            if (e.getAttribute("value").equals(value)) {
+                e.click();
+                return;
+            }
+        }
+        throw new IllegalArgumentException("unable to find element with value " + value);
     }
 
     public String getRadio(By by) {
