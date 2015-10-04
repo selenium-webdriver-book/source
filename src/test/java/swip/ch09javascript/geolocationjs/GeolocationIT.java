@@ -43,7 +43,8 @@ public class GeolocationIT {
 
         WebElement location = driver.findElement(By.id("location"));
 
-        new WebDriverWait(driver, 10).until((WebDriver d) -> !location.getText().equals("Loading..."));
+        new WebDriverWait(driver, 10).until(
+                (WebDriver d) -> !location.getText().equals("Loading..."));
 
         assertEquals("You state you are at + 51.5106766, -0.1231314", location.getText());
     }
@@ -68,7 +69,8 @@ public class GeolocationIT {
 
         WebElement location = driver.findElement(By.id("location"));
 
-        new WebDriverWait(driver, 10).until((WebDriver d) -> !location.getText().equals("Loading..."));
+        new WebDriverWait(driver, 10).until(
+                (WebDriver d) -> !location.getText().equals("Loading..."));
 
         assertEquals("Error: 1 User denied Geolocation", location.getText());
     }
