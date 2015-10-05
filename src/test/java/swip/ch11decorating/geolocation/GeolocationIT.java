@@ -27,9 +27,10 @@ public class GeolocationIT {
 
         driver.findElement(By.id("locate")).click();
 
-        WebElement statusElement = driver.findElement(By.id("status"));
+        WebElement statusElement = driver.findElement(By.id("location"));
 
-        new WebDriverWait(driver, 10).until((WebDriver d) -> !statusElement.getText().equals("Loading...")); // <2> You usually need to wait for location to be established.
+        new WebDriverWait(driver, 10).until(
+                (WebDriver d) -> !statusElement.getText().equals("Loading...")); // <2> You usually need to wait for location to be established.
 
         assertEquals("You state you are at + 51.5106766, -0.1231314", statusElement.getText());
     }
