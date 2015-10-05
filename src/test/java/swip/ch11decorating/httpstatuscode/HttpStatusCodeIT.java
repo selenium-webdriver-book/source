@@ -44,4 +44,12 @@ public class HttpStatusCodeIT {
 
         assertEquals(404, ((HasHttpStatusCode) driver).getHttpStatusCode());
     }
+
+    @Test
+    public void resourceNotFound() throws Exception {
+        driver.get("http://127.0.0.1:8080/resource-not-found.html");
+
+        assertEquals(200, ((HasHttpStatusCode) driver).getHttpStatusCode());
+    }
+
 }

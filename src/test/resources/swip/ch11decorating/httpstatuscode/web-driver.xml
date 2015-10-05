@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="proxyServer" class="net.lightbody.bmp.proxy.ProxyServer"
+          init-method="start" destroy-method="stop">
+        <constructor-arg value="9090"/>
+    </bean>
+
+    <bean id="capabilities" class="org.openqa.selenium.remote.DesiredCapabilities">
+        <constructor-arg>
+            <bean class="com.google.common.collect.ImmutableMap" factory-method="of">
+                <constructor-arg>
+                    <util:constant static-field="org.openqa.selenium.remote.CapabilityType.PROXY"/>
+                </constructor-arg>
+                <constructor-arg>
+                    <bean factory-bean="proxyServer" factory-method="seleniumProxy"/>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="driver"
+          class="swip.ch11decorating.httpstatuscode.HttpStatusCodeDecorator"
+          factory-method="httpStatusCodeDriver">
+        <constructor-arg>
+            <bean class="org.openqa.selenium.firefox.FirefoxDriver" destroy-method="quit">
+                <constructor-arg ref="capabilities"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg ref="proxyServer"/>
+    </bean>
+
+</beans>

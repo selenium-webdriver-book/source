@@ -2,6 +2,7 @@ package swip.ch11decorating.httpstatuscode;
 
 import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.proxy.ProxyServer;
+import net.lightbody.bmp.proxy.http.BrowserMobHttpRequest;
 import net.lightbody.bmp.proxy.http.BrowserMobHttpResponse;
 import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.WebDriver;
@@ -21,15 +22,18 @@ public class HttpStatusCodeDecorator {
 
     private static InvocationHandler getInvocationHandler(WebDriver driver, ProxyServer server) {
         return new InvocationHandler() {
+            private boolean capture;
             private int httpStatusCode;
 
             {
+                server.addRequestInterceptor((BrowserMobHttpRequest request, Har har) -> {
+                    capture = !request.getProxyRequest().getPath().matches(".*\\.(js|css)");
+                });
                 server.addResponseInterceptor((BrowserMobHttpResponse httpResponse, Har har) -> {
-                    if (httpResponse.getRawResponse() != null) {
+                    if (httpResponse.getRawResponse() != null && capture) {
                         httpStatusCode = httpResponse.getRawResponse().getStatusLine().getStatusCode();
                     }
                 });
-
             }
 
             @Override
