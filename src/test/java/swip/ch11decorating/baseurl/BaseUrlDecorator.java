@@ -10,18 +10,9 @@ import java.util.List;
 
 public class BaseUrlDecorator {
 
-    public static WebDriver baseUrlDriver(WebDriver driver) {
-
-        Class<?> driverClass = driver.getClass();
-
-        Class[] interfaces = getInterfaces(driverClass);
-
-        InvocationHandler invocationHandler = getInvocationHandler(driver);
-
-        return (WebDriver) Proxy.newProxyInstance(
-                driverClass.getClassLoader(),
-                interfaces,
-                invocationHandler);
+    private static Class[] getInterfaces(Class<?> driverClass) {
+        List<Class<?>> allInterfaces = ClassUtils.getAllInterfaces(driverClass);
+        return allInterfaces.toArray(new Class[allInterfaces.size()]);
     }
 
     private static InvocationHandler getInvocationHandler(WebDriver driver) {
@@ -37,8 +28,18 @@ public class BaseUrlDecorator {
         };
     }
 
-    private static Class[] getInterfaces(Class<?> driverClass) {
-        List<Class<?>> allInterfaces = ClassUtils.getAllInterfaces(driverClass);
-        return allInterfaces.toArray(new Class[allInterfaces.size()]);
+    public static WebDriver baseUrlDriver(WebDriver driver) {
+
+        Class<?> driverClass = driver.getClass();
+
+        Class[] interfaces = getInterfaces(driverClass);
+
+        InvocationHandler invocationHandler = getInvocationHandler(driver);
+
+        return (WebDriver) Proxy.newProxyInstance(
+                driverClass.getClassLoader(),
+                interfaces,
+                invocationHandler);
     }
+
 }
