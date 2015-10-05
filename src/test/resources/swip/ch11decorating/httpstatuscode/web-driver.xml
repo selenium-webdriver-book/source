@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/util
@@ -15,7 +16,8 @@
         <constructor-arg>
             <bean class="com.google.common.collect.ImmutableMap" factory-method="of">
                 <constructor-arg>
-                    <util:constant static-field="org.openqa.selenium.remote.CapabilityType.PROXY"/>
+                    <util:constant
+                            static-field="org.openqa.selenium.remote.CapabilityType.PROXY"/>
                 </constructor-arg>
                 <constructor-arg>
                     <bean factory-bean="proxyServer" factory-method="seleniumProxy"/>
@@ -28,7 +30,8 @@
           class="swip.ch11decorating.httpstatuscode.HttpStatusCodeDecorator"
           factory-method="httpStatusCodeDriver">
         <constructor-arg>
-            <bean class="org.openqa.selenium.firefox.FirefoxDriver" destroy-method="quit">
+            <bean class="org.openqa.selenium.firefox.FirefoxDriver"
+                  destroy-method="quit">
                 <constructor-arg ref="capabilities"/>
             </bean>
         </constructor-arg>

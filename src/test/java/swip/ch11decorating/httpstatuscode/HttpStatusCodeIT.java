@@ -22,7 +22,8 @@ public class HttpStatusCodeIT {
     @Before
     public void setUp() throws Exception {
         server.start();
-        driver = HttpStatusCodeDecorator.httpStatusCodeDriver(new FirefoxDriver(desiredCapabilities), server);
+        driver = HttpStatusCodeDecorator.httpStatusCodeDriver
+                (new FirefoxDriver(desiredCapabilities), server);
     }
 
     @After
