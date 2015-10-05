@@ -1,4 +1,4 @@
-package swip.ch11decorating.geolocation;
+package swip.misc.geolocation;
 
 public enum GeolocationStatus {
     OK,
