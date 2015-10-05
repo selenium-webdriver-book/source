@@ -22,13 +22,13 @@ public class ScreenshotIT {
     @Test
     public void listener() throws Exception {
 
-        EventFiringWebDriver driver = new EventFiringWebDriver(this.driver); // <1>
+        EventFiringWebDriver driver = new EventFiringWebDriver(this.driver);
 
-        driver.register(new AbstractWebDriverEventListener() { // <2>
+        driver.register(new AbstractWebDriverEventListener() {
 
             @Override
-            public void beforeNavigateTo(String url, WebDriver driver) {
-                File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); // <3>
+            public void afterNavigateTo(String url, WebDriver driver) {
+                File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
                 System.out.println("saved " + url + " as " + screenshotFile);
             }
