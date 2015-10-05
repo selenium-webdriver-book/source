@@ -41,5 +41,4 @@ public class BaseUrlDecorator {
                 interfaces,
                 invocationHandler);
     }
-
 }
