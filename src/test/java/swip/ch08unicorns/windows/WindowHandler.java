@@ -32,7 +32,7 @@ public abstract class WindowHandler {
 
                     useWindow(driver);
 
-                    if (!driver.getWindowHandle().equals(windowHandle)) {
+                    if (!driver.getWindowHandle().equals(originalWindowHandle)) {
                         driver.close();
                     }
 

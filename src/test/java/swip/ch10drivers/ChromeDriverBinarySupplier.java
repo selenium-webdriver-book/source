@@ -38,11 +38,13 @@ public class ChromeDriverBinarySupplier implements WebDriverBinarySupplier {
 
             URL url = new URL("http://chromedriver.storage.googleapis.com/2.16/chromedriver_" + os + arch + ".zip");
 
-            LOGGER.info("downloading " + url + " to " + download);
+            if (!download.toFile().exists()) {
+                LOGGER.info("downloading " + url + " to " + download);
 
-            try (ReadableByteChannel rbc = Channels.newChannel(url.openStream()); // <5> Download the file using Java 7's NIO APIs.
-                 FileOutputStream fos = new FileOutputStream(download.toFile())) {
-                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                try (ReadableByteChannel rbc = Channels.newChannel(url.openStream()); // <5> Download the file using Java 7's NIO APIs.
+                     FileOutputStream fos = new FileOutputStream(download.toFile())) {
+                    fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                }
             }
 
             LOGGER.info("extracting chrome driver to " + driverPath);
