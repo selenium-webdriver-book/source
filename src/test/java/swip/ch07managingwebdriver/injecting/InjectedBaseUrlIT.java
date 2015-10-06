@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.inject.Inject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/web-driver.xml")
+@ContextConfiguration(classes = WebDriverConfig.class)
 public class InjectedBaseUrlIT {
     @Inject
     private WebDriver driver;
