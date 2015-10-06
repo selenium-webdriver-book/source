@@ -47,7 +47,6 @@ public class HttpStatusCodeIT {
     }
 
     @Test
-    // TODO
     public void resourceNotFound() throws Exception {
         driver.get("http://127.0.0.1:8080/resource-not-found.html");
 
