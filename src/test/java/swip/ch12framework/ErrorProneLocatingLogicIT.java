@@ -41,7 +41,7 @@ public class ErrorProneLocatingLogicIT {
 
     @Test
     public void usingImplicitWait() {
-        driver.manage().timeouts().implicitlyWait(30, SECONDS); // <1>
+        driver.manage().timeouts().implicitlyWait(5, SECONDS); // <1>
         driver.get("http://localhost:8080/location-chooser.html");
         driver.findElement(linkText("change location")).click();
         WebElement tabMenu = driver.findElement(By.id("location"));
@@ -63,8 +63,8 @@ public class ErrorProneLocatingLogicIT {
                 .until((WebDriver d) -> driver.findElement(By.id("location")));
 
         FluentWait<WebElement> webElementWait = new FluentWait<>(tabMenu) // <2>
-                .withTimeout(30, SECONDS)
-                .pollingEvery(5, MILLISECONDS)
+                .withTimeout(5, SECONDS)
+                .pollingEvery(100, MILLISECONDS)
                 .ignoring(Exception.class);
 
         webElementWait.until(
