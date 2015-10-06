@@ -1,33 +1,26 @@
 package swip.ch07managingwebdriver.injecting;
 
-import org.junit.runner.Runner;
-import org.junit.runners.Suite;
 import org.junit.runners.model.InitializationError;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestContextManager;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Collections;
-import java.util.List;
+/**
+ * This class allows you to use the same configuration for all your tests.
+ */
+public class WebDriverRunner extends SpringJUnit4ClassRunner {
 
-public class WebDriverRunner extends Suite {
-
-    private static final WebDriverSupplier WEB_DRIVER_SUPPLIER = new WebDriverSupplier(); // # static to ensure all test share the same drivers
-
-    public WebDriverRunner(Class<?> testClass) throws InitializationError {
-        super(testClass, createRunners(testClass));
+    public WebDriverRunner(Class<?> clazz) throws InitializationError {
+        super(clazz);
     }
 
-    // # this method creates one runner per configuration
-    private static List<Runner> createRunners(Class<?> testClass) throws InitializationError {
-        DesiredCapabilities capabilities = getDesiredCapabilities();
-
-        return Collections.singletonList(new DesiredCapabilitiesRunner(capabilities, testClass, WEB_DRIVER_SUPPLIER));
+    @Override
+    protected TestContextManager createTestContextManager(Class<?> clazz) {
+        return super.createTestContextManager(ConfigShim.class);
     }
 
-    private static DesiredCapabilities getDesiredCapabilities() {
+    @ContextConfiguration(classes = WebDriverConfig.class)
+    public static class ConfigShim {
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        capabilities.setBrowserName(System.getProperty("webdriver.capabilities.browserName", "firefox"));
-        return capabilities;
     }
 }

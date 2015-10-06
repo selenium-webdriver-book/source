@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "web-driver.xml")
+@ContextConfiguration(classes = HttpStatusCodeConfig.class)
 public class SpringHttpStatusCodeIT {
     @Inject
     private WebDriver driver;
@@ -22,4 +22,5 @@ public class SpringHttpStatusCodeIT {
 
         assertEquals(404, ((HasHttpStatusCode) driver).getHttpStatusCode());
     }
+
 }

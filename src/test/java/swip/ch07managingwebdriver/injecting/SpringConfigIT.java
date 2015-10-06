@@ -3,15 +3,12 @@ package swip.ch07managingwebdriver.injecting;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.inject.Inject;
 import java.net.URI;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = WebDriverConfig.class)
-public class InjectedBaseUrlIT {
+@RunWith(WebDriverRunner.class)
+public class SpringConfigIT {
     @Inject
     private WebDriver driver;
 
