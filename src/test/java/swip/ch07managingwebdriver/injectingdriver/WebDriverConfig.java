@@ -2,8 +2,8 @@ package swip.ch07managingwebdriver.injectingdriver;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,10 +29,10 @@ public class WebDriverConfig {
     @Bean(destroyMethod = "quit")
     public WebDriver webDriver(DesiredCapabilities desiredCapabilities) {
         switch (desiredCapabilities.getBrowserName()) {
-            case BrowserType.CHROME:
-                return new ChromeDriver(desiredCapabilities);
             case BrowserType.FIREFOX:
                 return new FirefoxDriver(desiredCapabilities);
+            case BrowserType.HTMLUNIT:
+                return new HtmlUnitDriver(desiredCapabilities);
             default:
                 throw new IllegalStateException("unknown browser " + desiredCapabilities.getBrowserName());
         }
