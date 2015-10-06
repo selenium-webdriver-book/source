@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver.injecting;
+package swip.framework;
 
 import org.junit.runners.model.InitializationError;
 import org.springframework.test.context.ContextConfiguration;

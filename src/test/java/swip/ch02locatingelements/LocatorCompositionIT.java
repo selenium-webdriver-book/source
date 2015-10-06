@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ByIdOrName;
 import org.openqa.selenium.support.pagefactory.ByChained;
-import swip.ch07managingwebdriver.injecting.WebDriverRunner;
+import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 

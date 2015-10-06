@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver;
+package swip.framework;
 
 public class ConfigFactory {
     public static final String BASE_URL =

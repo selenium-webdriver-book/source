@@ -2,7 +2,7 @@ package swip.ch11decorating.baseurl;
 
 import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.WebDriver;
-import swip.ch07managingwebdriver.ConfigFactory;
+import swip.framework.ConfigFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;

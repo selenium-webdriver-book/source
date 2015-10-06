@@ -1,8 +1,9 @@
-package swip.ch07managingwebdriver.injecting;
+package swip.ch07managingwebdriver.injectingdriver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.net.URI;

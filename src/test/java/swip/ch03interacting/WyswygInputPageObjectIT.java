@@ -3,8 +3,8 @@ package swip.ch03interacting;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import swip.ch07managingwebdriver.injecting.Config;
-import swip.ch07managingwebdriver.injecting.WebDriverRunner;
+import swip.framework.Config;
+import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 

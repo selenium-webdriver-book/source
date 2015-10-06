@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver.injecting;
+package swip.ch07managingwebdriver.injectingdriver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

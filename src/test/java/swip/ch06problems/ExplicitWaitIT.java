@@ -9,8 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import swip.ch07managingwebdriver.injecting.Config;
-import swip.ch07managingwebdriver.injecting.WebDriverRunner;
+import swip.framework.Config;
+import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 

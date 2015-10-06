@@ -7,8 +7,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import swip.ch07managingwebdriver.injecting.Config;
-import swip.ch07managingwebdriver.injecting.WebDriverRunner;
+import swip.framework.Config;
+import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.io.File;

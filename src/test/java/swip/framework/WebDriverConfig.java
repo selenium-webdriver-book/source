@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver.injecting;
+package swip.framework;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;

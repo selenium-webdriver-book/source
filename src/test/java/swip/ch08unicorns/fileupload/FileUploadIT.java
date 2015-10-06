@@ -8,8 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import swip.ch07managingwebdriver.injecting.Config;
-import swip.ch07managingwebdriver.injecting.WebDriverRunner;
+import swip.framework.Config;
+import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.nio.file.Files;

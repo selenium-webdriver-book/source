@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import swip.ch02locatingelements.ElementBy;
-import swip.ch07managingwebdriver.injecting.WebDriverRunner;
+import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.net.URI;

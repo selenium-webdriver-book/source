@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver.injecting;
+package swip.framework;
 
 import org.springframework.test.annotation.DirtiesContext;
 

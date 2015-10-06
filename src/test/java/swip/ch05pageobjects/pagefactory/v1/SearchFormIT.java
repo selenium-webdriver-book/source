@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import swip.ch07managingwebdriver.injecting.WebDriverRunner;
+import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 

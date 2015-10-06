@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver.injecting;
+package swip.framework;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
