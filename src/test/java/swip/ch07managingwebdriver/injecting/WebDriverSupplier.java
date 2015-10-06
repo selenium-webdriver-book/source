@@ -1,7 +1,6 @@
 package swip.ch07managingwebdriver.injecting;
 
 import com.google.common.collect.ImmutableMap;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -84,10 +83,6 @@ public class WebDriverSupplier {
                 throw new RuntimeException("failed acquire binary", e);
             }
         }
-    }
-
-    public WebDriver get() {
-        return get(new DesiredCapabilities(BrowserType.FIREFOX, "", Platform.ANY));
     }
 
     public WebDriver get(DesiredCapabilities desiredCapabilities) {

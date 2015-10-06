@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/util
-       http://www.springframework.org/schema/util/spring-util.xsd">
-
-    <bean id="webDriverSupplier" class="swip.ch07managingwebdriver.injecting.WebDriverSupplier"/>
-    <!-- # a factory to create the driver -->
-    <bean id="webDriver" class="org.openqa.selenium.WebDriver"
-          factory-bean="webDriverSupplier" factory-method="get" destroy-method="quit"/>
-    <!-- # use the factory to create the bean. -->
+       http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:/web-driver.properties"/>
-    <!-- # make available to Spring beans -->
 
-    <!--
-    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
-        <property name="location" value="classpath:/web-driver.properties"/>
+    <bean id="desiredCapabilities" class="org.openqa.selenium.remote.DesiredCapabilities" factory-method="firefox"/>
+
+    <bean id="webDriverSupplier" class="swip.ch07managingwebdriver.injecting.WebDriverSupplier"/>
+    <bean id="webDriver" factory-bean="webDriverSupplier" factory-method="get" destroy-method="quit">
+        <constructor-arg ref="desiredCapabilities"/>
     </bean>
-    -->
 
-    <util:constant id="baseUrl" static-field="swip.ch07managingwebdriver.ConfigFactory.BASE_URL"/>
+    <bean id="baseUrl" class="java.lang.String">
+        <constructor-arg value="${webdriver.baseUrl}"/>
+    </bean>
 </beans>
