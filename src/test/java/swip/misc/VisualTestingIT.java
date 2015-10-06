@@ -8,8 +8,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import swip.ch07managingwebdriver.Config;
-import swip.ch07managingwebdriver.WebDriverRunner;
+import swip.ch07managingwebdriver.injecting.Config;
+import swip.ch07managingwebdriver.injecting.WebDriverRunner;
 
 import javax.imageio.ImageIO;
 import javax.inject.Inject;

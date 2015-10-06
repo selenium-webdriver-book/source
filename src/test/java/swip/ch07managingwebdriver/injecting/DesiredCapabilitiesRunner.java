@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver;
+package swip.ch07managingwebdriver.injecting;
 
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;

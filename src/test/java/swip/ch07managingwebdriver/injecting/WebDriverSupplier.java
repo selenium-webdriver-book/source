@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver;
+package swip.ch07managingwebdriver.injecting;
 
 import com.google.common.collect.ImmutableMap;
 import org.openqa.selenium.Platform;
@@ -28,8 +28,6 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-import static swip.ch07managingwebdriver.Drivers.cleaned;
-import static swip.ch07managingwebdriver.Drivers.driverWithAddedShutdownHook;
 import static swip.ch11decorating.baseurl.BaseUrlDecorator.baseUrlDriver;
 
 public class WebDriverSupplier {
@@ -97,7 +95,7 @@ public class WebDriverSupplier {
 
         if (!cache.containsKey(desiredCapabilities)) {
 
-            EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(baseUrlDriver(driverWithAddedShutdownHook(getDriver(desiredCapabilities))));
+            EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(baseUrlDriver(Drivers.driverWithAddedShutdownHook(getDriver(desiredCapabilities))));
 
             eventFiringWebDriver.register(new AbstractWebDriverEventListener() {
                 @Override
@@ -110,7 +108,7 @@ public class WebDriverSupplier {
         }
 
         try {
-            return cleaned(cache.get(desiredCapabilities));
+            return Drivers.cleaned(cache.get(desiredCapabilities));
         } catch (SessionNotFoundException e) {
             LOGGER.warn("unable to connect to driver, removing from cache: " + e.getMessage());
             cache.remove(desiredCapabilities);

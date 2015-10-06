@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/util
        http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="webDriverSupplier" class="swip.ch07managingwebdriver.WebDriverSupplier"/>
+    <bean id="webDriverSupplier" class="swip.ch07managingwebdriver.injecting.WebDriverSupplier"/>
     <!-- # a factory to create the driver -->
     <bean id="webDriver" class="org.openqa.selenium.WebDriver"
           factory-bean="webDriverSupplier" factory-method="get" destroy-method="quit"/>

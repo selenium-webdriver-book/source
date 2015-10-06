@@ -8,8 +8,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import swip.ch07managingwebdriver.Config;
-import swip.ch07managingwebdriver.WebDriverRunner;
+import swip.ch07managingwebdriver.injecting.Config;
+import swip.ch07managingwebdriver.injecting.WebDriverRunner;
 
 import javax.inject.Inject;
 

@@ -7,8 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import swip.ch07managingwebdriver.Config;
-import swip.ch07managingwebdriver.WebDriverRunner;
+import swip.ch07managingwebdriver.injecting.Config;
+import swip.ch07managingwebdriver.injecting.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.util.concurrent.TimeUnit;

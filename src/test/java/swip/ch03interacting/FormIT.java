@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.ch02locatingelements.InputBy;
-import swip.ch07managingwebdriver.WebDriverRunner;
+import swip.ch07managingwebdriver.injecting.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.net.URI;

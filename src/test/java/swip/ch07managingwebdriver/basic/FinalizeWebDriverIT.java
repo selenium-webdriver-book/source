@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver;
+package swip.ch07managingwebdriver.basic;
 
 import org.junit.Ignore;
 import org.junit.Test;

@@ -1,9 +1,10 @@
-package swip.ch07managingwebdriver;
+package swip.ch07managingwebdriver.injecting;
 
 import org.junit.runners.model.Statement;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import swip.ch07managingwebdriver.ConfigFactory;
 
 import javax.inject.Inject;
 import java.lang.reflect.Field;

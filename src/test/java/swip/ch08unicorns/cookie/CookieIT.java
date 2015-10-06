@@ -1,4 +1,4 @@
-package swip.ch07managingwebdriver;
+package swip.ch08unicorns.cookie;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +8,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import swip.ch07managingwebdriver.injecting.Config;
+import swip.ch07managingwebdriver.injecting.WebDriverRunner;
 
 import javax.inject.Inject;
 
