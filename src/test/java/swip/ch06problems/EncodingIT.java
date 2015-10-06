@@ -21,8 +21,5 @@ public class EncodingIT {
         final WebElement text = driver.findElement(By.tagName("textarea"));
         text.clear();
         text.sendKeys("おいしい寿司");
-
-        Thread.sleep(10000);
-
     }
 }
