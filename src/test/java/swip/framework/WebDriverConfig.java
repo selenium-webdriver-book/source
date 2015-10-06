@@ -53,6 +53,12 @@ public class WebDriverConfig {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         driver.manage().deleteAllCookies();
 
+        closeRedundantWindows(driver);
+
+        return driver;
+    }
+
+    private void closeRedundantWindows(WebDriver driver) {
         Set<String> windowHandles = driver.getWindowHandles();
         if (windowHandles.size() > 1) {
 
@@ -67,8 +73,6 @@ public class WebDriverConfig {
                 }
             }
         }
-
-        return driver;
     }
 
     @Bean(destroyMethod = "quit")
