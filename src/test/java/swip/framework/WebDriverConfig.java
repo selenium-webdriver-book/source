@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import swip.ch10drivers.ChromeDriverBinarySupplier;
 
@@ -44,8 +45,9 @@ public class WebDriverConfig {
         return capabilities;
     }
 
-    @Bean(destroyMethod = "quit")
+    @Bean
     @Primary
+    @Scope("prototype")
     public WebDriver cleanWebDriver(WebDriver driver) throws Exception {
 
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -69,8 +71,8 @@ public class WebDriverConfig {
         return driver;
     }
 
-    @Bean
-    public WebDriver dirtyWebDriver(
+    @Bean(destroyMethod = "quit")
+    public WebDriver webDriver(
             @Value("${webdriver.remote:false}") boolean remoteDriver,
             @Value("${webdriver.remote.url:http://localhost:4444/wd/hub}") URL remoteUrl,
             DesiredCapabilities desiredCapabilities) throws Exception {
