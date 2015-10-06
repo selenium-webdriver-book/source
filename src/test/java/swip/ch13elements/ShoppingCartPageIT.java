@@ -1,5 +1,6 @@
 package swip.ch13elements;
 
+import com.google.common.base.Predicate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -17,6 +18,17 @@ import static org.junit.Assert.assertEquals;
 public class ShoppingCartPageIT {
     private Browser browser;
 
+    private OtherInformation otherInformation  = new OtherInformation(
+        "no code",
+        "joe@email.com",
+        true,
+        true,
+        MailingOption.WEEKLY_NEWSLETTER,
+        "no comments"
+    );;
+
+    private Predicate<Browser> colorBecomeWhite = (Browser b) -> cartButton().getCssValue("color").equals("rgba(255, 255, 255, 1)");
+
     @Inject
     public void setWebDriver(WebDriver webDriver) {
         browser = new Browser(webDriver);
@@ -28,30 +40,16 @@ public class ShoppingCartPageIT {
 
         browser.findElement(By.className("btn-primary")).click();
 
-        new FluentWait<>(browser).until((Browser b) -> cartButton().getCssValue("color").equals("rgba(255, 255, 255, 1)")) ;
+        new FluentWait<>(browser).until(colorBecomeWhite) ;
 
         cartButton().click();
 
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(browser);
 
-        shoppingCartPage.setOtherInformation(new OtherInformation(
-                "no code",
-                "joe@email.com",
-                true,
-                true,
-                MailingOption.WEEKLY_NEWSLETTER,
-                "no comments"
-        ));
+        shoppingCartPage.setOtherInformation(otherInformation);
 
+        assertEquals(this.otherInformation, shoppingCartPage.getOtherInformation());
 
-        OtherInformation otherInformation = shoppingCartPage.getOtherInformation();
-
-        assertEquals("no code", otherInformation.couponCode);
-        assertEquals("joe@email.com", otherInformation.email);
-        assertEquals(true, otherInformation.sendOrdersToEmail);
-        assertEquals(true, otherInformation.sendRatingEmail);
-        assertEquals(MailingOption.WEEKLY_NEWSLETTER, otherInformation.mailingOption);
-        assertEquals("no comments", otherInformation.comments);
     }
 
     private Element cartButton() {
