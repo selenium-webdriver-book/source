@@ -8,6 +8,7 @@ import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.WebDriver;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.List;
@@ -53,7 +54,11 @@ public class HttpStatusCodeDecorator {
                         return httpStatusCode;
                 }
 
-                return method.invoke(driver, args);
+                try {
+                    return method.invoke(driver, args);
+                } catch (InvocationTargetException e) {
+                    throw e.getCause();
+                }
             }
         };
     }
