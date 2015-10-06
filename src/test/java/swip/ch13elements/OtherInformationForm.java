@@ -33,5 +33,6 @@ public class OtherInformationForm {
                 otherInformation.sendOrdersToEmail);
         browser.setCheckboxValue(By.id("ratings"),
                 otherInformation.sendRatingEmail);
+        browser.setInputText(By.id("comments"), otherInformation.comments);
     }
 }
