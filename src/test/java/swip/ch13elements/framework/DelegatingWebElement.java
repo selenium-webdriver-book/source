@@ -9,10 +9,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-class DelegatingWebElement implements WebElement {
+public class DelegatingWebElement implements WebElement {
     private final WebElement delegate;
 
-    DelegatingWebElement(WebElement delegate) {
+    public DelegatingWebElement(WebElement delegate) {
         this.delegate = delegate;
     }
 
