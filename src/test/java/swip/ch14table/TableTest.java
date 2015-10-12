@@ -17,6 +17,7 @@ import static swip.ch14table.Locators.element;
 
 @RunWith(WebDriverRunner.class)
 public class TableTest {
+
     private Browser browser;
     @Inject
     public void setWebDriver(WebDriver webDriver) {
