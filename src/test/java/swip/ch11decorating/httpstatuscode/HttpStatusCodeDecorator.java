@@ -6,6 +6,8 @@ import net.lightbody.bmp.proxy.http.BrowserMobHttpRequest;
 import net.lightbody.bmp.proxy.http.BrowserMobHttpResponse;
 import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -13,7 +15,11 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.List;
 
+/**
+ * @see HasHttpStatusCode
+ */
 public class HttpStatusCodeDecorator {
+    private static final Logger LOGGER = LoggerFactory.getLogger(HttpStatusCodeDecorator.class);
 
     private static Class[] getInterfaces(Class<?> driverClass) {
         List<Class<?>> allInterfaces = ClassUtils.getAllInterfaces(driverClass);
@@ -24,20 +30,24 @@ public class HttpStatusCodeDecorator {
     private static InvocationHandler getInvocationHandler(WebDriver driver,
                                                           ProxyServer server) {
         return new InvocationHandler() {
+            private String path;
             private boolean capture;
             private int httpStatusCode;
 
             {
                 server.addRequestInterceptor(
                         (BrowserMobHttpRequest request, Har har) -> {
-                            capture = !request.getProxyRequest().getPath()
-                                    .matches(".*\\.(js|css)");
+                            path = request.getProxyRequest().getPath();
+                            capture = !path.matches(".*\\.(js|css|ico|json)");
+                            httpStatusCode = capture ? 404 : httpStatusCode;
+                            LOGGER.info("capture({})={}", path, capture);
                         });
                 server.addResponseInterceptor(
                         (BrowserMobHttpResponse httpResponse, Har har) -> {
                             if (httpResponse.getRawResponse() != null && capture) {
                                 httpStatusCode = httpResponse.getRawResponse()
                                         .getStatusLine().getStatusCode();
+                                LOGGER.info("httpStatusCode({})={}", path, httpStatusCode);
                             }
                         });
             }
