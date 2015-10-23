@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <title>Stale Elements</title>
+</head>
+<body>
+<div class="container">
+    <h1>Stale Elements</h1>
+    <p>A nightmarish page where the button tries to become stale.</p>
+    <p id="work">
+    </p>
+    <script>
+        function staleButton() {
+            $("#button").remove();
+            $("#work").append('<a id="button" href="javascript:staleButton();void(0);" class="btn btn-default">Click This Button</a>');
+        }
+        staleButton();
+    </script>
+</div>
+</body>
+</html>
