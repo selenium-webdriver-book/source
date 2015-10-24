@@ -1,4 +1,4 @@
-package swip.ch09javascript.webnotification;
+package swip.ch10javascript.webnotification;
 
 import org.junit.Before;
 import org.junit.Test;

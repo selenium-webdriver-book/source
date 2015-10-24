@@ -1,4 +1,4 @@
-package swip.ch13elements;
+package swip.ch14elements;
 
 public class OtherInformation {
     public final String couponCode;

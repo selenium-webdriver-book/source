@@ -1,4 +1,4 @@
-package swip.ch10drivers;
+package swip.ch11drivers;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;

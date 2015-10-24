@@ -1,4 +1,4 @@
-package swip.ch12framework.v1;
+package swip.ch13framework.v1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

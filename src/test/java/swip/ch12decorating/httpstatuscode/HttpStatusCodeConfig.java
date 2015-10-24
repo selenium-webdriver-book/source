@@ -1,4 +1,4 @@
-package swip.ch11decorating.httpstatuscode;
+package swip.ch12decorating.httpstatuscode;
 
 import net.lightbody.bmp.proxy.ProxyServer;
 import org.openqa.selenium.WebDriver;

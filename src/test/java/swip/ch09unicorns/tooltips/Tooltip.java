@@ -1,4 +1,4 @@
-package swip.ch08unicorns.tooltips;
+package swip.ch09unicorns.tooltips;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

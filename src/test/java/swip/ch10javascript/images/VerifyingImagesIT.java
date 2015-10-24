@@ -1,4 +1,4 @@
-package swip.ch09javascript.images;
+package swip.ch10javascript.images;
 
 import org.junit.Before;
 import org.junit.Test;

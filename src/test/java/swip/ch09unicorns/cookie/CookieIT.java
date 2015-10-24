@@ -1,4 +1,4 @@
-package swip.ch08unicorns.cookie;
+package swip.ch09unicorns.cookie;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package swip.ch14table;
+package swip.ch15table;
 
 import org.openqa.selenium.By;
 

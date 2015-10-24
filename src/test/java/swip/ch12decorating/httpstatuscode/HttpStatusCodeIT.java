@@ -1,4 +1,4 @@
-package swip.ch11decorating.httpstatuscode;
+package swip.ch12decorating.httpstatuscode;
 
 import com.google.common.collect.ImmutableMap;
 import net.lightbody.bmp.proxy.ProxyServer;

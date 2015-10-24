@@ -1,4 +1,4 @@
-package swip.ch12framework.v3;
+package swip.ch13framework.v3;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

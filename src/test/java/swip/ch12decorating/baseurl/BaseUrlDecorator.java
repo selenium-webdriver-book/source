@@ -1,4 +1,4 @@
-package swip.ch11decorating.baseurl;
+package swip.ch12decorating.baseurl;
 
 import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.WebDriver;

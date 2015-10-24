@@ -1,4 +1,4 @@
-package swip.ch08unicorns.actionchains;
+package swip.ch09unicorns.actionchains;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

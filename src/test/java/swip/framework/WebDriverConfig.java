@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import swip.ch10drivers.ChromeDriverBinarySupplier;
+import swip.ch11drivers.ChromeDriverBinarySupplier;
 
 import java.io.IOException;
 import java.net.URI;
@@ -26,7 +26,7 @@ import java.nio.file.Paths;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static swip.ch11decorating.baseurl.BaseUrlDecorator.baseUrlDriver;
+import static swip.ch12decorating.baseurl.BaseUrlDecorator.baseUrlDriver;
 
 @Configuration
 public class WebDriverConfig {

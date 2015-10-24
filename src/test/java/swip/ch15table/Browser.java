@@ -1,12 +1,12 @@
-package swip.ch14table;
+package swip.ch15table;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import swip.ch13elements.framework.DelegatingWebDriver;
-import swip.ch13elements.framework.Retry;
+import swip.ch14elements.framework.DelegatingWebDriver;
+import swip.ch14elements.framework.Retry;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;

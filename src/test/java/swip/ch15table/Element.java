@@ -1,8 +1,8 @@
-package swip.ch14table;
+package swip.ch15table;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import swip.ch13elements.framework.DelegatingWebElement;
+import swip.ch14elements.framework.DelegatingWebElement;
 
 import java.util.function.Supplier;
 import java.util.stream.Stream;

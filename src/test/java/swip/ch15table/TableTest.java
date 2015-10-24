@@ -1,4 +1,4 @@
-package swip.ch14table;
+package swip.ch15table;
 
 
 import com.google.common.collect.Sets;
@@ -13,17 +13,12 @@ import java.util.Iterator;
 import java.util.stream.Stream;
 
 import static com.google.common.collect.Sets.newHashSet;
-import static swip.ch14table.Locators.element;
+import static swip.ch15table.Locators.element;
 
 @RunWith(WebDriverRunner.class)
 public class TableTest {
 
     private Browser browser;
-    @Inject
-    public void setWebDriver(WebDriver webDriver) {
-        browser = new Browser(webDriver);
-    }
-
     private TableContents<Person> expected = new TableContents<>(
             newHashSet("Number", "First Name", "Last Name", "Points"),
             Sets.<Person>newHashSet(
@@ -33,6 +28,11 @@ public class TableTest {
                     , new Person(1, "Eve", "Jackson", 94)
             )
     );
+
+    @Inject
+    public void setWebDriver(WebDriver webDriver) {
+        browser = new Browser(webDriver);
+    }
 
     @Test
     public void testReadFromTable() {

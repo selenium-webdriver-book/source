@@ -1,4 +1,4 @@
-package swip.ch09javascript.time;
+package swip.ch10javascript.time;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,14 +1,14 @@
-package swip.ch13elements;
+package swip.ch14elements;
 
 import com.google.common.base.Predicate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import swip.ch13elements.framework.Browser;
-import swip.framework.WebDriverRunner;
 import org.openqa.selenium.support.ui.FluentWait;
-import swip.ch13elements.framework.Element;
+import swip.ch14elements.framework.Browser;
+import swip.ch14elements.framework.Element;
+import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 
@@ -25,7 +25,7 @@ public class ShoppingCartPageIT {
         true,
         MailingOption.WEEKLY_NEWSLETTER,
         "no comments"
-    );;
+    );
 
     private Predicate<Browser> colorBecomeWhite = (Browser b) -> cartButton().getCssValue("color").equals("rgba(255, 255, 255, 1)");
 

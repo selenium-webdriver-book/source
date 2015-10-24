@@ -1,4 +1,4 @@
-package swip.ch08unicorns.actionchains;
+package swip.ch09unicorns.actionchains;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;

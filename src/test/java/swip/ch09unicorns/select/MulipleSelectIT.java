@@ -1,4 +1,4 @@
-package swip.ch08unicorns.select;
+package swip.ch09unicorns.select;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

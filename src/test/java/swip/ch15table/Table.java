@@ -1,11 +1,10 @@
-package swip.ch14table;
+package swip.ch15table;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-
 import static java.util.stream.Collectors.toSet;
-import static swip.ch14table.Locators.elements;
+import static swip.ch15table.Locators.elements;
 
 public class Table<T, Where extends SearchScope> {
 

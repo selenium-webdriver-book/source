@@ -1,4 +1,4 @@
-package swip.ch08unicorns.tooltips;
+package swip.ch09unicorns.tooltips;
 
 import org.junit.Before;
 import org.junit.Test;
