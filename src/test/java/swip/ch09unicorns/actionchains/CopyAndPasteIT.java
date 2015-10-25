@@ -3,6 +3,7 @@ package swip.ch09unicorns.actionchains;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,13 +24,14 @@ public class CopyAndPasteIT {
 
         driver.get("/registration-form.html");
 
-        String osName = System.getProperty("os.name");
-        Keys modifier = osName.equals("Mac OS X") ? Keys.COMMAND : Keys.CONTROL;
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) this.driver;
+        String userAgent = (String) javascriptExecutor.executeScript("return navigator.userAgent;");
+        Keys modifier = userAgent.contains("Mac OS X") ? Keys.COMMAND : Keys.CONTROL;
 
-        WebElement email = driver.findElement(By.name("email"));
-        WebElement password = driver.findElement(By.name("password"));
+        WebElement email = this.driver.findElement(By.name("email"));
+        WebElement password = this.driver.findElement(By.name("password"));
 
-        new Actions(driver)
+        new Actions(this.driver)
                 .sendKeys(email, "john.doe@email.com")
                 .sendKeys(email, Keys.chord(modifier, "a", "c"))
                 .sendKeys(password, Keys.chord(modifier, "v"))
