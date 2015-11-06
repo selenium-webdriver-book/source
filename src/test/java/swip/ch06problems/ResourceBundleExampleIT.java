@@ -1,4 +1,4 @@
-package swip.ch02locatingelements;
+package swip.ch06problems;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
