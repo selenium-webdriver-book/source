@@ -1,47 +1,50 @@
 package swip.ch15table;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class TableContents<T> {
 
-    private final Set<String> headers;
-    private final Set<T> rows;
-    private SetDiff<?> diff;
+    // use list rather than set, element in table are ordered
+    private final List<String> headers;
+    private final List<T> rows;
 
-    public TableContents(Set<String> headers, Set<T> rows) {
+    public TableContents(List<String> headers, List<T> rows) {
         this.headers = headers;
         this.rows = rows;
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public boolean equals(Object other) {
         if (other instanceof TableContents) {
-            TableContents<T> actual = (TableContents) other;
+            @SuppressWarnings("unchecked") TableContents<T> actual = (TableContents) other;
 
-            if (!headers.equals(actual.headers)) {
-                diff = new SetDiff<>("headers are different,",
-                        headers,
-                        actual.headers);
-                return false;
-            } else {
-                if (!this.rows.equals(actual.rows)) {
-                    diff = new SetDiff<>("rows are different,",
-                            this.rows,
-                            actual.rows);
-                    return false;
-                }
-                return true;
-            }
+            // simplified comparison and kept to equals contract
+            return headers.equals(actual.headers) && this.rows.equals(actual.rows);
         } else {
-            diff = new SetDiff<>("not a TableContents,", headers, null);
             return false;
         }
     }
 
-    @Override
-    public String toString() {
-        return diff.toString();
+    // single method to describe differences
+    public String describeDiff(TableContents<T> other) {
+        String diff = "";
+        if (!headers.equals(other.headers)) {
+            diff += "headers differ " + headers + " vs " + other.headers + "\n";
+        }
+        List<T> missingRows = new ArrayList<>(rows);
+        missingRows.removeAll(other.rows);
+        List<T> unexpectedRows = new ArrayList<>(other.rows);
+        unexpectedRows.removeAll(rows);
+
+        if (!unexpectedRows.isEmpty()) {
+            diff += "unexpected rows appeared: " + unexpectedRows + "\n";
+        }
+        if (!missingRows.isEmpty()) {
+            diff += "expected rows not found: " + missingRows + "\n";
+        }
+        return diff.trim();
     }
 }

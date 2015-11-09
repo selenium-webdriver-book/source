@@ -1,45 +1,54 @@
 package swip.ch15table;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import swip.ch14elements.framework.Element;
 
-import static java.util.stream.Collectors.toSet;
-import static swip.ch15table.Locators.elements;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
 
-public class Table<T, Where extends SearchScope> {
+// simplify class type parameters to make it easier to understand
+public class Table<T> {
 
+    // have a standard page object table class
+    private final Element table;
+    private final Function<List<Element>, T> rowMapper;
 
-    private final Where where;
-    private final Locator<Where, Element> locator;
-    private final Locator<Stream<Element>, T> mapper;
-
-    public Table(Where where,
-                 Locator<Where, Element> locator,
-                 Locator<Stream<Element>, T> mapper) {
-        this.where = where;
-        this.locator = locator;
-        this.mapper = mapper;
+    public Table(Element table, Function<List<Element>,T> rowMapper) {
+        this.table = table;
+        this.rowMapper = rowMapper;
     }
 
-    public Stream<String> getHeader() {
-        return locator.andThen(elements(TagName.TH)).locate(where).map(Element::getText);
+    // renamed to plural
+    public List<String> getHeaders() {
+        // use Java 7 loop
+        List<String> headers = new ArrayList<>();
+        for (WebElement th : table.findElements(By.tagName("th"))) {
+            headers.add(th.getText());
+        }
+        return headers;
     }
 
-    public Stream<T> getRows() {
-        return locator.andThen(elements(TagName.TR)).locate(where)
-                .filter(e ->
-                        Locators.<Element>optionalElement(TagName.TD)
-                                .locate(e)
-                                .isPresent())
-                .map(elements(TagName.TD))
-                .map(mapper);
+    public List<T> getRows() {
+        // use Java 7 loops
+        List<T> rows = new ArrayList<>();
+        for (WebElement tr : table.findElements(By.tagName("tr"))) {
+
+            List<Element> cells = new ArrayList<>();
+            for (WebElement cell : tr.findElements(By.tagName("td"))) {
+                cells.add(new Element(cell));
+            }
+
+            // skip header row, which will be empty
+            if (!cells.isEmpty()) {
+                rows.add(rowMapper.apply(cells));
+            }
+        }
+        return rows;
     }
 
     public TableContents<T> getContents() {
-        return new TableContents<T>(
-                this.getHeader().collect(toSet()),
-                this.getRows().collect(Collectors.<T>toSet())
-        );
+        return new TableContents<>(getHeaders(), getRows());
     }
 }
-
