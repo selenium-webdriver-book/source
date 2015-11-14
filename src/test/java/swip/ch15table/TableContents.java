@@ -3,7 +3,6 @@ package swip.ch15table;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class TableContents<T> {
 
@@ -19,7 +18,7 @@ public class TableContents<T> {
     @Override
     public boolean equals(Object other) {
         if (other instanceof TableContents) {
-            @SuppressWarnings("unchecked") TableContents<T> actual = (TableContents) other;
+            TableContents<T> actual = (TableContents<T>) other;
 
             // simplified comparison and kept to equals contract
             return headers.equals(actual.headers) && this.rows.equals(actual.rows);
