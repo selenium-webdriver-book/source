@@ -20,7 +20,7 @@ public class Person {
     public String toString() {
         return "new Person(\"" + id +
                 "\",\"" + firstName + "\",\"" +
-                lastName + "\"," + points + ")\n";
+                lastName + "\"," + points + ")";
     }
 
     @Override
