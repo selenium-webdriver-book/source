@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-// simplify class type parameters to make it easier to understand
 public class Table<T> {
 
-    // have a standard page object table class
     private final Element table;
     private final Function<List<Element>, T> rowMapper;
 
@@ -20,9 +18,7 @@ public class Table<T> {
         this.rowMapper = rowMapper;
     }
 
-    // renamed to plural
     public List<String> getHeaders() {
-        // use Java 7 loop
         List<String> headers = new ArrayList<>();
         for (WebElement th : table.findElements(By.tagName("th"))) {
             headers.add(th.getText());
@@ -31,7 +27,6 @@ public class Table<T> {
     }
 
     public List<T> getRows() {
-        // use Java 7 loops
         List<T> rows = new ArrayList<>();
         for (WebElement tr : table.findElements(By.tagName("tr"))) {
 

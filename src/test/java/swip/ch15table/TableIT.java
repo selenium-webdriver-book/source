@@ -30,10 +30,8 @@ public class TableIT {
     @Test
     public void testReadFromTable() {
 
-        // avoid using external resources, may change
         browser.get("http://localhost:8080/people-table.html");
 
-        // ok to use Java 8 here, but
         Function<List<Element>, Person> mapper = (cells) -> new Person(
                 Integer.parseInt(cells.get(0).getText()),
                 cells.get(1).getText(),
@@ -49,7 +47,6 @@ public class TableIT {
 
         TableContents<Person> expected = new TableContents<>(
                 Arrays.asList("Number", "First Name", "Last Name", "Age"),
-                // Arrays.asList well known core Java
                 Arrays.asList(
                         new Person(4, "Jill", "Smith", 50)
                         , new Person(3, "Adam", "Johnson", 67)
