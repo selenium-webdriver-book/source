@@ -45,7 +45,7 @@ public class TableIT {
         TableContents<Person> actual = table.getContents();
 
         TableContents<Person> expected = new TableContents<>(
-                Arrays.asList("Number", "First Name", "Last Name", "Age"),
+                Arrays.asList("Id", "First Name", "Last Name", "Age"),
                 Arrays.asList(
                         new Person(4, "Jill", "Smith", 50)
                         , new Person(3, "Adam", "Johnson", 67)

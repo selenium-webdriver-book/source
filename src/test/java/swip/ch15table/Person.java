@@ -4,13 +4,13 @@ import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
 public class Person {
+    private final int id;
     private final String firstName;
     private final String lastName;
     private final int points;
-    private final int number;
 
-    public Person(int number, String firstName, String lastName, int points) {
-        this.number = number;
+    public Person(int id, String firstName, String lastName, int points) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.points = points;
@@ -18,7 +18,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "new Person(\"" + number +
+        return "new Person(\"" + id +
                 "\",\"" + firstName + "\",\"" +
                 lastName + "\"," + points + ")\n";
     }
