@@ -17,7 +17,6 @@ import java.util.function.Function;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(WebDriverRunner.class)
-// named class consistently with other integration tests
 public class TableIT {
 
     private Browser browser;
