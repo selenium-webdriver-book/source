@@ -47,10 +47,10 @@ public class TableIT {
         TableContents<Person> expected = new TableContents<>(
                 Arrays.asList("Id", "First Name", "Last Name", "Age"),
                 Arrays.asList(
-                        new Person(4, "Jill", "Smith", 50)
-                        , new Person(3, "Adam", "Johnson", 67)
+                        new Person(1, "Eve", "Jackson", 94)
                         , new Person(2, "John", "Doe", 80)
-                        , new Person(1, "Eve", "Jackson", 94)
+                        , new Person(3, "Adam", "Johnson", 67)
+                        , new Person(4, "Jill", "Smith", 50)
                 )
         );
 
