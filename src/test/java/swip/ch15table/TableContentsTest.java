@@ -13,13 +13,13 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class TableContentsTest {
 
-    private final TableContents<String> expected, b;
+    private final TableContents<String> expected, actual;
     private final boolean equal;
     private final String diff;
 
     public TableContentsTest(TableContents<String> expected, TableContents<String> actual, boolean equal, String diff) {
         this.expected = expected;
-        this.b = actual;
+        this.actual = actual;
         this.equal = equal;
         this.diff = diff;
     }
@@ -45,11 +45,11 @@ public class TableContentsTest {
 
     @Test
     public void equality() throws Exception {
-        assertEquals(equal, expected.equals(b));
+        assertEquals(equal, expected.equals(actual));
     }
 
     @Test
     public void diffDescription() throws Exception {
-        assertEquals(diff, expected.describeDiff(b));
+        assertEquals(diff, expected.describeDiff(actual));
     }
 }
