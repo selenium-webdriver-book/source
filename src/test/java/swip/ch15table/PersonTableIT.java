@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import swip.ch14elements.framework.Browser;
 import swip.ch14elements.framework.Element;
+import swip.ch15table.person.Person;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -19,7 +20,7 @@ import java.util.function.Function;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(WebDriverRunner.class)
-public class TableIT {
+public class PersonTableIT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
