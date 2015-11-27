@@ -1,7 +1,5 @@
 package swip.ch14elements;
 
-import java.util.Arrays;
-
 public enum MailingOption {
 
     WEEKLY_NEWSLETTER("Weekly newsletter--" +
@@ -20,9 +18,12 @@ public enum MailingOption {
     }
 
     public static MailingOption from(String string) {
-        return Arrays.stream(values())
-                .filter((o) -> string.equals(o.string))
-                .findFirst()
-                .get();
+        for (MailingOption o : values()) {
+            if (o.string.equals(string)) {
+                return o;
+            }
+        }
+        throw new IllegalArgumentException(
+            "Can't find an enum with this string " + string);
     }
 }
