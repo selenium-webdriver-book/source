@@ -1,13 +1,9 @@
 package swip.ch14elements;
 
-import com.google.common.base.Predicate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.FluentWait;
 import swip.ch14elements.framework.Browser;
-import swip.ch14elements.framework.Element;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -27,7 +23,6 @@ public class ShoppingCartPageIT {
         "no comments"
     );
 
-    private Predicate<Browser> colorBecomeWhite = (Browser b) -> cartButton().getCssValue("color").equals("rgba(255, 255, 255, 1)");
 
     @Inject
     public void setWebDriver(WebDriver webDriver) {
@@ -36,23 +31,18 @@ public class ShoppingCartPageIT {
 
     @Test
     public void weShouldBeABleToCompleteOtherInformation() throws Exception {
-        browser.get("https://www.manning.com/books/50-android-hacks");
+        browser.get("https://www.manning.com/books/selenium-webdriver-in-practice");
 
-        browser.findElement(By.className("btn-primary")).click();
-
-        new FluentWait<>(browser).until(colorBecomeWhite) ;
-
-        cartButton().click();
+        BookPage bookPage = new BookPage(browser);
+        bookPage.addToCart();
+        bookPage.gotoCart();
 
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(browser);
-
         shoppingCartPage.setOtherInformation(otherInformation);
 
         assertEquals(this.otherInformation, shoppingCartPage.getOtherInformation());
 
     }
 
-    private Element cartButton() {
-        return browser.untilFound(By.xpath("//*[@id=\"primary-navbar\"]/ul[2]/li[2]/div/a"));
-    }
+
 }
