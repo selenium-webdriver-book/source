@@ -6,26 +6,20 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import swip.ch14elements.framework.Browser;
-import swip.framework.WebDriverRunner;
+import swip.ch14elements.framework.BrowserRunner;
 
 import javax.inject.Inject;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(WebDriverRunner.class)
+@RunWith(BrowserRunner.class)
 public class CityTableIT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-    private Browser browser;
-
-    @Inject
-    public void setWebDriver(WebDriver webDriver) {
-        browser = new Browser(webDriver);
-    }
+    @Inject private Browser browser;
 
     @Test
     public void testReadFromTable() {

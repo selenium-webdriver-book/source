@@ -2,17 +2,16 @@ package swip.ch14elements;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
 import swip.ch14elements.framework.Browser;
-import swip.framework.WebDriverRunner;
+import swip.ch14elements.framework.BrowserRunner;
 
 import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(WebDriverRunner.class)
+@RunWith(BrowserRunner.class)
 public class ShoppingCartPageIT {
-    private Browser browser;
+    @Inject private Browser browser;
 
     private OtherInformation otherInformation  = new OtherInformation(
         "no code",
@@ -23,11 +22,6 @@ public class ShoppingCartPageIT {
         "no comments"
     );
 
-
-    @Inject
-    public void setWebDriver(WebDriver webDriver) {
-        browser = new Browser(webDriver);
-    }
 
     @Test
     public void weShouldBeABleToCompleteOtherInformation() throws Exception {

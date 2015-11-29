@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,11 +45,10 @@ public class WebDriverConfig {
         capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         return capabilities;
     }
-
     @Bean
     @Primary
     @Scope("prototype")
-    public WebDriver cleanWebDriver(WebDriver driver) throws Exception {
+    public WebDriver cleanWebDriver(@Qualifier("webDriver") WebDriver driver) throws Exception {
 
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         driver.manage().deleteAllCookies();
