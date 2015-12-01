@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Browser extends DelegatingWebDriver implements ExplicitWait, SearchScope {
@@ -65,7 +66,11 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
     }
 
     public void setRadio(By by, String value) {
-        for (WebElement e : findElements(by)) {
+        List<WebElement> radiobuttons = findElements(by);
+
+        assert radiobuttons.size() >= 2;
+
+        for (WebElement e : radiobuttons) {
             if (e.getAttribute("value").equals(value)) {
                 e.click();
                 return;
@@ -76,13 +81,16 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
     }
 
     public String getRadio(By by) {
-        for (WebElement e : findElements(by)) {
+        List<WebElement> radiobuttons = findElements(by);
+
+        assert radiobuttons.size() >= 2;
+
+        for (WebElement e : radiobuttons) {
             if (Boolean.valueOf(e.getAttribute("checked"))) {
                 return e.getAttribute("value");
             }
         }
-        throw new IllegalArgumentException(
-            "unable to find checked element in group located by " + by);
+        return null;
     }
 
     public Select getSelect(By by) {
