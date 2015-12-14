@@ -1,4 +1,4 @@
-package swip.ch14elements.framework;
+package swip.ch15pageflow.framework;
 
 import org.junit.Before;
 import org.junit.Test;

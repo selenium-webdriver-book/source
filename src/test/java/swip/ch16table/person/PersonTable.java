@@ -1,4 +1,4 @@
-package swip.ch15table.person;
+package swip.ch16table.person;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

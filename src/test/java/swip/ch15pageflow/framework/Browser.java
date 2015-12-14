@@ -1,4 +1,4 @@
-package swip.ch14elements.framework;
+package swip.ch15pageflow.framework;
 
 import com.google.common.base.Predicate;
 import org.openqa.selenium.By;

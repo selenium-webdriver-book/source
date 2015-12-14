@@ -1,4 +1,4 @@
-package swip.ch14elements;
+package swip.ch15pageflow;
 
 public enum MailingOption {
 

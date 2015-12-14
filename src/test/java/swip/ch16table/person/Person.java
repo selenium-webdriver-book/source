@@ -1,24 +1,26 @@
-package swip.ch15table.city;
+package swip.ch16table.person;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
-public class City {
+public class Person {
     private final int id;
-    private final String name;
-    private final String stateName;
+    private final String firstName;
+    private final String lastName;
+    private final int points;
 
-    public City(int id, String name, String stateName) {
+    public Person(int id, String firstName, String lastName, int points) {
         this.id = id;
-        this.name = name;
-        this.stateName = stateName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.points = points;
     }
 
     @Override
     public String toString() {
-        return "new City(" + id +
-                ",\"" + name + "\",\"" +
-            stateName  + "\")\n";
+        return "new Person(\"" + id +
+                "\",\"" + firstName + "\",\"" +
+                lastName + "\"," + points + ")\n";
     }
 
     @Override

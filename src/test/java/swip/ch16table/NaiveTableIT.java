@@ -1,4 +1,4 @@
-package swip.ch15table;
+package swip.ch16table;
 
 
 import org.junit.Rule;
@@ -6,28 +6,22 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import swip.ch14elements.framework.Browser;
+import swip.ch14elements.framework.BrowserRunner;
 import swip.ch14elements.framework.Element;
-import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(WebDriverRunner.class)
+@RunWith(BrowserRunner.class)
 public class NaiveTableIT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-    private Browser browser;
-
-    @Inject
-    public void setWebDriver(WebDriver webDriver) {
-        browser = new Browser(webDriver);
-    }
+    @Inject private Browser browser;
 
     @Test
     public void testReadFromTable() {

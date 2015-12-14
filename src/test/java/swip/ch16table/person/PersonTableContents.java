@@ -1,23 +1,26 @@
-package swip.ch15table;
+package swip.ch16table.person;
 
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableContents<T> {
+public class PersonTableContents {
 
     private final List<String> headers;
-    private final List<T> rows;
+    private final List<Person> rows;
 
-    public TableContents(List<String> headers, List<T> rows) {
+    public PersonTableContents(List<String> headers, List<Person> rows) {
         this.headers = headers;
         this.rows = rows;
     }
 
     @Override
     public boolean equals(Object other) {
-        if (other instanceof TableContents) {
-            @SuppressWarnings("unchecked") TableContents<T> actual = (TableContents<T>) other;
+        if (other instanceof PersonTableContents) {
+            PersonTableContents actual = (PersonTableContents) other;
 
             return headers.equals(actual.headers) && this.rows.equals(actual.rows);
         } else {
@@ -25,14 +28,14 @@ public class TableContents<T> {
         }
     }
 
-    public String describeDiff(TableContents<T> other) {
+    public String describeDiff(PersonTableContents other) {
         String diff = "";
         if (!headers.equals(other.headers)) {
             diff += "headers differ " + headers + " vs " + other.headers + "\n";
         }
-        List<T> missingRows = new ArrayList<>(rows);
+        List<Person> missingRows = new ArrayList<>(rows);
         missingRows.removeAll(other.rows);
-        List<T> unexpectedRows = new ArrayList<>(other.rows);
+        List<Person> unexpectedRows = new ArrayList<>(other.rows);
         unexpectedRows.removeAll(rows);
 
         if (!unexpectedRows.isEmpty()) {
@@ -43,4 +46,10 @@ public class TableContents<T> {
         }
         return diff.trim();
     }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+    }
+
 }

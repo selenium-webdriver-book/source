@@ -1,9 +1,9 @@
-package swip.ch14elements;
+package swip.ch15pageflow;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import swip.ch14elements.framework.Browser;
-import swip.ch14elements.framework.BrowserRunner;
+import swip.ch15pageflow.framework.Browser;
+import swip.ch15pageflow.framework.BrowserRunner;
 
 import javax.inject.Inject;
 
@@ -25,7 +25,10 @@ public class ShoppingCartPageIT {
 
     @Test
     public void weShouldBeABleToCompleteOtherInformation() throws Exception {
-        browser.get("https://www.manning.com/books/selenium-webdriver-in-practice");
+        browser.get("http://www.manning.com");
+
+        ManningHomepage homepage = new ManningHomepage(browser);
+        homepage.searchBook("Selenium WebDriver in Practice");
 
         BookPage bookPage = new BookPage(browser);
         bookPage.addToCart();
