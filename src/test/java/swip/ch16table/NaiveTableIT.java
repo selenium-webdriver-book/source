@@ -1,4 +1,4 @@
-package swip.ch15table;
+package swip.ch16table;
 
 
 import org.junit.Rule;

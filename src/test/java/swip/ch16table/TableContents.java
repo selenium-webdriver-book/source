@@ -1,27 +1,23 @@
-package swip.ch15table.city;
+package swip.ch16table;
 
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-import swip.ch15table.person.Person;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CityTableContents {
+public class TableContents<T> {
 
     private final List<String> headers;
-    private final List<City> rows;
+    private final List<T> rows;
 
-    public CityTableContents(List<String> headers, List<City> rows) {
+    public TableContents(List<String> headers, List<T> rows) {
         this.headers = headers;
         this.rows = rows;
     }
 
     @Override
     public boolean equals(Object other) {
-        if (other instanceof CityTableContents) {
-            CityTableContents actual = (CityTableContents) other;
+        if (other instanceof TableContents) {
+            @SuppressWarnings("unchecked") TableContents<T> actual = (TableContents<T>) other;
 
             return headers.equals(actual.headers) && this.rows.equals(actual.rows);
         } else {
@@ -29,14 +25,14 @@ public class CityTableContents {
         }
     }
 
-    public String describeDiff(CityTableContents other) {
+    public String describeDiff(TableContents<T> other) {
         String diff = "";
         if (!headers.equals(other.headers)) {
             diff += "headers differ " + headers + " vs " + other.headers + "\n";
         }
-        List<City> missingRows = new ArrayList<>(rows);
+        List<T> missingRows = new ArrayList<>(rows);
         missingRows.removeAll(other.rows);
-        List<City> unexpectedRows = new ArrayList<>(other.rows);
+        List<T> unexpectedRows = new ArrayList<>(other.rows);
         unexpectedRows.removeAll(rows);
 
         if (!unexpectedRows.isEmpty()) {
@@ -47,10 +43,4 @@ public class CityTableContents {
         }
         return diff.trim();
     }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-    }
-
 }

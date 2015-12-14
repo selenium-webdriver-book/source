@@ -1,4 +1,4 @@
-package swip.ch15table.city;
+package swip.ch16table.city;
 
 
 import org.junit.Rule;

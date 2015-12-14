@@ -1,4 +1,4 @@
-package swip.ch15table;
+package swip.ch16table;
 
 
 import org.junit.Rule;
@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import swip.ch14elements.framework.Browser;
 import swip.ch14elements.framework.BrowserRunner;
 import swip.ch14elements.framework.Element;
-import swip.ch15table.person.Person;
+import swip.ch16table.person.Person;
 
 import javax.inject.Inject;
 import java.util.Arrays;

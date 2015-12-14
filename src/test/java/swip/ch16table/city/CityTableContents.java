@@ -1,4 +1,4 @@
-package swip.ch15table.person;
+package swip.ch16table.city;
 
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -7,20 +7,20 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonTableContents {
+public class CityTableContents {
 
     private final List<String> headers;
-    private final List<Person> rows;
+    private final List<City> rows;
 
-    public PersonTableContents(List<String> headers, List<Person> rows) {
+    public CityTableContents(List<String> headers, List<City> rows) {
         this.headers = headers;
         this.rows = rows;
     }
 
     @Override
     public boolean equals(Object other) {
-        if (other instanceof PersonTableContents) {
-            PersonTableContents actual = (PersonTableContents) other;
+        if (other instanceof CityTableContents) {
+            CityTableContents actual = (CityTableContents) other;
 
             return headers.equals(actual.headers) && this.rows.equals(actual.rows);
         } else {
@@ -28,14 +28,14 @@ public class PersonTableContents {
         }
     }
 
-    public String describeDiff(PersonTableContents other) {
+    public String describeDiff(CityTableContents other) {
         String diff = "";
         if (!headers.equals(other.headers)) {
             diff += "headers differ " + headers + " vs " + other.headers + "\n";
         }
-        List<Person> missingRows = new ArrayList<>(rows);
+        List<City> missingRows = new ArrayList<>(rows);
         missingRows.removeAll(other.rows);
-        List<Person> unexpectedRows = new ArrayList<>(other.rows);
+        List<City> unexpectedRows = new ArrayList<>(other.rows);
         unexpectedRows.removeAll(rows);
 
         if (!unexpectedRows.isEmpty()) {
