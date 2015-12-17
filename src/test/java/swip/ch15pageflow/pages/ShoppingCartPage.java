@@ -13,7 +13,7 @@ public class ShoppingCartPage {
     private final CreditCardForm creditCardForm;
     private final ShippingAddressForm shippingAddressForm;
     private final OtherInformationForm otherInformationForm;
-    private Browser browser;
+    private final Browser browser;
 
     public ShoppingCartPage(Browser browser) {
         this.browser = browser;
@@ -30,7 +30,6 @@ public class ShoppingCartPage {
     public void setOtherInformation(OtherInformation otherInformation) {
         otherInformationForm.setOtherInformation(otherInformation);
     }
-
 
     public void setBillingAddress(Address address) {
         billingAddressForm.setBillingAddress(address);
@@ -50,11 +49,11 @@ public class ShoppingCartPage {
 
     public void setQuantity(int quantity) {
         browser.setInputText(Xpath.QUANTITY, String.valueOf(quantity));
-        browser.findElement(CssSelector.UPDATE.get()).click();
+        browser.untilFound2(CssSelector.UPDATE).click();
     }
 
     public void continues() {
-        browser.findElement(CssSelector.CONTINUE.get()).click();
+        browser.untilFound2(CssSelector.CONTINUE).click();
     }
 
     public ErrorMessages getErrorMessages() {
