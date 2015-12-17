@@ -31,7 +31,7 @@ public class DelegatingWebDriver implements WebDriver {
 
     @Override
     public List<WebElement> findElements(By by) {
-        return delegate.findElements(by);
+        return by.findElements(delegate);
     }
 
     @Override

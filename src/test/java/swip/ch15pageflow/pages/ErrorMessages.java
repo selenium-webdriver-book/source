@@ -24,7 +24,7 @@ public class ErrorMessages {
     }
 
     public ErrorMessages(Browser browser) {
-        this(browser.findElement(BookStoreId.ERROR_MESSAGES).findElements(TagName.LI).map(WebElement::getText));
+        this(browser.untilFound(BookStoreId.ERROR_MESSAGES).findElements(TagName.LI).map(WebElement::getText));
     }
 
     @Override

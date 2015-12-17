@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
-interface ExplicitWait {
+public interface ExplicitWait {
 
     Element findElement(Supplier<By> by);
 
@@ -25,7 +25,7 @@ interface ExplicitWait {
             .ignoring(Exception.class)
             .until((ExplicitWait e) -> e.findElement(by));
         element.setSerachContext(this);
-        element.setBy(by);
+        element.setBy((ExplicitWait e) -> this.untilFound2(by));
         return element;
     }
 

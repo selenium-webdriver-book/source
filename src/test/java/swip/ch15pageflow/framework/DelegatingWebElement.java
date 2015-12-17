@@ -3,12 +3,12 @@ package swip.ch15pageflow.framework;
 import org.openqa.selenium.*;
 
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 public class DelegatingWebElement implements WebElement {
     private WebElement delegate;
     private ExplicitWait searchContext;
-    private Supplier<By> by;
+    private Function<ExplicitWait, Element> finder;
 
     public DelegatingWebElement(WebElement delegate) {
         this.delegate = delegate;
@@ -23,7 +23,7 @@ public class DelegatingWebElement implements WebElement {
         try {
             delegate.click();
         } catch (StaleElementReferenceException e) {          //<2>
-            this.delegate = searchContext.findElement(this.by);  //<3>
+            this.delegate = finder.apply(searchContext);
             click2();
         }
     }
@@ -107,7 +107,7 @@ public class DelegatingWebElement implements WebElement {
         this.searchContext = searchContext;
     }
 
-    public void setBy(Supplier<By> by) {
-        this.by = by;
+    public void setBy(Function<ExplicitWait, Element> finder) {
+        this.finder = finder;
     }
 }
