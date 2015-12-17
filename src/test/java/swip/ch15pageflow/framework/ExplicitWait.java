@@ -1,7 +1,6 @@
 package swip.ch15pageflow.framework;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.FluentWait;
 
 import java.util.concurrent.TimeUnit;
@@ -20,14 +19,14 @@ interface ExplicitWait {
     }
 
     default Element untilFound2(Supplier<By> by) {
-        Element until = new FluentWait<>(this)
+        Element element = new FluentWait<>(this)
             .withTimeout(10, TimeUnit.SECONDS)
             .pollingEvery(5, TimeUnit.MILLISECONDS)
             .ignoring(Exception.class)
             .until((ExplicitWait e) -> e.findElement(by));
-        until.setBrowser(this);
-        until.setBy(by);
-        return until;
+        element.setSerachContext(this);
+        element.setBy(by);
+        return element;
     }
 
 }

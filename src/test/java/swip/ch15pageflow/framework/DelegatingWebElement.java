@@ -20,14 +20,12 @@ public class DelegatingWebElement implements WebElement {
     }
 
     public void click2() {
-
         try {
             delegate.click();
         } catch (StaleElementReferenceException e) {          //<2>
             this.delegate = searchContext.findElement(this.by);  //<3>
             click2();
         }
-
     }
 
     @Override
@@ -105,7 +103,7 @@ public class DelegatingWebElement implements WebElement {
         return delegate.getScreenshotAs(outputType);
     }
 
-    public void setBrowser(ExplicitWait searchContext) {
+    public void setSerachContext(ExplicitWait searchContext) {
         this.searchContext = searchContext;
     }
 
