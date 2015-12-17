@@ -18,6 +18,14 @@ public class ManningHomepage {
     public void searchBook(String bookname) {
         browser.setInputText(SEARCH_INPUT, bookname);
         browser.untilFound(SEARCH_BUTTON).click();
-        browser.untilFound(() -> By.partialLinkText(bookname)).click();
+        browser.untilFound(() -> By.partialLinkText(bookname))
+            .click();
+    }
+
+    public void searchBook2(String bookname) {
+        browser.setInputText(SEARCH_INPUT, bookname);
+        browser.untilFound2(SEARCH_BUTTON).click();
+        browser.untilFound2(() -> By.partialLinkText(bookname))
+            .click2();
     }
 }

@@ -3,9 +3,12 @@ package swip.ch15pageflow.framework;
 import org.openqa.selenium.*;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class DelegatingWebElement implements WebElement {
-    private final WebElement delegate;
+    private WebElement delegate;
+    private ExplicitWait searchContext;
+    private Supplier<By> by;
 
     public DelegatingWebElement(WebElement delegate) {
         this.delegate = delegate;
@@ -14,6 +17,17 @@ public class DelegatingWebElement implements WebElement {
     @Override
     public void click() {
         delegate.click();
+    }
+
+    public void click2() {
+
+        try {
+            delegate.click();
+        } catch (StaleElementReferenceException e) {          //<2>
+            this.delegate = searchContext.findElement(this.by);  //<3>
+            click2();
+        }
+
     }
 
     @Override
@@ -89,5 +103,13 @@ public class DelegatingWebElement implements WebElement {
     @Override
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
         return delegate.getScreenshotAs(outputType);
+    }
+
+    public void setBrowser(ExplicitWait searchContext) {
+        this.searchContext = searchContext;
+    }
+
+    public void setBy(Supplier<By> by) {
+        this.by = by;
     }
 }
