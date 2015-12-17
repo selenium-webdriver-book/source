@@ -1,4 +1,4 @@
-package swip.ch15pageflow;
+package swip.ch15pageflow.v3;
 
 
 import org.junit.Test;
@@ -59,7 +59,7 @@ public class BookStoreShoppingIT {
     public void invalidCardInfoNormalWay() {
         homePage = new ManningHomepage(browser);
 
-        homePage.searchBook("Selenium WebDriver in Practice");
+        homePage.searchBook2("Selenium WebDriver in Practice");
 
         BookPage bookPage = new BookPage(browser);
         bookPage.secondAddToCart();
