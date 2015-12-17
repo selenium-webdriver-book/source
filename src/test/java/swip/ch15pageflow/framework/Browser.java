@@ -1,5 +1,6 @@
 package swip.ch15pageflow.framework;
 
+
 import com.google.common.base.Predicate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class Browser extends DelegatingWebDriver implements ExplicitWait, SearchScope {
 
@@ -17,11 +20,15 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
     }
 
     @Override
-    public Element findElement(By by) {
-        return new Element(super.findElement(by));
+    public Element findElement(Supplier<By> by) {
+        return new Element(super.findElement(by.get()));
     }
 
-    public void setInputText(By by, String value) {
+    public Stream<Element> findElements(Supplier<By> by) {
+        return super.findElements(by.get()).stream().map(Element::new);
+    }
+
+    public void setInputText(Supplier<By> by, String value) {
         Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
 
         retry.attempt(
@@ -37,7 +44,7 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         );
     }
 
-    public void setInputTextLambda(By by, String value) {
+    public void setInputTextLambda(Supplier<By> by, String value) {
         Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
 
         retry.attempt(
@@ -50,23 +57,23 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         );
     }
 
-    public String getInputText(By by) {
+    public String getInputText(Supplier<By> by) {
         return untilFound(by).getAttribute("value");
     }
 
-    public void setCheckboxValue(By by, boolean value) {
+    public void setCheckboxValue(Supplier<By> by, boolean value) {
         Element checkbox = untilFound(by);
         if (checkbox.isSelected() != value) {
             checkbox.click();
         }
     }
 
-    public boolean isChecked(By by) {
+    public boolean isChecked(Supplier<By> by) {
         return untilFound(by).isSelected();
     }
 
-    public void setRadio(By by, String value) {
-        List<WebElement> radiobuttons = findElements(by);
+    public void setRadio(Supplier<By> by, String value) {
+        List<WebElement> radiobuttons = findElements(by.get());
 
         assert radiobuttons.size() >= 2;
 
@@ -93,7 +100,7 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         return null;
     }
 
-    public Select getSelect(By by) {
+    public Select getSelect(Supplier<By> by) {
         final Element element = untilFound(by);
         new WebDriverWait(this, 3, 100)
             .until(new Predicate<WebDriver>() {
@@ -106,7 +113,11 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         return new Select(element);
     }
 
-    public Select getSelectLambda(By by) {
+    public void select(Supplier<By> by, String select) {
+        getSelect(by).selectByVisibleText(select);
+    }
+
+    public Select getSelectLambda(Supplier<By> by) {
         Element element = untilFound(by);
         new WebDriverWait(this, 3, 100)
             .until((WebDriver driver) -> {

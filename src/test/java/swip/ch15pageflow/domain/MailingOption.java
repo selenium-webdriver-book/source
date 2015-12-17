@@ -1,4 +1,4 @@
-package swip.ch15pageflow;
+package swip.ch15pageflow.domain;
 
 public enum MailingOption {
 
@@ -15,6 +15,11 @@ public enum MailingOption {
 
     MailingOption(String string) {
         this.string = string;
+    }
+
+    @Override
+    public String toString() {
+        return string;
     }
 
     public static MailingOption from(String string) {

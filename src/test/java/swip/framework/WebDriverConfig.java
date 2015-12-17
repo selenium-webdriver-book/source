@@ -39,7 +39,7 @@ public class WebDriverConfig {
 
     @Bean
     public DesiredCapabilities desiredCapabilities(
-            @Value("${webdriver.capabilities.browserName:firefox}") String browserName
+            @Value("${webdriver.capabilities.browserName:chrome}") String browserName
     ) {
         DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
         capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);

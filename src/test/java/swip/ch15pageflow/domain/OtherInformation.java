@@ -1,4 +1,4 @@
-package swip.ch15pageflow;
+package swip.ch15pageflow.domain;
 
 public class OtherInformation {
     public final String couponCode;
