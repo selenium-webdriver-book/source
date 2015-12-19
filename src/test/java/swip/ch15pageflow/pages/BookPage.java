@@ -50,8 +50,6 @@ public class BookPage {
     public void secondAddToCart() {
 
         Element element = findButton(finder);
-        element.setSerachContext(browser);
-        element.setBy(finder);
         element.click2();
         new FluentWait<>(browser).until(colorBecomeWhite);
     }

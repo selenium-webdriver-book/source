@@ -15,9 +15,11 @@ public class Element extends DelegatingWebElement implements ExplicitWait, Searc
 
     @Override
     public Element findElement(Supplier<By> by) {
-        return new Element(super.findElement(by.get()));
+        Element element = new Element(super.findElement(by.get()));
+        element.setSearchContext(this);
+        element.setLocator((ExplicitWait e) -> this.untilFound2(by));
+        return element;
     }
-
     public Stream<Element> findElements(Supplier<By> by) {
         return super.findElements(by.get()).stream().map(Element::new);
     }

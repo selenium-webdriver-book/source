@@ -21,9 +21,9 @@ public class DelegatingWebElement implements WebElement {
 
     public void click2() {
         try {
-            delegate.click();
+            delegate.click();                      //<1>
         } catch (StaleElementReferenceException e) {          //<2>
-            this.delegate = finder.apply(searchContext);
+            this.delegate = finder.apply(searchContext);       //<3>
             click2();
         }
     }
@@ -103,11 +103,11 @@ public class DelegatingWebElement implements WebElement {
         return delegate.getScreenshotAs(outputType);
     }
 
-    public void setSerachContext(ExplicitWait searchContext) {
+    public void setSearchContext(ExplicitWait searchContext) {
         this.searchContext = searchContext;
     }
 
-    public void setBy(Function<ExplicitWait, Element> finder) {
+    public void setLocator(Function<ExplicitWait, Element> finder) {
         this.finder = finder;
     }
 }

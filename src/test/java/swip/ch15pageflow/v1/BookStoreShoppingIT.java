@@ -27,7 +27,7 @@ public class BookStoreShoppingIT {
 
 
     @Test
-    public void invalidCardInfoNormalWay() {
+    public void invalidCardInfo() {
         homePage = new ManningHomepage(browser);
         homePage.searchBook("Selenium WebDriver in Practice");
     }

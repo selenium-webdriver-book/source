@@ -6,9 +6,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
-public interface ExplicitWait {
-
-    Element findElement(Supplier<By> by);
+public interface ExplicitWait extends SearchScope{
 
     default Element untilFound(Supplier<By> by) {
         return new FluentWait<>(this)
@@ -24,8 +22,8 @@ public interface ExplicitWait {
             .pollingEvery(5, TimeUnit.MILLISECONDS)
             .ignoring(Exception.class)
             .until((ExplicitWait e) -> e.findElement(by));
-        element.setSerachContext(this);
-        element.setBy((ExplicitWait e) -> this.untilFound2(by));
+        element.setSearchContext(this);
+        element.setLocator((ExplicitWait e) -> this.untilFound2(by));
         return element;
     }
 
