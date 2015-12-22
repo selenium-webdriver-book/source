@@ -18,7 +18,7 @@ public class SpringHttpStatusCodeIT {
 
     @Test
     public void notFound() throws Exception {
-        driver.get("http://127.0.0.1:8080/not-found.html");
+        driver.get("http://localhost:8080/not-found.html");
 
         assertEquals(404, ((HasHttpStatusCode) driver).getHttpStatusCode());
     }

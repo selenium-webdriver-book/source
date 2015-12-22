@@ -2,7 +2,6 @@ package swip.ch12decorating.httpstatuscode;
 
 import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.proxy.ProxyServer;
-import net.lightbody.bmp.proxy.http.BrowserMobHttpRequest;
 import net.lightbody.bmp.proxy.http.BrowserMobHttpResponse;
 import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +12,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -28,26 +28,21 @@ public class HttpStatusCodeDecorator {
     }
 
     private static InvocationHandler getInvocationHandler(WebDriver driver,
-                                                          ProxyServer server) {
+                                                          ProxyServer server, URI baseUrl) {
         return new InvocationHandler() {
-            private String path;
-            private boolean capture;
             private int httpStatusCode;
 
             {
-                server.addRequestInterceptor(
-                        (BrowserMobHttpRequest request, Har har) -> {
-                            path = request.getProxyRequest().getPath();
-                            capture = !path.matches(".*\\.(js|css|ico|json)");
-                            httpStatusCode = capture ? 404 : httpStatusCode;
-                            LOGGER.info("capture({})={}", path, capture);
-                        });
                 server.addResponseInterceptor(
                         (BrowserMobHttpResponse httpResponse, Har har) -> {
+                            String path = httpResponse.getEntry().getRequest().getUrl();
+                            boolean capture = !path.matches(".*\\.(js|css|ico|json)") &&
+                                    path.startsWith(baseUrl.toString());
+                            LOGGER.info("path={}, capture={}", path, capture);
                             if (httpResponse.getRawResponse() != null && capture) {
                                 httpStatusCode = httpResponse.getRawResponse()
                                         .getStatusLine().getStatusCode();
-                                LOGGER.info("httpStatusCode({})={}", path, httpStatusCode);
+                                LOGGER.info("httpStatusCode={}", httpStatusCode);
                             }
                         });
             }
@@ -59,8 +54,8 @@ public class HttpStatusCodeDecorator {
                     case "getHttpStatusCode":
                         // a short wait, as interceptors occur on another thread, and I cannot see a straight-forward
                         // way of getting this to work
-                        Thread.sleep(100);
-                        LOGGER.info("requesting status code");
+                        Thread.sleep(1000);
+                        LOGGER.info("requesting status code, httpStatusCode={}", httpStatusCode);
                         if (httpStatusCode == 0) {
                             throw new IllegalStateException(
                                     "no request has yet been successfully intercepted");
@@ -78,13 +73,14 @@ public class HttpStatusCodeDecorator {
     }
 
     public static WebDriver httpStatusCodeDriver(WebDriver driver,
-                                                 ProxyServer server) {
+                                                 ProxyServer server,
+                                                 URI baseUrl) {
 
         Class<?> driverClass = driver.getClass();
 
         Class[] interfaces = getInterfaces(driverClass);
 
-        InvocationHandler invocationHandler = getInvocationHandler(driver, server);
+        InvocationHandler invocationHandler = getInvocationHandler(driver, server, baseUrl);
 
         return (WebDriver) Proxy.newProxyInstance(
                 driverClass.getClassLoader(),

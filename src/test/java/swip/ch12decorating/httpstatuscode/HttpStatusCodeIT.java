@@ -10,6 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.net.URI;
+
 import static org.junit.Assert.assertEquals;
 
 public class HttpStatusCodeIT {
@@ -23,7 +25,7 @@ public class HttpStatusCodeIT {
     public void setUp() throws Exception {
         server.start();
         driver = HttpStatusCodeDecorator.httpStatusCodeDriver
-                (new FirefoxDriver(desiredCapabilities), server);
+                (new FirefoxDriver(desiredCapabilities), server, URI.create("http://localhost:8080"));
     }
 
     @After
@@ -34,21 +36,14 @@ public class HttpStatusCodeIT {
 
     @Test
     public void notFound() throws Exception {
-        driver.get("http://127.0.0.1:8080/not-found.html");
-
-        assertEquals(404, ((HasHttpStatusCode) driver).getHttpStatusCode());
-    }
-
-    @Test
-    public void httpsNotFound() throws Exception {
-        driver.get("https://127.0.0.1:8443/not-found.html");
+        driver.get("http://localhost:8080/not-found.html");
 
         assertEquals(404, ((HasHttpStatusCode) driver).getHttpStatusCode());
     }
 
     @Test
     public void resourceNotFound() throws Exception {
-        driver.get("http://127.0.0.1:8080/resource-not-found.html");
+        driver.get("http://localhost:8080/resource-not-found.html");
 
         assertEquals(200, ((HasHttpStatusCode) driver).getHttpStatusCode());
     }
