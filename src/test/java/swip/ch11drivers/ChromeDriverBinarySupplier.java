@@ -36,7 +36,7 @@ public class ChromeDriverBinarySupplier implements WebDriverBinarySupplier {
 
         if (!driverPath.toFile().exists()) { // <4> Do not do this if you already have it.
 
-            URL url = new URL("http://chromedriver.storage.googleapis.com/2.16/chromedriver_" + os + arch + ".zip");
+            URL url = new URL("http://chromedriver.storage.googleapis.com/2.18/chromedriver_" + os + arch + ".zip");
 
             if (!download.toFile().exists()) {
                 LOGGER.info("downloading " + url + " to " + download);
