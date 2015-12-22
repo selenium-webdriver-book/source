@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.AbstractMap;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -38,13 +39,20 @@ public class WebDriverConfig {
     }
 
     @Bean
-    public DesiredCapabilities desiredCapabilities(
-            @Value("${webdriver.capabilities.browserName:chrome}") String browserName
-    ) {
-        DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
+    public DesiredCapabilities desiredCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities("firefox", "", Platform.ANY);
         capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+
+        String prefix = "webdriver.capabilities.";
+
+        System.getProperties().entrySet().stream()
+                .map(e -> new AbstractMap.SimpleImmutableEntry<>(String.valueOf(e.getKey()), e.getValue()))
+                .filter(e -> e.getKey().startsWith(prefix))
+                .forEach(e -> capabilities.setCapability(e.getKey().substring(prefix.length()), e.getValue()));
+
         return capabilities;
     }
+
     @Bean
     @Primary
     @Scope("prototype")
