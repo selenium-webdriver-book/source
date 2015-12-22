@@ -1,4 +1,4 @@
-package swip.ch08unicorns.windows;
+package swip.ch08windows.windows;
 
 import org.openqa.selenium.WebDriver;
 

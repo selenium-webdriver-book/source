@@ -1,4 +1,4 @@
-package swip.ch08unicorns.iframe;
+package swip.ch08windows.iframe;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

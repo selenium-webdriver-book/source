@@ -1,4 +1,4 @@
-package swip.ch08unicorns.modals;
+package swip.ch08windows.modals;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

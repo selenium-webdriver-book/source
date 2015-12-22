@@ -1,4 +1,4 @@
-package swip.ch08unicorns.modals;
+package swip.ch08windows.modals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
