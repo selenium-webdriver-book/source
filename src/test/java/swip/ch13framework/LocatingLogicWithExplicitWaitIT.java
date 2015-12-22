@@ -1,6 +1,5 @@
 package swip.ch13framework;
 
-import com.google.common.base.Function;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
 import org.junit.Before;
@@ -10,21 +9,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
 
 @RunWith(WebDriverRunner.class)
 @Config(exclude = "browserName=htmlunit")
-public class ErrorProneLocatingLogicIT {
+public class LocatingLogicWithExplicitWaitIT {
 
     private final StopWatch stopWatch = new StopWatch();
 
@@ -41,9 +37,10 @@ public class ErrorProneLocatingLogicIT {
     @Inject
     private WebDriver driver;
 
+
     @Test
-    //  @Ignore("When the location is choose, the menu fades in over a few seconds. This test cannot deal with that.")
-    public void errorProneLocatingLogic() {
+    public void usingImplicitWait() {
+        driver.manage().timeouts().implicitlyWait(5, SECONDS); // <1>
         driver.get("http://localhost:8080/location-chooser.html");
         driver.findElement(linkText("change location")).click();
         WebElement tabMenu = driver.findElement(By.id("location"));
@@ -51,7 +48,23 @@ public class ErrorProneLocatingLogicIT {
         tabMenu.findElement(linkText("Ontario")).click();
         assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
         assertEquals("Ontario", driver
-            .findElement(By.cssSelector(".tools-location strong")) // <1>
+            .findElement(By.cssSelector(".tools-location strong"))
             .getText());
     }
+
+    @Test(expected = NoSuchElementException.class)
+    public void usingImplicitWaitButNotFound() {
+        driver.manage().timeouts().implicitlyWait(5, SECONDS); // <1>
+        driver.get("http://localhost:8080/location-chooser.html");
+        driver.findElement(linkText("change location")).click();
+        WebElement tabMenu = driver.findElement(By.id("location"));
+        tabMenu.findElement(linkText("CANADA")).click();
+        tabMenu.findElement(linkText("Ontario")).click();
+        assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
+        assertEquals("Ontario", driver
+            .findElement(By.cssSelector(".tools-locati"))
+            .getText());
+    }
+
+
 }
