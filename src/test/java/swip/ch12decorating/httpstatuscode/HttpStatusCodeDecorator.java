@@ -57,6 +57,10 @@ public class HttpStatusCodeDecorator {
                     throws Throwable {
                 switch (method.getName()) {
                     case "getHttpStatusCode":
+                        // a short wait, as interceptors occur on another thread, and I cannot see a straight-forward
+                        // way of getting this to work
+                        Thread.sleep(100);
+                        LOGGER.info("requesting status code");
                         if (httpStatusCode == 0) {
                             throw new IllegalStateException(
                                     "no request has yet been successfully intercepted");
