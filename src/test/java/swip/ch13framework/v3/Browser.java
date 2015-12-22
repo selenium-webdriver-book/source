@@ -3,7 +3,7 @@ package swip.ch13framework.v3;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Browser {
+public class Browser implements ExplicitWait {
     private final WebDriver driver;
 
     public Browser(WebDriver driver) {

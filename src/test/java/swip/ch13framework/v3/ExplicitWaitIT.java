@@ -26,7 +26,7 @@ public class ExplicitWaitIT {
     @Test
     public void explicitWait() throws Exception {
         browser.get("/location-chooser.html");
-        browser.findElement(linkText("change location")).click();
+        browser.untilFound(linkText("change location")).click();
         Element tabMenu = browser.findElement(By.id("location"));
         tabMenu.untilFound(linkText("CANADA")).click();
         tabMenu.untilFound(linkText("Ontario")).click();
