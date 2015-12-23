@@ -3,10 +3,12 @@ package swip.framework;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,9 +16,12 @@ import static org.junit.Assert.assertEquals;
 public class WebDriverConfigIT {
 
     @Inject private DesiredCapabilities desiredCapabilities;
+    @Inject
+    @Named("chromeDriver")
+    private WebDriver chromeDriver;
 
     @Test
-    public void chromeBrowser() throws Exception {
+    public void firefoxBrowser() throws Exception {
         assertEquals("firefox", desiredCapabilities.getBrowserName());
     }
 
@@ -28,5 +33,10 @@ public class WebDriverConfigIT {
     @Test
     public void anyPlatform() throws Exception {
         assertEquals(Platform.ANY, desiredCapabilities.getCapability(CapabilityType.PLATFORM));
+    }
+
+    @Test
+    public void chromeDriver() throws Exception {
+        chromeDriver.get("/");
     }
 }
