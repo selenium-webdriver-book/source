@@ -1,7 +1,9 @@
-package swip.ch15pageflow.framework;
+package swip.framework;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import swip.ch15pageflow.framework.Browser;
+import swip.ch15pageflow.framework.BrowserRunner;
 
 import javax.inject.Inject;
 import javax.inject.Named;
