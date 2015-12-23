@@ -22,7 +22,7 @@ public class BrowserConfig {
 
     @Bean(destroyMethod = "quit")
     @Scope("prototype")
-    public Browser chromeBrowser(@Qualifier("chromeDriver") WebDriver webDriver) throws IOException {
+    public Browser chrome(@Qualifier("chromeDriver") WebDriver webDriver) throws IOException {
         return new Browser(webDriver);
     }
 }

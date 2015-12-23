@@ -12,7 +12,7 @@ import javax.inject.Named;
 public class BrowserConfigIT {
 
     @Inject
-    @Named("chromeBrowser")
+    @Named("chrome")
     private Browser browser;
 
     @Test
