@@ -1,1 +1,0 @@
-FROM selenium/hub:${selenium.version}

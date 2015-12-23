@@ -29,7 +29,7 @@ On just in another browser, other than Firefox:
 
 To run remotely:
 
-	mvn ... -Dwebdriver.remote.url=$WD_URL
+	mvn ... -Dwebdriver.remote=true -Dwebdriver.remote.url=$WD_URL
 
 Problems
 ---

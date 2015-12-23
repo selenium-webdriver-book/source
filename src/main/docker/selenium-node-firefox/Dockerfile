@@ -1,1 +1,0 @@
-FROM selenium/node-firefox:${selenium.version}
