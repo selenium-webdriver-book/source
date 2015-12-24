@@ -14,8 +14,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.URI;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.AbstractMap;
 
 @Configuration
@@ -60,26 +62,17 @@ public class WebDriverConfig {
         return webDriverCleaner.cleanWebDriver(driver);
     }
 
-    @Bean
-    @Scope("prototype")
-    public WebDriver chromeDriver(WebDriverCleaner webDriverCleaner, @Qualifier("dirtyChromeDriver") WebDriver dirtyChromeDriver) throws IOException {
-        return webDriverCleaner.cleanWebDriver(dirtyChromeDriver);
-    }
-
     @Bean(destroyMethod = "quit")
     @Lazy
-    public WebDriver dirtyChromeDriver(WebDriverFactory webDriverFactory) throws IOException {
-        return webDriverFactory.webDriver(DesiredCapabilities.chrome());
-    }
-
-    @Bean(destroyMethod = "quit")
-    @Lazy
-    public WebDriver dirtyWebDriver(WebDriverFactory webDriverFactory, DesiredCapabilities desiredCapabilities) throws IOException {
-        return webDriverFactory.webDriver(desiredCapabilities);
+    public WebDriver dirtyWebDriver(WebDriverFactory webDriverFactory, DesiredCapabilities desiredCapabilities, URI baseUrl) throws IOException {
+        return webDriverFactory.webDriver(desiredCapabilities, baseUrl);
     }
 
     @Bean
-    public URI baseUrl(@Value("${webdriver.baseUrl:http://localhost:8080}") URI value) {
+    public URI baseUrl(@Value("${webdriver.baseUrl:http://auto}") URI value) throws UnknownHostException {
+        if (value.equals(URI.create("http://auto"))) {
+            return URI.create("http://" + InetAddress.getLocalHost().getHostName() + ":8080");
+        }
         return value;
     }
 }

@@ -2,11 +2,11 @@ package swip.ch12decorating.baseurl;
 
 import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.WebDriver;
-import swip.framework.ConfigFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
+import java.net.URI;
 import java.util.List;
 
 public class BaseUrlDecorator {
@@ -16,12 +16,12 @@ public class BaseUrlDecorator {
         return allInterfaces.toArray(new Class[allInterfaces.size()]);
     }
 
-    private static InvocationHandler getInvocationHandler(WebDriver driver) {
+    private static InvocationHandler getInvocationHandler(WebDriver driver, URI baseUrl) {
         return (proxy, method, args) -> {
             if (method.getName().equals("get")) {
                 String url = args[0].toString();
                 if (!url.contains("://")) {
-                    args[0] = ConfigFactory.BASE_URL + url;
+                    args[0] = baseUrl + url;
                 }
             }
 
@@ -33,13 +33,13 @@ public class BaseUrlDecorator {
         };
     }
 
-    public static WebDriver baseUrlDriver(WebDriver driver) {
+    public static WebDriver baseUrlDriver(WebDriver driver, URI baseUrl) {
 
         Class<?> driverClass = driver.getClass();
 
         Class[] interfaces = getInterfaces(driverClass);
 
-        InvocationHandler invocationHandler = getInvocationHandler(driver);
+        InvocationHandler invocationHandler = getInvocationHandler(driver, baseUrl);
 
         return (WebDriver) Proxy.newProxyInstance(
                 driverClass.getClassLoader(),
