@@ -21,6 +21,8 @@ import static org.openqa.selenium.By.linkText;
 public class ErrorProneLocatingLogicIT {
 
     private final StopWatch stopWatch = new StopWatch();
+    @Inject
+    private WebDriver driver;
 
     @Before
     public void startStopWatch() {
@@ -32,13 +34,10 @@ public class ErrorProneLocatingLogicIT {
         System.out.println("Time taken " + stopWatch);
     }
 
-    @Inject
-    private WebDriver driver;
-
     @Test
     //  @Ignore("When the location is choose, the menu fades in over a few seconds. This test cannot deal with that.")
     public void errorProneLocatingLogic() {
-        driver.get("http://localhost:8080/location-chooser.html");
+        driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
         WebElement tabMenu = driver.findElement(By.id("location"));
         tabMenu.findElement(linkText("CANADA")).click();

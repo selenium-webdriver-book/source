@@ -24,7 +24,7 @@ public class PersonTableIT {
     @Test
     public void testReadFromPersonTable() {
 
-        browser.get("http://localhost:8080/people-table.html");
+        browser.get("/people-table.html");
 
         PersonTable table = new PersonTable(
             browser.findElement(By.tagName("table"))

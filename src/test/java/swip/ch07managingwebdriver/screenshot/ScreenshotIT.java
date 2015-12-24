@@ -26,7 +26,7 @@ public class ScreenshotIT {
     @Test
     public void homePageShouldHaveCorrectTitle() throws Exception {
 
-        driver.get("http://localhost:8080");
+        driver.get("/");
 
         WebElement heading = driver.findElement(By.cssSelector("h1"));
 

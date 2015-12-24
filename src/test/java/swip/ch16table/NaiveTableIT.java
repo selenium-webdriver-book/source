@@ -26,7 +26,7 @@ public class NaiveTableIT {
     @Test
     public void testReadFromTable() {
 
-        browser.get("http://localhost:8080/people-table.html");
+        browser.get("/people-table.html");
 
         Element table = browser.findElement(By.tagName("table"));
 

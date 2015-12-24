@@ -23,6 +23,8 @@ import static org.openqa.selenium.By.linkText;
 public class LocatingLogicWithImplicitWaitIT {
 
     private final StopWatch stopWatch = new StopWatch();
+    @Inject
+    private WebDriver driver;
 
     @Before
     public void startStopWatch() {
@@ -34,13 +36,10 @@ public class LocatingLogicWithImplicitWaitIT {
         System.out.println("Time taken " + stopWatch);
     }
 
-    @Inject
-    private WebDriver driver;
-
     @Test
     public void usingImplicitWait() {
         driver.manage().timeouts().implicitlyWait(5, SECONDS); // <1>
-        driver.get("http://localhost:8080/location-chooser.html");
+        driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
         WebElement tabMenu = driver.findElement(By.id("location"));
         tabMenu.findElement(linkText("CANADA")).click();
@@ -54,7 +53,7 @@ public class LocatingLogicWithImplicitWaitIT {
     @Test(expected = NoSuchElementException.class)
     public void usingImplicitWaitButNotFound() {
         driver.manage().timeouts().implicitlyWait(5, SECONDS); // <1>
-        driver.get("http://localhost:8080/location-chooser.html");
+        driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
         WebElement tabMenu = driver.findElement(By.id("location"));
         tabMenu.findElement(linkText("CANADA")).click();

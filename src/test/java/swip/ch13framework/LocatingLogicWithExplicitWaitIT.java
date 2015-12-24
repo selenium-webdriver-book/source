@@ -27,6 +27,8 @@ import static org.openqa.selenium.By.linkText;
 public class LocatingLogicWithExplicitWaitIT {
 
     private final StopWatch stopWatch = new StopWatch();
+    @Inject
+    private WebDriver driver;
 
     @Before
     public void startStopWatch() {
@@ -38,13 +40,9 @@ public class LocatingLogicWithExplicitWaitIT {
         System.out.println("Time taken " + stopWatch);
     }
 
-    @Inject
-    private WebDriver driver;
-
-
     @Test
     public void usingExplicitWait() {
-        driver.get("http://localhost:8080/location-chooser.html");
+        driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
 
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5);  //<1>
@@ -88,7 +86,7 @@ public class LocatingLogicWithExplicitWaitIT {
 
     @Test
     public void usingExplicitWaitLambda() {
-        driver.get("http://localhost:8080/location-chooser.html");
+        driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5); // <1>
 

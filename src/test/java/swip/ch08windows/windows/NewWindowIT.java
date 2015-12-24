@@ -47,7 +47,7 @@ public class NewWindowIT {
 
     @Test
     public void openWindowUsingName() throws Exception {
-        driver.get("http://localhost:8080/open-a-new-window.html");
+        driver.get("/open-a-new-window.html");
         String originalWindowHandle = driver.getWindowHandle();
 
         try {
@@ -68,7 +68,7 @@ public class NewWindowIT {
 
     @Test
     public void openNewWindowUsingStrategy() throws Exception {
-        driver.get("http://localhost:8080/open-a-new-window.html");
+        driver.get("/open-a-new-window.html");
 
         String originalWindowHandle = driver.getWindowHandle();
 

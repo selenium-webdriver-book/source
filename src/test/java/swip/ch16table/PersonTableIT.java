@@ -28,7 +28,7 @@ public class PersonTableIT {
     @Test
     public void testReadFromTable() {
 
-        browser.get("http://localhost:8080/people-table.html");
+        browser.get("/people-table.html");
 
         Function<List<Element>, Person> mapper = (cells) -> new Person(
                 Integer.parseInt(cells.get(0).getText()),
@@ -63,7 +63,7 @@ public class PersonTableIT {
         expectedException.expectMessage("unexpected rows appeared: [new Person(\"3\",\"Adam\",\"Johnson\",67)]\n" +
                 "expected rows not found: [new Person(\"5\",\"Jack\",\"Clyde\",78)] ");
 
-        browser.get("http://localhost:8080/people-table.html");
+        browser.get("/people-table.html");
 
         Function<List<Element>, Person> mapper = (cells) -> new Person(
                 Integer.parseInt(cells.get(0).getText()),

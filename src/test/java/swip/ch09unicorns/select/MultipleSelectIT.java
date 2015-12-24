@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(WebDriverRunner.class)
 @Config(exclude = "browserName=chrome")
-public class MulipleSelectIT {
+public class MultipleSelectIT {
 
     @Inject
     private WebDriver driver;
@@ -35,7 +35,7 @@ public class MulipleSelectIT {
 
     @Test
     public void multipleSelect() throws Exception {
-        driver.get("http://localhost:8080/select-boxes.html");
+        driver.get("/select-boxes.html");
 
         Select multiple = new Select(driver.findElement(By.name("multiple")));
 

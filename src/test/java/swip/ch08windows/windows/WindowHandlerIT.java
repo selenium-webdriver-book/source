@@ -19,7 +19,7 @@ public class WindowHandlerIT {
 
     @Test
     public void openNewWindow() throws Exception {
-        driver.get("http://localhost:8080/open-a-new-window.html");
+        driver.get("/open-a-new-window.html");
 
         new WindowHandler(driver) {
             @Override
