@@ -1,0 +1,10 @@
+hub:
+  image: selenium/hub:2.48.2
+  expose:
+    - 4444
+  ports:
+    - 4444:4444
+node-firefox:
+  image: selenium/node-firefox:2.48.2
+  links:
+    - hub
