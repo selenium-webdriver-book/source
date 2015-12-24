@@ -1,6 +1,7 @@
 package swip.misc.geolocation;
 
 import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertEquals;
 
+@Ignore("not longer in the book")
 public class GeolocationIT {
 
     private final WebDriver driver = GeolocationConfigurableWebDriver
