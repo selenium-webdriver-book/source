@@ -38,7 +38,7 @@ public class HttpStatusCodeConfig {
     }
 
     @Bean
-    public URI baseUrl(@Value("${webdriver.baseUrl:http://localhost:8080}") URI value) {
+    public URI baseUrl(@Value("${webdriver.baseUrl:http://127.0.0.1:8080}") URI value) {
         return value;
     }
 }

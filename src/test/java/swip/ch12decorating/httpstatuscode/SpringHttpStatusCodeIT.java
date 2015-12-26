@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.inject.Inject;
+import java.net.URI;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,10 +16,12 @@ import static org.junit.Assert.assertEquals;
 public class SpringHttpStatusCodeIT {
     @Inject
     private WebDriver driver;
+    @Inject
+    private URI baseUrl;
 
     @Test
     public void notFound() throws Exception {
-        driver.get("http://localhost:8080/not-found.html");
+        driver.get(baseUrl + "/not-found.html");
 
         assertEquals(404, ((HasHttpStatusCode) driver).getHttpStatusCode());
     }
