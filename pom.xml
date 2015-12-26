@@ -16,9 +16,21 @@
         <jquery-ui.version>1.11.3</jquery-ui.version>
         <jquery.version>2.1.3</jquery.version>
         <jetty.version>9.2.3.v20140905</jetty.version>
+        <spring.version>4.1.7.RELEASE</spring.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <!-- test -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
@@ -88,13 +100,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>4.2.1.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.2.1.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -172,13 +184,16 @@
                                     <groupId>org.webjars</groupId>
                                     <artifactId>jquery</artifactId>
                                     <version>${jquery.version}</version>
+                                    <includes>**/css/**,**/js/**</includes>
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>org.webjars</groupId>
                                     <artifactId>jquery-ui</artifactId>
                                     <version>${jquery-ui.version}</version>
+                                    <includes>**/css/**,**/js/**</includes>
                                 </artifactItem>
                             </artifactItems>
+                            <outputDirectory>src/main/webapp</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
