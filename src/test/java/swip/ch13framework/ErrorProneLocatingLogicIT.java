@@ -3,12 +3,12 @@ package swip.ch13framework;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -17,7 +17,6 @@ import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = "browserName=htmlunit")
 public class ErrorProneLocatingLogicIT {
 
     private final StopWatch stopWatch = new StopWatch();
@@ -35,7 +34,7 @@ public class ErrorProneLocatingLogicIT {
     }
 
     @Test
-    //  @Ignore("When the location is choose, the menu fades in over a few seconds. This test cannot deal with that.")
+    @Ignore("When the location is choose, the menu fades in over a few seconds. This test cannot deal with that.")
     public void errorProneLocatingLogic() {
         driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
