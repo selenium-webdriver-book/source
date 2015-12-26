@@ -17,7 +17,8 @@ public class WebDriverConfigIT {
 
     @Test
     public void firefoxBrowser() throws Exception {
-        assertEquals("firefox", desiredCapabilities.getBrowserName());
+        assertEquals(System.getProperty("webdriver.capabilities.browserName", "firefox"),
+                desiredCapabilities.getBrowserName());
     }
 
     @Test
