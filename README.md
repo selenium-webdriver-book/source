@@ -30,6 +30,29 @@ On just in another browser, other than Firefox:
 To run remotely:
 
 	mvn ... -Dwebdriver.remote=true -Dwebdriver.remote.url=$WD_URL
+	
+Slow Tests
+---
+
+To find slow tests:
+
+    mvn clean install
+    mvn surefire-report:failsafe-report-only
+    open target/site/failsafe-report.html 
+	
+Local Selenium Grid With Vagrant
+---
+
+You can run a mini Selenium Grid if you like:
+
+    cd vagrant
+    vagrant up 
+    
+Check it is working at <http://192.168.10.2:4444>. Please refer chapter 11 of the book for how to set-up Windows with IE10.
+
+You can run your tests as follows:
+
+    mvn clean install -Dwebdriver.remote=true -Dwebdriver.remote.url=http://192.168.10.2:4444/wd/hub
 
 Problems
 ---
