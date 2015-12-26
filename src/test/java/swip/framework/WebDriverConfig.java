@@ -71,7 +71,7 @@ public class WebDriverConfig {
     @Bean
     public URI baseUrl(@Value("${webdriver.baseUrl:http://auto}") URI value) throws UnknownHostException {
         if (value.equals(URI.create("http://auto"))) {
-            return URI.create("http://" + InetAddress.getLocalHost().getHostName() + ":8080");
+            return URI.create("http://" + InetAddress.getLocalHost().getHostAddress() + ":8080");
         }
         return value;
     }
