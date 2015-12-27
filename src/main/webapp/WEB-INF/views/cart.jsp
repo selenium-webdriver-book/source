@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,65 +10,95 @@
 <jsp:include page="nav.jsp"/>
 <div class="container">
     <h1>Cart</h1>
-    <table class="table">
-        <caption>Shopping Cart</caption>
-        <thead>
-        <tr>
-            <th>Item</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th>Cost</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="i" items="${cart.items}">
-            <tr>
-                <td>${i.title}</td>
-                <td>$${i.price}</td>
-                <td>${i.quantity}</td>
-                <td>$${i.total}</td>
-            </tr>
-        </c:forEach>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td></td>
-            <td></td>
-            <td><b>Subtotal:</b></td>
-            <td>$${cart.total}</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td><b>Total:</b></td>
-            <td>$${cart.total}</td>
-        </tr>
-        </tfoot>
-    </table>
-    <form>
-        <div class="form-group"><label>Redemption code:</label><input class="form-control" id="gc-redemption-code">
+    <form:form method="post" action="checkout" modelAttribute="checkoutRequest">
+        <div class="panel panel-default">
+            <div class="panel-heading">Shopping Cart</div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Cost</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="i" items="${cart.items}">
+                    <tr>
+                        <td>${i.title}</td>
+                        <td>$${i.price}</td>
+                        <td>${i.quantity}</td>
+                        <td>$${i.total}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><b>Subtotal:</b></td>
+                    <td>$${cart.total}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><b>Total:</b></td>
+                    <td>$${cart.total}</td>
+                </tr>
+                </tfoot>
+            </table>
         </div>
-        <div class="form-group"><label>Billing email:</label><input class="form-control" id="billing-email"></div>
-        <div class="form-group"><label><input class="form-control" type="checkbox"
-                                              id="confirm-email"> confirm email.</label></div>
-        <div class="form-group"><label><input class="form-control" type="checkbox" id="ratings"> ratings</label></div>
-        <div class="form-group">
-            Mailing list:
-            <label><input type="radio" name="customFieldDS.customfield_ROW0_value"
-                          value="Weekly newsletter--New books, updates, news, and special offers" checked/>Weekly
-                newsletter--New books, updates, news, and special offers.</label>
-            <label><input type="radio" name="customFieldDS.customfield_ROW0_value"
-                          value="Deal of the Day--These amazing special offers last just 24 hours"/>Deal of the
-                Day--These amazing special offers last just 24 hours!</label>
-            <label><input type="radio" name="customFieldDS.customfield_ROW0_value" value="Both"/>Both</label>
-            <label><input type="radio" name="customFieldDS.customfield_ROW0_value"
-                          value="No promotional mailers. I will still receive updates on my MEAPs and other books"/>No
-                promotional mailers. I will still receive updates on my MEAPs and other books.</label>
-            <label><input type="radio" name="customFieldDS.customfield_ROW0_value"
-                          value="Keep me on the lists I&#39;m already on."/>Keep me on the lists I&#39;m already
-                on.</label>
+        <h2>Billing Information</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="billing-first-name">First Name:</label>
+                    <input type="text" class="form-control" id="billing-first-name">
+                </div>
+                <div class="form-group">
+                    <label for="billing-last-name">Last Name:</label>
+                    <input type="text" class="form-control" id="billing-last-name">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="billing-address1">Street Address 1:</label>
+                    <input type="text" class="form-control" id="billing-address1">
+                </div>
+                <div class="form-group">
+                    <label for="billing-address2">Street Address 2:</label>
+                    <input type="text" class="form-control" id="billing-address2">
+                </div>
+                <div class="form-group">
+                    <label for="billing-city">City:</label>
+                    <input type="text" class="form-control" id="billing-city">
+                    <label for="billing-state">State:</label>
+                    <input type="text" class="form-control" id="billing-state">
+                </div>
+                <div class="form-group">
+                    <label for="billing-zip">Zip:</label>
+                    <input type="text" class="form-control" id="billing-zip">
+                    <label for="billing-country">Country:</label>
+                    <input type="text" class="form-control" id="billing-country">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="card-number">Credit Card:</label>
+                    <input type="text" class="form-control" id="card-number" name="cardNumber">
+                    <form:errors path="cardNumber" cssClass="help-inline" cssStyle="color: red"/>
+                </div>
+                <div class="form-group">
+                    <label for="card-exp-month">Expiry Month:</label>
+                    <input type="text" class="form-control" id="card-exp-month">
+                    <label for="card-exp-month">Expiry Year:</label>
+                    <input type="text" class="form-control" id="card-exp-year">
+                </div>
+            </div>
+
         </div>
-        <div class="form-group"><label>Comments:</label><textarea class="form-control" id="comments"></textarea></div>
-    </form>
+        <jsp:include page="cart/other-information.jsp"/>
+        <button type="submit" class="btn btn-primary">Continue</button>
+    </form:form>
 </div>
 </body>
