@@ -164,41 +164,6 @@
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.webjars</groupId>
-                                    <artifactId>bootstrap</artifactId>
-                                    <version>3.3.2-1</version>
-                                    <includes>**/css/**,**/js/**</includes>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.webjars</groupId>
-                                    <artifactId>jquery</artifactId>
-                                    <version>${jquery.version}</version>
-                                    <includes>**/css/**,**/js/**</includes>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.webjars</groupId>
-                                    <artifactId>jquery-ui</artifactId>
-                                    <version>${jquery-ui.version}</version>
-                                    <includes>**/css/**,**/js/**</includes>
-                                </artifactItem>
-                            </artifactItems>
-                            <outputDirectory>src/main/webapp</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>keytool-maven-plugin</artifactId>
                 <version>1.5</version>

@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <jsp:include page="head.jsp"/>
     <title>Cart</title>
 </head>
 <body>

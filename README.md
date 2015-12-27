@@ -7,7 +7,7 @@ You'll need to install
 * Maven.
 * Firefox.
 
-Running
+Running Application
 ---
 This is an example application with tests. To run the application:
 
@@ -18,6 +18,14 @@ When it is ready you'll see "Started Jetty Server" printed onto the console.  Yo
 To stop this web site, Ctrl+C, or:
 
 	mvn jetty:stop
+	
+The Book Store
+---
+
+The application contains a dynamic bookstore at <http://localhost:8080/bookstore/>.
+	
+Running Tests
+---
 	
 To run a single test (using the Maven Failsafe Plugin):
 

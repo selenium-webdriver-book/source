@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
     <title>${book.title}</title>
 </head>
 <body>
@@ -10,6 +8,7 @@
 <jsp:include page="nav.jsp"/>
 <div class="container">
     <h1>${book.title}</h1>
+    <p>${book.authors}</p>
     <div class="row">
         <div class="col-md-3">
             <img src="/images/${book.id}.png"/>
