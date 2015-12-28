@@ -75,4 +75,9 @@ public class WebDriverConfig {
         }
         return value;
     }
+
+    @Bean
+    public WebElementScreenshotTaker webElementScreenshotTaker() {
+        return new WebElementScreenshotTaker();
+    }
 }
