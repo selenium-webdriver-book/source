@@ -13,11 +13,11 @@ import java.io.IOException;
 
 public class WebElementScreenshotTaker {
 
-    public void takeScreenshot(WebDriver driver, WebElement element, File destFile) throws IOException {
-        takeScreenshot((TakesScreenshot) driver, element, destFile);
+    public File takeScreenshot(WebDriver driver, WebElement element) throws IOException {
+        return takeScreenshot((TakesScreenshot) driver, element);
     }
 
-    public void takeScreenshot(TakesScreenshot takesScreenshot, WebElement element, File destFile) throws IOException {
+    public File takeScreenshot(TakesScreenshot takesScreenshot, WebElement element) throws IOException {
         File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
         BufferedImage fullImg = ImageIO.read(screenshot);
@@ -26,7 +26,9 @@ public class WebElementScreenshotTaker {
         BufferedImage cropped = fullImg.getSubimage(point.getX(), point.getY(),
                 element.getSize().getWidth(), element.getSize().getHeight());
 
-        String formatName = destFile.getName().replaceFirst("^.*\\.(.*)$", "$1");
-        ImageIO.write(cropped, formatName, destFile);
+        String formatName = screenshot.getName().replaceFirst("^.*\\.(.*)$", "$1");
+        ImageIO.write(cropped, formatName, screenshot);
+
+        return screenshot;
     }
 }
