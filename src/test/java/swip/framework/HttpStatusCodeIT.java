@@ -31,5 +31,4 @@ public class HttpStatusCodeIT {
 
         assertEquals(200, httpStatusCodeSupplier.get());
     }
-
 }
