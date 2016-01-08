@@ -8,7 +8,6 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.imageio.ImageIO;
@@ -21,7 +20,6 @@ import java.nio.file.Files;
 
 @Ignore
 @RunWith(WebDriverRunner.class)
-@Config(exclude = {"browserName=htmlunit"})
 public class VisualTestingIT {
     @Inject
     private WebDriver driver;

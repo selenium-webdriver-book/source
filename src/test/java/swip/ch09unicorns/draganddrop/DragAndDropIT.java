@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -13,7 +12,6 @@ import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = {"browserName=safari", "browserName=htmlunit"}) // htmlunit does not support jQuery
 public class DragAndDropIT {
 
     @Inject

@@ -5,13 +5,11 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = {"browserName=safari", "browserName=htmlunit"})
 public class LoginFormIT {
     @Inject
     private WebDriver driver;

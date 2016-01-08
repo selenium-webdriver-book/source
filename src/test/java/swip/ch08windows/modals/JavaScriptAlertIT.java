@@ -6,13 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = {"browserName=safari", "browserName=htmlunit", "browserName=phantomjs"})
 public class JavaScriptAlertIT {
     @Inject
     private WebDriver driver;

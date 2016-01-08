@@ -8,7 +8,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.HasInputDevices;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -17,8 +16,6 @@ import java.net.URI;
 import static org.junit.Assert.assertNotEquals;
 
 @RunWith(WebDriverRunner.class)
-// html unit does not implement RemoteWebDriver
-@Config(exclude = {"browserName=safari", "browserName=iPhone", "browserName=htmlunit", "browserName=firefox"})
 public class KeyboardInputIT<W extends WebDriver & HasInputDevices> {
 
     @Inject
