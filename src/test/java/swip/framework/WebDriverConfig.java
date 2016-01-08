@@ -80,9 +80,4 @@ public class WebDriverConfig {
     public WebElementScreenshotTaker webElementScreenshotTaker() {
         return new WebElementScreenshotTaker();
     }
-
-    @Bean
-    public Ocr ocr(@Value("${ocr.url:http://130.211.57.252:8080/ocr-file-upload}") URI url) {
-        return new Ocr(url);
-    }
 }
