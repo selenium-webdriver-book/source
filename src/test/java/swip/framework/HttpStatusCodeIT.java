@@ -1,17 +1,18 @@
-package swip.ch12decorating.httpstatuscode;
+package swip.framework;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import swip.ch12decorating.httpstatuscode.HttpStatusCodeSupplier;
 
 import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = HttpStatusCodeConfig.class)
+@ContextConfiguration(classes = WebDriverConfig.class)
 public class HttpStatusCodeIT {
 
     @Inject private WebDriver driver;

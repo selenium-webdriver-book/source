@@ -1,5 +1,6 @@
 package swip.framework;
 
+import net.lightbody.bmp.proxy.ProxyServer;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import swip.ch12decorating.httpstatuscode.HttpStatusCodeSupplier;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -28,6 +30,10 @@ public class WebDriverConfig {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
+    @Bean(initMethod = "start", destroyMethod = "stop")
+    public ProxyServer proxyServer() {
+        return new ProxyServer(9091);
+    }
 
     @Bean
     public WebDriverFactory webDriverFactory(@Value("${webdriver.remote:false}") boolean remoteDriver,
@@ -41,9 +47,10 @@ public class WebDriverConfig {
     }
 
     @Bean
-    public DesiredCapabilities desiredCapabilities() {
+    public DesiredCapabilities desiredCapabilities(ProxyServer proxyServer) {
         DesiredCapabilities capabilities = new DesiredCapabilities("firefox", "", Platform.ANY);
         capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        capabilities.setCapability(CapabilityType.PROXY, proxyServer.seleniumProxy());
 
         String prefix = "webdriver.capabilities.";
 
@@ -74,6 +81,11 @@ public class WebDriverConfig {
             return URI.create("http://" + InetAddress.getLocalHost().getHostAddress() + ":8080");
         }
         return value;
+    }
+
+    @Bean
+    public HttpStatusCodeSupplier httpStatusCodeSupplier(ProxyServer server, URI baseUrl) {
+        return new HttpStatusCodeSupplier(server, baseUrl);
     }
 
     @Bean
