@@ -23,7 +23,8 @@ public class WebDriverRunner extends SpringJUnit4ClassRunner {
     }
 
     @ContextConfiguration(classes = WebDriverConfig.class)
-    @TestExecutionListeners(listeners = {ScreenshotTaker.class, DependencyInjectionTestExecutionListener.class})
+    @TestExecutionListeners(listeners = {ScreenshotTaker.class, DependencyInjectionTestExecutionListener.class,
+        ExtentReportsListener.class})
     public static class ConfigShim {
 
     }

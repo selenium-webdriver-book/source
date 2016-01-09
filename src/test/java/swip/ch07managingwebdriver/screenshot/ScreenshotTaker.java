@@ -4,13 +4,18 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 
 public class ScreenshotTaker extends AbstractTestExecutionListener {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ScreenshotTaker.class);
+
     @Override
     public void afterTestMethod(TestContext testContext) throws Exception {
         TakesScreenshot takesScreenshot = (TakesScreenshot) testContext.getApplicationContext()
@@ -20,10 +25,10 @@ public class ScreenshotTaker extends AbstractTestExecutionListener {
         if (!dir.exists()) {
             Files.createDirectories(dir.toPath());
         }
-        File file = new File(dir,
-                testContext.getTestClass().getName() + "_" + testContext.getTestMethod().getName() + ".png");
+        Method method = testContext.getTestMethod();
+        File file = new File(dir, String.format("%s#%s.png", method.getDeclaringClass().getName(), method.getName()));
         FileUtils.deleteQuietly(file);
         FileUtils.moveFile(screenshot, file);
-        System.err.println("saved screenshot as " + file);
+        LOGGER.info("saved screenshot as {}", file);
     }
 }

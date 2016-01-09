@@ -3,31 +3,30 @@ package swip.framework;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.TestContext;
-import org.springframework.test.context.TestExecutionListener;
+import org.springframework.test.context.support.AbstractTestExecutionListener;
 
+import java.io.File;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
+import java.net.URLEncoder;
 
-public class ExtentReportsListener implements TestExecutionListener {
+public class ExtentReportsListener extends AbstractTestExecutionListener {
 
-    private final ExtentReports extent = new ExtentReports("target/extent.html", true);
+    private static final ExtentReports EXTENT = new ExtentReports("target/extent.html", true);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExtentReportsListener.class);
     private final ThreadLocal<ExtentTest> currentTest = new ThreadLocal<>();
 
-    @Override
-    public void beforeTestClass(TestContext testContext) throws Exception {
-        extent.loadConfig(ExtentReportsListener.class, "/extent-config.xml");
-    }
-
-    @Override
-    public void prepareTestInstance(TestContext testContext) throws Exception {
-
+    static {
+        EXTENT.loadConfig(ExtentReportsListener.class, "/extent-config.xml");
     }
 
     @Override
     public void beforeTestMethod(TestContext testContext) throws Exception {
         Method testMethod = testContext.getTestMethod();
-        currentTest.set(extent.startTest(String.format("%s#%s", testMethod.getDeclaringClass().getSimpleName(),
+        currentTest.set(EXTENT.startTest(String.format("%s#%s", testMethod.getDeclaringClass().getSimpleName(),
                 testMethod.getName())));
     }
 
@@ -36,12 +35,28 @@ public class ExtentReportsListener implements TestExecutionListener {
         ExtentTest extentTest = currentTest.get();
 
         @SuppressWarnings("ThrowableResultOfMethodCallIgnored") Throwable testException = testContext.getTestException();
-        extentTest.log(testException != null ? LogStatus.ERROR : LogStatus.PASS, describe(testContext.getTestException()));
 
-        extent.endTest(extentTest);
+        Method method = testContext.getTestMethod();
+        String fileName = String.format("screenshots/%s#%s.png", method.getDeclaringClass().getName(), method.getName());
+
+        boolean screenshotExists = new File(fileName).exists();
+
+        LOGGER.info("fileName={}, screenshotExists={}" ,fileName, screenshotExists);
+
+        String img = extentTest.addScreenCapture(URLEncoder.encode(fileName, "UTF-8"));
+        LogStatus status = testException != null ? LogStatus.FAIL : LogStatus.PASS;
+        switch (status) {
+            case PASS:
+                extentTest.log(status, img);
+                break;
+            case FAIL:
+                extentTest.log(status, "<code>" + describe(testContext.getTestException()) + "</code>" + img);
+        }
+
+        EXTENT.endTest(extentTest);
     }
 
-    private String describe(Throwable exception) {
+    private static String describe(Throwable exception) {
         if (exception == null) {
             return null;
         }
@@ -55,6 +70,6 @@ public class ExtentReportsListener implements TestExecutionListener {
 
     @Override
     public void afterTestClass(TestContext testContext) throws Exception {
-        extent.flush();
+        EXTENT.flush();
     }
 }
