@@ -113,7 +113,7 @@ public class WebDriverConfig {
 
     @Bean
     public HttpStatusCodeSupplier httpStatusCodeSupplier(URI baseUrl) {
-        return new HttpStatusCodeSupplier(baseUrl);
+        return new HttpStatusCodeSupplier();
     }
 
     @Bean
