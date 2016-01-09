@@ -10,8 +10,6 @@ import swip.framework.WebDriverRunner;
 import javax.inject.Inject;
 import java.net.URI;
 
-import static org.junit.Assert.assertTrue;
-
 @RunWith(WebDriverRunner.class)
 public class WyswygInputIT {
 
@@ -23,8 +21,6 @@ public class WyswygInputIT {
     @Test
     public void enterTextIntoAWyswgyEditor() throws Exception {
         driver.get(baseUrl + "/wyswyg-editor.html");
-
-        assertTrue(false);
 
         WebElement editorFrame = driver.findElement(By.id("editor_ifr")); // #1 find the correct iframe
 
