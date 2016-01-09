@@ -8,6 +8,7 @@ import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
 
 import java.io.File;
+import java.nio.file.Files;
 
 public class ScreenshotTaker extends AbstractTestExecutionListener {
     @Override
@@ -15,7 +16,11 @@ public class ScreenshotTaker extends AbstractTestExecutionListener {
         TakesScreenshot takesScreenshot = (TakesScreenshot) testContext.getApplicationContext()
                 .getBean(WebDriver.class);
         File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        File file = new File("target",
+        File dir = new File("target/screenshots");
+        if (!dir.exists()) {
+            Files.createDirectories(dir.toPath());
+        }
+        File file = new File(dir,
                 testContext.getTestClass().getName() + "_" + testContext.getTestMethod().getName() + ".png");
         FileUtils.deleteQuietly(file);
         FileUtils.moveFile(screenshot, file);
