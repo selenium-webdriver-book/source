@@ -1,7 +1,10 @@
 package swip.framework;
 
-import net.lightbody.bmp.proxy.ProxyServer;
+import org.littleshoot.proxy.HttpFiltersSource;
+import org.littleshoot.proxy.HttpProxyServer;
+import org.littleshoot.proxy.impl.DefaultHttpProxyServer;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -17,6 +20,8 @@ import swip.ch12decorating.httpstatuscode.HttpStatusCodeSupplier;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 import java.net.URI;
 import java.net.URL;
 import java.net.UnknownHostException;
@@ -30,9 +35,18 @@ public class WebDriverConfig {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
-    @Bean(initMethod = "start", destroyMethod = "stop")
-    public ProxyServer proxyServer() {
-        return new ProxyServer(9091);
+    private static int freePort() throws IOException {
+        try (ServerSocket serverSocket = new ServerSocket(0)) {
+            return serverSocket.getLocalPort();
+        }
+    }
+
+    @Bean(destroyMethod = "stop")
+    public HttpProxyServer proxyServer(HttpFiltersSource httpFiltersSource) throws IOException {
+        return DefaultHttpProxyServer.bootstrap()
+                .withNetworkInterface(new InetSocketAddress(InetAddress.getLocalHost(), freePort()))
+                //.withFiltersSource(httpFiltersSource)
+                .start();
     }
 
     @Bean
@@ -47,10 +61,12 @@ public class WebDriverConfig {
     }
 
     @Bean
-    public DesiredCapabilities desiredCapabilities(ProxyServer proxyServer) {
+    public DesiredCapabilities desiredCapabilities(HttpProxyServer proxyServer) throws UnknownHostException {
         DesiredCapabilities capabilities = new DesiredCapabilities("firefox", "", Platform.ANY);
         capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-        capabilities.setCapability(CapabilityType.PROXY, proxyServer.seleniumProxy());
+
+        String httpProxy = InetAddress.getLocalHost().getHostAddress() + ":" + proxyServer.getListenAddress().getPort();
+        capabilities.setCapability(CapabilityType.PROXY, new Proxy().setHttpProxy(httpProxy));
 
         String prefix = "webdriver.capabilities.";
 
@@ -84,8 +100,8 @@ public class WebDriverConfig {
     }
 
     @Bean
-    public HttpStatusCodeSupplier httpStatusCodeSupplier(ProxyServer server, URI baseUrl) {
-        return new HttpStatusCodeSupplier(server, baseUrl);
+    public HttpStatusCodeSupplier httpStatusCodeSupplier(URI baseUrl) {
+        return new HttpStatusCodeSupplier(baseUrl);
     }
 
     @Bean

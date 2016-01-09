@@ -137,18 +137,10 @@
             <version>1</version>
             <scope>test</scope>
         </dependency>
-        <!-- proxy -->
         <dependency>
-            <groupId>net.lightbody.bmp</groupId>
-            <artifactId>browsermob-proxy</artifactId>
-            <version>2.0.0</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-jdk14</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.littleshoot</groupId>
+            <artifactId>littleproxy</artifactId>
+            <version>1.1.0-beta1</version>
         </dependency>
         <!-- logging -->
         <dependency>

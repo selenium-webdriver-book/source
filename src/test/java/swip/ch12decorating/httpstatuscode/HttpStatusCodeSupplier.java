@@ -1,36 +1,36 @@
 package swip.ch12decorating.httpstatuscode;
 
-import net.lightbody.bmp.core.har.Har;
-import net.lightbody.bmp.proxy.ProxyServer;
-import net.lightbody.bmp.proxy.http.BrowserMobHttpResponse;
+import io.netty.handler.codec.http.HttpObject;
+import io.netty.handler.codec.http.HttpRequest;
+import org.littleshoot.proxy.HttpFilters;
+import org.littleshoot.proxy.HttpFiltersAdapter;
+import org.littleshoot.proxy.HttpFiltersSourceAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 
-public class HttpStatusCodeSupplier {
+public class HttpStatusCodeSupplier extends HttpFiltersSourceAdapter {
     private static final Logger LOGGER = LoggerFactory.getLogger(HttpStatusCodeSupplier.class);
 
     private int httpStatusCode;
 
-    public HttpStatusCodeSupplier(ProxyServer server, URI baseUrl) {
-        server.addResponseInterceptor(
-                (BrowserMobHttpResponse httpResponse, Har har) -> {
-                    String path = httpResponse.getEntry().getRequest().getUrl();
-                    boolean capture = !path.matches(".*\\.(js|css|ico|json)") &&
-                            path.startsWith(baseUrl.toString());
-                    LOGGER.info("path={}, capture={}", path, capture);
-                    if (httpResponse.getRawResponse() != null && capture) {
-                        httpStatusCode = httpResponse.getRawResponse()
-                                .getStatusLine().getStatusCode();
-                        LOGGER.info("httpStatusCode={}", httpStatusCode);
-                    }
-                });
+    public HttpStatusCodeSupplier(URI baseUrl) {
+        super();
+    }
+
+    @Override
+    public HttpFilters filterRequest(HttpRequest originalRequest) {
+        return new HttpFiltersAdapter(originalRequest) {
+
+            @Override
+            public HttpObject serverToProxyResponse(HttpObject httpObject) {
+                return super.serverToProxyResponse(httpObject);
+            }
+        };
     }
 
     public int get() throws InterruptedException {
-        // a short wait, as interceptors occur on another thread
-        Thread.sleep(1000);
         LOGGER.info("requesting status code, httpStatusCode={}", httpStatusCode);
         if (httpStatusCode == 0) {
             throw new IllegalStateException(
