@@ -5,14 +5,12 @@ import org.openqa.selenium.By;
 import swip.ch14elements.framework.Browser;
 import swip.ch14elements.framework.Element;
 
-import javax.annotation.Nullable;
-
 public class BookPage {
 
     private Browser browser;
     private Predicate<Browser> colorBecomeWhite =  new Predicate<Browser>() {
         @Override
-        public boolean apply(@Nullable Browser browser) {
+        public boolean apply(Browser browser) {
             return cartButton().getCssValue("color").equals("rgba(255, 255, 255, 1)");
         }
     };
