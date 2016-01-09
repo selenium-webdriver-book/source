@@ -1,11 +1,12 @@
-package swip.framework;
+package swip.ch12decorating.httpstatuscode;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import swip.ch12decorating.httpstatuscode.HttpStatusCodeSupplier;
+import swip.framework.HttpStatusCodeSupplier;
+import swip.framework.WebDriverConfig;
 
 import javax.inject.Inject;
 

@@ -1,4 +1,4 @@
-package swip.ch12decorating.httpstatuscode;
+package swip.framework;
 
 import io.netty.handler.codec.http.HttpObject;
 import io.netty.handler.codec.http.HttpRequest;

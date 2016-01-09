@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import swip.ch12decorating.httpstatuscode.HttpStatusCodeSupplier;
 
 import java.io.IOException;
 import java.net.InetAddress;
