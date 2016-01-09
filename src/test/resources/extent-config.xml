@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- http://extentreports.relevantcodes.com/java/version2/docs.html#configuration -->
+<extentreports>
+    <configuration>
+        <!-- protocol for script and stylesheets -->
+        <protocol>http</protocol>
+
+        <!-- title of the document -->
+        <documentTitle>ExtentReports 2.0</documentTitle>
+
+        <!-- report name - displayed at top-nav -->
+        <reportName>Automation Report</reportName>
+
+        <!-- report headline - displayed at top-nav, after reportHeadline -->
+        <reportHeadline>Selenium WebDriver in Practice</reportHeadline>
+
+    </configuration>
+</extentreports>
