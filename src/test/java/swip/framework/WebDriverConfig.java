@@ -45,7 +45,7 @@ public class WebDriverConfig {
         InetSocketAddress inetSocketAddress = new InetSocketAddress(InetAddress.getLocalHost(), 0);
         return DefaultHttpProxyServer.bootstrap()
                 .withNetworkInterface(inetSocketAddress)
-                //.withFiltersSource(httpFiltersSource)
+                .withFiltersSource(httpFiltersSource)
                 .withPort(freePort())
                 .start();
     }
@@ -94,10 +94,19 @@ public class WebDriverConfig {
         return webDriverFactory.webDriver(desiredCapabilities, baseUrl);
     }
 
+    @Primary
     @Bean
     public URI baseUrl(@Value("${webdriver.baseUrl:http://auto}") URI value) throws UnknownHostException {
         if (value.equals(URI.create("http://auto"))) {
             return URI.create("http://" + InetAddress.getLocalHost().getHostAddress() + ":8080");
+        }
+        return value;
+    }
+
+    @Bean
+    public URI baseUrlHttps(@Value("${webdriver.baseUrlHttps:https://auto}") URI value) throws UnknownHostException {
+        if (value.equals(URI.create("https://auto"))) {
+            return URI.create("https://" + InetAddress.getLocalHost().getHostAddress() + ":8443");
         }
         return value;
     }

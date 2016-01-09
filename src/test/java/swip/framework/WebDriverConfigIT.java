@@ -7,6 +7,8 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import javax.inject.Inject;
+import javax.inject.Named;
+import java.net.URI;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,6 +16,14 @@ import static org.junit.Assert.assertEquals;
 public class WebDriverConfigIT {
 
     @Inject private DesiredCapabilities desiredCapabilities;
+    @Inject
+    @Named("baseUrlHttps")
+    private URI baseUrlHttps;
+
+    @Test
+    public void baseUriIsHttps() throws Exception {
+        assertEquals("https", baseUrlHttps.getScheme());
+    }
 
     @Test
     public void firefoxBrowser() throws Exception {
