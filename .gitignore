@@ -1,13 +1,5 @@
-/src/main/webapp/css
-/src/main/webapp/js
-/src/main/webapp/fonts
-/src/main/webapp/less
-/*.png
 /target
 /.idea
 /*.iml
-*.pdf
-/bin/*.log*
 .DS_Store
-/docs/_book
 /tmp*.txt
