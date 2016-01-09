@@ -42,10 +42,12 @@ public class WebDriverConfig {
     }
 
     @Bean(destroyMethod = "stop")
-    public HttpProxyServer proxyServer(HttpFiltersSource httpFiltersSource) throws IOException {
+    public HttpProxyServer proxyServer(HttpFiltersSource httpFiltersSource) throws IOException, InterruptedException {
+        InetSocketAddress inetSocketAddress = new InetSocketAddress(InetAddress.getLocalHost(), 0);
         return DefaultHttpProxyServer.bootstrap()
-                .withNetworkInterface(new InetSocketAddress(InetAddress.getLocalHost(), freePort()))
+                .withNetworkInterface(inetSocketAddress)
                 //.withFiltersSource(httpFiltersSource)
+                .withPort(freePort())
                 .start();
     }
 
@@ -65,8 +67,10 @@ public class WebDriverConfig {
         DesiredCapabilities capabilities = new DesiredCapabilities("firefox", "", Platform.ANY);
         capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
-        String httpProxy = InetAddress.getLocalHost().getHostAddress() + ":" + proxyServer.getListenAddress().getPort();
-        capabilities.setCapability(CapabilityType.PROXY, new Proxy().setHttpProxy(httpProxy));
+        String httpProxy = proxyServer.getListenAddress().toString().substring(1); // remove a leading "/"
+        Proxy proxy = new Proxy().setHttpProxy(httpProxy).setSslProxy(httpProxy)
+                .setFtpProxy(httpProxy).setSocksProxy(httpProxy);
+        capabilities.setCapability(CapabilityType.PROXY, proxy);
 
         String prefix = "webdriver.capabilities.";
 
