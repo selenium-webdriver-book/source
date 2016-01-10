@@ -26,7 +26,6 @@ public class GifSequenceWriter implements AutoCloseable {
      * @param timeBetweenFramesMS the time between frames in miliseconds
      * @param loopContinuously    wether the gif should loop repeatedly
      * @throws IIOException if no gif ImageWriters are found
-     * @author Elliot Kroo (elliot[at]kroo[dot]net)
      */
     public GifSequenceWriter(ImageOutputStream outputStream, int imageType, int timeBetweenFramesMS,
                              boolean loopContinuously) throws IOException {
