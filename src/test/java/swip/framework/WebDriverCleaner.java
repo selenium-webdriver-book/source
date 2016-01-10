@@ -1,5 +1,6 @@
 package swip.framework;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Set;
@@ -12,6 +13,8 @@ class WebDriverCleaner {
         driver.manage().deleteAllCookies();
 
         closeRedundantWindows(driver);
+
+        driver.manage().window().setSize(new Dimension(768 / 2, 1024 / 2));
 
         return driver;
     }

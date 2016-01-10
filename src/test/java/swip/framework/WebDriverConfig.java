@@ -84,8 +84,9 @@ public class WebDriverConfig {
     @Bean
     @Primary
     @Scope("prototype")
-    public WebDriver webDriver(WebDriverCleaner webDriverCleaner, @Qualifier("dirtyWebDriver") WebDriver driver) {
-        return webDriverCleaner.cleanWebDriver(driver);
+    public WebDriver webDriver(WebDriverCleaner webDriverCleaner, @Qualifier("dirtyWebDriver") WebDriver driver,
+                               ScreencastCapture screencastCapture) {
+        return screencastCapture.createCapturingWebDriver(webDriverCleaner.cleanWebDriver(driver));
     }
 
     @Bean(destroyMethod = "quit")
@@ -114,6 +115,11 @@ public class WebDriverConfig {
     @Bean
     public HttpStatusCodeSupplier httpStatusCodeSupplier() {
         return new HttpStatusCodeSupplier();
+    }
+
+    @Bean
+    public ScreencastCapture screencastCapture() throws IOException {
+        return new ScreencastCapture();
     }
 
     @Bean
