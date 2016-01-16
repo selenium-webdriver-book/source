@@ -20,23 +20,7 @@ public class ScreencastListener extends AbstractTestExecutionListener {
         }
     }
 
-    @Override
-    public void beforeTestMethod(TestContext testContext) throws Exception {
-        Method testMethod = testContext.getTestMethod();
-        Optional<CapturesScreencast> capturesScreencast = getCapturesScreencast(testContext);
-        if (capturesScreencast.isPresent()) {
-            capturesScreencast.get()
-                    .startScreencastCapture(new File(String.format("target/screencasts/%s#%s.gif", testMethod.getDeclaringClass().getName(), testMethod.getName())));
-        }
-    }    @Override
-    public void beforeTestMethod(TestContext testContext) throws Exception {
-        Method testMethod = testContext.getTestMethod();
-        Optional<CapturesScreencast> capturesScreencast = getCapturesScreencast(testContext);
-        if (capturesScreencast.isPresent()) {
-            capturesScreencast.get()
-                    .startScreencastCapture(new File(String.format("target/screencasts/%s#%s.gif", testMethod.getDeclaringClass().getName(), testMethod.getName())));
-        }
-    }private static Optional<CapturesScreencast> getCapturesScreencast(TestContext testContext) {
+    private static Optional<CapturesScreencast> getCapturesScreencast(TestContext testContext) {
         Object testInstance = testContext.getTestInstance();
         return Arrays.stream(testInstance.getClass().getDeclaredFields())
                 .map(field -> {
