@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.interactions.Mouse;
 import org.openqa.selenium.internal.WrapsDriver;
 import org.openqa.selenium.internal.WrapsElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import swip.framework.util.GifSequenceWriter;
@@ -108,12 +109,20 @@ public class ScreencastCapture implements AutoCloseable, CapturesScreencast {
 
     private void capture(WebDriver driver, Method method, Object[] args) throws IOException {
         if (!CAPTURE_BLACKLIST.contains(method.getName()) && driver instanceof TakesScreenshot && gifSequenceWriter != null) {
-            LOGGER.info("capturing method={}, args={}", method, args);
-            try {
-                File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                gifSequenceWriter.write(ImageIO.read(screenshot));
-            } catch (UnhandledAlertException | NoSuchWindowException ignored) {
-                LOGGER.warn("failed to capture due to " + ignored);
+
+            // taking screenshots appears to interfere with alerts
+            boolean alertIsPresent = ExpectedConditions.alertIsPresent().apply(driver) != null;
+
+            if (!alertIsPresent) {
+                LOGGER.info("capturing method={}, args={}", method, args);
+                try {
+                    File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                    gifSequenceWriter.write(ImageIO.read(screenshot));
+                } catch (UnhandledAlertException | NoSuchWindowException ignored) {
+                    LOGGER.warn("failed to capture due to " + ignored);
+                }
+            } else {
+                LOGGER.info("not capturing screencast, alert is present");
             }
         } else {
             LOGGER.debug("ignoring method={}", method);
