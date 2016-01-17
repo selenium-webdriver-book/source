@@ -2,6 +2,7 @@ package swip.ch11drivers.mobileemulation;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,6 +14,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
+@Ignore("Chrome not supported on CircleCI")
 public class ChromeMobileEmulationDeviceAttributesIT {
 
     private WebDriver driver;
