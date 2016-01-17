@@ -31,8 +31,9 @@ public class ScreencastListener extends AbstractTestExecutionListener {
                         throw new RuntimeException(e);
                     }
                 })
-                .filter(field -> CapturesScreencast.class.isAssignableFrom(field.getClass()))
-                .map(field -> (CapturesScreencast) field)
+                .filter(value -> value != null)
+                .filter(value-> CapturesScreencast.class.isAssignableFrom(value.getClass()))
+                .map(value -> (CapturesScreencast) value)
                 .findFirst();
     }
 
