@@ -47,7 +47,22 @@ To find slow tests:
     mvn clean install
     mvn surefire-report:failsafe-report-only
     open target/site/failsafe-report.html 
-	
+    
+Chrome Mobile Emulation
+---
+
+Specifying known device:
+
+    mvn ... -Dwebdriver.capabilities.browserName=chrome -Dwebdriver.capabilities.chromeOptions.mobileEmulation.deviceName="Apple iPad"
+    
+Specifying individual device attributes:
+
+    mvn ... -Dwebdriver.capabilities.browserName=chrome \
+        -Dwebdriver.capabilities.chromeOptions.mobileEmulation.deviceMetrics.width=768 \
+        -Dwebdriver.capabilities.chromeOptions.mobileEmulation.deviceMetrics.height=1024 \
+        -Dwebdriver.capabilities.chromeOptions.mobileEmulation.deviceMetrics.pixelRatio=2 \
+        -Dwebdriver.capabilities.chromeOptions.mobileEmulation.userAgent='Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53' 
+
 Local Selenium Grid With Vagrant
 ---
 
