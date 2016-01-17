@@ -9,21 +9,25 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
 
+import static org.junit.Assert.assertEquals;
+
 @Ignore("only runs with Appium")
 public class AppiumIPhoneIT {
-    private AppiumDriver<MobileElement> driver; // <1>
+    private AppiumDriver<MobileElement> driver;
 
     @Before
     public void setUp() throws Exception {
-        DesiredCapabilities capabilities = DesiredCapabilities.iphone();
+        DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simulator");  // <2>
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.3");
-        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "safari"); // <3>
+
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.2");
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, "safari");
 
         driver = new IOSDriver<>(
                 new URL("http://127.0.0.1:4723/wd/hub"),
@@ -37,11 +41,11 @@ public class AppiumIPhoneIT {
     }
 
     @Test
-    public void openGoogle() throws Exception {
-        driver.get("http://www.google.com");
+    public void openHomepage() throws Exception {
+        driver.get("http://GL04321M.lan:8080");
 
-        MobileElement element = driver.findElement(By.xpath("//button"));
+        driver.findElement(By.tagName("a"));
 
-        element.click();
+        assertEquals("Selenium WebDriver In Practice - Index", driver.getTitle());
     }
 }

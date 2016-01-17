@@ -29,7 +29,7 @@ Running Tests
 	
 To run a single test (using the Maven Failsafe Plugin):
 
-	mvn failsafe:integration-test failsafe:verify -Dit.test=HelloWebDriverIT
+	mvn test-compile failsafe:integration-test failsafe:verify -Dit.test=HelloWebDriverIT
 
 On just in another browser, other than Firefox:
 
@@ -62,6 +62,29 @@ Specifying individual device attributes:
         -Dwebdriver.capabilities.chromeOptions.mobileEmulation.deviceMetrics.height=1024 \
         -Dwebdriver.capabilities.chromeOptions.mobileEmulation.deviceMetrics.pixelRatio=2 \
         -Dwebdriver.capabilities.chromeOptions.mobileEmulation.userAgent='Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53' 
+        
+        
+Appium
+---
+On iOS:
+
+    mvn .. -Dwebdriver.remote=true \
+        -Dwebdriver.remote.url=http://localhost:4723/wd/hub \
+        -Dwebdriver.capabilities.deviceName="iPhone 5" \
+        -Dwebdriver.capabilities.platformName=iOS \
+        -Dwebdriver.capabilities.platformVersion=9.2 \
+        -Dwebdriver.capabilities.browserName=safari
+
+On Android (note that we disable screenshots and proxy):
+
+    mvn .. -Dwebdriver.remote=true \
+        -Dwebdriver.remote.url=http://localhost:4723/wd/hub \
+        -Dwebdriver.capabilities.deviceName="Nexus" \
+        -Dwebdriver.capabilities.platformName=Android \
+        -Dwebdriver.capabilities.platformVersion=4.4 \
+        -Dwebdriver.capabilities.browserName=browser \
+        -Dwebdriver.screenshots.enabled=false \
+        -Dwebdriver.proxy.enabled=false
 
 Local Selenium Grid With Vagrant
 ---
