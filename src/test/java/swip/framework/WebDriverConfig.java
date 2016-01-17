@@ -68,14 +68,17 @@ public class WebDriverConfig {
     }
 
     @Bean
-    public DesiredCapabilities desiredCapabilities(HttpProxyServer proxyServer) throws UnknownHostException {
+    public DesiredCapabilities desiredCapabilities(HttpProxyServer proxyServer,
+                                                   @Value("${webdriver.proxy.enabled:true}") boolean proxyEnabled) throws UnknownHostException {
         DesiredCapabilities capabilities = new DesiredCapabilities("firefox", "", Platform.ANY);
         capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
-        String httpProxy = proxyServer.getListenAddress().toString().substring(1); // remove a leading "/"
-        Proxy proxy = new Proxy().setHttpProxy(httpProxy).setSslProxy(httpProxy)
-                .setFtpProxy(httpProxy).setSocksProxy(httpProxy);
-        capabilities.setCapability(CapabilityType.PROXY, proxy);
+        if (proxyEnabled) {
+            String httpProxy = proxyServer.getListenAddress().toString().substring(1); // remove a leading "/"
+            Proxy proxy = new Proxy().setHttpProxy(httpProxy).setSslProxy(httpProxy)
+                    .setFtpProxy(httpProxy).setSocksProxy(httpProxy);
+            capabilities.setCapability(CapabilityType.PROXY, proxy);
+        }
 
         populateCapabilites(capabilities);
 
