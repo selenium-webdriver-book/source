@@ -110,19 +110,19 @@ public class ScreencastCapture implements AutoCloseable, CapturesScreencast {
     private void capture(WebDriver driver, Method method, Object[] args) throws IOException {
         if (!CAPTURE_BLACKLIST.contains(method.getName()) && driver instanceof TakesScreenshot && gifSequenceWriter != null) {
 
+            try {
             // taking screenshots appears to interfere with alerts
             boolean alertIsPresent = ExpectedConditions.alertIsPresent().apply(driver) != null;
 
             if (!alertIsPresent) {
                 LOGGER.info("capturing method={}, args={}", method, args);
-                try {
                     File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                     gifSequenceWriter.write(ImageIO.read(screenshot));
-                } catch (UnhandledAlertException | NoSuchWindowException ignored) {
-                    LOGGER.warn("failed to capture due to " + ignored);
-                }
             } else {
                 LOGGER.info("not capturing screencast, alert is present");
+            }
+            } catch (UnhandledAlertException | NoSuchWindowException ignored) {
+                LOGGER.warn("failed to capture due to " + ignored);
             }
         } else {
             LOGGER.debug("ignoring method={}", method);
