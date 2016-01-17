@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChromeMobileEmulationKnowDeviceIT {
+public class ChromeMobileEmulationKnownDeviceIT {
 
     private WebDriver driver;
 
