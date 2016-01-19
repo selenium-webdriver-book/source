@@ -22,7 +22,7 @@ public class SafariPasswordIT {
     @Ignore("this test will not complete as it will wait for the password prompt")
     @Test
     public void passwordPopupThatCannotComplete() throws Exception {
-        driver.get("http://localhost:8080/login.html");
+        driver.get("/login.html");
 
         driver.findElement(By.name("email")).sendKeys("joe@email.com");
         driver.findElement(By.name("password")).sendKeys("secret");
@@ -35,7 +35,7 @@ public class SafariPasswordIT {
 
     @Test
     public void passwordPopup() throws Exception {
-        driver.get("http://localhost:8080/login.html");
+        driver.get("/login.html");
 
         driver.findElement(By.name("email")).sendKeys("joe@email.com");
         driver.findElement(By.name("password")).sendKeys("secret");

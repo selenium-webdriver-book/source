@@ -6,13 +6,11 @@ import swip.ch15pageflow.framework.Browser;
 import swip.ch15pageflow.framework.BrowserRunner;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 @RunWith(BrowserRunner.class)
 public class BrowserConfigIT {
 
     @Inject
-    @Named("chrome")
     private Browser browser;
 
     @Test

@@ -11,7 +11,7 @@ public class ManningHomepage {
     private Browser browser;
 
     public ManningHomepage(Browser browser) {
-        browser.get("http://manning.com");
+        browser.get("/bookstore/");
         this.browser = browser;
     }
 

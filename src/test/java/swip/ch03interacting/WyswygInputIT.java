@@ -5,14 +5,12 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.net.URI;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = {"browserName=safari", "browserName=htmlunit"})
 public class WyswygInputIT {
 
     @Inject

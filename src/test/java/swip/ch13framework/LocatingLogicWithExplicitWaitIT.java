@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -23,10 +22,11 @@ import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = "browserName=htmlunit")
 public class LocatingLogicWithExplicitWaitIT {
 
     private final StopWatch stopWatch = new StopWatch();
+    @Inject
+    private WebDriver driver;
 
     @Before
     public void startStopWatch() {
@@ -38,13 +38,9 @@ public class LocatingLogicWithExplicitWaitIT {
         System.out.println("Time taken " + stopWatch);
     }
 
-    @Inject
-    private WebDriver driver;
-
-
     @Test
     public void usingExplicitWait() {
-        driver.get("http://localhost:8080/location-chooser.html");
+        driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
 
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5);  //<1>
@@ -88,7 +84,7 @@ public class LocatingLogicWithExplicitWaitIT {
 
     @Test
     public void usingExplicitWaitLambda() {
-        driver.get("http://localhost:8080/location-chooser.html");
+        driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5); // <1>
 

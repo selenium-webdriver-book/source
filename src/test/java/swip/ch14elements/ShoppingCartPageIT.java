@@ -25,7 +25,7 @@ public class ShoppingCartPageIT {
 
     @Test
     public void weShouldBeABleToCompleteOtherInformation() throws Exception {
-        browser.get("https://www.manning.com/books/selenium-webdriver-in-practice");
+        browser.get("/bookstore/books/selenium-webdriver-in-practice");
 
         BookPage bookPage = new BookPage(browser);
         bookPage.addToCart();

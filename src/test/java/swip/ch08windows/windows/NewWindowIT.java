@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -12,7 +11,6 @@ import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = {"browserName=safari"})
 public class NewWindowIT {
     @Inject
     private WebDriver driver;
@@ -47,7 +45,7 @@ public class NewWindowIT {
 
     @Test
     public void openWindowUsingName() throws Exception {
-        driver.get("http://localhost:8080/open-a-new-window.html");
+        driver.get("/open-a-new-window.html");
         String originalWindowHandle = driver.getWindowHandle();
 
         try {
@@ -68,7 +66,7 @@ public class NewWindowIT {
 
     @Test
     public void openNewWindowUsingStrategy() throws Exception {
-        driver.get("http://localhost:8080/open-a-new-window.html");
+        driver.get("/open-a-new-window.html");
 
         String originalWindowHandle = driver.getWindowHandle();
 

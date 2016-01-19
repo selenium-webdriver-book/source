@@ -8,7 +8,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -16,7 +15,6 @@ import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = "browserName=htmlunit")
 public class GeolocationIT {
     @Inject
     private WebDriver driver;

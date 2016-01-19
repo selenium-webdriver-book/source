@@ -12,6 +12,7 @@ import org.openqa.selenium.safari.SafariDriver;
 import swip.ch11drivers.ChromeDriverBinarySupplier;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.nio.file.Paths;
 
@@ -27,13 +28,13 @@ public class WebDriverFactory {
         this.remoteUrl = remoteUrl;
     }
 
-    public WebDriver webDriver(DesiredCapabilities desiredCapabilities) throws IOException {
+    public WebDriver webDriver(DesiredCapabilities desiredCapabilities, URI baseUrl) throws IOException {
 
         WebDriver baseDriver = remoteDriver ?
                 remoteDriver(remoteUrl, desiredCapabilities) :
                 localDriver(desiredCapabilities);
 
-        return baseUrlDriver(baseDriver);
+        return baseUrlDriver(baseDriver, baseUrl);
     }
 
     private WebDriver localDriver(DesiredCapabilities desiredCapabilities) throws IOException {

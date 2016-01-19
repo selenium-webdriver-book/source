@@ -1,51 +1,32 @@
 package swip.ch12decorating.httpstatuscode;
 
-import com.google.common.collect.ImmutableMap;
-import net.lightbody.bmp.proxy.ProxyServer;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import swip.framework.HttpStatusCodeSupplier;
+import swip.framework.WebDriverRunner;
 
-import java.net.URI;
+import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(WebDriverRunner.class)
 public class HttpStatusCodeIT {
-    private final ProxyServer server = new ProxyServer(9090);
-    private final DesiredCapabilities desiredCapabilities = new DesiredCapabilities(
-            ImmutableMap.of(CapabilityType.PROXY, server.seleniumProxy())
-    );
-    private WebDriver driver;
 
-    @Before
-    public void setUp() throws Exception {
-        server.start();
-        driver = HttpStatusCodeDecorator.httpStatusCodeDriver
-                (new FirefoxDriver(desiredCapabilities), server, URI.create("http://localhost:8080"));
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        driver.quit();
-        server.stop();
-    }
+    @Inject private WebDriver driver;
+    @Inject private HttpStatusCodeSupplier httpStatusCodeSupplier;
 
     @Test
     public void notFound() throws Exception {
-        driver.get("http://localhost:8080/not-found.html");
+        driver.get("/not-found.html");
 
-        assertEquals(404, ((HasHttpStatusCode) driver).getHttpStatusCode());
+        assertEquals(404, httpStatusCodeSupplier.get());
     }
 
     @Test
     public void resourceNotFound() throws Exception {
-        driver.get("http://localhost:8080/resource-not-found.html");
+        driver.get("/resource-not-found.html");
 
-        assertEquals(200, ((HasHttpStatusCode) driver).getHttpStatusCode());
+        assertEquals(200, httpStatusCodeSupplier.get());
     }
-
 }

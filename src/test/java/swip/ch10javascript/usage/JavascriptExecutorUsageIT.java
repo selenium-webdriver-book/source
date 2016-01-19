@@ -7,15 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(WebDriverRunner.class)
-// htmlunit supports JavaScript, just not these examples.
-@Config(exclude = "browserName=htmlunit")
 public class JavascriptExecutorUsageIT {
     @Inject
     private WebDriver driver;

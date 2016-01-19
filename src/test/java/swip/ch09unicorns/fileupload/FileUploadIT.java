@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -19,7 +18,6 @@ import java.nio.file.Paths;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = {"browserName=safari", "browserName=phantomjs", "browserName=chrome"})
 public class FileUploadIT {
 
     @Inject

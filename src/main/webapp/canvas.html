@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <title>Canvas</title>
+</head>
+<body>
+<div class="container">
+    <canvas width="400" height="300"></canvas>
+</div>
+<script>
+    var c = document.getElementsByTagName("canvas")[0].getContext("2d");
+
+    c.textAlign = "center";
+    c.fillStyle = "#000";
+    c.font = "30pt Arial";
+    c.fillText("Hello WebDriver", 200, 150);
+    c.strokeRect(0, 0, 399, 299);
+
+</script>
+</body>
+</html>

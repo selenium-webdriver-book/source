@@ -24,7 +24,7 @@ public class CityTableIT {
     @Test
     public void testReadFromTable() {
 
-        browser.get("http://localhost:8080/city-table.html");
+        browser.get("/city-table.html");
 
         CityTable table = new CityTable(
             browser.findElement(By.tagName("table"))

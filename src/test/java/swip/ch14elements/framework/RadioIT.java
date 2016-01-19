@@ -4,10 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import javax.inject.Inject;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 

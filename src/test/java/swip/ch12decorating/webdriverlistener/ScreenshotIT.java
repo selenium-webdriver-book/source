@@ -7,14 +7,12 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 import java.io.File;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = "browserName=htmlunit")
 public class ScreenshotIT {
     @Inject
     private WebDriver driver;

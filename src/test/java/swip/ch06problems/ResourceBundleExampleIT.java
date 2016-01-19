@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import swip.framework.Config;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -13,7 +12,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 @RunWith(WebDriverRunner.class)
-@Config(exclude = "browserName=htmlunit")
 public class ResourceBundleExampleIT {
 
     @Inject
