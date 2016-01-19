@@ -12,6 +12,7 @@ import swip.ch15pageflow.pages.ManningHomepage;
 import swip.ch15pageflow.pages.ShoppingCartPage;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(BrowserRunner.class)
 public class BookStoreShoppingIT {
     @Inject
+    @Named("chrome")
     private Browser browser;
 
     private Address billingAddress = new Address(
