@@ -49,7 +49,6 @@ public class BookStoreShoppingIT {
         MailingOption.WEEKLY_NEWSLETTER,
         "no comments"
     );
-    private ErrorMessages errorMessages = new ErrorMessages(list1);
 
     private ManningHomepage homePage;
 
