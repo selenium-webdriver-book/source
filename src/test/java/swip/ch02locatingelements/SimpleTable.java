@@ -1,7 +1,6 @@
 package swip.ch02locatingelements;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 
 public class SimpleTable extends DelegatingWebElement implements Table {
@@ -32,10 +31,5 @@ public class SimpleTable extends DelegatingWebElement implements Table {
     @Override
     public int getBodyHeight() {
         return delegate.findElements(By.cssSelector("tbody tr")).size();
-    }
-
-    @Override
-    public Rectangle getRect() {
-        return null;
     }
 }
