@@ -28,7 +28,7 @@ public class BillingAddressForm  {
         browser.setInputText(BILLING_CITY, address.city);
         browser.setInputText(BILLING_STATE, address.state.toString()) ;
         browser.setInputText(BILLING_ZIP, address.zipcode);
-        browser.setInputText(BILLING_COUNTRY, address.country.name().replace('_', ' '));
+        browser.select(BILLING_COUNTRY, address.country.name().replace('_', ' '));
     }
 
     public Address getBillingAddress() {
