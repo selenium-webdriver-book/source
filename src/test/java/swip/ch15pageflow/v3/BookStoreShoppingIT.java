@@ -3,6 +3,7 @@ package swip.ch15pageflow.v3;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import swip.ch15pageflow.domain.*;
 import swip.ch15pageflow.framework.Browser;
 import swip.ch15pageflow.framework.BrowserRunner;
@@ -68,6 +69,8 @@ public class BookStoreShoppingIT {
         cartPage.setCreditCard(creditCard);
         cartPage.setOtherInformation(otherInformation);
         cartPage.continues();
+
+        assertEquals("Expiration Date: 12, 2020",browser.untilFound(() -> By.id("expirationDate")).getText());
 
     }
 

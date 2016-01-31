@@ -1,12 +1,6 @@
 package swip.ch09unicorns.actionchains;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.SearchContext;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.internal.Coordinates;
 import org.openqa.selenium.internal.Locatable;
 
@@ -94,6 +88,11 @@ public class LazyElement implements WebElement, Locatable {
     @Override
     public Dimension getSize() {
         return get().getSize();
+    }
+
+    @Override
+    public Rectangle getRect() {
+        return null;
     }
 
     @Override

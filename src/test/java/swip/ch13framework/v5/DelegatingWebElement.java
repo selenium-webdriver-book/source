@@ -1,11 +1,6 @@
 package swip.ch13framework.v5;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.List;
 
@@ -84,6 +79,11 @@ public class DelegatingWebElement implements WebElement {
     @Override
     public Dimension getSize() {
         return delegate.getSize();
+    }
+
+    @Override
+    public Rectangle getRect() {
+        return null;
     }
 
     @Override

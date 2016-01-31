@@ -103,7 +103,7 @@
                     <form:errors path="cardNumber" cssClass="help-inline" cssStyle="color: red"/>
                 </div>
                 <div class="form-group">
-                    <label for="card-exp-month">Expiry Month:</label>
+                    <label for="card-exp-month">Expiry Month:</label> <br>
                     <select name="ccPaymentDS.ccpayment_ROW0_expMonth" id="card-exp-month">
                         <option value="" selected="selected">----</option>
                         <option value="1">Jan (1)</option>
@@ -118,8 +118,8 @@
                         <option value="10">Oct (10)</option>
                         <option value="11">Nov (11)</option>
                         <option value="12">Dec (12)</option>
-                    </select>
-                    <label for="card-exp-month">Expiry Year:</label>
+                    </select><br/>
+                    <label for="card-exp-month">Expiry Year:</label> <br>
                     <select name="ccPaymentDS.ccpayment_ROW0_expYear" id="card-exp-year">
                         <option value="" selected="selected">----</option>
                         <option value="2015">2015</option>

@@ -9,6 +9,9 @@
 
 <div class="container">
     <h1>Thank you for your order</h1>
+    <p id="expirationDate">
+        Expiration Date: <%=request.getParameter("ccPaymentDS.ccpayment_ROW0_expMonth")%>,    <%=request.getParameter("ccPaymentDS.ccpayment_ROW0_expYear")%>
+    </p>
     <p>
         Order number #${orderNumber}.
     </p>

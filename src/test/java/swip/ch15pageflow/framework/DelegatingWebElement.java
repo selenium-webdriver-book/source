@@ -94,6 +94,11 @@ public class DelegatingWebElement implements WebElement {
     }
 
     @Override
+    public Rectangle getRect() {
+        return null;
+    }
+
+    @Override
     public String getCssValue(String propertyName) {
         return delegate.getCssValue(propertyName);
     }

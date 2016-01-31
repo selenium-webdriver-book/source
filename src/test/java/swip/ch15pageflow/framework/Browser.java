@@ -116,8 +116,8 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         return new Select(element);
     }
 
-    public void select(Supplier<By> by, String select) {
-        getSelect(by).selectByVisibleText(select);
+    public void select(Supplier<By> by, Object select) {
+        getSelect(by).selectByVisibleText(select.toString());
     }
 
     public Select getSelectLambda(Supplier<By> by) {
