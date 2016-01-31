@@ -16,6 +16,7 @@ public class CheckoutController {
     public String addToCart(@Valid CheckoutRequest checkoutRequest, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
+            model.addAttribute("request", checkoutRequest);
             return "cart";
         }
 

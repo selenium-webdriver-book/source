@@ -241,6 +241,7 @@
                     <jettyXml>
                         ${project.basedir}/src/main/resources/jetty.xml,${project.basedir}/src/main/resources/jetty-http.xml,${project.basedir}/src/main/resources/jetty-ssl.xml,${project.basedir}/src/main/resources/jetty-https.xml
                     </jettyXml>
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
                 </configuration>
                 <executions>
                     <execution>
