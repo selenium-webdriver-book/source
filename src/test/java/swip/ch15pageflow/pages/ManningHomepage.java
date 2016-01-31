@@ -3,8 +3,8 @@ package swip.ch15pageflow.pages;
 import org.openqa.selenium.By;
 import swip.ch15pageflow.framework.Browser;
 
+import static swip.ch15pageflow.locators.BookStoreId.SEARCH_BUTTON;
 import static swip.ch15pageflow.locators.BookStoreId.SEARCH_INPUT;
-import static swip.ch15pageflow.locators.Xpath.SEARCH_BUTTON;
 
 public class ManningHomepage {
 

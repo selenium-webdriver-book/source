@@ -83,6 +83,20 @@
                 </div>
             </div>
             <div class="col-md-4">
+
+                <div class="form-group">
+                    <label for="card-number">Credit Card Type:</label><br/>
+                    <select name="ccPaymentDS.ccpayment_ROW0_ccType" id="card-type"
+                            onchange="togCvn(this.options[this.selectedIndex].value);">
+                        <option value="American Express" selected="selected">American Express</option>
+                        <option value="JCB">JCB</option>
+                        <option value="MasterCard">MasterCard</option>
+                        <option value="Visa">Visa</option>
+                        <option value="Discover">Discover</option>
+                    </select>
+                    <form:errors path="cardNumber" cssClass="help-inline" cssStyle="color: red"/>
+                </div>
+
                 <div class="form-group">
                     <label for="card-number">Credit Card:</label>
                     <input type="text" class="form-control" id="card-number" name="cardNumber">
@@ -90,15 +104,45 @@
                 </div>
                 <div class="form-group">
                     <label for="card-exp-month">Expiry Month:</label>
-                    <input type="text" class="form-control" id="card-exp-month">
+                    <select name="ccPaymentDS.ccpayment_ROW0_expMonth" id="card-exp-month">
+                        <option value="" selected="selected">----</option>
+                        <option value="1">Jan (1)</option>
+                        <option value="2">Feb (2)</option>
+                        <option value="3">Mar (3)</option>
+                        <option value="4">Apr (4)</option>
+                        <option value="5">May (5)</option>
+                        <option value="6">Jun (6)</option>
+                        <option value="7">Jul (7)</option>
+                        <option value="8">Aug (8)</option>
+                        <option value="9">Sep (9)</option>
+                        <option value="10">Oct (10)</option>
+                        <option value="11">Nov (11)</option>
+                        <option value="12">Dec (12)</option>
+                    </select>
                     <label for="card-exp-month">Expiry Year:</label>
-                    <input type="text" class="form-control" id="card-exp-year">
+                    <select name="ccPaymentDS.ccpayment_ROW0_expYear" id="card-exp-year">
+                        <option value="" selected="selected">----</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                    </select>
                 </div>
+
             </div>
 
         </div>
         <jsp:include page="cart/other-information.jsp"/>
-        <button type="submit" class="btn btn-primary">Continue</button>
+        <input type="submit" class="btn btn-primary" value="Continue"/>
     </form:form>
 </div>
 </body>

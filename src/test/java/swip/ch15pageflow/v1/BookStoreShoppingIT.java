@@ -1,7 +1,6 @@
 package swip.ch15pageflow.v1;
 
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.framework.Browser;
@@ -18,7 +17,6 @@ public class BookStoreShoppingIT {
     private ManningHomepage homePage;
 
     @Test
-    @Ignore("broken test")
     public void invalidCardInfo() {
         homePage = new ManningHomepage(browser);
         homePage.searchBook("Selenium WebDriver in Practice");
