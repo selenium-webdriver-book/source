@@ -25,9 +25,10 @@ public class GeolocationIT {
     }
 
     @Test
-    public void geolocationInjection() throws Exception {
+    public void geoLocationInjection() throws Exception {
 
-        ((JavascriptExecutor) driver).executeScript(
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript(
                 String.format(
                         "navigator.geolocation = navigator.geolocation || {};" +
                                 "navigator.geolocation.getCurrentPosition = function(ok,err){" +
@@ -50,7 +51,8 @@ public class GeolocationIT {
     @Test
     public void positionError() throws Exception {
 
-        ((JavascriptExecutor) driver).executeScript(
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript(
                 String.format(
                         "navigator.geolocation = navigator.geolocation || {};" +
                                 "navigator.geolocation.getCurrentPosition = function(ok,err){" +
