@@ -8,12 +8,10 @@ import swip.ch15pageflow.domain.*;
 import swip.ch15pageflow.framework.Browser;
 import swip.ch15pageflow.framework.BrowserRunner;
 import swip.ch15pageflow.pages.BookPage;
-import swip.ch15pageflow.pages.ErrorMessages;
-import swip.ch15pageflow.pages.ManningHomepage;
+import swip.ch15pageflow.pages.BookstoreHomepage;
 import swip.ch15pageflow.pages.ShoppingCartPage;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
@@ -50,12 +48,12 @@ public class BookStoreShoppingIT {
         "no comments"
     );
 
-    private ManningHomepage homePage;
+    private BookstoreHomepage homePage;
 
 
     @Test
     public void invalidCardInfo() {
-        homePage = new ManningHomepage(browser);
+        homePage = new BookstoreHomepage(browser);
 
         homePage.searchBook2("Selenium WebDriver in Practice");
 
