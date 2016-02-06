@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>selenium-webdriver-in-practice</groupId>
-    <artifUactId>selenium-webdriver-in-practice</artifUactId>
+    <artifactId>selenium-webdriver-in-practice</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
