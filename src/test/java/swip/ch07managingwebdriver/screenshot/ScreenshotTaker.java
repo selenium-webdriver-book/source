@@ -18,17 +18,19 @@ public class ScreenshotTaker extends AbstractTestExecutionListener {
 
     @Override
     public void afterTestMethod(TestContext testContext) throws Exception {
-        TakesScreenshot takesScreenshot = (TakesScreenshot) testContext.getApplicationContext()
-                .getBean(WebDriver.class);
-        File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        File dir = new File("target/screenshots");
-        if (!dir.exists()) {
-            Files.createDirectories(dir.toPath());
+        if (Boolean.parseBoolean(System.getProperty("webdriver.screenshots.enabled", "true"))) {
+            TakesScreenshot takesScreenshot = (TakesScreenshot) testContext.getApplicationContext()
+                    .getBean(WebDriver.class);
+            File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
+            File dir = new File("target/screenshots");
+            if (!dir.exists()) {
+                Files.createDirectories(dir.toPath());
+            }
+            Method method = testContext.getTestMethod();
+            File file = new File(dir, String.format("%s#%s.png", method.getDeclaringClass().getName(), method.getName()));
+            FileUtils.deleteQuietly(file);
+            FileUtils.moveFile(screenshot, file);
+            LOGGER.info("saved screenshot as {}", file);
         }
-        Method method = testContext.getTestMethod();
-        File file = new File(dir, String.format("%s#%s.png", method.getDeclaringClass().getName(), method.getName()));
-        FileUtils.deleteQuietly(file);
-        FileUtils.moveFile(screenshot, file);
-        LOGGER.info("saved screenshot as {}", file);
     }
 }

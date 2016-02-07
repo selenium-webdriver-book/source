@@ -23,7 +23,7 @@ public enum Xpath implements Supplier<By> {
     SEARCH_BUTTON(
         "//*[@id=\"desktop-search-form\"]/div/div/span/button"),
     CART_BUTTON(
-        "//*[@id=\"primary-navbar\"]/ul[2]/li[2]/a"),
+        "//*[@id=\"cartButton\"]"),
     TABLE_CONTAINER("//*[@id=\"main\"]");
 
     private final By by;

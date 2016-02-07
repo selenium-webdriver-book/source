@@ -20,9 +20,9 @@ public class CreditCardForm {
     public void setCreditCard(CreditCard card) {
         browser.setInputText(CARD_CVV, card.cardCvv);
         browser.setInputText(CARD_NUMBER, card.cardNumber);
-        browser.select(CARD_TYPE, card.cardType.toString());
+        browser.select(CARD_TYPE, card.cardType);
         browser.select(CARD_EXP_MONTH, card.expirationMonth);
-        browser.select(CARD_EXP_YEAR, String.valueOf(card.expirationYear));
+        browser.select(CARD_EXP_YEAR, card.expirationYear);
     }
 
     public CreditCard getCreditCard() {
@@ -36,3 +36,4 @@ public class CreditCardForm {
     }
 
 }
+

@@ -8,6 +8,8 @@ import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -25,9 +27,13 @@ import java.net.URI;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.AbstractMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Configuration
 public class WebDriverConfig {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebDriverConfig.class);
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -40,7 +46,7 @@ public class WebDriverConfig {
         }
     }
 
-    @Bean(destroyMethod = "stop")
+    @Bean(destroyMethod = "abort")
     public HttpProxyServer proxyServer(HttpFiltersSource httpFiltersSource) throws IOException, InterruptedException {
         InetSocketAddress inetSocketAddress = new InetSocketAddress(InetAddress.getLocalHost(), 0);
         return DefaultHttpProxyServer.bootstrap()
@@ -62,24 +68,38 @@ public class WebDriverConfig {
     }
 
     @Bean
-    public DesiredCapabilities desiredCapabilities(HttpProxyServer proxyServer) throws UnknownHostException {
+    public DesiredCapabilities desiredCapabilities(HttpProxyServer proxyServer,
+                                                   @Value("${webdriver.proxy.enabled:true}") boolean proxyEnabled) throws UnknownHostException {
         DesiredCapabilities capabilities = new DesiredCapabilities("firefox", "", Platform.ANY);
         capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
-        String httpProxy = proxyServer.getListenAddress().toString().substring(1); // remove a leading "/"
-        Proxy proxy = new Proxy().setHttpProxy(httpProxy).setSslProxy(httpProxy)
-                .setFtpProxy(httpProxy).setSocksProxy(httpProxy);
-        capabilities.setCapability(CapabilityType.PROXY, proxy);
+        if (proxyEnabled) {
+            String httpProxy = proxyServer.getListenAddress().toString().substring(1); // remove a leading "/"
+            Proxy proxy = new Proxy().setHttpProxy(httpProxy).setSslProxy(httpProxy)
+                    .setFtpProxy(httpProxy).setSocksProxy(httpProxy);
+            capabilities.setCapability(CapabilityType.PROXY, proxy);
+        }
 
-        String prefix = "webdriver.capabilities.";
+        populateCapabilites(capabilities);
 
-        System.getProperties().entrySet().stream()
-                .map(e -> new AbstractMap.SimpleImmutableEntry<>(String.valueOf(e.getKey()), e.getValue()))
-                .filter(e -> e.getKey().startsWith(prefix))
-                .forEach(e -> capabilities.setCapability(e.getKey().substring(prefix.length()), e.getValue()));
+        LOGGER.info("capabilities={}", capabilities);
 
         return capabilities;
     }
+
+    private void populateCapabilites(DesiredCapabilities capabilities) {
+        String prefix = "webdriver.capabilities.";
+
+        Map<String, String> map = System.getProperties().entrySet().stream()
+                .map(e -> new AbstractMap.SimpleImmutableEntry<>(String.valueOf(e.getKey()), String.valueOf(e.getValue())))
+                .filter(e -> e.getKey().startsWith(prefix))
+                .map(e -> new AbstractMap.SimpleImmutableEntry<>(e.getKey().substring(prefix.length()), e.getValue()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        new MapFactory().create(map).entrySet().stream()
+                .forEach(e -> capabilities.setCapability(e.getKey(), e.getValue()));
+    }
+
 
     @Bean
     @Primary

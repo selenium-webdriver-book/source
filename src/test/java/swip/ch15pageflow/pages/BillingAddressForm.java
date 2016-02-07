@@ -22,8 +22,8 @@ public class BillingAddressForm  {
 
     public void setBillingAddress(Address address) {
         browser.setInputText(BILLING_FIRST_NAME, address.firstName);
-        browser.setInputText(BookStoreId.BILLING_LAST_NAME, address.lastName);
-        browser.setInputText(BookStoreId.BILLING_ADDRESS1, address.street1);
+        browser.setInputText(BILLING_LAST_NAME, address.lastName);
+        browser.setInputText(BILLING_ADDRESS1, address.street1);
         browser.setInputText(BILLING_ADDRESS2, address.street2);
         browser.setInputText(BILLING_CITY, address.city);
         browser.setInputText(BILLING_STATE, address.state.toString()) ;

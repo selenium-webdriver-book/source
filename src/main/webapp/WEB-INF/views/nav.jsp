@@ -9,9 +9,9 @@
         </div>
         <form class="navbar-form navbar-left" role="search" action="search">
             <div class="input-group">
-                <input name="query" type="text" class="form-control" placeholder="Search">
+                <input name="query" type="text" class="form-control" id="navbar-search" placeholder="Search">
                 <span class="input-group-btn">
-                    ¬<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"
+                    ¬<button id="searchButton" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
                                                                          aria-hidden="true"></span></button>
                 </span>
             </div>

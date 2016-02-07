@@ -16,27 +16,12 @@ public class BookPage {
 
     private Browser browser;
 
-    private Predicate<Browser> colorBecomeWhite = new Predicate<Browser>() {
-        @Override
-        public boolean apply(Browser browser) {
-            return cartButton().getCssValue("color").equals("rgba(255, 255, 255, 1)");
-        }
-    };
-
-    Function<ExplicitWait, Element> finder =
-        (ExplicitWait b) ->
-            (Element) browser.findElements(INPUT)
-                .filter((e) -> e.getAttribute("value").equals("add to cart"))
-                .toArray()[1];
-
-
     public BookPage(Browser browser) {
         this.browser = browser;
     }
 
     public void addToCart() {
         browser.findElements(INPUT).filter((e) -> e.getAttribute("value").equals("add to cart")).findFirst().get().click();
-        new FluentWait<>(browser).until(colorBecomeWhite);
     }
 
     public void gotoCart() {
@@ -47,18 +32,4 @@ public class BookPage {
         return browser.untilFound(CART_BUTTON);
     }
 
-    public void secondAddToCart() {
-
-        Element element = findButton(finder);
-        element.click2();
-        new FluentWait<>(browser).until(colorBecomeWhite);
-    }
-
-    private Element findButton(Function<ExplicitWait, Element> finder) {
-        try {
-            return finder.apply(browser);
-        } catch (StaleElementReferenceException e) {
-            return findButton(finder);
-        }
-    }
 }

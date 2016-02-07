@@ -3,6 +3,7 @@ package swip.ch11drivers;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -12,17 +13,20 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
 
+import static org.junit.Assert.assertEquals;
+
 @Ignore("only runs with Appium")
 public class AppiumAndroidIT {
     private AppiumDriver<MobileElement> driver;
 
     @Before
     public void setUp() throws Exception {
-        DesiredCapabilities capabilities = DesiredCapabilities.android();
+        DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        //capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simulator");
-        //capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.3");
-        //capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4");
+        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "browser");
 
         driver = new AndroidDriver<>(
                 new URL("http://127.0.0.1:4723/wd/hub"),
@@ -36,11 +40,11 @@ public class AppiumAndroidIT {
     }
 
     @Test
-    public void openGoogle() throws Exception {
-        driver.get("http://www.google.com");
+    public void openHomepage() throws Exception {
+        driver.get("http://GL04321M.lan:8080");
 
-        MobileElement element = driver.findElement(By.xpath("//button"));
+        driver.findElement(By.tagName("a"));
 
-        element.click();
+        assertEquals("Selenium WebDriver In Practice - Index", driver.getTitle());
     }
 }
