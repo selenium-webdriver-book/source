@@ -24,15 +24,17 @@ public class JavascriptExecutorUsageIT {
 
     @Test
     public void castingResult() throws Exception {
-        long windowWidth = (long) ((JavascriptExecutor) driver) // <1>
-                .executeScript("return window.innerWidth"); // <2>
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        long windowWidth = (long) jsExecutor
+                .executeScript("return window.innerWidth");
     }
 
     @Test
     public void passingArgument() throws Exception {
-        ((JavascriptExecutor) driver).executeScript(
-                "console.log(arguments[0])", // <1>
-                "A string to log" // <2>
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript(
+                "console.log(arguments[0])",
+                "A string to log"
         );
     }
 
@@ -41,7 +43,8 @@ public class JavascriptExecutorUsageIT {
 
         WebElement link = driver.findElement(By.tagName("a"));
 
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", link);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click()", link);
     }
 
     @Test
@@ -50,7 +53,8 @@ public class JavascriptExecutorUsageIT {
         driver.manage().timeouts()
                 .setScriptTimeout(200, TimeUnit.MILLISECONDS);
 
-        ((JavascriptExecutor) driver).executeAsyncScript(
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeAsyncScript(
                 "setTimeout(arguments[arguments.length - 1], 100)");
     }
 }

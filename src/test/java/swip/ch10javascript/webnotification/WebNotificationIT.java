@@ -25,7 +25,8 @@ public class WebNotificationIT {
     @Test
     public void webNotification() throws Exception {
 
-        Notification notification = new Notification((JavascriptExecutor) driver);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        Notification notification = new Notification(jsExecutor);
 
         driver.findElement(By.linkText("Show A Web Notification")).click();
 
