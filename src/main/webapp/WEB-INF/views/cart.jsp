@@ -189,8 +189,8 @@
             <div class="col-md-4">
 
                 <div class="form-group">
-                    <label for="card-number">Credit Card Type:</label><br/>
-                    <select name="ccPaymentDS.ccpayment_ROW0_ccType" id="card-type"
+                    <label for="ccType">Credit Card Type:</label><br/>
+                    <select name="ccType" id="card-type"
                             onchange="togCvn(this.options[this.selectedIndex].value);">
                         <option value="American Express" selected="selected">American Express</option>
                         <option value="JCB">JCB</option>
@@ -198,7 +198,7 @@
                         <option value="Visa">Visa</option>
                         <option value="Discover">Discover</option>
                     </select>
-                    <form:errors path="cardNumber" cssClass="help-inline" cssStyle="color: red"/>
+                    <form:errors path="ccType" cssClass="help-inline" cssStyle="color: red"/>
                 </div>
 
                 <div class="form-group">

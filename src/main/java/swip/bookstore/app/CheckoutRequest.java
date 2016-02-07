@@ -25,7 +25,9 @@ public class CheckoutRequest {
     @NotEmpty
     @ParamName("shippingAddressDS.shipping_ROW0_country")
     private String billingCountry;
-    @Size(min = 14, max = 19)
+    private String ccType;
+    @Size(min = 19, max = 19)
+    @ParamName("cardNumber")
     private String cardNumber;
     @NotEmpty
     @ParamName("ccPaymentDS.ccpayment_ROW0_cvcHandle")
@@ -133,5 +135,13 @@ public class CheckoutRequest {
 
     public void setExpiryYear(int expiryYear) {
         this.expiryYear = expiryYear;
+    }
+
+    public String getCcType() {
+        return ccType;
+    }
+
+    public void setCcType(String ccType) {
+        this.ccType = ccType;
     }
 }

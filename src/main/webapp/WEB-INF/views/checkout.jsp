@@ -12,8 +12,8 @@
     <p id="expirationDate">
         Expiration Date: <%=request.getParameter("ccPaymentDS.ccpayment_ROW0_expMonth")%>,    <%=request.getParameter("ccPaymentDS.ccpayment_ROW0_expYear")%>
     </p>
-    <p>
-        Order number #${orderNumber}.
+    <p id="orderNumber">
+        Order number #00008.
     </p>
 
 </div>

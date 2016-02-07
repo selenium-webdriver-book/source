@@ -1,6 +1,7 @@
 package swip.ch15pageflow.v3;
 
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -13,14 +14,11 @@ import swip.ch15pageflow.pages.ShoppingCartPage;
 
 import javax.inject.Inject;
 import java.time.Month;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(BrowserRunner.class)
 public class BookStoreShoppingIT {
-    List<String> list1 = Arrays.asList("You don't seem to have supplied your billing Phone.");
 
     @Inject
     private Browser browser;
@@ -39,6 +37,13 @@ public class BookStoreShoppingIT {
         "4111-1111-1111-1111",
         "123",
         Month.DECEMBER, 2020);
+
+    private CreditCard invalidCreditCard = new CreditCard(
+        CreditCardType.MasterCard,
+        "4111-1111-1111",
+        "123",
+        Month.DECEMBER, 2020);
+
     private OtherInformation otherInformation = new OtherInformation(
         "no code",
         "joe@email.com",
@@ -50,9 +55,8 @@ public class BookStoreShoppingIT {
 
     private BookstoreHomepage homePage;
 
-
-    @Test
-    public void invalidCardInfo() {
+    @Before
+    public void addToCart() {
         homePage = new BookstoreHomepage(browser);
 
         homePage.searchBook2("Selenium WebDriver in Practice");
@@ -61,13 +65,31 @@ public class BookStoreShoppingIT {
         bookPage.addToCart();
         bookPage.gotoCart();
 
+    }
+
+    @Test
+    public void purchaseSuccessful() {
+
         ShoppingCartPage cartPage = new ShoppingCartPage(browser);
         cartPage.setBillingAddress(billingAddress);
         cartPage.setCreditCard(creditCard);
         cartPage.setOtherInformation(otherInformation);
         cartPage.continues();
 
-        assertEquals("Expiration Date: 12, 2020",browser.untilFound(() -> By.id("expirationDate")).getText());
+        assertEquals("Order number #00008.",browser.untilFound(() -> By.id("orderNumber")).getText());
+
+    }
+
+    @Test
+    public void invalidCreditCard() {
+
+        ShoppingCartPage cartPage = new ShoppingCartPage(browser);
+        cartPage.setBillingAddress(billingAddress);
+        cartPage.setCreditCard(invalidCreditCard);
+        cartPage.setOtherInformation(otherInformation);
+        cartPage.continues();
+
+        assertEquals("The cardNumber must be between 19 and 19 characters long",browser.untilFound(() -> By.id("cardNumber.errors")).getText());
 
     }
 
