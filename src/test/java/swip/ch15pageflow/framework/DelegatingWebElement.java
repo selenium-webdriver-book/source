@@ -7,8 +7,8 @@ import java.util.function.Function;
 
 public class DelegatingWebElement implements WebElement {
     private WebElement delegate;
-    private ExplicitWait searchContext;
-    private Function<ExplicitWait, Element> finder;
+    private SearchScope searchContext;
+    private Function<SearchScope, Element> finder;
 
     public DelegatingWebElement(WebElement delegate) {
         this.delegate = delegate;
@@ -107,7 +107,7 @@ public class DelegatingWebElement implements WebElement {
         this.searchContext = searchContext;
     }
 
-    public void setLocator(Function<ExplicitWait, Element> finder) {
+    public void setLocator(Function<SearchScope, Element> finder) {
         this.finder = finder;
     }
 }

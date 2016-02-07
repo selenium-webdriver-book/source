@@ -23,7 +23,7 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
     public Element findElement(Supplier<By> by) {
         Element element = new Element(super.findElement(by.get()));
         element.setSearchContext(this);
-        element.setLocator((ExplicitWait e) -> this.untilFound2(by));
+        element.setLocator((SearchScope e) -> this.untilFound2(by));
         return element;
     }
 
