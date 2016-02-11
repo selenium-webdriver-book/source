@@ -6,15 +6,18 @@ import org.openqa.selenium.support.ui.FluentWait;
 
 import java.util.concurrent.TimeUnit;
 
-interface ExplicitWait {
+import static java.util.concurrent.TimeUnit.SECONDS;
+
+public interface ExplicitWait {
 
     Element findElement(By by);
 
     default Element untilFound(By by) {
         return new FluentWait<>(this)
-                .withTimeout(10, TimeUnit.SECONDS)
-                .pollingEvery(100, TimeUnit.MILLISECONDS)
-                .ignoring(NoSuchElementException.class)
-                .until((ExplicitWait e) -> findElement(by));
+            .withTimeout(10, SECONDS)
+            .pollingEvery(100, TimeUnit.MILLISECONDS)
+            .ignoring(NoSuchElementException.class)
+            .until((ExplicitWait e) -> findElement(by));
     }
+
 }
