@@ -31,5 +31,23 @@ public enum CalendarClicker implements Function<Browser, Void> {
                 .untilFound(UI_DATEPICKER_PREV).click();
             return null;
         }
-    }
+    },
+
+    NEXT_YEAR {
+        public Void apply(Browser browser) {
+            for (int i = 0; i < 12; i++) {
+                NEXT_MONTH.apply(browser);
+            }
+            return null;
+        }
+    },
+    PREVIOUS_YEAR {
+        public Void apply(Browser browser) {
+            for (int i = 0; i < 12; i++) {
+                PREVIOUS_MONTH.apply(browser);
+            }
+            return null;
+        }
+    },
+    ;
 }
