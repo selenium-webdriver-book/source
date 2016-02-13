@@ -1,4 +1,4 @@
-package swip.ch17datepicker;
+package swip.ch17datepicker.jquerydatepicker;
 
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
