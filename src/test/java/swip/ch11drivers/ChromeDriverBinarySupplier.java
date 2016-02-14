@@ -9,19 +9,14 @@ import java.net.URI;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class ChromeDriverBinarySupplier implements WebDriverBinarySupplier {
     private static final Logger LOGGER = LoggerFactory.getLogger(ChromeDriverBinarySupplier.class);
+    private static final String BASE_PATH = "http://chromedriver.storage.googleapis.com";
 
     @Override
     public Path get(Path driverDir) throws IOException {
@@ -36,7 +31,9 @@ public class ChromeDriverBinarySupplier implements WebDriverBinarySupplier {
 
         if (!driverPath.toFile().exists()) { // <4> Do not do this if you already have it.
 
-            URL url = new URL("http://chromedriver.storage.googleapis.com/2.21/chromedriver_" + os + arch + ".zip");
+            String version = getLatestRelease();
+
+            URL url = new URL(BASE_PATH + "/" + version + "/chromedriver_" + os + arch + ".zip");
 
             if (!download.toFile().exists()) {
                 LOGGER.info("downloading " + url + " to " + download);
@@ -78,5 +75,14 @@ public class ChromeDriverBinarySupplier implements WebDriverBinarySupplier {
         }
 
         return driverPath;
+    }
+
+    private String getLatestRelease() throws IOException {
+
+        URL url = new URL(BASE_PATH + "/LATEST_RELEASE");
+
+        try (Scanner scanner = new Scanner(url.openStream())) {
+            return scanner.useDelimiter("\\A").next().trim(); // <9> get the version from the URL
+        }
     }
 }
