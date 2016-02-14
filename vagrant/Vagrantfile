@@ -33,4 +33,26 @@ Vagrant.configure("2") do |config|
     end
   end
 
+  config.vm.define "node-win81-ie11" do |node|
+    node.vm.box = "win81-ie11"
+    node.vm.box_url = "http://aka.ms/vagrant-win81-ie11"
+    node.vm.communicator = "winrm"
+    node.vm.network "private_network", ip: "192.168.10.6"
+
+    node.vm.provider "virtualbox" do |v|
+      v.gui = true
+    end
+  end
+
+  config.vm.define "node-win10-msedge" do |node|
+    node.vm.box = "win10-msedge"
+    node.vm.box_url = "http://aka.ms/vagrant-win10-msedge"
+    node.vm.communicator = "winrm"
+    node.vm.network "private_network", ip: "192.168.10.7"
+
+    node.vm.provider "virtualbox" do |v|
+      v.gui = true
+    end
+  end
+
 end
