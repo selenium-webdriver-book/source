@@ -9,14 +9,14 @@ import static org.openqa.selenium.By.id;
 /**
  * This enum is a Supplier of ById from Selenium By API.
  */
-public enum Id implements Supplier<By> {
+public enum JQueryById implements Supplier<By> {
 
     UI_DATEPICKER_DIV("ui-datepicker-div"),
     DATE_PICKER("datepicker");
 
     private final By by;
 
-    Id(String id) {
+    JQueryById(String id) {
         this.by = id(id);
     }
 

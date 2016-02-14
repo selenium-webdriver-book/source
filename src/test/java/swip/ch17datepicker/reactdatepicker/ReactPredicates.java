@@ -1,19 +1,20 @@
-package swip.ch17datepicker;
+package swip.ch17datepicker.reactdatepicker;
 
 
 import swip.ch15pageflow.framework.Element;
 import swip.ch15pageflow.framework.ExplicitWait;
-import swip.ch17datepicker.jquerydatepicker.Id;
 
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public enum PagePredicates implements Predicate<ExplicitWait> {
+import static swip.ch17datepicker.reactdatepicker.ReactClassName.CALENDAR;
 
-    JQUERY_CALENDAR_NOT_DISPLAYED {
+public enum ReactPredicates implements Predicate<ExplicitWait> {
+
+    REACT_CALENDAR_CLOSED {
         @Override
         public boolean test(ExplicitWait explicitWait) {
-            Optional<Element> element = explicitWait.optionalElement(Id.UI_DATEPICKER_DIV);
+            Optional<Element> element = explicitWait.optionalElement(CALENDAR);
             return !element.isPresent() || !element.get().isDisplayed();
         }
     }

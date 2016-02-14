@@ -1,4 +1,4 @@
-package swip.ch17datepicker.jquerydatepicker;
+package swip.ch17datepicker.reactdatepicker;
 
 
 import swip.ch15pageflow.framework.Browser;
@@ -7,27 +7,26 @@ import swip.ch17datepicker.datepicker.Datepicker;
 
 import java.time.Month;
 
-import static swip.ch17datepicker.jquerydatepicker.JQueryById.DATE_PICKER;
-import static swip.ch17datepicker.jquerydatepicker.JQueryCalendarControls.*;
-import static swip.ch17datepicker.jquerydatepicker.JQueryCalendarDisplayValue.MONTH;
-import static swip.ch17datepicker.jquerydatepicker.JQueryCalendarDisplayValue.YEAR;
-import static swip.ch17datepicker.jquerydatepicker.JQueryPredicates.JQUERY_CALENDAR_CLOSED;
+import static swip.ch17datepicker.reactdatepicker.ReactCalendarControls.*;
+import static swip.ch17datepicker.reactdatepicker.ReactCalendarDisplayValue.MONTH;
+import static swip.ch17datepicker.reactdatepicker.ReactCalendarDisplayValue.YEAR;
+import static swip.ch17datepicker.reactdatepicker.ReactPredicates.REACT_CALENDAR_CLOSED;
 
 
-public class JQueryDatePickerPage {
+public class ReactDatepickerPage {
 
     private final Browser browser;    //<1>
 
     private final Datepicker datepicker;   //<2>
 
-    public JQueryDatePickerPage(Browser browser) {   //<3>
+    public ReactDatepickerPage(Browser browser) {   //<3>
         this.browser = browser;
         this.datepicker = new Datepicker(  //<4>
             browser,
             TRIGGER,                                                      //<5>
             new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),     //<6>
             new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),  //<7>
-            new JQueryDayPicker(browser, JQUERY_CALENDAR_CLOSED)      //<8>
+            new ReactDayPicker(browser, REACT_CALENDAR_CLOSED)      //<8>
         );
     }
 
@@ -37,7 +36,7 @@ public class JQueryDatePickerPage {
     }  //<9>
 
     public String getDate() {
-        return browser.getInputText(DATE_PICKER);
+        return browser.getInputText(ReactClassName.TRIGGER);
     }       //<10>
 
 }

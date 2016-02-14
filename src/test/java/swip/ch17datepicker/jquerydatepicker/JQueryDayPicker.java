@@ -8,7 +8,7 @@ import swip.ch17datepicker.datepicker.DayPicker;
 import java.util.function.Predicate;
 
 import static swip.ch15pageflow.locators.TagName.TD;
-import static swip.ch17datepicker.jquerydatepicker.ClassName.UI_DATEPICKER_CALENDAR;
+import static swip.ch17datepicker.jquerydatepicker.JQueyByClassName.UI_DATEPICKER_CALENDAR;
 
 public class JQueryDayPicker implements DayPicker {
 
@@ -21,7 +21,7 @@ public class JQueryDayPicker implements DayPicker {
     }
 
     public void pick(int day) {
-        browser.untilFound(Id.UI_DATEPICKER_DIV)     //<4>
+        browser.untilFound(JQueryById.UI_DATEPICKER_DIV)     //<4>
             .untilFound(UI_DATEPICKER_CALENDAR)      //<5>
             .findElements(TD)                        //<6>
             .filter((Element e) -> Integer.parseInt(e.getText()) == day)  //<7>
