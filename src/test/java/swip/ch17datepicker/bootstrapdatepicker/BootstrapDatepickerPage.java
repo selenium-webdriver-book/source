@@ -7,36 +7,37 @@ import swip.ch17datepicker.datepicker.Datepicker;
 
 import java.time.Month;
 
+import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.DATE_FIELD;
 import static swip.ch17datepicker.bootstrapdatepicker.BootstrapCalendarControls.*;
 import static swip.ch17datepicker.bootstrapdatepicker.BootstrapCalendarDisplayValue.MONTH;
 import static swip.ch17datepicker.bootstrapdatepicker.BootstrapCalendarDisplayValue.YEAR;
-import static swip.ch17datepicker.bootstrapdatepicker.ReactPredicates.REACT_CALENDAR_CLOSED;
+import static swip.ch17datepicker.bootstrapdatepicker.BootstrapPredicates.CALENDAR_CLOSED;
 
 
 public class BootstrapDatepickerPage {
 
-    private final Browser browser;    //<1>
+    private final Browser browser;
 
-    private final Datepicker datepicker;   //<2>
+    private final Datepicker datepicker;
 
-    public BootstrapDatepickerPage(Browser browser) {   //<3>
+    public BootstrapDatepickerPage(Browser browser) {
         this.browser = browser;
-        this.datepicker = new Datepicker(  //<4>
+        this.datepicker = new Datepicker(
             browser,
-            TRIGGER,                                                      //<5>
-            new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),     //<6>
-            new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),  //<7>
-            new BootstrapDayPicker(browser, REACT_CALENDAR_CLOSED)      //<8>
+            TRIGGER,
+            new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),
+            new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),
+            new BootstrapDayPicker(browser, CALENDAR_CLOSED)
         );
     }
 
 
     public void pick(Month month, int day, int year) {
         datepicker.pick(month, day, year);
-    }  //<9>
+    }
 
     public String getDate() {
-        return browser.getInputText(BootstrapByClassName.TRIGGER);
-    }       //<10>
+        return browser.getInputText(DATE_FIELD);
+    }
 
 }

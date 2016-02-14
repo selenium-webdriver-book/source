@@ -5,6 +5,7 @@ import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Function;
 
+import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.DISPLAY_MONTH_YEAR;
 import static swip.ch17datepicker.datepicker.StringToMonth.TO_MONTH;
 
 public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> {
@@ -32,7 +33,7 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
 
     private static String getMonthAndYear(Browser browser) {        //<1>
         return browser.untilFound(BootstrapByClassName.CALENDAR)
-            .untilFound(BootstrapByClassName.UI_DATEPICKER_MONTH_YEAR)
+            .untilFound(DISPLAY_MONTH_YEAR)
             .getText();
     }
 

@@ -13,22 +13,22 @@ import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.CALEN
 
 public class BootstrapDayPicker implements DayPicker {
 
-    private Browser browser;                       //<1>
-    private Predicate reactCalendarClosed;  //<2>
+    private Browser browser;
+    private Predicate calendarClosed;
 
-    public BootstrapDayPicker(Browser browser, Predicate reactCalendarClosed) { //<3>
+    public BootstrapDayPicker(Browser browser, Predicate calendarClosed) {
         this.browser = browser;
-        this.reactCalendarClosed = reactCalendarClosed;
+        this.calendarClosed = calendarClosed;
     }
 
     public void pick(int day) {
-        browser.untilFound(CALENDAR)     //<4>
-            .findElements(TD)                        //<6>
-            .filter((Element e) -> e.getText().equals(String.valueOf(day)))  //<7>
-            .findFirst()                     //<8>
-            .get()                           //<9>
-            .click();                        //<10>
+        browser.untilFound(CALENDAR)
+            .findElements(TD)
+            .filter((Element e) -> e.getText().equals(String.valueOf(day)))
+            .findFirst()
+            .get()
+            .click();
         browser.untilFound(TagName.FORM).click();
-        browser.until(reactCalendarClosed);  //<11>
+        browser.until(calendarClosed);
     }
 }

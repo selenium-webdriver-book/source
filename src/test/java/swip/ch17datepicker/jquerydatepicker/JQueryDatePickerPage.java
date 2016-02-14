@@ -7,11 +7,11 @@ import swip.ch17datepicker.datepicker.Datepicker;
 
 import java.time.Month;
 
-import static swip.ch17datepicker.jquerydatepicker.JQueryById.DATE_PICKER;
+import static swip.ch17datepicker.jquerydatepicker.JQueryById.DATE_FIELD;
 import static swip.ch17datepicker.jquerydatepicker.JQueryCalendarControls.*;
 import static swip.ch17datepicker.jquerydatepicker.JQueryCalendarDisplayValue.MONTH;
 import static swip.ch17datepicker.jquerydatepicker.JQueryCalendarDisplayValue.YEAR;
-import static swip.ch17datepicker.jquerydatepicker.JQueryPredicates.JQUERY_CALENDAR_CLOSED;
+import static swip.ch17datepicker.jquerydatepicker.JQueryPredicates.CALENDAR_CLOSED;
 
 
 public class JQueryDatePickerPage {
@@ -27,7 +27,7 @@ public class JQueryDatePickerPage {
             TRIGGER,                                                      //<5>
             new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),     //<6>
             new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),  //<7>
-            new JQueryDayPicker(browser, JQUERY_CALENDAR_CLOSED)      //<8>
+            new JQueryDayPicker(browser, CALENDAR_CLOSED)      //<8>
         );
     }
 
@@ -37,7 +37,7 @@ public class JQueryDatePickerPage {
     }  //<9>
 
     public String getDate() {
-        return browser.getInputText(DATE_PICKER);
+        return browser.getInputText(DATE_FIELD);
     }       //<10>
 
 }

@@ -8,26 +8,27 @@ import swip.ch17datepicker.datepicker.DayPicker;
 import java.util.function.Predicate;
 
 import static swip.ch15pageflow.locators.TagName.TD;
-import static swip.ch17datepicker.jquerydatepicker.JQueyByClassName.UI_DATEPICKER_CALENDAR;
+import static swip.ch17datepicker.jquerydatepicker.JQueryByClassName.CALENDAR;
+import static swip.ch17datepicker.jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
 public class JQueryDayPicker implements DayPicker {
 
     private Browser browser;                       //<1>
-    private Predicate jqueryCalendarNotDisplayed;  //<2>
+    private Predicate calendarClosed;  //<2>
 
-    public JQueryDayPicker(Browser browser, Predicate jqueryCalendarNotDisplayed) { //<3>
+    public JQueryDayPicker(Browser browser, Predicate calendarClosed) { //<3>
         this.browser = browser;
-        this.jqueryCalendarNotDisplayed = jqueryCalendarNotDisplayed;
+        this.calendarClosed = calendarClosed;
     }
 
     public void pick(int day) {
-        browser.untilFound(JQueryById.UI_DATEPICKER_DIV)     //<4>
-            .untilFound(UI_DATEPICKER_CALENDAR)      //<5>
+        browser.untilFound(UI_DATEPICKER_DIV)     //<4>
+            .untilFound(CALENDAR)      //<5>
             .findElements(TD)                        //<6>
             .filter((Element e) -> Integer.parseInt(e.getText()) == day)  //<7>
             .findFirst()                     //<8>
             .get()                           //<9>
             .click();                        //<10>
-        browser.until(jqueryCalendarNotDisplayed);  //<11>
+        browser.until(calendarClosed);  //<11>
     }
 }

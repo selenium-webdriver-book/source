@@ -10,17 +10,17 @@ import static org.openqa.selenium.By.className;
 /**
  * This enum is a Supplier of ByClassName from Selenium By API.
  */
-public enum JQueyByClassName implements Supplier<By> {
+public enum JQueryByClassName implements Supplier<By> {
 
-    UI_DATEPICKER_CALENDAR("ui-datepicker-calendar"),
-    UI_DATEPICKER_NEXT("ui-datepicker-next"),
-    UI_DATEPICKER_PREV("ui-datepicker-prev"),
-    UI_DATEPICKER_MONTH("ui-datepicker-month"),
-    UI_DATEPICKER_YEAR("ui-datepicker-year");
+    CALENDAR("ui-datepicker-calendar"),      //<1>
+    NEXT_MONTH_BUTTON("ui-datepicker-next"), //<2>
+    PREV_MONTH_BUTTON("ui-datepicker-prev"), //<3>
+    DISPLAY_MONTH("ui-datepicker-month"),    //<4>
+    DISPLAY_YEAR("ui-datepicker-year");      //<5>
 
     private final By by;
 
-    JQueyByClassName(String id) {
+    JQueryByClassName(String id) {
         this.by = className(id);
     }
 

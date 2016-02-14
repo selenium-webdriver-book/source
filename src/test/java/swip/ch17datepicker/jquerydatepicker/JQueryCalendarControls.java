@@ -5,35 +5,35 @@ import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Function;
 
-import static swip.ch17datepicker.jquerydatepicker.JQueyByClassName.UI_DATEPICKER_NEXT;
-import static swip.ch17datepicker.jquerydatepicker.JQueyByClassName.UI_DATEPICKER_PREV;
+import static swip.ch17datepicker.jquerydatepicker.JQueryByClassName.NEXT_MONTH_BUTTON;
+import static swip.ch17datepicker.jquerydatepicker.JQueryByClassName.PREV_MONTH_BUTTON;
 import static swip.ch17datepicker.jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
 public enum JQueryCalendarControls implements Function<Browser, Void> {
-    TRIGGER {
+    TRIGGER {         //<1>
         public Void apply(Browser browser) {
-            browser.untilFound(JQueryById.DATE_PICKER).click();
+            browser.untilFound(JQueryById.DATE_FIELD).click();
             return null;
         }
     },
 
-    NEXT_MONTH {
-        public Void apply(Browser browser) {
-            browser.untilFound(UI_DATEPICKER_DIV)
-                .untilFound(UI_DATEPICKER_NEXT).click();
-            return null;
-        }
-    },
-
-    PREVIOUS_MONTH {
+    NEXT_MONTH {      //<2>
         public Void apply(Browser browser) {
             browser.untilFound(UI_DATEPICKER_DIV)
-                .untilFound(UI_DATEPICKER_PREV).click();
+                .untilFound(NEXT_MONTH_BUTTON).click();
             return null;
         }
     },
 
-    NEXT_YEAR {
+    PREVIOUS_MONTH {     //<3>
+        public Void apply(Browser browser) {
+            browser.untilFound(UI_DATEPICKER_DIV)
+                .untilFound(PREV_MONTH_BUTTON).click();
+            return null;
+        }
+    },
+
+    NEXT_YEAR {         //<4>
         public Void apply(Browser browser) {
             for (int i = 0; i < 12; i++) {
                 NEXT_MONTH.apply(browser);
@@ -41,13 +41,12 @@ public enum JQueryCalendarControls implements Function<Browser, Void> {
             return null;
         }
     },
-    PREVIOUS_YEAR {
+    PREVIOUS_YEAR {      //<5>
         public Void apply(Browser browser) {
             for (int i = 0; i < 12; i++) {
                 PREVIOUS_MONTH.apply(browser);
             }
             return null;
         }
-    },
-    ;
+    }
 }

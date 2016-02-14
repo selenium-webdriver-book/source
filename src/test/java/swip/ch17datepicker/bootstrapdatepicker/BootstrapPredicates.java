@@ -9,9 +9,9 @@ import java.util.function.Predicate;
 
 import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.CALENDAR;
 
-public enum ReactPredicates implements Predicate<ExplicitWait> {
+public enum BootstrapPredicates implements Predicate<ExplicitWait> {
 
-    REACT_CALENDAR_CLOSED {
+    CALENDAR_CLOSED {
         @Override
         public boolean test(ExplicitWait explicitWait) {
             Optional<Element> element = explicitWait.optionalElement(CALENDAR);

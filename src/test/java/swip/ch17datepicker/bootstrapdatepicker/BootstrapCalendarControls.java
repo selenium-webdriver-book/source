@@ -10,7 +10,7 @@ import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.*;
 public enum BootstrapCalendarControls implements Function<Browser, Void> {
     TRIGGER {
         public Void apply(Browser browser) {
-            browser.untilFound(BootstrapByClassName.TRIGGER).click();
+            browser.untilFound(DATE_FIELD).click();
             return null;
         }
     },
@@ -18,7 +18,7 @@ public enum BootstrapCalendarControls implements Function<Browser, Void> {
     NEXT_MONTH {
         public Void apply(Browser browser) {
             browser.untilFound(CALENDAR)
-                .untilFound(UI_DATEPICKER_NEXT).click();
+                .untilFound(NEXT_MONTH_BUTTON).click();
             return null;
         }
     },
@@ -26,7 +26,7 @@ public enum BootstrapCalendarControls implements Function<Browser, Void> {
     PREVIOUS_MONTH {
         public Void apply(Browser browser) {
             browser.untilFound(CALENDAR)
-                .untilFound(UI_DATEPICKER_PREV).click();
+                .untilFound(PREV_MONTH_BUTTON).click();
             return null;
         }
     },
@@ -46,6 +46,5 @@ public enum BootstrapCalendarControls implements Function<Browser, Void> {
             }
             return null;
         }
-    },
-    ;
+    }
 }
