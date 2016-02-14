@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.framework.Browser;
 import swip.ch15pageflow.framework.BrowserRunner;
-import swip.ch17datepicker.jquerydatepicker.JQueryDatePickerPage;
 
 import javax.inject.Inject;
 
@@ -16,12 +15,13 @@ import static org.junit.Assert.assertEquals;
 
 
 @RunWith(BrowserRunner.class)
-public class JQueryDatePickerTest {
+public class JQueryDatePickerIT {
 
     @Inject
     private Browser browser;
 
     private StopWatch stopWatch = new StopWatch();
+    private JQueryDatePickerPage jQueryDatePickerPage;
 
     @Before
     public void startStopWatch() {
@@ -32,8 +32,6 @@ public class JQueryDatePickerTest {
     public void print() {
         System.out.println("Taken " + stopWatch);
     }
-
-    private JQueryDatePickerPage jQueryDatePickerPage;
 
     @Before
     public void setup() {
