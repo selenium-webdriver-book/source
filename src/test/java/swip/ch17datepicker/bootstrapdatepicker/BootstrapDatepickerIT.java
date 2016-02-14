@@ -1,4 +1,4 @@
-package swip.ch17datepicker.reactdatepicker;
+package swip.ch17datepicker.bootstrapdatepicker;
 
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
@@ -15,13 +15,13 @@ import static org.junit.Assert.assertEquals;
 
 
 @RunWith(BrowserRunner.class)
-public class ReactDatepickerIT {
+public class BootstrapDatepickerIT {
 
     @Inject
     private Browser browser;
 
     private StopWatch stopWatch = new StopWatch();
-    private ReactDatepickerPage reactDatepickerPage;
+    private BootstrapDatepickerPage bootstrapDatepickerPage;
 
     @Before
     public void startStopWatch() {
@@ -35,14 +35,14 @@ public class ReactDatepickerIT {
 
     @Before
     public void setup() {
-        browser.get("http://hacker0x01.github.io/react-datepicker/");
-        reactDatepickerPage = new ReactDatepickerPage(browser);
+        browser.get("/bootstrap-date-picker.html");
+        bootstrapDatepickerPage = new BootstrapDatepickerPage(browser);
     }
 
     @Test
     public void pickADate() {
-        reactDatepickerPage.pick(APRIL, 1, 2012);
-        assertEquals("2012-04-01", reactDatepickerPage.getDate());
+        bootstrapDatepickerPage.pick(APRIL, 1, 2012);
+        assertEquals("01-04-2012", bootstrapDatepickerPage.getDate());
     }
 
 }

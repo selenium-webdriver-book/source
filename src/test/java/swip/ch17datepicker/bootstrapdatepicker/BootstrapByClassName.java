@@ -1,4 +1,4 @@
-package swip.ch17datepicker.reactdatepicker;
+package swip.ch17datepicker.bootstrapdatepicker;
 
 
 import org.openqa.selenium.By;
@@ -10,17 +10,17 @@ import static org.openqa.selenium.By.className;
 /**
  * This enum is a Supplier of ByClassName from Selenium By API.
  */
-public enum ReactClassName implements Supplier<By> {
+public enum BootstrapByClassName implements Supplier<By> {
 
-    CALENDAR("datepicker"),
-    TRIGGER("datepicker__input"),
-    UI_DATEPICKER_NEXT("datepicker__navigation--next"),
-    UI_DATEPICKER_PREV("datepicker__navigation--previous"),
-    UI_DATEPICKER_MONTH_YEAR("datepicker__current-month");
+    CALENDAR("datepicker-days"),
+    TRIGGER("trigger"),
+    UI_DATEPICKER_NEXT("next"),
+    UI_DATEPICKER_PREV("prev"),
+    UI_DATEPICKER_MONTH_YEAR("datepicker-switch");
 
     private final By by;
 
-    ReactClassName(String id) {
+    BootstrapByClassName(String id) {
         this.by = className(id);
     }
 

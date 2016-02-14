@@ -1,4 +1,4 @@
-package swip.ch17datepicker.reactdatepicker;
+package swip.ch17datepicker.bootstrapdatepicker;
 
 
 import swip.ch15pageflow.framework.Browser;
@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 import static swip.ch17datepicker.datepicker.StringToMonth.TO_MONTH;
 
-public enum ReactCalendarDisplayValue implements Function<Browser, Integer> {
+public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> {
 
     /**
      * Locate the integer value representing displayed year on a calendar
@@ -31,8 +31,8 @@ public enum ReactCalendarDisplayValue implements Function<Browser, Integer> {
     };
 
     private static String getMonthAndYear(Browser browser) {        //<1>
-        return browser.untilFound(ReactClassName.CALENDAR)
-            .untilFound(ReactClassName.UI_DATEPICKER_MONTH_YEAR)
+        return browser.untilFound(BootstrapByClassName.CALENDAR)
+            .untilFound(BootstrapByClassName.UI_DATEPICKER_MONTH_YEAR)
             .getText();
     }
 

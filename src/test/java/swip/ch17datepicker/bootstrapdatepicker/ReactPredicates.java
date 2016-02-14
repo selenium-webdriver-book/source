@@ -1,4 +1,4 @@
-package swip.ch17datepicker.reactdatepicker;
+package swip.ch17datepicker.bootstrapdatepicker;
 
 
 import swip.ch15pageflow.framework.Element;
@@ -7,7 +7,7 @@ import swip.ch15pageflow.framework.ExplicitWait;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import static swip.ch17datepicker.reactdatepicker.ReactClassName.CALENDAR;
+import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.CALENDAR;
 
 public enum ReactPredicates implements Predicate<ExplicitWait> {
 

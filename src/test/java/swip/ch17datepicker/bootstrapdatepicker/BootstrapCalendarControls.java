@@ -1,16 +1,16 @@
-package swip.ch17datepicker.reactdatepicker;
+package swip.ch17datepicker.bootstrapdatepicker;
 
 
 import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Function;
 
-import static swip.ch17datepicker.reactdatepicker.ReactClassName.*;
+import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.*;
 
-public enum ReactCalendarControls implements Function<Browser, Void> {
+public enum BootstrapCalendarControls implements Function<Browser, Void> {
     TRIGGER {
         public Void apply(Browser browser) {
-            browser.untilFound(ReactClassName.TRIGGER).click();
+            browser.untilFound(BootstrapByClassName.TRIGGER).click();
             return null;
         }
     },
