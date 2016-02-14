@@ -9,7 +9,7 @@ import static swip.ch17datepicker.jquerydatepicker.ClassName.UI_DATEPICKER_NEXT;
 import static swip.ch17datepicker.jquerydatepicker.ClassName.UI_DATEPICKER_PREV;
 import static swip.ch17datepicker.jquerydatepicker.Id.UI_DATEPICKER_DIV;
 
-public enum CalendarClicker implements Function<Browser, Void> {
+public enum CalendarControls implements Function<Browser, Void> {
     TRIGGER {
         public Void apply(Browser browser) {
             browser.untilFound(Id.DATE_PICKER).click();

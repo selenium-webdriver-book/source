@@ -36,7 +36,7 @@ public class MuchBetterJQueryDatepicker {
     }
 
     private void pickYear(int year) {
-        if (displayedYear() < year) {
+        if (displayedYear() < year) {        //<1>
             while (displayedYear() != year) {
                 nextMonth();
             }
@@ -48,7 +48,7 @@ public class MuchBetterJQueryDatepicker {
     }
 
     private void pickMonth(int month) {
-        if (displayedMonth() < month) {
+        if (displayedMonth() < month) {             //<2>
             while (displayedMonth() != month) {
                 nextMonth();
             }
@@ -69,24 +69,29 @@ public class MuchBetterJQueryDatepicker {
     }
 
     private void previousMonth() {
-        calendar().findElement(By.className("ui-datepicker-prev")).click();
+        calendar().findElement(By.className("ui-datepicker-prev")).click();  //<3>
     }
 
     private void nextMonth() {
-        calendar().findElement(By.className("ui-datepicker-next")).click();
+        calendar().findElement(By.className("ui-datepicker-next")).click();  //<4>
     }
 
     private WebElement calendar() {
-        return browser.findElement(By.id("ui-datepicker-div"));
+        return browser.findElement(By.id("ui-datepicker-div"));   //<5>
     }
 
     private int displayedYear() {
-        return Integer.parseInt(calendar().findElement(By.className("ui-datepicker-year")).getText());
+        return Integer.parseInt(
+            calendar().findElement(By.className("ui-datepicker-year")).getText()
+        );   //<6>
     }
 
 
     private int displayedMonth() {
-        return Month.valueOf(calendar().findElement(By.className("ui-datepicker-month")).getText().toUpperCase()).ordinal();
+        return Month.valueOf(
+            calendar().findElement(By.className("ui-datepicker-month"))
+                .getText()
+                .toUpperCase()
+        ).ordinal();   //<7>
     }
-
 }
