@@ -75,12 +75,7 @@ public class NaiveDatepicker {
         //pickMonth - end
 
         //pickDay - begin
-        List<WebElement> tds = datepicker.findElements(By.tagName("td"));
-        for (WebElement td : tds) {
-            if (td.getText().equals(String.valueOf(date.getDay() + 1))) {
-                td.click();
-            }
-        }
+        datepicker.findElement(By.linkText(String.valueOf(date.getDay() + 1))).click();
 
         new FluentWait<>(browser).until(
             (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||

@@ -2,6 +2,7 @@ package swip.ch17datepicker.jquerydatepicker.v1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.FluentWait;
 import swip.ch15pageflow.framework.Browser;
 
 import java.time.LocalDate;
@@ -61,12 +62,13 @@ public class JQueryDatepicker {
     }
 
     private void pickDay(int day) {
-        List<WebElement> tds = browser.findElement(By.id("ui-datepicker-div")).findElements(By.tagName("td"));
-        for (WebElement td : tds) {
-            if (td.getText().equals(String.valueOf(day))) {
-                td.click();
-            }
-        }
+        browser.findElement(By.id("ui-datepicker-div"))
+            .findElement(By.linkText(String.valueOf(day))).click();
+
+        new FluentWait<>(browser).until(
+            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
+                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
+        );
     }
 
     private void previousYear() {

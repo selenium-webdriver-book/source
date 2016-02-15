@@ -4,29 +4,29 @@ import java.time.LocalDate;
 import java.time.Month;
 
 
-public class Datepicker {
+    public class Datepicker {
 
-    private Calendar calendar;
-    private YearPicker yearControl;
-    private MonthPicker monthControl;
-    private DayPicker dayPicker;
+        private Calendar calendar;         //<1>
+        private YearPicker yearControl;      //<2>
+        private MonthPicker monthControl;     //<3>
+        private DayPicker dayPicker;        //<4>
 
-    public Datepicker(Calendar calendar,
-                      YearPicker yearControl,
-                      MonthPicker monthControl,
-                      DayPicker dayPicker) {
-        this.calendar = calendar;
-        this.yearControl = yearControl;
-        this.monthControl = monthControl;
-        this.dayPicker = dayPicker;
+        public Datepicker(Calendar calendar,
+                          YearPicker yearControl,
+                          MonthPicker monthControl,
+                          DayPicker dayPicker) {
+            this.calendar = calendar;
+            this.yearControl = yearControl;
+            this.monthControl = monthControl;
+            this.dayPicker = dayPicker;
+        }                                        //<5>
+
+        public void pick(Month month, int day, int year) {   //<6>
+            LocalDate.of(year, month.ordinal() + 1, day);     //<7>
+            calendar.show();                               //<8>
+            yearControl.pickYear(year);                    //<9>
+            monthControl.pickMonth(month.ordinal());       //<10>
+            dayPicker.pickDay(day);                        //<11>
+        }
+
     }
-
-    public void pick(Month month, int day, int year) {
-        LocalDate.of(year, month.ordinal() + 1, day);
-        calendar.show();
-        yearControl.pickYear(year);
-        monthControl.pickMonth(month.ordinal());
-        dayPicker.pickDay(day);
-    }
-
-}
