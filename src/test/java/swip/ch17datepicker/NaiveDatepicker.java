@@ -10,6 +10,8 @@ import java.time.Month;
 import java.util.Date;
 import java.util.List;
 
+import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.DATE_FIELD;
+
 
 public class NaiveDatepicker {
 
@@ -19,7 +21,7 @@ public class NaiveDatepicker {
         this.browser = browser;
     }
 
-    public String pickDate(Date date) {
+    public void pickDate(Date date) {
         //show - begin
         Element trigger = browser.untilFound(() -> By.id("datepicker"));
         trigger.click();
@@ -80,6 +82,10 @@ public class NaiveDatepicker {
                 !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
         );
         //pickDay - end
+    }
+
+    public String getDate() {
         return browser.findElement(By.id("datepicker")).getAttribute("value");
     }
+
 }

@@ -15,7 +15,7 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
      */
     YEAR {
         public Integer apply(Browser browser) {
-            String text = getMonthAndYear(browser).split(" ")[1];    //<2>
+            String text = extractValue(browser, 1);    //<2>
             return Integer.parseInt(text);
         }
     },
@@ -25,16 +25,15 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
      */
     MONTH {
         public Integer apply(Browser browser) {
-            String text = getMonthAndYear(browser).split(" ")[0];   //<3>
+            String text = extractValue(browser, 0);   //<3>
             return TO_MONTH.apply(text).ordinal();
         }
-
     };
 
-    private static String getMonthAndYear(Browser browser) {        //<1>
+    private static String extractValue(Browser browser, int position) {        //<1>
         return browser.untilFound(BootstrapByClassName.CALENDAR)
             .untilFound(DISPLAY_MONTH_YEAR)
-            .getText();
+            .getText().split(" ")[position];
     }
 
 }

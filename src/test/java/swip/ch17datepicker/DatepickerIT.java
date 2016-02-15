@@ -48,16 +48,22 @@ public class DatepickerIT extends TestTimer {
 
     @Test
     public void naiveDatePicker() {
-        assertEquals("04/01/2012", new NaiveDatepicker(browser).pickDate(date));
+        NaiveDatepicker naiveDatepicker = new NaiveDatepicker(browser);
+        naiveDatepicker.pickDate(date);
+        assertEquals("04/01/2012",naiveDatepicker.getDate());
     }
 
     @Test
     public void betterDatePicker() {
-        assertEquals("04/01/2012", new BetterJQueryDatepicker(browser).pickDate(date));
+        BetterJQueryDatepicker betterJQueryDatepicker = new BetterJQueryDatepicker(browser);
+        betterJQueryDatepicker.pickDate(date);
+        assertEquals("04/01/2012", betterJQueryDatepicker.getDate());
     }
 
     @Test
     public void muchBetterDatePicker() {
-        assertEquals("04/01/2012", new MuchBetterJQueryDatepicker(browser).pickDate(date));
+        MuchBetterJQueryDatepicker muchBetterJQueryDatepicker = new MuchBetterJQueryDatepicker(browser);
+        muchBetterJQueryDatepicker.pickDate(date);
+        assertEquals("04/01/2012", muchBetterJQueryDatepicker.getDate());
     }
 }

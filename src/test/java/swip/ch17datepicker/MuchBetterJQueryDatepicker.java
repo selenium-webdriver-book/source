@@ -20,12 +20,14 @@ public class MuchBetterJQueryDatepicker {
     }
 
 
-    public String pickDate(Date date) {
+    public void pickDate(Date date) {
         show();
         pickYear(date.getYear() + 1900);
         pickMonth(date.getMonth());
         pickDay(date.getDay() + 1);
+    }
 
+    public String getDate() {
         return browser.findElement(By.id("datepicker")).getAttribute("value");
     }
 

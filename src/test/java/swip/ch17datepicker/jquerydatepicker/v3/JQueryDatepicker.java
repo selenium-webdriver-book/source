@@ -7,25 +7,25 @@ import java.time.Month;
 public class JQueryDatepicker {
 
     private JQueryCalendar calendar;
-    private JQueryYearPicker yearControl;
-    private JQueryMonthPicker monthControl;
+    private JQueryYearPicker yearPicker;
+    private JQueryMonthPicker monthPicker;
     private JQueryDayPicker dayPicker;
 
     public JQueryDatepicker(JQueryCalendar calendar,
-                            JQueryYearPicker yearControl,
-                            JQueryMonthPicker monthControl,
+                            JQueryYearPicker yearPicker,
+                            JQueryMonthPicker monthPicker,
                             JQueryDayPicker dayPicker) {
         this.calendar = calendar;
-        this.yearControl = yearControl;
-        this.monthControl = monthControl;
+        this.yearPicker = yearPicker;
+        this.monthPicker = monthPicker;
         this.dayPicker = dayPicker;
     }
 
     public void pick(Month month, int day, int year) {
         LocalDate.of(year, month.ordinal() + 1, day);
         calendar.show();
-        yearControl.pickYear(year);
-        monthControl.pickMonth(month.ordinal());
+        yearPicker.pickYear(year);
+        monthPicker.pickMonth(month.ordinal());
         dayPicker.pickDay(day);
     }
 

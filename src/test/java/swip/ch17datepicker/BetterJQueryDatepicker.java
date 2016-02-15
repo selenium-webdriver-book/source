@@ -21,17 +21,17 @@ public class BetterJQueryDatepicker {
     }
 
 
-    public String pickDate(Date date) {
-
-        browser.get("/datepicker.html");
-
+    public void pickDate(Date date) {
         show();
         pickYear(date.getYear() + 1900);
         pickMonth(date.getMonth());
         pickDay(date.getDay() + 1);
-
-        return  browser.findElement(By.id("datepicker")).getAttribute("value");
     }
+
+    public String getDate() {
+        return browser.findElement(By.id("datepicker")).getAttribute("value");
+    }
+
 
     private void show() {
         WebElement element = browser.findElement(By.id("datepicker"));
