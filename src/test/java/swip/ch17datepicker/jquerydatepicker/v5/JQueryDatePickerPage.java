@@ -8,7 +8,7 @@ import swip.ch17datepicker.datepicker.Datepicker;
 
 import java.time.Month;
 
-import static swip.ch17datepicker.jquerydatepicker.v5.JQueryById.DATE_FIELD;
+import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.DATE_FIELD;
 import static swip.ch17datepicker.jquerydatepicker.v5.JQueryCalendarControls.*;
 import static swip.ch17datepicker.jquerydatepicker.v5.JQueryCalendarDisplayValue.MONTH;
 import static swip.ch17datepicker.jquerydatepicker.v5.JQueryCalendarDisplayValue.YEAR;

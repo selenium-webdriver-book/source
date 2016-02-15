@@ -5,14 +5,15 @@ import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Function;
 
-import static swip.ch17datepicker.jquerydatepicker.v5.JQueryByClassName.NEXT_MONTH_BUTTON;
-import static swip.ch17datepicker.jquerydatepicker.v5.JQueryByClassName.PREV_MONTH_BUTTON;
-import static swip.ch17datepicker.jquerydatepicker.v5.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.NEXT_MONTH_BUTTON;
+import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.PREV_MONTH_BUTTON;
+import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.DATE_FIELD;
+import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.UI_DATEPICKER_DIV;
 
 public enum JQueryCalendarControls implements Function<Browser, Void> {
     TRIGGER {         //<1>
         public Void apply(Browser browser) {
-            browser.untilFound(JQueryById.DATE_FIELD).click();
+            browser.untilFound(DATE_FIELD).click();
             return null;
         }
     },
