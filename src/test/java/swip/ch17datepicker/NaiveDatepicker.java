@@ -20,8 +20,6 @@ public class NaiveDatepicker {
     }
 
     public String pickDate(Date date) {
-        browser.get("/date-picker.html");        //<1>
-
         //show - begin
         Element trigger = browser.untilFound(() -> By.id("datepicker"));
         trigger.click();

@@ -23,7 +23,7 @@ public class BetterJQueryDatepicker {
 
     public String pickDate(Date date) {
 
-        browser.get("/date-picker.html");
+        browser.get("/datepicker.html");
 
         show();
         pickYear(date.getYear() + 1900);

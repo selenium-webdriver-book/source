@@ -31,7 +31,7 @@ public class DatepickerIT extends TestTimer {
 
     @Before
     public void setup() {
-        browser.get("/date-picker.html");
+        browser.get("/datepicker.html");
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
             date = dateFormat.parse("04/01/2012");
@@ -49,7 +49,6 @@ public class DatepickerIT extends TestTimer {
     @Test
     public void naiveDatePicker() {
         assertEquals("04/01/2012", new NaiveDatepicker(browser).pickDate(date));
-
     }
 
     @Test

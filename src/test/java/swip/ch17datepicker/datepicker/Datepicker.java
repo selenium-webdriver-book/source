@@ -13,10 +13,10 @@ import java.time.Month;
  */
 public class Datepicker {
 
-    private final Calendar calendar;           //<2>
-    private final CalendarPicker yearPicker;                  //<3>
-    private final CalendarPicker monthPicker;                 //<4>
-    private final DayPicker dayPicker;        //<5>
+    private final Calendar calendar;           //<1>
+    private final CalendarPicker yearPicker;                  //<2>
+    private final CalendarPicker monthPicker;                 //<3>
+    private final DayPicker dayPicker;        //<4>
 
     /**
      * Constructor of the Datepicker
@@ -29,12 +29,12 @@ public class Datepicker {
     public Datepicker(Calendar calendar,
                       CalendarPicker yearPicker,
                       CalendarPicker monthPicker,
-                      DayPicker dayPicker) {     //<6>
+                      DayPicker dayPicker) {
         this.calendar = calendar;
         this.yearPicker = yearPicker;
         this.monthPicker = monthPicker;
         this.dayPicker = dayPicker;
-    }
+    }   //<5>
 
     /**
      * Pick a date by the given parameter.
@@ -45,11 +45,11 @@ public class Datepicker {
      * @param day   an integer representing the day appearing on the calendar
      * @param year  an ineger representing the year appearing on the calendar
      */
-    public void pick(Month month, int day, int year) {  //<7>
-        LocalDate.of(year, month.ordinal() + 1, day);   //<8>
-        calendar.show();      //<9>
-        yearPicker.pick(year);              //<10>
-        monthPicker.pick(month.ordinal());  //<11>
-        dayPicker.pick(day);                //<12>
+    public void pick(Month month, int day, int year) {  //<6>
+        LocalDate.of(year, month.ordinal() + 1, day);   //<7>
+        calendar.show();      //<8>
+        yearPicker.pick(year);              //<9>
+        monthPicker.pick(month.ordinal());  //<10>
+        dayPicker.pick(day);                //<11>
     }
 }

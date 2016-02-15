@@ -35,7 +35,7 @@ public class BootstrapDatepickerIT {
 
     @Before
     public void setup() {
-        browser.get("/bootstrap-date-picker.html");
+        browser.get("/bootstrap-datepicker.html");
         bootstrapDatepickerPage = new BootstrapDatepickerPage(browser);
     }
 

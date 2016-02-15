@@ -60,7 +60,7 @@ public class MuchBetterJQueryDatepicker {
 
     private void pickDay(int day) {
         browser.findElement(By.id("ui-datepicker-div"))
-        .findElement(By.linkText(String.valueOf(day))).click();
+            .findElement(By.linkText(String.valueOf(day))).click();
 
         new FluentWait<>(browser).until(
             (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
