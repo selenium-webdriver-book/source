@@ -1,4 +1,4 @@
-package swip.ch12decorating.baseurl;
+package swip.ch12wrapping.baseurl;
 
 import org.apache.commons.lang3.ClassUtils;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import java.lang.reflect.Proxy;
 import java.net.URI;
 import java.util.List;
 
-public class BaseUrlDecorator {
+public class BaseUrlWrapper {
 
     private static Class[] getInterfaces(Class<?> driverClass) {
         List<Class<?>> allInterfaces = ClassUtils.getAllInterfaces(driverClass);

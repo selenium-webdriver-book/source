@@ -1,4 +1,4 @@
-package swip.ch12decorating.httpstatuscode;
+package swip.ch12wrapping.httpstatuscode;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
