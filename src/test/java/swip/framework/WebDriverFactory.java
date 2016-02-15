@@ -16,7 +16,7 @@ import java.net.URI;
 import java.net.URL;
 import java.nio.file.Paths;
 
-import static swip.ch12wrapping.baseurl.BaseUrlDecorator.baseUrlDriver;
+import static swip.ch12wrapping.baseurl.BaseUrlWrapper.baseUrlDriver;
 
 public class WebDriverFactory {
 
