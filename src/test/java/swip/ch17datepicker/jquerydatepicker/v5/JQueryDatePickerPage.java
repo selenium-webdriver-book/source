@@ -26,7 +26,7 @@ public class JQueryDatePickerPage {
             new Calendar(browser, TRIGGER),        //<5>
             new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),     //<6>
             new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),  //<7>
-            new JQueryDayPicker(browser, JQueryPredicates.CALENDAR_CLOSED)      //<8>
+            new JQueryDayPicker(browser)      //<8>
         );
     }
 

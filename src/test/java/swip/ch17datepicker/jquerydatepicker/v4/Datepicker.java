@@ -1,20 +1,20 @@
-package swip.ch17datepicker.jquerydatepicker.v3;
+package swip.ch17datepicker.jquerydatepicker.v4;
 
 import java.time.LocalDate;
 import java.time.Month;
 
 
-public class JQueryDatepicker {
+public class Datepicker {
 
-    private JQueryCalendar calendar;
-    private JQueryYearPicker yearControl;
-    private JQueryMonthPicker monthControl;
-    private JQueryDayPicker dayPicker;
+    private Calendar calendar;
+    private YearPicker yearControl;
+    private MonthPicker monthControl;
+    private DayPicker dayPicker;
 
-    public JQueryDatepicker(JQueryCalendar calendar,
-                            JQueryYearPicker yearControl,
-                            JQueryMonthPicker monthControl,
-                            JQueryDayPicker dayPicker) {
+    public Datepicker(Calendar calendar,
+                      YearPicker yearControl,
+                      MonthPicker monthControl,
+                      DayPicker dayPicker) {
         this.calendar = calendar;
         this.yearControl = yearControl;
         this.monthControl = monthControl;

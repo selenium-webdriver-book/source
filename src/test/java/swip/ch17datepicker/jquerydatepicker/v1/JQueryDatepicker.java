@@ -6,7 +6,6 @@ import swip.ch15pageflow.framework.Browser;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Date;
 import java.util.List;
 
 
@@ -19,11 +18,11 @@ public class JQueryDatepicker {
     }
 
     public void pick(Month month, int day, int year) {
-        LocalDate.of(year, month.ordinal() + 1, day);
-        show();
-        pickYear(year);
-        pickMonth(month.ordinal());
-        pickDay(day);
+        LocalDate.of(year, month.ordinal() + 1, day);    //<1>
+        show();                                          //<2>
+        pickYear(year);                                  //<3>
+        pickMonth(month.ordinal());                      //<4>
+        pickDay(day);                                    //<5>
     }
 
     public String getDate() {
@@ -62,7 +61,7 @@ public class JQueryDatepicker {
     }
 
     private void pickDay(int day) {
-        List<WebElement> tds = calendar().findElements(By.tagName("td"));
+        List<WebElement> tds = browser.findElement(By.id("ui-datepicker-div")).findElements(By.tagName("td"));
         for (WebElement td : tds) {
             if (td.getText().equals(String.valueOf(day))) {
                 td.click();
@@ -83,27 +82,22 @@ public class JQueryDatepicker {
     }
 
     private void previousMonth() {
-        calendar().findElement(By.className("ui-datepicker-prev")).click();  //<3>
+        browser.findElement(By.id("ui-datepicker-div")).findElement(By.className("ui-datepicker-prev")).click();  //<3>
     }
 
     private void nextMonth() {
-        calendar().findElement(By.className("ui-datepicker-next")).click();  //<4>
-    }
-
-    private WebElement calendar() {
-        return browser.findElement(By.id("ui-datepicker-div"));   //<5>
+        browser.findElement(By.id("ui-datepicker-div")).findElement(By.className("ui-datepicker-next")).click();  //<4>
     }
 
     private int displayedYear() {
         return Integer.parseInt(
-            calendar().findElement(By.className("ui-datepicker-year")).getText()
+            browser.findElement(By.id("ui-datepicker-div")).findElement(By.className("ui-datepicker-year")).getText()
         );
     }
 
-
     private int displayedMonth() {
         return Month.valueOf(
-            calendar().findElement(By.className("ui-datepicker-month"))
+            browser.findElement(By.id("ui-datepicker-div")).findElement(By.className("ui-datepicker-month"))
                 .getText()
                 .toUpperCase()
         ).ordinal();   //<7>

@@ -1,4 +1,4 @@
-package swip.ch17datepicker.jquerydatepicker.v3;
+package swip.ch17datepicker.jquerydatepicker.v4;
 
 
 import org.junit.Before;
@@ -6,7 +6,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import swip.ch15pageflow.framework.Browser;
 import swip.ch15pageflow.framework.BrowserRunner;
 import swip.framework.TestTimer;
@@ -21,20 +20,21 @@ public class JQueryDatepickerIT extends TestTimer {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
+
     @Inject
     private Browser browser;
-
-    private JQueryDatepicker jQueryDatepicker;
+    private JQueryDatePickerPage jQueryDatePickerPage;
 
     @Before
     public void setup() {
         browser.get("/date-picker.html");
-        jQueryDatepicker = new JQueryDatepicker(new JQueryCalendar(browser), new JQueryYearPicker(browser), new JQueryMonthPicker(browser), new JQueryDayPicker(browser));
+        jQueryDatePickerPage = new JQueryDatePickerPage(browser);
     }
 
     @Test
-    public void muchBetterDatePicker() {
-        jQueryDatepicker.pick(APRIL, 1, 2012);
-        assertEquals("04/01/2012", browser.findElement(By.id("datepicker")).getAttribute("value"));
+    public void pickADate() {
+        jQueryDatePickerPage.pick(APRIL, 1, 2012);
+        assertEquals("04/01/2012", jQueryDatePickerPage.getDate());
     }
+
 }

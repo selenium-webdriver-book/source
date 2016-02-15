@@ -1,17 +1,16 @@
 package swip.ch17datepicker.jquerydatepicker.v3;
 
 import swip.ch15pageflow.framework.Browser;
-import swip.ch15pageflow.framework.Element;
 
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.*;
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.UI_DATEPICKER_DIV;
 
 
-public class JQueryYearControl {
+public class JQueryYearPicker {
 
     private Browser browser;
 
-    public JQueryYearControl(Browser browser) {
+    public JQueryYearPicker(Browser browser) {
         this.browser = browser;
     }
 
@@ -41,20 +40,16 @@ public class JQueryYearControl {
     }
 
     private void previousMonth() {
-        calendar().findElement(PREV_MONTH_BUTTON).click();  //<3>
+        browser.untilFound(UI_DATEPICKER_DIV).untilFound(PREV_MONTH_BUTTON).click();  //<3>
     }
 
     private void nextMonth() {
-        calendar().findElement(NEXT_MONTH_BUTTON).click();  //<4>
-    }
-
-    private Element calendar() {
-        return browser.findElement(UI_DATEPICKER_DIV);   //<5>
+        browser.untilFound(UI_DATEPICKER_DIV).untilFound(NEXT_MONTH_BUTTON).click();  //<4>
     }
 
     private int displayedYear() {
         return Integer.parseInt(
-            calendar().findElement(DISPLAY_YEAR).getText()
+            browser.untilFound(UI_DATEPICKER_DIV).untilFound(DISPLAY_YEAR).getText()
         );
     }
 

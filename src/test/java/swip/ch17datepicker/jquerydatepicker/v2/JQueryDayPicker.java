@@ -16,16 +16,14 @@ public class JQueryDayPicker {
     }
 
     public void pickDay(int day) {
-        List<WebElement> tds = calendar().findElements(By.tagName("td"));
+        List<WebElement> tds = browser.findElement(By.id("ui-datepicker-div"))
+            .findElements(By.tagName("td"));
         for (WebElement td : tds) {
             if (td.getText().equals(String.valueOf(day))) {
                 td.click();
             }
         }
-    }
 
-    private WebElement calendar() {
-        return browser.findElement(By.id("ui-datepicker-div"));   //<5>
     }
 
 }

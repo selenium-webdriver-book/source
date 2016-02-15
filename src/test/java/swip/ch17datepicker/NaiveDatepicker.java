@@ -2,6 +2,7 @@ package swip.ch17datepicker;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.FluentWait;
 import swip.ch15pageflow.framework.Browser;
 import swip.ch15pageflow.framework.Element;
 
@@ -32,7 +33,7 @@ public class NaiveDatepicker {
         String year = datepicker.findElement(
             By.className("ui-datepicker-year")).getText();
         if (Integer.parseInt(year) < date.getYear() + 1900) {
-            while (Integer.parseInt(year) !=  date.getYear() + 1900) {
+            while (Integer.parseInt(year) != date.getYear() + 1900) {
                 datepicker.findElement(
                     By.className("ui-datepicker-next")).click();
                 datepicker = browser.findElement(By.id("datepicker"));
@@ -81,6 +82,10 @@ public class NaiveDatepicker {
             }
         }
 
+        new FluentWait<>(browser).until(
+            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
+                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
+        );
         //pickDay - end
         return browser.findElement(By.id("datepicker")).getAttribute("value");
     }

@@ -22,11 +22,11 @@ public class JQueryDatepicker {
     }
 
     public void pick(Month month, int day, int year) {
-        LocalDate.of(year, month.ordinal() + 1, day);
-        calendar.show();
-        yearControl.pickYear(year);
-        monthControl.pickMonth(month.ordinal());
-        dayPicker.pickDay(day);
+        LocalDate.of(year, month.ordinal() + 1, day);   //<1>
+        calendar.show();                       //<2>
+        yearControl.pickYear(year);                 //<3>
+        monthControl.pickMonth(month.ordinal());      //<4>
+        dayPicker.pickDay(day);                       //<5>
     }
 
 }
