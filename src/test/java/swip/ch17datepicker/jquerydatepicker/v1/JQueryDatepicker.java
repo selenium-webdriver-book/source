@@ -1,30 +1,32 @@
-package swip.ch17datepicker;
+package swip.ch17datepicker.jquerydatepicker.v1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import swip.ch15pageflow.framework.Browser;
 
-
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.Date;
 import java.util.List;
 
 
-public class MuchBetterJQueryDatepicker {
+public class JQueryDatepicker {
 
     private Browser browser;
 
-    public MuchBetterJQueryDatepicker(Browser browser) {
+    public JQueryDatepicker(Browser browser) {
         this.browser = browser;
     }
 
-
-    public String pickDate(Date date) {
+    public void pick(Month month, int day, int year) {
+        LocalDate.of(year, month.ordinal() + 1, day);
         show();
-        pickYear(date.getYear() + 1900);
-        pickMonth(date.getMonth());
-        pickDay(date.getDay() + 1);
+        pickYear(year);
+        pickMonth(month.ordinal());
+        pickDay(day);
+    }
 
+    public String getDate() {
         return browser.findElement(By.id("datepicker")).getAttribute("value");
     }
 
@@ -34,25 +36,27 @@ public class MuchBetterJQueryDatepicker {
     }
 
     private void pickYear(int year) {
-        if (displayedYear() < year) {        //<1>
-            while (displayedYear() != year) {
-                nextMonth();
+        int difference =  displayedYear() - year;
+        if (difference < 0) {
+            for (int i = difference; i < 0; i++) {
+                nextYear();
             }
-        } else if (displayedYear() > year) {
-            while (displayedYear() != year) {
-                previousMonth();
+        } else if (difference > 0) {
+            for (int i = 0; i < difference; i++) {
+                previousYear();
             }
         }
     }
 
     private void pickMonth(int month) {
-        if (displayedMonth() < month) {             //<2>
-            while (displayedMonth() != month) {
+        int difference =  displayedMonth() - month;
+        if (difference < 0) {
+            for (int i = difference; i < 0; i++) {
                 nextMonth();
             }
-        } else if (displayedMonth() > month) {
-            while (displayedMonth() != month) {
-                previousMonth();
+        } else if (difference > 0) {
+            for (int i = 0; i < difference; i++) {
+               previousMonth();
             }
         }
     }
@@ -63,6 +67,18 @@ public class MuchBetterJQueryDatepicker {
             if (td.getText().equals(String.valueOf(day))) {
                 td.click();
             }
+        }
+    }
+
+    private void previousYear() {
+        for (int i = 0; i < 12; i++) {
+            previousMonth();
+        }
+    }
+
+    private void nextYear() {
+        for (int i = 0; i < 12; i++) {
+            nextMonth();
         }
     }
 
@@ -81,7 +97,7 @@ public class MuchBetterJQueryDatepicker {
     private int displayedYear() {
         return Integer.parseInt(
             calendar().findElement(By.className("ui-datepicker-year")).getText()
-        );   //<6>
+        );
     }
 
 

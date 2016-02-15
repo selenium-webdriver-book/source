@@ -1,4 +1,4 @@
-package swip.ch17datepicker.jquerydatepicker;
+package swip.ch17datepicker.jquerydatepicker.v5;
 
 
 import swip.ch15pageflow.framework.Browser;
@@ -8,8 +8,8 @@ import swip.ch17datepicker.datepicker.DayPicker;
 import java.util.function.Predicate;
 
 import static swip.ch15pageflow.locators.TagName.TD;
-import static swip.ch17datepicker.jquerydatepicker.JQueryByClassName.CALENDAR;
-import static swip.ch17datepicker.jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch17datepicker.jquerydatepicker.v5.JQueryByClassName.CALENDAR;
+import static swip.ch17datepicker.jquerydatepicker.v5.JQueryById.UI_DATEPICKER_DIV;
 
 public class JQueryDayPicker implements DayPicker {
 

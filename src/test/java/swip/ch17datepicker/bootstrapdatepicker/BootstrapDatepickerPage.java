@@ -2,6 +2,7 @@ package swip.ch17datepicker.bootstrapdatepicker;
 
 
 import swip.ch15pageflow.framework.Browser;
+import swip.ch17datepicker.datepicker.Calendar;
 import swip.ch17datepicker.datepicker.CalendarPicker;
 import swip.ch17datepicker.datepicker.Datepicker;
 
@@ -23,14 +24,12 @@ public class BootstrapDatepickerPage {
     public BootstrapDatepickerPage(Browser browser) {
         this.browser = browser;
         this.datepicker = new Datepicker(
-            browser,
-            TRIGGER,
+            new Calendar(browser, TRIGGER),
             new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),
             new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),
             new BootstrapDayPicker(browser, CALENDAR_CLOSED)
         );
     }
-
 
     public void pick(Month month, int day, int year) {
         datepicker.pick(month, day, year);
