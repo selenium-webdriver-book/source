@@ -1,4 +1,4 @@
-package swip.ch17datepicker;
+package swip.ch17datepicker.jquerydatepicker.v0;
 
 
 import org.junit.Before;
