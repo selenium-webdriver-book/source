@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 public class MonthPicker {
 
-    private Browser browser;
+    private final Browser browser;
     private final Function<Browser, Void> previousMonth;
     private final Function<Browser, Void> nextMonth;
     private final Function<Browser, Integer> displayMonth;

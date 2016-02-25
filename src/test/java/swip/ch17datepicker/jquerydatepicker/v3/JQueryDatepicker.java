@@ -6,10 +6,10 @@ import java.time.Month;
 
 public class JQueryDatepicker {
 
-    private JQueryCalendar calendar;
-    private JQueryYearPicker yearPicker;
-    private JQueryMonthPicker monthPicker;
-    private JQueryDayPicker dayPicker;
+    private final JQueryCalendar calendar;
+    private final JQueryYearPicker yearPicker;
+    private final JQueryMonthPicker monthPicker;
+    private final JQueryDayPicker dayPicker;
 
     public JQueryDatepicker(JQueryCalendar calendar,
                             JQueryYearPicker yearPicker,

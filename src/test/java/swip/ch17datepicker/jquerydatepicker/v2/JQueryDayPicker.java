@@ -9,8 +9,7 @@ import java.util.List;
 
 public class JQueryDayPicker {
 
-    private Browser browser;
-
+    private final Browser browser;
 
     public JQueryDayPicker(Browser browser) {
         this.browser = browser;

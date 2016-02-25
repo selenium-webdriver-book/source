@@ -11,7 +11,7 @@ import java.util.List;
 
 public class JQueryCalendar {
 
-    private Browser browser;
+    private final Browser browser;
 
     public JQueryCalendar(Browser browser) {
         this.browser = browser;

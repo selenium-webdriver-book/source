@@ -6,10 +6,10 @@ import java.time.Month;
 
 public class Datepicker {
 
-    private Calendar calendar;         //<1>
-    private YearPicker yearPicker;      //<2>
-    private MonthPicker monthPicker;     //<3>
-    private DayPicker dayPicker;        //<4>
+    private final Calendar calendar;         //<1>
+    private final YearPicker yearPicker;      //<2>
+    private final MonthPicker monthPicker;     //<3>
+    private final DayPicker dayPicker;        //<4>
 
     public Datepicker(Calendar calendar,
                       YearPicker yearPicker,

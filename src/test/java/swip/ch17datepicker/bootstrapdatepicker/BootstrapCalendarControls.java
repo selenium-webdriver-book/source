@@ -3,48 +3,51 @@ package swip.ch17datepicker.bootstrapdatepicker;
 
 import swip.ch15pageflow.framework.Browser;
 
-import java.util.function.Function;
+import java.util.function.Consumer;
 
 import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.*;
 
-public enum BootstrapCalendarControls implements Function<Browser, Void> {
+public enum BootstrapCalendarControls implements Consumer<Browser> {
     TRIGGER {
-        public Void apply(Browser browser) {
+        @Override
+        public void accept(Browser browser) {
             browser.untilFound(DATE_FIELD).click();
-            return null;
         }
+
+
     },
 
     NEXT_MONTH {
-        public Void apply(Browser browser) {
+        @Override
+        public void accept(Browser browser) {
             browser.untilFound(CALENDAR)
                 .untilFound(NEXT_MONTH_BUTTON).click();
-            return null;
         }
+
     },
 
     PREVIOUS_MONTH {
-        public Void apply(Browser browser) {
+        @Override
+        public void accept(Browser browser) {
             browser.untilFound(CALENDAR)
                 .untilFound(PREV_MONTH_BUTTON).click();
-            return null;
         }
     },
 
     NEXT_YEAR {
-        public Void apply(Browser browser) {
+        @Override
+        public void accept(Browser browser) {
             for (int i = 0; i < 12; i++) {
-                NEXT_MONTH.apply(browser);
+                NEXT_MONTH.accept(browser);
             }
-            return null;
         }
     },
     PREVIOUS_YEAR {
-        public Void apply(Browser browser) {
+        @Override
+        public void accept(Browser browser) {
             for (int i = 0; i < 12; i++) {
-                PREVIOUS_MONTH.apply(browser);
+                PREVIOUS_MONTH.accept(browser);
             }
-            return null;
         }
     }
 }

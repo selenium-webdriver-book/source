@@ -11,7 +11,7 @@ import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.UI_DATEPICKER_D
 
 public class YearPicker {
 
-    private Browser browser;                                   //<1>
+    private final Browser browser;                             //<1>
     private final Function<Browser, Void> previousYear;        //<2>
     private final Function<Browser, Void> nextYear;            //<3>
     private final Function<Browser, Integer> displayYear;      //<4>

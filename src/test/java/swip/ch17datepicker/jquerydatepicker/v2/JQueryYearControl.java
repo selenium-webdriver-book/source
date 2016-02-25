@@ -6,7 +6,7 @@ import swip.ch15pageflow.framework.Browser;
 
 public class JQueryYearControl {
 
-    private Browser browser;
+    private final Browser browser;
 
     public JQueryYearControl(Browser browser) {
         this.browser = browser;

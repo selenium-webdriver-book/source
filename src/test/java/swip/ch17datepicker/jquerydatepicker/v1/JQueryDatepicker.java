@@ -12,7 +12,7 @@ import java.util.List;
 
 public class JQueryDatepicker {
 
-    private Browser browser;
+    private final Browser browser;
 
     public JQueryDatepicker(Browser browser) {
         this.browser = browser;

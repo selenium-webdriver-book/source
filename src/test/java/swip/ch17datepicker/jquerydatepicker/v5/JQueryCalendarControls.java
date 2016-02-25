@@ -3,6 +3,7 @@ package swip.ch17datepicker.jquerydatepicker.v5;
 
 import swip.ch15pageflow.framework.Browser;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.NEXT_MONTH_BUTTON;
@@ -10,44 +11,47 @@ import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.PREV_MON
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.DATE_FIELD;
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.UI_DATEPICKER_DIV;
 
-public enum JQueryCalendarControls implements Function<Browser, Void> {
-    TRIGGER {         //<1>
-        public Void apply(Browser browser) {
+public enum JQueryCalendarControls implements Consumer<Browser> {
+
+    TRIGGER {       //<1>
+
+        @Override
+        public void accept(Browser browser) {
             browser.untilFound(DATE_FIELD).click();
-            return null;
         }
     },
+    NEXT_MONTH {    //<2>
 
-    NEXT_MONTH {      //<2>
-        public Void apply(Browser browser) {
+        @Override
+        public void accept(Browser browser) {
             browser.untilFound(UI_DATEPICKER_DIV)
                 .untilFound(NEXT_MONTH_BUTTON).click();
-            return null;
         }
     },
+    PREVIOUS_MONTH {   //<3>
 
-    PREVIOUS_MONTH {     //<3>
-        public Void apply(Browser browser) {
+        @Override
+        public void accept(Browser browser) {
             browser.untilFound(UI_DATEPICKER_DIV)
                 .untilFound(PREV_MONTH_BUTTON).click();
-            return null;
         }
     },
-
     NEXT_YEAR {         //<4>
-        public Void apply(Browser browser) {
+
+        @Override
+        public void accept(Browser browser) {
             for (int i = 0; i < 12; i++) {
-                NEXT_MONTH.apply(browser);
+                NEXT_MONTH.accept(browser);
             }
-            return null;
         }
     },
     PREVIOUS_YEAR {      //<5>
-        public Void apply(Browser browser) {
+
+        @Override
+        public void accept(Browser browser) {
             for (int i = 0; i < 12; i++) {
-                PREVIOUS_MONTH.apply(browser);
+                PREVIOUS_MONTH.accept(browser);
             }
-            return null;
         }
     }
 }

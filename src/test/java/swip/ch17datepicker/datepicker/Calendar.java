@@ -3,6 +3,7 @@ package swip.ch17datepicker.datepicker;
 
 import swip.ch15pageflow.framework.Browser;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -15,7 +16,7 @@ import java.util.function.Function;
 public class Calendar {
 
     private final Browser browser;        //<1>
-    private final Function<Browser, Void> trigger;   //<2>
+    private final Consumer<Browser> trigger;   //<2>
 
     /**
      * Constructor of the DatePicker which taking a Calendar interface.
@@ -23,7 +24,7 @@ public class Calendar {
      * @param browser
      * @param trigger
      */
-    public Calendar(Browser browser, Function<Browser, Void> trigger) { //<6>
+    public Calendar(Browser browser, Consumer<Browser> trigger) { //<6>
         this.browser = browser;
         this.trigger = trigger;
     }
@@ -32,6 +33,6 @@ public class Calendar {
      * Display the calendar
      */
     public void show() {  //<7>
-        trigger.apply(browser);      //<9>
+        trigger.accept(browser);      //<9>
     }
 }

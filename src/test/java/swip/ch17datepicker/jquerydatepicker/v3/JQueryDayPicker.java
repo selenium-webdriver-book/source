@@ -8,7 +8,7 @@ import static swip.ch17datepicker.jquerydatepicker.v3.JQueryPredicates.CALENDAR_
 
 public class JQueryDayPicker {
 
-    private Browser browser;
+    private final Browser browser;
 
     public JQueryDayPicker(Browser browser) {
         this.browser = browser;

@@ -15,7 +15,7 @@ import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.DATE_FIELD;
 
 public class NaiveDatepicker {
 
-    private Browser browser;
+    private final Browser browser;
 
     public NaiveDatepicker(Browser browser) {
         this.browser = browser;

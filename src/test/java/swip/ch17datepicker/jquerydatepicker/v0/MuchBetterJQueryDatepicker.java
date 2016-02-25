@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MuchBetterJQueryDatepicker {
 
-    private Browser browser;
+    private final Browser browser;
 
     public MuchBetterJQueryDatepicker(Browser browser) {
         this.browser = browser;

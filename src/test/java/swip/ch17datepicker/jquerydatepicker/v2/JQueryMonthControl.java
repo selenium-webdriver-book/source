@@ -8,7 +8,7 @@ import java.time.Month;
 
 public class JQueryMonthControl {
 
-    private Browser browser;
+    private final Browser browser;
 
 
     public JQueryMonthControl(Browser browser) {

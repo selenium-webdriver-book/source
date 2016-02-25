@@ -13,7 +13,7 @@ import java.util.List;
 
 public class BetterJQueryDatepicker {
 
-    private Browser browser;
+    private final Browser browser;
     private WebElement datepicker;
 
     public BetterJQueryDatepicker(Browser driver) {

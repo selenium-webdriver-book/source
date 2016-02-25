@@ -10,7 +10,7 @@ import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.UI_DATEPICKER_D
 
 public class JQueryMonthPicker {
 
-    private Browser browser;
+    private final Browser browser;
 
 
     public JQueryMonthPicker(Browser browser) {

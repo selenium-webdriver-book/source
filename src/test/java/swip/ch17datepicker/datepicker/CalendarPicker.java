@@ -2,18 +2,19 @@ package swip.ch17datepicker.datepicker;
 
 import swip.ch15pageflow.framework.Browser;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class CalendarPicker {
 
     private final Browser browser;  //<1>
-    private final Function<Browser, Void> previous;      //<2>
-    private final Function<Browser, Void> next;          //<3>
+    private final Consumer<Browser> previous;      //<2>
+    private final Consumer<Browser> next;          //<3>
     private final Function<Browser, Integer> displayValue; //<4>
 
     public CalendarPicker(Browser browser,
-                          Function<Browser, Void> previous,
-                          Function<Browser, Void> next,
+                          Consumer<Browser> previous,
+                          Consumer<Browser> next,
                           Function<Browser, Integer> displayValue) {    //<5>
         this.browser = browser;
         this.previous = previous;
@@ -28,11 +29,11 @@ public class CalendarPicker {
         int difference = displayValue.apply(browser) - value;   //<6>
         if (difference < 0) {                                 //<7>
             for (int i = difference; i < 0; i++) {       //<8>
-                next.apply(browser);
+                next.accept(browser);
             }
         } else if (difference > 0) {         //<9>
             for (int i = 0; i < difference; i++) {   //<10>
-                previous.apply(browser);
+                previous.accept(browser);
             }
         }
     }
