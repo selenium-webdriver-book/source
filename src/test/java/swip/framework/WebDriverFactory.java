@@ -16,8 +16,6 @@ import java.net.URI;
 import java.net.URL;
 import java.nio.file.Paths;
 
-import static swip.ch12wrapping.baseurl.BaseUrlWrapper.baseUrlDriver;
-
 public class WebDriverFactory {
 
     private final boolean remoteDriver;
@@ -34,7 +32,7 @@ public class WebDriverFactory {
                 remoteDriver(remoteUrl, desiredCapabilities) :
                 localDriver(desiredCapabilities);
 
-        return baseUrlDriver(baseDriver, baseUrl);
+        return new BaseUrlDriver(baseDriver, baseUrl);
     }
 
     private WebDriver localDriver(DesiredCapabilities desiredCapabilities) throws IOException {
