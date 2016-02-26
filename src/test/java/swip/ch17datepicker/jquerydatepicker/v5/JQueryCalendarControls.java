@@ -4,7 +4,6 @@ package swip.ch17datepicker.jquerydatepicker.v5;
 import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.NEXT_MONTH_BUTTON;
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.PREV_MONTH_BUTTON;
@@ -13,7 +12,7 @@ import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.UI_DATEPICKER_D
 
 public enum JQueryCalendarControls implements Consumer<Browser> {
 
-    TRIGGER {       //<1>
+    TRIGGER {      //<1>
 
         @Override
         public void accept(Browser browser) {
