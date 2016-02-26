@@ -37,13 +37,11 @@ public class JQueryDatePickerPage {
                     for (int i = 0; i < 12; i++) {
                         previousMonth();
                     }
-                    return null;
                 },
                 (Browser browser) -> {
                     for (int i = 0; i < 12; i++) {
                         nextMonth();
                     }
-                    return null;
                 },
                 (Browser browser) ->
                     Integer.parseInt(
@@ -55,11 +53,9 @@ public class JQueryDatePickerPage {
             new MonthPicker(browser,
                 (Browser browser) -> {
                     previousMonth();
-                    return null;
                 },
                 (Browser browser) -> {
                     nextMonth();
-                    return null;
                 },
                 (Browser browser) ->
                     Month.valueOf(
