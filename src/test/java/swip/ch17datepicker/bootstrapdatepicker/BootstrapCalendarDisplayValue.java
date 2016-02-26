@@ -5,6 +5,8 @@ import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Function;
 
+import static java.lang.Integer.parseInt;
+import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.CALENDAR;
 import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.DISPLAY_MONTH_YEAR;
 import static swip.ch17datepicker.datepicker.StringToMonth.TO_MONTH;
 
@@ -15,8 +17,7 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
      */
     YEAR {
         public Integer apply(Browser browser) {
-            String text = extractValue(browser, 1);    //<2>
-            return Integer.parseInt(text);
+            return parseInt(extract(browser, 1));
         }
     },
 
@@ -25,13 +26,12 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
      */
     MONTH {
         public Integer apply(Browser browser) {
-            String text = extractValue(browser, 0);   //<3>
-            return TO_MONTH.apply(text).ordinal();
+            return TO_MONTH.apply(extract(browser, 0)).ordinal();
         }
     };
 
-    private static String extractValue(Browser browser, int position) {        //<1>
-        return browser.untilFound(BootstrapByClassName.CALENDAR)
+    private static String extract(Browser browser, int position) {  //<1>
+        return browser.untilFound(CALENDAR)
             .untilFound(DISPLAY_MONTH_YEAR)
             .getText().split(" ")[position];
     }

@@ -30,7 +30,6 @@ public class JQueryDatePickerPage {
             new Calendar(browser,
                 (Browser browser) -> {
                     browser.untilFound(DATE_FIELD).click();
-                    return null;
                 }
             ),
             new YearPicker(browser,
