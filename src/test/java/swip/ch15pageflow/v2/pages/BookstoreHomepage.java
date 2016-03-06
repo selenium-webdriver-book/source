@@ -18,8 +18,7 @@ public class BookstoreHomepage {
 
     public void searchBook(String bookname) {
         browser.setInputText(SEARCH_INPUT, bookname);
-        browser.untilFound(SECOND_NAVBAR)
-            .click(SEARCH_BUTTON);
+        browser.untilFound(SECOND_NAVBAR).click(SEARCH_BUTTON);
         browser.click(() -> By.partialLinkText(bookname));
     }
 

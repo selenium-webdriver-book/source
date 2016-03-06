@@ -31,7 +31,7 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         return super.findElements(by.get()).stream().map(Element::new);
     }
 
-    public void setInputText(Supplier<By> by, String value) {
+    public void setInputText(Supplier<By> by, Object value) {
         Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
 
         retry.attempt(
@@ -40,8 +40,8 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
                 public void attempt() throws Exception {
                     Element element = findElement(by);
                     element.clear();
-                    element.sendKeys(value);
-                    assert value.equals(element.getAttribute("value"));
+                    element.sendKeys(value.toString());
+                    assert value.toString().equals(element.getAttribute("value"));
                 }
             }
         );
@@ -55,13 +55,9 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
                 Element element = findElement(by);
                 element.clear();
                 element.sendKeys(value);
-                assert value.equals(element.getAttribute("value"));
+                assert value.toString().equals(element.getAttribute("value"));
             }
         );
-    }
-
-    public String getText(Supplier<By> by) {
-        return untilFound(by).getText();
     }
 
     public String getInputText(Supplier<By> by) {

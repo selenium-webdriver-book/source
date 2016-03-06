@@ -9,7 +9,8 @@ import static org.openqa.selenium.By.className;
 public enum ClassName implements Supplier<By> {  //<5>
 
     CART_BUTTON("cart-button"),         //<1>
-    SEARCH_BUTTON("btn-default");      // <2>
+    SEARCH_BUTTON("btn-default"),      // <2>
+    ORDER_NUMBER("order-number");
 
     private final By by;
 

@@ -12,6 +12,10 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public interface ExplicitWait extends SearchScope{
 
+    default String getText(Supplier<By> by) {
+        return untilFound(by).getText();
+    }
+
     default void click(Supplier<By> by) {
          untilFound(by).click();
     }

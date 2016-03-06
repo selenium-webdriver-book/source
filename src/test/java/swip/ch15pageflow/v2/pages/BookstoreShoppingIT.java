@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.domain.*;
+import swip.ch15pageflow.locators.ClassName;
 import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch15pageflow.v2.framework.BrowserRunner;
 
@@ -12,16 +13,16 @@ import javax.inject.Inject;
 import java.time.Month;
 
 import static org.junit.Assert.assertEquals;
+import static swip.ch15pageflow.locators.ClassName.ORDER_NUMBER;
 import static swip.ch15pageflow.locators.Id.ERROR_MESSAGE;
-import static swip.ch15pageflow.locators.Id.ORDER_NUMBER;
+import static swip.ch15pageflow.locators.Id.ORDER_NUMBER_ID;
 
 @RunWith(BrowserRunner.class)
 public class BookstoreShoppingIT {
 
     public static final String EXPECTED_ERROR_MESSAGE =
         "The cardNumber must be between 19 and 19 characters long";
-    public static final String EXPECTED_ORDER_NUMBER =
-        "Order number #00008.";
+    public static final String EXPECTED_ORDER_NUMBER = "#00008.";
 
     @Inject
     private Browser browser;
@@ -84,7 +85,7 @@ public class BookstoreShoppingIT {
         cartPage.setCreditCard(creditCard);
         cartPage.continues();
 
-        assertEquals(EXPECTED_ORDER_NUMBER, browser.getText(ORDER_NUMBER));  //<1>
+        assertEquals(EXPECTED_ORDER_NUMBER, cartPage.getOrderNumber());  //<1>
     }
 
 }
