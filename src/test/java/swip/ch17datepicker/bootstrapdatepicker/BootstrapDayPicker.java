@@ -1,8 +1,8 @@
 package swip.ch17datepicker.bootstrapdatepicker;
 
 
-import swip.ch15pageflow.framework.v2.Browser;
-import swip.ch15pageflow.framework.v2.Element;
+import swip.ch15pageflow.v2.framework.Browser;
+import swip.ch15pageflow.v2.framework.Element;
 import swip.ch15pageflow.locators.TagName;
 import swip.ch17datepicker.datepicker.DayPicker;
 

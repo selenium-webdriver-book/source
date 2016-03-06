@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import swip.ch15pageflow.framework.v2.Browser;
-import swip.ch15pageflow.framework.v2.BrowserRunner;
-import swip.ch15pageflow.framework.v2.Element;
+import swip.ch15pageflow.v2.framework.Browser;
+import swip.ch15pageflow.v2.framework.BrowserRunner;
+import swip.ch15pageflow.v2.framework.Element;
 import swip.framework.TestTimer;
 
 import javax.inject.Inject;

@@ -1,6 +1,6 @@
 package swip.ch17datepicker.jquerydatepicker.v4;
 
-import swip.ch15pageflow.framework.v2.Browser;
+import swip.ch15pageflow.v2.framework.Browser;
 
 import static org.openqa.selenium.By.linkText;
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.UI_DATEPICKER_DIV;

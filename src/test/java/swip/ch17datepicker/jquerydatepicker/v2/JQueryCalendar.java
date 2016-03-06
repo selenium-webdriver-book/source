@@ -2,7 +2,7 @@ package swip.ch17datepicker.jquerydatepicker.v2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import swip.ch15pageflow.framework.v2.Browser;
+import swip.ch15pageflow.v2.framework.Browser;
 
 
 public class JQueryCalendar {

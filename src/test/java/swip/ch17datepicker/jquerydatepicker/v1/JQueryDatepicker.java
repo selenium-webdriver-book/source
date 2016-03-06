@@ -3,7 +3,7 @@ package swip.ch17datepicker.jquerydatepicker.v1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
-import swip.ch15pageflow.framework.v2.Browser;
+import swip.ch15pageflow.v2.framework.Browser;
 
 import java.time.LocalDate;
 import java.time.Month;

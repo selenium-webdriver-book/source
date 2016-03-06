@@ -6,8 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import swip.ch15pageflow.framework.v2.Browser;
-import swip.ch15pageflow.framework.v2.BrowserRunner;
+import swip.ch15pageflow.v2.framework.Browser;
+import swip.ch15pageflow.v2.framework.BrowserRunner;
 import swip.framework.TestTimer;
 
 import javax.inject.Inject;

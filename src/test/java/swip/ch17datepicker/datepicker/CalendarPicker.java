@@ -1,6 +1,6 @@
 package swip.ch17datepicker.datepicker;
 
-import swip.ch15pageflow.framework.v2.Browser;
+import swip.ch15pageflow.v2.framework.Browser;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
