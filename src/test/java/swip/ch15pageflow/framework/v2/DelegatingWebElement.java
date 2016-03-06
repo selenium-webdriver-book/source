@@ -14,17 +14,18 @@ public class DelegatingWebElement implements WebElement {
         this.delegate = delegate;
     }
 
+    int tryCount;
+
     @Override
     public void click() {
-        delegate.click();
-    }
-
-    public void click2() {
         try {
             delegate.click();                      //<1>
+            tryCount = 0;                               //<5>
         } catch (StaleElementReferenceException e) {          //<2>
             this.delegate = finder.apply(searchContext);       //<3>
-            click2();
+            if (tryCount++ < 5) {   //<4>
+                click();
+            }
         }
     }
 
