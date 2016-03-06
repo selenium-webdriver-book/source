@@ -14,6 +14,7 @@ import swip.ch14elements.pages.ShoppingCartPage;
 import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(BrowserRunner.class)
 public class ShoppingCartPageIT {
@@ -39,17 +40,17 @@ public class ShoppingCartPageIT {
     @Test
     public void weShouldBeABleToCompleteOtherInformationIndividually() {
         NaiveShoppingCartPage page = new NaiveShoppingCartPage(browser);
-        page.setComment(info.comments);                                    //<1>
-        page.setCoupon(info.couponCode);
-        page.setEmail(info.email);
-        page.setRating(info.sendRatingEmail);
-        page.setSendOrderMessages(info.sendOrdersToEmail);
+        page.setComment("no comments");                                    //<1>
+        page.setCoupon("no code");
+        page.setEmail("joe@email.com");
+        page.setRating(true);
+        page.setSendOrderMessages(true);
 
-        assertEquals(info.comments, page.getComment());
-        assertEquals(info.couponCode, page.getCoupon());
-        assertEquals(info.email, page.getEmail());
-        assertEquals(info.sendRatingEmail, page.isSendRatingEmail());
-        assertEquals(info.sendOrdersToEmail, page.isSendOrderMessages());
+        assertEquals("no comments", page.getComment());
+        assertEquals("no code", page.getCoupon());
+        assertEquals("joe@email.com", page.getEmail());
+        assertTrue(page.isSendRatingEmail());
+        assertTrue(page.isSendOrderMessages());
     }
 
     @Test
