@@ -8,10 +8,10 @@
 
         </div>
         <form class="navbar-form navbar-left" role="search" action="search">
-            <div class="input-group">
+            <div class="input-group" id="secondary-navbar">
                 <input name="query" type="text" class="form-control" id="navbar-search" placeholder="Search">
                 <span class="input-group-btn">
-                    ¬<button id="searchButton" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
                                                                          aria-hidden="true"></span></button>
                 </span>
             </div>
@@ -19,7 +19,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a id="cartButton" href="/bookstore/cart">
+                <a class="cart-button" href="/bookstore/cart">
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 </a>
             </li>

@@ -1,7 +1,5 @@
 package swip.ch15pageflow.domain;
 
-import swip.ch15pageflow.domain.CreditCardType;
-
 import java.time.Month;
 
 public class CreditCard {

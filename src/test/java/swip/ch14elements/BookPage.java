@@ -8,7 +8,7 @@ import swip.ch14elements.framework.Element;
 public class BookPage {
 
     private Browser browser;
-    private Predicate<Browser> colorBecomeWhite =  new Predicate<Browser>() {
+    private Predicate<Browser> colorBecomeWhite = new Predicate<Browser>() {
         @Override
         public boolean apply(Browser browser) {
             return cartButton().getCssValue("color").equals("rgba(255, 255, 255, 1)");
@@ -20,7 +20,12 @@ public class BookPage {
     }
 
     public void addToCart() throws InterruptedException {
-        browser.findElements(By.tagName("input")).stream().filter((e) -> e.getAttribute("value").equals("add to cart")).findFirst().get().click();
+        browser.findElements(By.tagName("input"))
+            .stream()
+            .filter((e) -> e.getAttribute("value").equals("add to cart"))
+            .findFirst()
+            .get()
+            .click();
     }
 
     public void gotoCart() {
@@ -28,7 +33,8 @@ public class BookPage {
     }
 
     public Element cartButton() {
-        return browser.untilFound(By.id("cartButton"));
+        return browser.untilFound(By.id("primary-navbar"))
+            .untilFound(By.className("cart-button"));
     }
 
 }

@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 
 import static org.openqa.selenium.By.id;
 
-public enum BookStoreId implements Supplier<By> {
+public enum Id implements Supplier<By> {
 
     SHIPPING_FIRST_NAME("shipping-first-name"),
     SHIPPING_LAST_NAME("shipping-last-name"),
@@ -16,8 +16,6 @@ public enum BookStoreId implements Supplier<By> {
     SHIPPING_STATE("shipping-state"),
     SHIPPING_COUNTRY("shipping-country"),
     SHIPPING_ZIP("shipping-zip"),
-    SHIPPING_EMAIL("shipping-email"),
-
 
     BILLING_FIRST_NAME("billing-first-name"),
     BILLING_LAST_NAME("billing-last-name"),
@@ -36,7 +34,6 @@ public enum BookStoreId implements Supplier<By> {
     CARD_EXP_YEAR("card-exp-year"),
 
     SEARCH_INPUT("navbar-search"),
-    SEARCH_BUTTON("searchButton"),
     RATINGS("ratings"),
     CONFIRM_EMAIL("confirm-email"),
 
@@ -44,14 +41,14 @@ public enum BookStoreId implements Supplier<By> {
     COMMENTS("comments"),
     ERROR_MESSAGES("ys_errorMessages"),
 
-    SHOPPING_CART("ys_cart"),
-    YAHOO_COPYRIGHT("ys_copyright"),
-    CONTENT("content"),
-    FOOTER("footer");
+    SECOND_NAVBAR("secondary-navbar"),
+    TOP_NAV("primary-navbar"),
+    ORDER_NUMBER("orderNumber"),
+    ERROR_MESSAGE("cardNumber.errors");
 
     private final By by;
 
-    BookStoreId(String id) {
+    Id(String id) {
         this.by = id(id);
     }
 
