@@ -1,6 +1,8 @@
-package swip.ch14elements;
+package swip.ch14elements.pages;
 
 import org.openqa.selenium.By;
+import swip.ch14elements.domain.MailingOption;
+import swip.ch14elements.domain.OtherInformation;
 import swip.ch14elements.framework.Browser;
 
 public class OtherInformationForm {

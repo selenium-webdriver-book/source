@@ -2,8 +2,12 @@ package swip.ch14elements;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import swip.ch14elements.domain.MailingOption;
+import swip.ch14elements.domain.OtherInformation;
 import swip.ch14elements.framework.Browser;
 import swip.ch14elements.framework.BrowserRunner;
+import swip.ch14elements.pages.BookPage;
+import swip.ch14elements.pages.ShoppingCartPage;
 
 import javax.inject.Inject;
 

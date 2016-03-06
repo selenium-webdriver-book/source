@@ -1,4 +1,4 @@
-package swip.ch14elements;
+package swip.ch14elements.domain;
 
 public class OtherInformation {
     public final String couponCode;

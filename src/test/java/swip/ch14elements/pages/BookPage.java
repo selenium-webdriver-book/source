@@ -1,4 +1,4 @@
-package swip.ch14elements;
+package swip.ch14elements.pages;
 
 import com.google.common.base.Predicate;
 import org.openqa.selenium.By;
