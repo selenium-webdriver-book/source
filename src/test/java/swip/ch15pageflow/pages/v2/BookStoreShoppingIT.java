@@ -1,4 +1,4 @@
-package swip.ch15pageflow.v3;
+package swip.ch15pageflow.pages.v2;
 
 
 import org.junit.Before;
@@ -6,10 +6,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import swip.ch15pageflow.domain.*;
-import swip.ch15pageflow.framework.Browser;
-import swip.ch15pageflow.framework.BrowserRunner;
+import swip.ch15pageflow.framework.v2.Browser;
+import swip.ch15pageflow.framework.v2.BrowserRunner;
 import swip.ch15pageflow.pages.BookPage;
-import swip.ch15pageflow.pages.BookstoreHomepage;
+import swip.ch15pageflow.pages.v2.BookstoreHomepage;
 import swip.ch15pageflow.pages.ShoppingCartPage;
 
 import javax.inject.Inject;
@@ -59,7 +59,7 @@ public class BookStoreShoppingIT {
     public void addToCart() {
         homePage = new BookstoreHomepage(browser);
 
-        homePage.searchBook2("Selenium WebDriver in Practice");
+        homePage.searchBook("Selenium WebDriver in Practice");
 
         BookPage bookPage = new BookPage(browser);
         bookPage.addToCart();

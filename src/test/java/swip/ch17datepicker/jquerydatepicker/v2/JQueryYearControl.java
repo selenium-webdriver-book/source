@@ -1,7 +1,7 @@
 package swip.ch17datepicker.jquerydatepicker.v2;
 
 import org.openqa.selenium.By;
-import swip.ch15pageflow.framework.Browser;
+import swip.ch15pageflow.framework.v2.Browser;
 
 
 public class JQueryYearControl {

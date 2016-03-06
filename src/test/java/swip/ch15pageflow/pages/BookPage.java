@@ -1,7 +1,7 @@
 package swip.ch15pageflow.pages;
 
-import swip.ch15pageflow.framework.Browser;
-import swip.ch15pageflow.framework.Element;
+import swip.ch15pageflow.framework.v2.Browser;
+import swip.ch15pageflow.framework.v2.Element;
 
 import static swip.ch15pageflow.locators.ClassName.CART_BUTTON;
 import static swip.ch15pageflow.locators.Id.TOP_NAV;

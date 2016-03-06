@@ -1,8 +1,8 @@
 package swip.ch17datepicker.jquerydatepicker.v3;
 
 
-import swip.ch15pageflow.framework.Element;
-import swip.ch15pageflow.framework.ExplicitWait;
+import swip.ch15pageflow.framework.v2.Element;
+import swip.ch15pageflow.framework.v2.ExplicitWait;
 
 import java.util.Optional;
 import java.util.function.Predicate;

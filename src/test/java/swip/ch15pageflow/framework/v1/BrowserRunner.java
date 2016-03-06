@@ -1,4 +1,4 @@
-package swip.ch15pageflow.framework;
+package swip.ch15pageflow.framework.v1;
 
 import org.junit.runners.model.InitializationError;
 import org.springframework.test.context.ContextConfiguration;

@@ -1,7 +1,7 @@
 package swip.ch17datepicker.bootstrapdatepicker;
 
 
-import swip.ch15pageflow.framework.Browser;
+import swip.ch15pageflow.framework.v2.Browser;
 
 import java.util.function.Function;
 

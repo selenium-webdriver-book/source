@@ -1,4 +1,4 @@
-package swip.ch15pageflow.framework;
+package swip.ch15pageflow.framework.v1;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.context.annotation.Bean;

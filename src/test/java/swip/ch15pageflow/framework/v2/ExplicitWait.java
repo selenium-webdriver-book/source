@@ -1,4 +1,4 @@
-package swip.ch15pageflow.framework;
+package swip.ch15pageflow.framework.v2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -12,22 +12,15 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public interface ExplicitWait extends SearchScope{
 
-    default Element untilFound(Supplier<By> by) {
-        return new FluentWait<>(this)
-                .withTimeout(10, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.MILLISECONDS)
-                .ignoring(Exception.class)
-                .until((ExplicitWait e) -> e.findElement(by));
-    }
-
-    default Element untilFound2(Supplier<By> by) {
+    default Element untilFound
+        (Supplier<By> by) {
         Element element = new FluentWait<>(this)
             .withTimeout(10, TimeUnit.SECONDS)
             .pollingEvery(5, TimeUnit.MILLISECONDS)
             .ignoring(Exception.class)
             .until((ExplicitWait e) -> e.findElement(by));
         element.setSearchContext(this);
-        element.setLocator((SearchScope e) -> this.untilFound2(by));
+        element.setLocator((SearchScope e) -> this.untilFound(by));
         return element;
     }
 

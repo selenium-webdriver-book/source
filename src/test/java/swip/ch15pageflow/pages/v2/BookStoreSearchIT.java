@@ -1,16 +1,16 @@
-package swip.ch15pageflow.v2;
+package swip.ch15pageflow.pages.v2;
 
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import swip.ch15pageflow.framework.Browser;
-import swip.ch15pageflow.framework.BrowserRunner;
-import swip.ch15pageflow.pages.BookstoreHomepage;
+import swip.ch15pageflow.framework.v2.Browser;
+import swip.ch15pageflow.framework.v2.BrowserRunner;
+import swip.ch15pageflow.pages.v2.BookstoreHomepage;
 
 import javax.inject.Inject;
 
 @RunWith(BrowserRunner.class)
-public class BookStoreShoppingIT {
+public class BookStoreSearchIT {
     @Inject
     private Browser browser;
 
@@ -19,6 +19,6 @@ public class BookStoreShoppingIT {
     @Test
     public void invalidCardInfo() {
         homePage = new BookstoreHomepage(browser);
-        homePage.searchBook2("Selenium WebDriver in Practice");
+        homePage.searchBook("Selenium WebDriver in Practice");
     }
 }

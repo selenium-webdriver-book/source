@@ -1,12 +1,9 @@
 package swip.ch17datepicker.jquerydatepicker.v5;
 
 
-import swip.ch15pageflow.framework.Browser;
-import swip.ch15pageflow.framework.Element;
+import swip.ch15pageflow.framework.v2.Browser;
+import swip.ch15pageflow.framework.v2.Element;
 import swip.ch17datepicker.datepicker.DayPicker;
-import swip.ch17datepicker.jquerydatepicker.v3.JQueryPredicates;
-
-import java.util.function.Predicate;
 
 import static swip.ch15pageflow.locators.TagName.TD;
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.CALENDAR;

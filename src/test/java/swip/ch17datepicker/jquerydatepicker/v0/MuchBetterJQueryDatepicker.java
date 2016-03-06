@@ -3,12 +3,11 @@ package swip.ch17datepicker.jquerydatepicker.v0;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
-import swip.ch15pageflow.framework.Browser;
+import swip.ch15pageflow.framework.v2.Browser;
 
 
 import java.time.Month;
 import java.util.Date;
-import java.util.List;
 
 
 public class MuchBetterJQueryDatepicker {

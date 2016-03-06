@@ -3,7 +3,7 @@ package swip.ch15pageflow.pages;
 import swip.ch15pageflow.domain.Address;
 import swip.ch15pageflow.domain.CreditCard;
 import swip.ch15pageflow.domain.OtherInformation;
-import swip.ch15pageflow.framework.Browser;
+import swip.ch15pageflow.framework.v2.Browser;
 import swip.ch15pageflow.locators.CssSelector;
 
 public class ShoppingCartPage {
@@ -33,7 +33,7 @@ public class ShoppingCartPage {
     }
 
     public void continues() {
-        browser.untilFound2(CssSelector.CONTINUE).click();
+        browser.untilFound(CssSelector.CONTINUE).click();
     }
 
 

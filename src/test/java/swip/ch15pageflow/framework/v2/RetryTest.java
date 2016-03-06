@@ -1,4 +1,4 @@
-package swip.ch15pageflow.framework;
+package swip.ch15pageflow.framework.v2;
 
 import org.junit.Rule;
 import org.junit.Test;

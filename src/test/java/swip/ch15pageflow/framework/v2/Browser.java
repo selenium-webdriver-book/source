@@ -1,4 +1,4 @@
-package swip.ch15pageflow.framework;
+package swip.ch15pageflow.framework.v2;
 
 
 import com.google.common.base.Predicate;
@@ -23,7 +23,7 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
     public Element findElement(Supplier<By> by) {
         Element element = new Element(super.findElement(by.get()));
         element.setSearchContext(this);
-        element.setLocator((SearchScope e) -> this.untilFound2(by));
+        element.setLocator((SearchScope e) -> this.untilFound(by));
         return element;
     }
 

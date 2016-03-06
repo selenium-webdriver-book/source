@@ -1,7 +1,7 @@
 package swip.ch17datepicker.jquerydatepicker.v5;
 
 
-import swip.ch15pageflow.framework.Browser;
+import swip.ch15pageflow.framework.v2.Browser;
 import swip.ch17datepicker.datepicker.Calendar;
 import swip.ch17datepicker.datepicker.CalendarPicker;
 import swip.ch17datepicker.datepicker.Datepicker;

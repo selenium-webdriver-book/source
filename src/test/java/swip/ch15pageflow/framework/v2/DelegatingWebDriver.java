@@ -1,4 +1,4 @@
-package swip.ch15pageflow.framework;
+package swip.ch15pageflow.framework.v2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

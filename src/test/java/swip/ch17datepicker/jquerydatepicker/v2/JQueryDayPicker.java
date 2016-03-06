@@ -1,11 +1,8 @@
 package swip.ch17datepicker.jquerydatepicker.v2;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
-import swip.ch15pageflow.framework.Browser;
-
-import java.util.List;
+import swip.ch15pageflow.framework.v2.Browser;
 
 public class JQueryDayPicker {
 
