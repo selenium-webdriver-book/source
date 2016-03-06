@@ -16,6 +16,7 @@ public class Element extends DelegatingWebElement implements ExplicitWait, Searc
     public Element findElement(Supplier<By> by) {
         return new Element(super.findElement(by.get()));
     }
+
     public Stream<Element> findElements(Supplier<By> by) {
         return super.findElements(by.get()).stream().map(Element::new);
     }

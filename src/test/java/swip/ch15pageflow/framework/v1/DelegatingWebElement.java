@@ -7,8 +7,6 @@ import java.util.function.Function;
 
 public class DelegatingWebElement implements WebElement {
     private WebElement delegate;
-    private SearchScope searchContext;
-    private Function<SearchScope, Element> finder;
 
     public DelegatingWebElement(WebElement delegate) {
         this.delegate = delegate;
@@ -17,15 +15,6 @@ public class DelegatingWebElement implements WebElement {
     @Override
     public void click() {
         delegate.click();
-    }
-
-    public void click2() {
-        try {
-            delegate.click();                      //<1>
-        } catch (StaleElementReferenceException e) {          //<2>
-            this.delegate = finder.apply(searchContext);       //<3>
-            click2();
-        }
     }
 
     @Override
@@ -101,13 +90,5 @@ public class DelegatingWebElement implements WebElement {
     @Override
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
         return delegate.getScreenshotAs(outputType);
-    }
-
-    public void setSearchContext(ExplicitWait searchContext) {
-        this.searchContext = searchContext;
-    }
-
-    public void setLocator(Function<SearchScope, Element> finder) {
-        this.finder = finder;
     }
 }
