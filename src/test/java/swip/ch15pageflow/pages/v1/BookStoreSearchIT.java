@@ -9,7 +9,7 @@ import swip.ch15pageflow.framework.v1.BrowserRunner;
 import javax.inject.Inject;
 
 @RunWith(BrowserRunner.class)
-public class BookStoreSearchIT {
+public class BookstoreSearchIT {
     @Inject
     private Browser browser;
 

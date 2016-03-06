@@ -15,7 +15,7 @@ import java.time.Month;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(BrowserRunner.class)
-public class BookStoreShoppingIT {
+public class BookstoreShoppingIT {
 
     @Inject
     private Browser browser;

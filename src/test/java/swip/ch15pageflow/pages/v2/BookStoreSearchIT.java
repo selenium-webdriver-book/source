@@ -5,12 +5,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.framework.v2.Browser;
 import swip.ch15pageflow.framework.v2.BrowserRunner;
-import swip.ch15pageflow.pages.v2.BookstoreHomepage;
 
 import javax.inject.Inject;
 
 @RunWith(BrowserRunner.class)
-public class BookStoreSearchIT {
+public class BookstoreSearchIT {
     @Inject
     private Browser browser;
 
