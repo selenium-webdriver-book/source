@@ -33,7 +33,7 @@ public class ShoppingCartPage {
     }
 
     public void continues() {
-        browser.untilFound(CssSelector.CONTINUE).click();
+        browser.click(CssSelector.CONTINUE);
     }
 
 

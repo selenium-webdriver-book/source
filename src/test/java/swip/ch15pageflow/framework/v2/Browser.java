@@ -60,6 +60,10 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         );
     }
 
+    public String getText(Supplier<By> by) {
+        return untilFound(by).getText();
+    }
+
     public String getInputText(Supplier<By> by) {
         return untilFound(by).getAttribute("value");
     }

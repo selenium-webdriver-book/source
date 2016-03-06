@@ -18,9 +18,9 @@ public class BookstoreHomepage {
 
     public void searchBook(String bookname) {
         browser.setInputText(SEARCH_INPUT, bookname);
-        browser.untilFound(SECOND_NAVBAR).untilFound(SEARCH_BUTTON).click();
-        browser.untilFound(() -> By.partialLinkText(bookname))
-            .click();
+        browser.untilFound(SECOND_NAVBAR)
+            .click(SEARCH_BUTTON);
+        browser.click(() -> By.partialLinkText(bookname));
     }
 
 }

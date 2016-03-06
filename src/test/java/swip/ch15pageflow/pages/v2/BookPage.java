@@ -16,7 +16,11 @@ public class BookPage {
     }
 
     public void addToCart() {
-        browser.findElements(INPUT).filter((e) -> e.getAttribute("value").equals("add to cart")).findFirst().get().click();
+        browser.findElements(INPUT)
+            .filter((e) -> e.getAttribute("value").equals("add to cart"))
+            .findFirst()
+            .get()
+            .click();
     }
 
     public void gotoCart() {
@@ -24,7 +28,8 @@ public class BookPage {
     }
 
     public Element cartButton() {
-        return browser.untilFound(TOP_NAV).untilFound(CART_BUTTON);
+        return browser.untilFound(TOP_NAV)
+            .untilFound(CART_BUTTON);
     }
 
 }
