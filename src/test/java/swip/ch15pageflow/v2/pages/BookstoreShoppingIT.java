@@ -18,6 +18,11 @@ import static swip.ch15pageflow.locators.Id.ORDER_NUMBER;
 @RunWith(BrowserRunner.class)
 public class BookstoreShoppingIT {
 
+    public static final String EXPECTED_ERROR_MESSAGE =
+        "The cardNumber must be between 19 and 19 characters long";
+    public static final String EXPECTED_ORDER_NUMBER =
+        "Order number #00008.";
+
     @Inject
     private Browser browser;
     private ShoppingCartPage cartPage;
@@ -67,22 +72,19 @@ public class BookstoreShoppingIT {
     }
 
     @Test
-    public void purchaseSuccessful() {
-        cartPage.setCreditCard(creditCard);                //<9>
-        cartPage.continues();                              //<10>
+    public void invalidCreditCard() {
+        cartPage.setCreditCard(invalidCreditCard);          //<9>
+        cartPage.continues();                               //<10>
 
-        assertEquals("Order number #00008.",
-            browser.getText(ORDER_NUMBER));  //<11>
+        assertEquals(EXPECTED_ERROR_MESSAGE, browser.getText(ERROR_MESSAGE));  //<11>
     }
 
     @Test
-    public void invalidCreditCard() {
-        cartPage.setCreditCard(invalidCreditCard);          //<1>
+    public void purchaseSuccessful() {
+        cartPage.setCreditCard(creditCard);
         cartPage.continues();
 
-        assertEquals("The cardNumber must be between 19 and 19 characters long",
-            browser.getText(ERROR_MESSAGE));
-
+        assertEquals(EXPECTED_ORDER_NUMBER, browser.getText(ORDER_NUMBER));  //<1>
     }
 
 }
