@@ -1,4 +1,4 @@
-package swip.ch15pageflow.pages;
+package swip.ch15pageflow.pages.v2;
 
 import swip.ch15pageflow.framework.v2.Browser;
 import swip.ch15pageflow.framework.v2.Element;

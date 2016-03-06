@@ -1,4 +1,4 @@
-package swip.ch15pageflow.pages;
+package swip.ch15pageflow.pages.v2;
 
 
 import swip.ch15pageflow.domain.OtherInformation;
@@ -6,6 +6,7 @@ import swip.ch15pageflow.framework.v2.Browser;
 import swip.ch15pageflow.locators.Name;
 
 import static swip.ch15pageflow.locators.Id.*;
+import static swip.ch15pageflow.locators.Name.MAILING_OPTION;
 
 public class OtherInformationForm {
 
@@ -22,6 +23,6 @@ public class OtherInformationForm {
         browser.setInputText(COMMENTS, info.comments);
         browser.setCheckboxValue(CONFIRM_EMAIL, info.sendOrdersToEmail);
         browser.setCheckboxValue(RATINGS, info.sendRatingEmail);
-        browser.setRadio(Name.MAILING_OPTION, info.mailingOption.toString());
+        browser.setRadio(MAILING_OPTION, info.mailingOption);
     }
 }

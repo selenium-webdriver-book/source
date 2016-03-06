@@ -8,9 +8,6 @@ import org.openqa.selenium.By;
 import swip.ch15pageflow.domain.*;
 import swip.ch15pageflow.framework.v2.Browser;
 import swip.ch15pageflow.framework.v2.BrowserRunner;
-import swip.ch15pageflow.pages.BookPage;
-import swip.ch15pageflow.pages.v2.BookstoreHomepage;
-import swip.ch15pageflow.pages.ShoppingCartPage;
 
 import javax.inject.Inject;
 import java.time.Month;

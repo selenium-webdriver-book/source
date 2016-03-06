@@ -75,13 +75,13 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
         return untilFound(by).isSelected();
     }
 
-    public void setRadio(Supplier<By> by, String value) {
+    public void setRadio(Supplier<By> by, Object value) {
         List<WebElement> radiobuttons = findElements(by.get());
 
         assert radiobuttons.size() >= 2;
 
         for (WebElement e : radiobuttons) {
-            if (e.getAttribute("value").equals(value)) {
+            if (e.getAttribute("value").equals(value.toString())) {
                 e.click();
                 return;
             }
