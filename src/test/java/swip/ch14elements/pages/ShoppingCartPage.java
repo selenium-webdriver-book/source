@@ -2,7 +2,6 @@ package swip.ch14elements.pages;
 
 import swip.ch14elements.domain.OtherInformation;
 import swip.ch14elements.framework.Browser;
-import swip.ch14elements.pages.OtherInformationForm;
 
 public class ShoppingCartPage {
 
@@ -16,7 +15,7 @@ public class ShoppingCartPage {
         return otherInformationForm.getOtherInformation();
     }
 
-    public void setOtherInformation(OtherInformation otherInformation) throws Exception {
+    public void setOtherInformation(OtherInformation otherInformation) {
         otherInformationForm.setOtherInformation(otherInformation);
     }
 }
