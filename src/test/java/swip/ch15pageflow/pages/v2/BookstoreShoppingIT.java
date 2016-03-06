@@ -16,7 +16,7 @@ import static swip.ch15pageflow.locators.Id.ERROR_MESSAGE;
 import static swip.ch15pageflow.locators.Id.ORDER_NUMBER;
 
 @RunWith(BrowserRunner.class)
-public class Bookstore_ShoppingIT {
+public class BookstoreShoppingIT {
 
     @Inject
     private Browser browser;
