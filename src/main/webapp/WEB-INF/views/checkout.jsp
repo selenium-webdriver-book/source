@@ -11,7 +11,7 @@
     <h1>Thank you for your order</h1>
     <p id="orderNumber">
         Your order number is
-        <span class="order-number">#00008.</span>
+        <span class="order-number">#00008</span>.
     </p>
 
 </div>
