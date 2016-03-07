@@ -54,7 +54,7 @@ public enum UnitedStates {
 
     private final String value;
 
-    private UnitedStates(String value) {
+    UnitedStates(String value) {
         this.value = value;
     }
 
