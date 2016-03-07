@@ -12,7 +12,6 @@ public class OtherInformationForm {
     private Browser browser;
 
     public OtherInformationForm(Browser browser) {
-
         this.browser = browser;
     }
 

@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.domain.*;
-import swip.ch15pageflow.locators.ClassName;
 import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch15pageflow.v2.framework.BrowserRunner;
 
@@ -13,9 +12,7 @@ import javax.inject.Inject;
 import java.time.Month;
 
 import static org.junit.Assert.assertEquals;
-import static swip.ch15pageflow.locators.ClassName.ORDER_NUMBER;
 import static swip.ch15pageflow.locators.Id.ERROR_MESSAGE;
-import static swip.ch15pageflow.locators.Id.ORDER_NUMBER_ID;
 
 @RunWith(BrowserRunner.class)
 public class BookstoreShoppingIT {
