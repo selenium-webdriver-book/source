@@ -1,29 +1,18 @@
-package swip.ch13framework.v5;
+package swip.ch13framework.v6;
 
 import org.openqa.selenium.*;
 
-import java.util.List;
-
-public class DelegatingWebElement implements WebElement {
-    private final WebElement delegate;
+public class DelegatingWebElement
+    extends DelegatingSearchContext<WebElement>      //<1>
+    implements WebElement {
 
     public DelegatingWebElement(WebElement delegate) {
-        this.delegate = delegate;
-    }
-
-    @Override
-    public List<WebElement> findElements(By by) {
-        return delegate.findElements(by);
-    }
-
-    @Override
-    public WebElement findElement(By by) {
-        return delegate.findElement(by);
+      super(delegate);                   //<2>
     }
 
     @Override
     public void click() {
-        delegate.click();
+        delegate.click();      //<3>
     }
 
     @Override

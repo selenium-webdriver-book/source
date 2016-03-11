@@ -1,32 +1,20 @@
-package swip.ch13framework.v5;
+package swip.ch13framework.v6;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 import java.util.Set;
 
-public class DelegatingWebDriver implements WebDriver {
-    private final WebDriver delegate; // <1>
+public class DelegatingWebDriver
+    extends DelegatingSearchContext<WebDriver>    //<1>
+    implements WebDriver {
 
     public DelegatingWebDriver(WebDriver delegate) {
-        this.delegate = delegate;
-    }
-
-    @Override
-    public List<WebElement> findElements(By by) {
-        return delegate.findElements(by);
-    }
-
-    @Override
-    public WebElement findElement(By by) {
-        return delegate.findElement(by);
+        super(delegate);      //<2>
     }
 
     @Override
     public void get(String url) {
-        delegate.get(url); // <2>
+        delegate.get(url); // <3>
     }
 
     @Override
