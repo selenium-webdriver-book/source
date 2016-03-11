@@ -2,13 +2,10 @@ package swip.ch14elements.framework;
 
 import org.openqa.selenium.*;
 
-import java.util.List;
-
-public class DelegatingWebElement implements WebElement {
-    private final WebElement delegate;
+public class DelegatingWebElement extends DelegatingSearchContext<WebElement> implements WebElement {
 
     public DelegatingWebElement(WebElement delegate) {
-        this.delegate = delegate;
+        super(delegate);
     }
 
     @Override
@@ -54,16 +51,6 @@ public class DelegatingWebElement implements WebElement {
     @Override
     public String getText() {
         return delegate.getText();
-    }
-
-    @Override
-    public List<WebElement> findElements(By by) {
-        return delegate.findElements(by);
-    }
-
-    @Override
-    public WebElement findElement(By by) {
-        return delegate.findElement(by);
     }
 
     @Override

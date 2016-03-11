@@ -1,17 +1,13 @@
 package swip.ch15pageflow.v1.framework;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 import java.util.Set;
 
-public class DelegatingWebDriver implements WebDriver {
-    private final WebDriver delegate;
+public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> implements WebDriver {
 
     public DelegatingWebDriver(WebDriver delegate) {
-        this.delegate = delegate;
+       super( delegate);
     }
 
     @Override
@@ -27,16 +23,6 @@ public class DelegatingWebDriver implements WebDriver {
     @Override
     public String getTitle() {
         return delegate.getTitle();
-    }
-
-    @Override
-    public List<WebElement> findElements(By by) {
-        return by.findElements(delegate);
-    }
-
-    @Override
-    public WebElement findElement(By by) {
-        return delegate.findElement(by);
     }
 
     @Override

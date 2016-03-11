@@ -5,11 +5,10 @@ import org.openqa.selenium.*;
 import java.util.List;
 import java.util.function.Function;
 
-public class DelegatingWebElement implements WebElement {
-    private WebElement delegate;
+public class DelegatingWebElement extends DelegatingSearchContext<WebElement> implements WebElement {
 
     public DelegatingWebElement(WebElement delegate) {
-        this.delegate = delegate;
+       super(delegate);
     }
 
     @Override
@@ -55,16 +54,6 @@ public class DelegatingWebElement implements WebElement {
     @Override
     public String getText() {
         return delegate.getText();
-    }
-
-    @Override
-    public List<WebElement> findElements(By by) {
-        return delegate.findElements(by);
-    }
-
-    @Override
-    public WebElement findElement(By by) {
-        return delegate.findElement(by);
     }
 
     @Override
