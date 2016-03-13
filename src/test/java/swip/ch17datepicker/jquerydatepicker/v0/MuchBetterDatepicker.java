@@ -48,6 +48,14 @@ public class MuchBetterDatepicker {
         }
     }
 
+    private int displayedYear() {
+        return Integer.parseInt(
+            browser.findElement(By.id("ui-datepicker-div"))
+                .findElement(By.className("ui-datepicker-year")).getText()
+        );   //<5>
+    }
+
+
     private void pickMonth(int month) {
         if (displayedMonth() < month) {             //<2>
             while (displayedMonth() != month) {
@@ -60,16 +68,6 @@ public class MuchBetterDatepicker {
         }
     }
 
-    private void pickDay(int day) {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.linkText(String.valueOf(day))).click();
-
-        new FluentWait<>(browser).until(
-            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
-                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
-        );
-    }
-
     private void previousMonth() {
         browser.findElement(By.id("ui-datepicker-div"))
             .findElement(By.className("ui-datepicker-prev")).click();  //<3>
@@ -80,14 +78,6 @@ public class MuchBetterDatepicker {
             .findElement(By.className("ui-datepicker-next")).click();  //<4>
     }
 
-    private int displayedYear() {
-        return Integer.parseInt(
-            browser.findElement(By.id("ui-datepicker-div"))
-                .findElement(By.className("ui-datepicker-year")).getText()
-        );   //<5>
-    }
-
-
     private int displayedMonth() {
         return Month.valueOf(
             browser.findElement(By.id("ui-datepicker-div"))
@@ -95,5 +85,15 @@ public class MuchBetterDatepicker {
                 .getText()
                 .toUpperCase()
         ).ordinal();   //<6>
+    }
+
+    private void pickDay(int day) {
+        browser.findElement(By.id("ui-datepicker-div"))
+            .findElement(By.linkText(String.valueOf(day))).click();
+
+        new FluentWait<>(browser).until(
+            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
+                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
+        );
     }
 }

@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import swip.ch15pageflow.v2.framework.Browser;
 
 
-public class JQueryYearControl {
+public class JQueryYearPicker {
 
     private final Browser browser;
 
-    public JQueryYearControl(Browser browser) {
+    public JQueryYearPicker(Browser browser) {
         this.browser = browser;
     }
 

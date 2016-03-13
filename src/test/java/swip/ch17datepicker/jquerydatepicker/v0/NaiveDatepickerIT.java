@@ -38,7 +38,6 @@ public class NaiveDatepickerIT extends TestTimer {
 
     @Test
     public void naiveDatePicker() {
-
         naiveDatepicker.pickDate(calendar);
         assertEquals("04/01/2014", naiveDatepicker.getDate());
     }

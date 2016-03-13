@@ -29,7 +29,7 @@ public class JQueryDatepickerIT extends TestTimer {
     @Before
     public void setup() {
         browser.get("/datepicker.html");
-        jQueryDatepicker = new JQueryDatepicker(new JQueryCalendar(browser), new JQueryYearControl(browser), new JQueryMonthControl(browser), new JQueryDayPicker(browser));
+        jQueryDatepicker = new JQueryDatepicker(new JQueryCalendar(browser), new JQueryYearPicker(browser), new JQueryMonthPicker(browser), new JQueryDayPicker(browser));
     }
 
     @Test

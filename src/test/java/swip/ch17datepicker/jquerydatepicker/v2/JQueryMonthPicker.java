@@ -6,12 +6,12 @@ import swip.ch15pageflow.v2.framework.Browser;
 import java.time.Month;
 
 
-public class JQueryMonthControl {
+public class JQueryMonthPicker {
 
     private final Browser browser;
 
 
-    public JQueryMonthControl(Browser browser) {
+    public JQueryMonthPicker(Browser browser) {
         this.browser = browser;
     }
 

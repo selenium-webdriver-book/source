@@ -7,13 +7,13 @@ import java.time.Month;
 public class JQueryDatepicker {
 
     private final JQueryCalendar calendar;
-    private final JQueryYearControl yearControl;
-    private final JQueryMonthControl monthControl;
+    private final JQueryYearPicker yearControl;
+    private final JQueryMonthPicker monthControl;
     private final JQueryDayPicker dayPicker;
 
     public JQueryDatepicker(JQueryCalendar calendar,
-                            JQueryYearControl yearControl,
-                            JQueryMonthControl monthControl,
+                            JQueryYearPicker yearControl,
+                            JQueryMonthPicker monthControl,
                             JQueryDayPicker dayPicker) {
         this.calendar = calendar;
         this.yearControl = yearControl;
