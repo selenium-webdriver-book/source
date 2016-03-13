@@ -7,23 +7,24 @@ import swip.ch15pageflow.v2.framework.Browser;
 
 
 import java.time.Month;
+import java.util.Calendar;
 import java.util.Date;
 
 
-public class MuchBetterJQueryDatepicker {
+public class MuchBetterDatepicker {
 
     private final Browser browser;
 
-    public MuchBetterJQueryDatepicker(Browser browser) {
+    public MuchBetterDatepicker(Browser browser) {
         this.browser = browser;
     }
 
 
-    public void pickDate(Date date) {
+    public void pickDate(Calendar date) {
         show();
-        pickYear(date.getYear() + 1900);
-        pickMonth(date.getMonth());
-        pickDay(date.getDay() + 1);
+        pickYear(date.get(Calendar.YEAR));
+        pickMonth(date.get(Calendar.MONTH));
+        pickDay(date.get(Calendar.DAY_OF_MONTH));
     }
 
     public String getDate() {

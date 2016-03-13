@@ -7,24 +7,25 @@ import swip.ch15pageflow.v2.framework.Browser;
 
 
 import java.time.Month;
+import java.util.Calendar;
 import java.util.Date;
 
 
-public class BetterJQueryDatepicker {
+public class BetterDatepicker {
 
     private final Browser browser;
     private WebElement datepicker;
 
-    public BetterJQueryDatepicker(Browser driver) {
+    public BetterDatepicker(Browser driver) {
         this.browser = driver;
     }
 
 
-    public void pickDate(Date date) {
+    public void pickDate(Calendar date) {
         show();
-        pickYear(date.getYear() + 1900);
-        pickMonth(date.getMonth());
-        pickDay(date.getDay() + 1);
+        pickYear(date.get(Calendar.YEAR));
+        pickMonth(date.get(Calendar.MONTH));
+        pickDay(date.get(Calendar.DAY_OF_MONTH));
     }
 
     public String getDate() {
@@ -39,19 +40,22 @@ public class BetterJQueryDatepicker {
 
     private void pickYear(int yearInt) {
         datepicker = browser.findElement(By.id("ui-datepicker-div"));
-        String year = datepicker.findElement(By.className("ui-datepicker-year")).getText();
+        String year = datepicker.findElement(By.className("ui-datepicker-year"))
+            .getText();
 
         if (Integer.parseInt(year) < yearInt) {
-            while (Integer.parseInt(year) !=  yearInt) {
+            while (Integer.parseInt(year) != yearInt) {
                 datepicker.findElement(By.className("ui-datepicker-next")).click();
                 datepicker = browser.findElement(By.id("datepicker"));
-                year = datepicker.findElement(By.className("ui-datepicker-year")).getText();
+                year = datepicker.findElement(By.className("ui-datepicker-year"))
+                    .getText();
             }
         } else if (Integer.parseInt(year) > yearInt) {
             while (Integer.parseInt(year) != yearInt) {
                 datepicker.findElement(By.className("ui-datepicker-prev")).click();
                 datepicker = browser.findElement(By.id("ui-datepicker-div"));
-                year = datepicker.findElement(By.className("ui-datepicker-year")).getText();
+                year = datepicker.findElement(By.className("ui-datepicker-year"))
+                    .getText();
             }
         }
     }

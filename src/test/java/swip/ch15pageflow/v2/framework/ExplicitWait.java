@@ -10,15 +10,7 @@ import java.util.function.Supplier;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-public interface ExplicitWait extends SearchScope{
-
-    default String getText(Supplier<By> by) {
-        return untilFound(by).getText();
-    }
-
-    default void click(Supplier<By> by) {
-         untilFound(by).click();
-    }
+public interface ExplicitWait extends SearchScope {
 
     default Element untilFound(Supplier<By> by) {
         Element element = new FluentWait<>(this)
@@ -31,7 +23,7 @@ public interface ExplicitWait extends SearchScope{
         return element;
     }
 
-    default void until(Predicate<ExplicitWait> predicate)  {
+    default void until(Predicate<ExplicitWait> predicate) {
         FluentWait<ExplicitWait> fluentWait = new FluentWait<>(this)
             .withTimeout(10, SECONDS)
             .pollingEvery(100, TimeUnit.MILLISECONDS)

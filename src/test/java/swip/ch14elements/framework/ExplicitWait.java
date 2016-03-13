@@ -8,9 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-public interface ExplicitWait {
-
-    Element findElement(By by);
+public interface ExplicitWait extends SearchScope {
 
     default Element untilFound(By by) {
         return new FluentWait<>(this)

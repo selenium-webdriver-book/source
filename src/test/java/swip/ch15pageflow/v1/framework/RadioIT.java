@@ -23,14 +23,14 @@ public class RadioIT {
 
     @Test
     public void conact() throws Exception {
-        value = browser.getRadio(By.name("contact"));
+        value = browser.getRadio(() -> By.name("contact"));
         assertEquals("email",  value);
     }
 
 
     @Test
     public void frequency() throws Exception {
-        value = browser.getRadio(By.name("frequency"));
+        value = browser.getRadio(() -> By.name("frequency"));
         assertEquals("hourly", value);
     }
 

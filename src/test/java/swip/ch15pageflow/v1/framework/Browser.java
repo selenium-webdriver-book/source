@@ -11,22 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public class Browser extends DelegatingWebDriver implements ExplicitWait, SearchScope {
 
     public Browser(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public Element findElement(Supplier<By> by) {
-        Element element = new Element(super.findElement(by.get()));
-        return element;
-    }
-
-    public Stream<Element> findElements(Supplier<By> by) {
-        return super.findElements(by.get()).stream().map(Element::new);
     }
 
     public void setInputText(Supplier<By> by, String value) {
@@ -88,8 +77,8 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait, Search
             "unable to find element with value " + value);
     }
 
-    public String getRadio(By by) {
-        List<WebElement> radiobuttons = findElements(by);
+    public String getRadio(Supplier<By> by) {
+        List<WebElement> radiobuttons = findElements(by.get());
 
         assert radiobuttons.size() >= 2;
 

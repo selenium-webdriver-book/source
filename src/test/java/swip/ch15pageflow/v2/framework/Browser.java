@@ -11,24 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public class Browser extends DelegatingWebDriver implements ExplicitWait, SearchScope {
 
     public Browser(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public Element findElement(Supplier<By> by) {
-        Element element = new Element(super.findElement(by.get()));
-        element.setSearchContext(this);
-        element.setLocator((SearchScope e) -> this.untilFound(by));
-        return element;
-    }
-
-    public Stream<Element> findElements(Supplier<By> by) {
-        return super.findElements(by.get()).stream().map(Element::new);
     }
 
     public void setInputText(Supplier<By> by, Object value) {

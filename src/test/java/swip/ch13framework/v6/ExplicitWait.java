@@ -6,9 +6,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 
 import java.util.concurrent.TimeUnit;
 
-public interface ExplicitWait {
-
-    Element findElement(By by); // <1>
+public interface ExplicitWait extends SearchScope{
 
     default Element untilFound(By by) {  // <2>
         return new FluentWait<>(this)

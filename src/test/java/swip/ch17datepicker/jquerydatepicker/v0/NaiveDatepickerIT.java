@@ -1,4 +1,4 @@
-package swip.ch17datepicker.jquerydatepicker.v2;
+package swip.ch17datepicker.jquerydatepicker.v0;
 
 
 import org.junit.Before;
@@ -6,35 +6,40 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch15pageflow.v2.framework.BrowserRunner;
 import swip.framework.TestTimer;
 
 import javax.inject.Inject;
+import java.util.Calendar;
 
-import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(BrowserRunner.class)
-public class JQueryDatepickerIT extends TestTimer {
+public class NaiveDatepickerIT extends TestTimer {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
     @Inject
     private Browser browser;
 
-    private JQueryDatepicker jQueryDatepicker;
+    private Calendar calendar;
+
+    private NaiveDatepicker naiveDatepicker;
 
     @Before
     public void setup() {
         browser.get("/datepicker.html");
-        jQueryDatepicker = new JQueryDatepicker(new JQueryCalendar(browser), new JQueryYearControl(browser), new JQueryMonthControl(browser), new JQueryDayPicker(browser));
+        naiveDatepicker = new NaiveDatepicker(browser);
+
+        calendar = Calendar.getInstance();
+        calendar.set(2014, 3, 1);
     }
 
     @Test
-    public void shouldPickADate() {
-        jQueryDatepicker.pick(APRIL, 1, 2014);
-        assertEquals("04/01/2014", browser.findElement(By.id("datepicker")).getAttribute("value"));
+    public void naiveDatePicker() {
+
+        naiveDatepicker.pickDate(calendar);
+        assertEquals("04/01/2014", naiveDatepicker.getDate());
     }
 }

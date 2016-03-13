@@ -1,6 +1,5 @@
 package swip.ch14elements.framework;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class Element extends DelegatingWebElement implements ExplicitWait, SearchScope {
@@ -9,8 +8,4 @@ public class Element extends DelegatingWebElement implements ExplicitWait, Searc
         super(delegate);
     }
 
-    @Override
-    public Element findElement(By by) {
-        return new Element(super.findElement(by));
-    }
 }
