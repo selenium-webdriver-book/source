@@ -40,16 +40,16 @@ public class JQueryYearPicker {
     }
 
     private void previousMonth() {
-        browser.untilFound(UI_DATEPICKER_DIV).untilFound(PREV_MONTH_BUTTON).click();  //<3>
+        browser.untilFound(UI_DATEPICKER_DIV).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(UI_DATEPICKER_DIV).untilFound(NEXT_MONTH_BUTTON).click();  //<4>
+        browser.untilFound(UI_DATEPICKER_DIV).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayedYear() {
         return Integer.parseInt(
-            browser.untilFound(UI_DATEPICKER_DIV).untilFound(DISPLAY_YEAR).getText()
+            browser.untilFound(UI_DATEPICKER_DIV).getText(DISPLAY_YEAR)
         );
     }
 

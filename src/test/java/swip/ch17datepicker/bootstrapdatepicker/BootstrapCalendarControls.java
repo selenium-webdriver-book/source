@@ -18,7 +18,7 @@ public enum BootstrapCalendarControls implements Consumer<Browser> {
         @Override
         public void accept(Browser browser) {
             browser.untilFound(CALENDAR)
-                .untilFound(NEXT_MONTH_BUTTON).click();
+                .click(NEXT_MONTH_BUTTON);
         }
 
     },
@@ -26,7 +26,7 @@ public enum BootstrapCalendarControls implements Consumer<Browser> {
         @Override
         public void accept(Browser browser) {
             browser.untilFound(CALENDAR)
-                .untilFound(PREV_MONTH_BUTTON).click();
+                .click(PREV_MONTH_BUTTON);
         }
     },
 

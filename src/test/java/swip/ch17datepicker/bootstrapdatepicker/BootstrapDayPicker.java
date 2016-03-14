@@ -28,7 +28,7 @@ public class BootstrapDayPicker implements DayPicker {
             .findFirst()
             .get()
             .click();
-        browser.untilFound(TagName.FORM).click();
+        browser.click(TagName.FORM);
         browser.until(calendarClosed);
     }
 }

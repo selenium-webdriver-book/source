@@ -24,12 +24,7 @@ public class BookPage {
     }
 
     public void gotoCart() {
-        cartButton().click();
-    }
-
-    public Element cartButton() {
-        return browser.untilFound(TOP_NAV)
-            .untilFound(CART_BUTTON);
+        browser.untilFound(TOP_NAV).click(CART_BUTTON);
     }
 
 }

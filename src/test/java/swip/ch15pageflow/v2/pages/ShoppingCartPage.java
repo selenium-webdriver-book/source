@@ -7,6 +7,7 @@ import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch15pageflow.locators.CssSelector;
 
 import static swip.ch15pageflow.locators.ClassName.ORDER_NUMBER;
+import static swip.ch15pageflow.locators.CssSelector.CONTINUE;
 import static swip.ch15pageflow.locators.Id.ORDER_NUMBER_ID;
 
 public class ShoppingCartPage {
@@ -36,7 +37,7 @@ public class ShoppingCartPage {
     }
 
     public void continues() {                 //<1>
-        browser.click(CssSelector.CONTINUE);
+        browser.click(CONTINUE);
     }
 
     public String getOrderNumber() {

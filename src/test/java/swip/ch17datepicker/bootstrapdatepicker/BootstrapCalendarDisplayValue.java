@@ -32,8 +32,8 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
 
     private static String extract(Browser browser, int position) {  //<1>
         return browser.untilFound(CALENDAR)
-            .untilFound(DISPLAY_MONTH_YEAR)
-            .getText().split(" ")[position];
+            .getText(DISPLAY_MONTH_YEAR)
+            .split(" ")[position];
     }
 
 }

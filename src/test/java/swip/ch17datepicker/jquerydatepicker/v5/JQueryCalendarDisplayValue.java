@@ -18,8 +18,7 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
     YEAR {                     //<1>
         public Integer apply(Browser browser) {
             String text = browser.untilFound(UI_DATEPICKER_DIV)
-                .untilFound(DISPLAY_YEAR)
-                .getText();
+                .getText(DISPLAY_YEAR);
             return Integer.parseInt(text);
         }
     },
@@ -31,8 +30,7 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
         public Integer apply(Browser browser) {
             return Month.valueOf(
                 browser.untilFound(UI_DATEPICKER_DIV)
-                    .untilFound(DISPLAY_MONTH)
-                    .getText()
+                    .getText(DISPLAY_MONTH)
                     .toUpperCase()
             ).ordinal();
         }
