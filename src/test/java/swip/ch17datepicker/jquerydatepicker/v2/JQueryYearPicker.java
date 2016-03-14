@@ -7,9 +7,11 @@ import swip.ch15pageflow.v2.framework.Browser;
 public class JQueryYearPicker {
 
     private final Browser browser;
+    private final JQueryMonthPicker monthPicker;
 
     public JQueryYearPicker(Browser browser) {
         this.browser = browser;
+        this.monthPicker = new JQueryMonthPicker(browser);
     }
 
     public void pickYear(int year) {
@@ -27,26 +29,14 @@ public class JQueryYearPicker {
 
     private void previousYear() {
         for (int i = 0; i < 12; i++) {
-            previousMonth();
+            monthPicker.previousMonth();
         }
     }
 
     private void nextYear() {
         for (int i = 0; i < 12; i++) {
-            nextMonth();
+            monthPicker.nextMonth();
         }
-    }
-
-    private void previousMonth() {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.className("ui-datepicker-prev"))
-            .click();  //<3>
-    }
-
-    private void nextMonth() {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.className("ui-datepicker-next"))
-            .click();  //<4>
     }
 
     private int displayedYear() {

@@ -29,13 +29,13 @@ public class JQueryMonthPicker {
     }
 
 
-    private void previousMonth() {
+    void previousMonth() {
         browser.findElement(By.id("ui-datepicker-div"))
             .findElement(By.className("ui-datepicker-prev"))
             .click();  //<3>
     }
 
-    private void nextMonth() {
+    void nextMonth() {
         browser.findElement(By.id("ui-datepicker-div"))
             .findElement(By.className("ui-datepicker-next"))
             .click();  //<4>

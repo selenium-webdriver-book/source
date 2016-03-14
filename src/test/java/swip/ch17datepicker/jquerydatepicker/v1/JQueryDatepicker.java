@@ -61,7 +61,8 @@ public class JQueryDatepicker {
 
     private int displayedYear() {
         return Integer.parseInt(
-            browser.findElement(By.id("ui-datepicker-div")).findElement(By.className("ui-datepicker-year")).getText()
+            browser.findElement(By.id("ui-datepicker-div"))
+                .findElement(By.className("ui-datepicker-year")).getText()
         );
     }
 
