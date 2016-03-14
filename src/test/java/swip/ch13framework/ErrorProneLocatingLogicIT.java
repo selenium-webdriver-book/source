@@ -7,6 +7,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import swip.framework.WebDriverRunner;
@@ -33,8 +34,7 @@ public class ErrorProneLocatingLogicIT {
         System.out.println("Time taken " + stopWatch);
     }
 
-    @Test
-    @Ignore("When the location is choose, the menu fades in over a few seconds. This test cannot deal with that.")
+    @Test(expected = NoSuchElementException.class)
     public void errorProneLocatingLogic() {
         driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();

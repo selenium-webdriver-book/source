@@ -11,6 +11,9 @@ import org.openqa.selenium.support.ui.FluentWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 public class DelegatingSearchContext<T extends SearchContext>  //<1>
     implements SearchContext, ExplicitWait {
     protected final T delegate; // <2>
@@ -41,8 +44,8 @@ public class DelegatingSearchContext<T extends SearchContext>  //<1>
     @Override
     public Element untilFound(By by) {
         return new FluentWait<>(this)
-            .withTimeout(10, TimeUnit.SECONDS)
-            .pollingEvery(100, TimeUnit.MILLISECONDS)
+            .withTimeout(10, SECONDS)
+            .pollingEvery(100, MILLISECONDS)
             .ignoring(NoSuchElementException.class)
             .until(
                 new Function<ExplicitWait, Element>() {
