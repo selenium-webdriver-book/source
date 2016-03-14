@@ -3,9 +3,9 @@ package swip.ch17datepicker.jquerydatepicker.v5;
 
 import swip.ch15pageflow.v2.framework.Browser;
 
+import java.time.Month;
 import java.util.function.Function;
 
-import static swip.ch17datepicker.datepicker.StringToMonth.TO_MONTH;
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.DISPLAY_MONTH;
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryByClassName.DISPLAY_YEAR;
 import static swip.ch17datepicker.jquerydatepicker.v3.JQueryById.UI_DATEPICKER_DIV;
@@ -29,10 +29,12 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
      */
     MONTH {                  //<2>
         public Integer apply(Browser browser) {
-            String text = browser.untilFound(UI_DATEPICKER_DIV)
-                .untilFound(DISPLAY_MONTH)
-                .getText();
-            return TO_MONTH.apply(text).ordinal();
+            return Month.valueOf(
+                browser.untilFound(UI_DATEPICKER_DIV)
+                    .untilFound(DISPLAY_MONTH)
+                    .getText()
+                    .toUpperCase()
+            ).ordinal();
         }
 
     }
