@@ -1,8 +1,5 @@
 package swip.ch13framework;
 
-import org.apache.commons.lang3.time.StopWatch;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;

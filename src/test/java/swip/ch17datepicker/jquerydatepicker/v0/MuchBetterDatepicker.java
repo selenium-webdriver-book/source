@@ -5,10 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import swip.ch15pageflow.v2.framework.Browser;
 
-
 import java.time.Month;
 import java.util.Calendar;
-import java.util.Date;
 
 
 public class MuchBetterDatepicker {

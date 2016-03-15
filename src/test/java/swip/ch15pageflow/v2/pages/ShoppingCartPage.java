@@ -4,7 +4,6 @@ import swip.ch15pageflow.domain.Address;
 import swip.ch15pageflow.domain.CreditCard;
 import swip.ch15pageflow.domain.OtherInformation;
 import swip.ch15pageflow.v2.framework.Browser;
-import swip.ch15pageflow.locators.CssSelector;
 
 import static swip.ch15pageflow.locators.ClassName.ORDER_NUMBER;
 import static swip.ch15pageflow.locators.CssSelector.CONTINUE;
