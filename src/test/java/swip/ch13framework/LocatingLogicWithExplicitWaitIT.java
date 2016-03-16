@@ -15,7 +15,6 @@ import swip.framework.WebDriverRunner;
 import javax.inject.Inject;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
 
@@ -42,8 +41,8 @@ public class LocatingLogicWithExplicitWaitIT extends TestTimer {
         );
 
         FluentWait<WebElement> webElementWait              //<2>
-            = new FluentWait<WebElement>(location)
-            .withTimeout(30, SECONDS)
+            = new FluentWait<>(location)
+            .withTimeout(5000, MILLISECONDS)
             .ignoring(NoSuchElementException.class);
         WebElement canada = webElementWait.until(
             new Function<WebElement, WebElement>() {
@@ -79,7 +78,7 @@ public class LocatingLogicWithExplicitWaitIT extends TestTimer {
             .until((WebDriver d) -> driver.findElement(By.id("location")));
 
         FluentWait<WebElement> webElementWait = new FluentWait<>(tabMenu) // <2>
-            .withTimeout(5, SECONDS)
+            .withTimeout(5000, MILLISECONDS)
             .pollingEvery(100, MILLISECONDS)
             .ignoring(Exception.class);
 
