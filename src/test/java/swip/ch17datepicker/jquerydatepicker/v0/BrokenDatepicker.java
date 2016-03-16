@@ -25,20 +25,22 @@ public class BrokenDatepicker {
         //show – end
 
         //pickYear - begin
+        int yearToPick = date.getYear() + 1900;
         WebElement datepicker = browser.findElement(By.id("ui-datepicker-div"));
 
         String year = datepicker.findElement(
             By.className("ui-datepicker-year")).getText();
-        if (Integer.parseInt(year) < date.getYear() + 1900) {
-            while (Integer.parseInt(year) != date.getYear() + 1900) {
+
+        if (Integer.parseInt(year) < yearToPick) {
+            while (Integer.parseInt(year) != yearToPick) {
                 datepicker.findElement(
                     By.className("ui-datepicker-next")).click();
-                datepicker = browser.findElement(By.id("datepicker"));
+                datepicker = browser.findElement(By.id("ui-datepicker-div"));
                 year = datepicker.findElement(
                     By.className("ui-datepicker-year")).getText();
             }
         } else if (Integer.parseInt(year) > date.getYear()) {
-            while (Integer.parseInt(year) != date.getYear() + 1900) {
+            while (Integer.parseInt(year) != yearToPick) {
                 datepicker.findElement(
                     By.className("ui-datepicker-prev")).click();
                 datepicker = browser.findElement(
@@ -50,18 +52,19 @@ public class BrokenDatepicker {
         //pickYear - end
 
         //pickMonth - begin
+        int monthToPick = date.getMonth();
         String month = datepicker.findElement(
             By.className("ui-datepicker-month")).getText();
-        if (Month.valueOf(month.toUpperCase()).ordinal() < date.getMonth()) {
-            while (Month.valueOf(month.toUpperCase()).ordinal() != date.getMonth()) {
+        if (Month.valueOf(month.toUpperCase()).ordinal() < monthToPick) {
+            while (Month.valueOf(month.toUpperCase()).ordinal() != monthToPick) {
                 datepicker.findElement
                     (By.className("ui-datepicker-next")).click();
                 datepicker = browser.findElement(By.id("ui-datepicker-div"));
                 month = datepicker.findElement(
                     By.className("ui-datepicker-month")).getText();
             }
-        } else if (Month.valueOf(month.toUpperCase()).ordinal() > date.getMonth()) {
-            while (Month.valueOf(month.toUpperCase()).ordinal() != date.getMonth()) {
+        } else if (Month.valueOf(month.toUpperCase()).ordinal() > monthToPick) {
+            while (Month.valueOf(month.toUpperCase()).ordinal() != monthToPick) {
                 datepicker.findElement(
                     By.className("ui-datepicker-prev")).click();
                 datepicker = browser.findElement(By.id("ui-datepicker-div"));
@@ -72,7 +75,8 @@ public class BrokenDatepicker {
         //pickMonth - end
 
         //pickDay - begin
-        datepicker.findElement(By.linkText(String.valueOf(date.getDay()))).click();
+        int dayToPick = date.getDay();
+        datepicker.findElement(By.linkText(String.valueOf(dayToPick))).click();
 
         new FluentWait<>(browser).until(
             (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||

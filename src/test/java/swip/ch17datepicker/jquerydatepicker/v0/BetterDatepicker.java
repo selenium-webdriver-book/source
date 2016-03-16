@@ -36,20 +36,21 @@ public class BetterDatepicker {
         element.click();
     }
 
-    private void pickYear(int yearInt) {
+    private void pickYear(int yearToPick) {
+        String year;
         datepicker = browser.findElement(By.id("ui-datepicker-div"));
-        String year = datepicker.findElement(By.className("ui-datepicker-year"))
+        year = datepicker.findElement(By.className("ui-datepicker-year"))
             .getText();
 
-        if (Integer.parseInt(year) < yearInt) {
-            while (Integer.parseInt(year) != yearInt) {
+        if (Integer.parseInt(year) < yearToPick) {
+            while (Integer.parseInt(year) != yearToPick) {
                 datepicker.findElement(By.className("ui-datepicker-next")).click();
-                datepicker = browser.findElement(By.id("datepicker"));
+                datepicker = browser.findElement(By.id("ui-datepicker-div"));
                 year = datepicker.findElement(By.className("ui-datepicker-year"))
                     .getText();
             }
-        } else if (Integer.parseInt(year) > yearInt) {
-            while (Integer.parseInt(year) != yearInt) {
+        } else if (Integer.parseInt(year) > yearToPick) {
+            while (Integer.parseInt(year) != yearToPick) {
                 datepicker.findElement(By.className("ui-datepicker-prev")).click();
                 datepicker = browser.findElement(By.id("ui-datepicker-div"));
                 year = datepicker.findElement(By.className("ui-datepicker-year"))
@@ -58,16 +59,16 @@ public class BetterDatepicker {
         }
     }
 
-    private void pickMonth(int month1) {
+    private void pickMonth(int monthToPick) {
         String month = datepicker.findElement(By.className("ui-datepicker-month")).getText();
-        if (Month.valueOf(month.toUpperCase()).ordinal() < month1) {
-            while (Month.valueOf(month.toUpperCase()).ordinal() != month1) {
+        if (Month.valueOf(month.toUpperCase()).ordinal() < monthToPick) {
+            while (Month.valueOf(month.toUpperCase()).ordinal() != monthToPick) {
                 datepicker.findElement(By.className("ui-datepicker-next")).click();
                 datepicker = browser.findElement(By.id("ui-datepicker-div"));
                 month = datepicker.findElement(By.className("ui-datepicker-month")).getText();
             }
-        } else if (Month.valueOf(month.toUpperCase()).ordinal() > month1) {
-            while (Month.valueOf(month.toUpperCase()).ordinal() != month1) {
+        } else if (Month.valueOf(month.toUpperCase()).ordinal() > monthToPick) {
+            while (Month.valueOf(month.toUpperCase()).ordinal() != monthToPick) {
                 datepicker.findElement(By.className("ui-datepicker-prev")).click();
                 datepicker = browser.findElement(By.id("ui-datepicker-div"));
                 month = datepicker.findElement(By.className("ui-datepicker-month")).getText();
@@ -75,9 +76,9 @@ public class BetterDatepicker {
         }
     }
 
-    private void pickDay(int day) {
+    private void pickDay(int dayToPick) {
         browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.linkText(String.valueOf(day))).click();
+            .findElement(By.linkText(String.valueOf(dayToPick))).click();
 
         new FluentWait<>(browser).until(
             (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
