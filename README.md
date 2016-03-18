@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/selenium-webdriver-in-practice/source.svg?style=svg)](https://circleci.com/gh/selenium-webdriver-in-practice/source)
+
 # Selenium WebDriver In Practice
 ## Pre-requisites
 
