@@ -1,18 +1,19 @@
-package swip.ch13framework.v6_nonjava8;
+package swip.ch15pageflow.v1.framework;
 
 import org.openqa.selenium.*;
 
-public class DelegatingWebElement
-    extends DelegatingSearchContext<WebElement>      //<1>
-    implements WebElement {
+import java.util.List;
+import java.util.function.Function;
+
+public class DelegatingWebElement extends DelegatingSearchContext<WebElement> implements WebElement {
 
     public DelegatingWebElement(WebElement delegate) {
-      super(delegate);                   //<2>
+       super(delegate);
     }
 
     @Override
     public void click() {
-        delegate.click();      //<3>
+        delegate.click();
     }
 
     @Override

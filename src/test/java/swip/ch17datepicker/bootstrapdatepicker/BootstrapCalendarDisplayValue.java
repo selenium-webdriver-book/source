@@ -8,7 +8,7 @@ import java.util.function.Function;
 import static java.lang.Integer.parseInt;
 import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.CALENDAR;
 import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.DISPLAY_MONTH_YEAR;
-import static swip.ch17datepicker.bootstrapdatepicker.StringToMonth.TO_MONTH;
+import static swip.ch17datepicker.datepicker.StringToMonth.TO_MONTH;
 
 public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> {
 
@@ -32,8 +32,8 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
 
     private static String extract(Browser browser, int position) {  //<1>
         return browser.untilFound(CALENDAR)
-            .getText(DISPLAY_MONTH_YEAR)
-            .split(" ")[position];
+            .untilFound(DISPLAY_MONTH_YEAR)
+            .getText().split(" ")[position];
     }
 
 }

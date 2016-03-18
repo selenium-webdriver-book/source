@@ -16,7 +16,8 @@ public class JQueryDayPicker {
 
     public void pickDay(int day) {
         browser.untilFound(UI_DATEPICKER_DIV)
-            .click(() -> linkText(String.valueOf(day))); //<9>
+            .findElement(linkText(String.valueOf(day))) //<9>
+            .click();
         browser.until(CALENDAR_CLOSED);  //<11>
     }
 }

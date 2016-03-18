@@ -9,69 +9,26 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
-public class Browser extends DelegatingSearchContext<WebDriver> implements WebDriver {
+public class Browser extends DelegatingWebDriver implements ExplicitWait, SearchScope {
 
     public Browser(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public void get(String url) {
-        delegate.get(url);
+    public Element findElement(Supplier<By> by) {
+        Element element = new Element(super.findElement(by.get()));
+        element.setSearchContext(this);
+        element.setLocator((SearchScope e) -> this.untilFound(by));
+        return element;
     }
 
-    @Override
-    public String getCurrentUrl() {
-        return delegate.getCurrentUrl();
-    }
-
-    @Override
-    public String getTitle() {
-        return delegate.getTitle();
-    }
-
-    @Override
-    public String getPageSource() {
-        return delegate.getPageSource();
-    }
-
-    @Override
-    public void close() {
-        delegate.close();
-    }
-
-    @Override
-    public void quit() {
-        delegate.quit();
-    }
-
-    @Override
-    public Set<String> getWindowHandles() {
-        return delegate.getWindowHandles();
-    }
-
-    @Override
-    public String getWindowHandle() {
-        return delegate.getWindowHandle();
-    }
-
-    @Override
-    public TargetLocator switchTo() {
-        return delegate.switchTo();
-    }
-
-    @Override
-    public Navigation navigate() {
-        return delegate.navigate();
-    }
-
-    @Override
-    public Options manage() {
-        return delegate.manage();
+    public Stream<Element> findElements(Supplier<By> by) {
+        return super.findElements(by.get()).stream().map(Element::new);
     }
 
     public void setInputText(Supplier<By> by, Object value) {

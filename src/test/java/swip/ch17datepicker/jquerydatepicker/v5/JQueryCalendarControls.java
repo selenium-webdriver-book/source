@@ -16,7 +16,7 @@ public enum JQueryCalendarControls implements Consumer<Browser> {
 
         @Override
         public void accept(Browser browser) {
-            browser.click(DATE_FIELD);
+            browser.untilFound(DATE_FIELD).click();
         }
     },
     NEXT_MONTH {    //<2>
@@ -24,7 +24,7 @@ public enum JQueryCalendarControls implements Consumer<Browser> {
         @Override
         public void accept(Browser browser) {
             browser.untilFound(UI_DATEPICKER_DIV)
-                .click(NEXT_MONTH_BUTTON);
+                .untilFound(NEXT_MONTH_BUTTON).click();
         }
     },
     PREVIOUS_MONTH {   //<3>
@@ -32,7 +32,7 @@ public enum JQueryCalendarControls implements Consumer<Browser> {
         @Override
         public void accept(Browser browser) {
             browser.untilFound(UI_DATEPICKER_DIV)
-                .click(PREV_MONTH_BUTTON);
+                .untilFound(PREV_MONTH_BUTTON).click();
         }
     },
     NEXT_YEAR {         //<4>

@@ -28,8 +28,8 @@ public class JQueryDatePickerIT extends TestTimer{
 
     @Test
     public void pickADate() {
-        jQueryDatePickerPage.pick(APRIL, 1, 2018);
-        assertEquals("04/01/2018", jQueryDatePickerPage.getDate());
+        jQueryDatePickerPage.pick(APRIL, 1, 2012);
+        assertEquals("04/01/2012", jQueryDatePickerPage.getDate());
     }
 
 }

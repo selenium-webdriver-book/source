@@ -15,6 +15,7 @@ public class JQueryCalendar {
     }
 
     public void show() {
-        browser.click(DATE_FIELD);
+        Element element = browser.untilFound(DATE_FIELD);
+        element.click();
     }
 }

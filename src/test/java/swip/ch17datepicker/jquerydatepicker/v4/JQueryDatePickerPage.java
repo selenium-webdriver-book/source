@@ -29,7 +29,7 @@ public class JQueryDatePickerPage {
         this.datepicker = new Datepicker(  //<4>
             new Calendar(browser,
                 (Browser browser) -> {
-                    browser.click(DATE_FIELD);
+                    browser.untilFound(DATE_FIELD).click();
                 }
             ),
             new YearPicker(browser,
@@ -45,8 +45,8 @@ public class JQueryDatePickerPage {
                 },
                 (Browser browser) ->
                     Integer.parseInt(
-                        browser.untilFound(UI_DATEPICKER_DIV)
-                            .getText(DISPLAY_YEAR)
+                        browser.findElement(UI_DATEPICKER_DIV)
+                            .findElement(DISPLAY_YEAR).getText()
                     )
 
             ),
@@ -60,7 +60,8 @@ public class JQueryDatePickerPage {
                 (Browser browser) ->
                     Month.valueOf(
                         browser.untilFound(UI_DATEPICKER_DIV)
-                            .getText(DISPLAY_MONTH)
+                            .untilFound(DISPLAY_MONTH)
+                            .getText()
                             .toUpperCase()
                     ).ordinal()
             ), new JQueryDayPicker(browser));
@@ -68,12 +69,12 @@ public class JQueryDatePickerPage {
 
     private void previousMonth() {
         browser.findElement(UI_DATEPICKER_DIV)
-            .click(PREV_MONTH_BUTTON);  //<3>
+            .findElement(PREV_MONTH_BUTTON).click();  //<3>
     }
 
     private void nextMonth() {
         browser.findElement(UI_DATEPICKER_DIV)
-            .click(NEXT_MONTH_BUTTON);  //<4>
+            .findElement(NEXT_MONTH_BUTTON).click();  //<4>
     }
 
 }

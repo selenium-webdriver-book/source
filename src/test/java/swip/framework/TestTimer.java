@@ -1,8 +1,10 @@
 package swip.framework;
 
-import org.apache.commons.lang3.time.StopWatch;       //<1>
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
 import org.junit.Before;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestTimer {
 
@@ -10,14 +12,14 @@ public class TestTimer {
 
     @Before
     public void startStopWatch() {
-        stopWatch.start();                  //<2>
+        stopWatch.start();
     }
 
     @After
     public void print() {
         System.out.println();
         System.out.println("==========================");
-        System.out.println("Taken " + stopWatch);          //<3>
+        System.out.println("Taken " + stopWatch);
         System.out.println("==========================");
     }
 

@@ -5,11 +5,9 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public class DelegatingSearchContext<T extends SearchContext>  //<1>
-    implements SearchContext, ExplicitWait {
+    implements SearchContext {
     protected T delegate; // <2>
 
     public DelegatingSearchContext(T delegate) {
@@ -24,26 +22,6 @@ public class DelegatingSearchContext<T extends SearchContext>  //<1>
     @Override
     public WebElement findElement(By by) {
         return delegate.findElement(by);
-    }
-
-    @Override
-    public Element findElement(Supplier<By> by) {
-        Element element = new Element(findElement(by.get()));
-        element.setSearchContext(this);
-        element.setLocator((SearchScope e) -> this.untilFound(by));
-        return element;
-    }
-
-    public Stream<Element> findElements(Supplier<By> by) {
-        return findElements(by.get()).stream().map(Element::new);
-    }
-
-    public String getText(Supplier<By> by) {
-        return untilFound(by).getText();
-    }
-
-    public void click(Supplier<By> by) {
-        untilFound(by).click();
     }
 
 }

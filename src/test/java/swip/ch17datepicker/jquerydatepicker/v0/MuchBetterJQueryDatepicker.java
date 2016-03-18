@@ -5,24 +5,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import swip.ch15pageflow.v2.framework.Browser;
 
+
 import java.time.Month;
-import java.util.Calendar;
+import java.util.Date;
 
 
-public class MuchBetterDatepicker {
+public class MuchBetterJQueryDatepicker {
 
     private final Browser browser;
 
-    public MuchBetterDatepicker(Browser browser) {
+    public MuchBetterJQueryDatepicker(Browser browser) {
         this.browser = browser;
     }
 
 
-    public void pickDate(Calendar date) {
+    public void pickDate(Date date) {
         show();
-        pickYear(date.get(Calendar.YEAR));
-        pickMonth(date.get(Calendar.MONTH));
-        pickDay(date.get(Calendar.DAY_OF_MONTH));
+        pickYear(date.getYear() + 1900);
+        pickMonth(date.getMonth());
+        pickDay(date.getDay() + 1);
     }
 
     public String getDate() {
@@ -46,14 +47,6 @@ public class MuchBetterDatepicker {
         }
     }
 
-    private int displayedYear() {
-        return Integer.parseInt(
-            browser.findElement(By.id("ui-datepicker-div"))
-                .findElement(By.className("ui-datepicker-year")).getText()
-        );   //<5>
-    }
-
-
     private void pickMonth(int month) {
         if (displayedMonth() < month) {             //<2>
             while (displayedMonth() != month) {
@@ -66,6 +59,16 @@ public class MuchBetterDatepicker {
         }
     }
 
+    private void pickDay(int day) {
+        browser.findElement(By.id("ui-datepicker-div"))
+            .findElement(By.linkText(String.valueOf(day))).click();
+
+        new FluentWait<>(browser).until(
+            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
+                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
+        );
+    }
+
     private void previousMonth() {
         browser.findElement(By.id("ui-datepicker-div"))
             .findElement(By.className("ui-datepicker-prev")).click();  //<3>
@@ -76,6 +79,14 @@ public class MuchBetterDatepicker {
             .findElement(By.className("ui-datepicker-next")).click();  //<4>
     }
 
+    private int displayedYear() {
+        return Integer.parseInt(
+            browser.findElement(By.id("ui-datepicker-div"))
+                .findElement(By.className("ui-datepicker-year")).getText()
+        );   //<5>
+    }
+
+
     private int displayedMonth() {
         return Month.valueOf(
             browser.findElement(By.id("ui-datepicker-div"))
@@ -83,15 +94,5 @@ public class MuchBetterDatepicker {
                 .getText()
                 .toUpperCase()
         ).ordinal();   //<6>
-    }
-
-    private void pickDay(int day) {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.linkText(String.valueOf(day))).click();
-
-        new FluentWait<>(browser).until(
-            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
-                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
-        );
     }
 }
