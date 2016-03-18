@@ -1,25 +1,103 @@
 package swip.ch15pageflow.v2.framework;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.function.Function;
 
-public class Element extends DelegatingWebElement implements ExplicitWait, SearchScope {
+public class Element extends DelegatingSearchContext<WebElement> implements WebElement {
+
+    private SearchScope searchContext;
+    private Function<SearchScope, Element> finder;
+    int tryCount;
 
     public Element(WebElement delegate) {
         super(delegate);
     }
 
     @Override
-    public Element findElement(Supplier<By> by) {
-        Element element = new Element(super.findElement(by.get()));
-        element.setSearchContext(this);
-        element.setLocator((SearchScope e) -> this.untilFound(by));
-        return element;
+    public void click() {
+        try {
+            delegate.click();                      //<1>
+            tryCount = 0;                               //<5>
+        } catch (StaleElementReferenceException e) {          //<2>
+            this.delegate = finder.apply(searchContext);       //<3>
+            if (tryCount++ < 5) {   //<4>
+                click();
+            }
+        }
     }
-    public Stream<Element> findElements(Supplier<By> by) {
-        return super.findElements(by.get()).stream().map(Element::new);
+
+    @Override
+    public void submit() {
+        delegate.submit();
     }
+
+    @Override
+    public void sendKeys(CharSequence... keysToSend) {
+        delegate.sendKeys(keysToSend);
+    }
+
+    @Override
+    public void clear() {
+        delegate.clear();
+    }
+
+    @Override
+    public String getTagName() {
+        return delegate.getTagName();
+    }
+
+    @Override
+    public String getAttribute(String name) {
+        return delegate.getAttribute(name);
+    }
+
+    @Override
+    public boolean isSelected() {
+        return delegate.isSelected();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return delegate.isEnabled();
+    }
+
+    @Override
+    public String getText() {
+        return delegate.getText();
+    }
+
+    @Override
+    public boolean isDisplayed() {
+        return delegate.isDisplayed();
+    }
+
+    @Override
+    public Point getLocation() {
+        return delegate.getLocation();
+    }
+
+    @Override
+    public Dimension getSize() {
+        return delegate.getSize();
+    }
+
+    @Override
+    public String getCssValue(String propertyName) {
+        return delegate.getCssValue(propertyName);
+    }
+
+    @Override
+    public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
+        return delegate.getScreenshotAs(outputType);
+    }
+
+    public void setSearchContext(ExplicitWait searchContext) {
+        this.searchContext = searchContext;
+    }
+
+    public void setLocator(Function<SearchScope, Element> finder) {
+        this.finder = finder;
+    }
+
 }

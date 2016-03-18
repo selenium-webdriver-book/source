@@ -16,26 +16,25 @@ import static swip.ch17datepicker.jquerydatepicker.v5.JQueryCalendarDisplayValue
 
 public class JQueryDatePickerPage {
 
-    private final Browser browser;    //<1>
+    private final Browser browser;
 
-    private final Datepicker datepicker;   //<2>
+    private final Datepicker datepicker;
 
-    public JQueryDatePickerPage(Browser browser) {   //<3>
+    public JQueryDatePickerPage(Browser browser) {
         this.browser = browser;
-        this.datepicker = new Datepicker(  //<4>
-            new Calendar(browser, TRIGGER),        //<5>
-            new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),     //<6>
-            new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),  //<7>
-            new JQueryDayPicker(browser)      //<8>
+        this.datepicker = new Datepicker(  //<1>
+            new Calendar(browser, TRIGGER),        //<2>
+            new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),     //<3>
+            new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),  //<4>
+            new JQueryDayPicker(browser)      //<5>
         );
     }
 
-    public void pick(Month month, int day, int year) {
+    public void pick(Month month, int day, int year) {           //<6>
         datepicker.pick(month, day, year);
-    }  //<9>
+    }
 
-    public String getDate() {
+    public String getDate() {                                  //<7>
         return browser.getInputText(DATE_FIELD);
-    }       //<10>
-
+    }
 }

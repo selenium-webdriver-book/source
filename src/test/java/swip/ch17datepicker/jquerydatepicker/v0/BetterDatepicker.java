@@ -5,26 +5,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import swip.ch15pageflow.v2.framework.Browser;
 
-
 import java.time.Month;
-import java.util.Date;
+import java.util.Calendar;
 
 
-public class BetterJQueryDatepicker {
+public class BetterDatepicker {
 
     private final Browser browser;
     private WebElement datepicker;
 
-    public BetterJQueryDatepicker(Browser driver) {
+    public BetterDatepicker(Browser driver) {
         this.browser = driver;
     }
 
 
-    public void pickDate(Date date) {
+    public void pickDate(Calendar date) {
         show();
-        pickYear(date.getYear() + 1900);
-        pickMonth(date.getMonth());
-        pickDay(date.getDay() + 1);
+        pickYear(date.get(Calendar.YEAR));
+        pickMonth(date.get(Calendar.MONTH));
+        pickDay(date.get(Calendar.DAY_OF_MONTH));
     }
 
     public String getDate() {
@@ -37,35 +36,39 @@ public class BetterJQueryDatepicker {
         element.click();
     }
 
-    private void pickYear(int yearInt) {
+    private void pickYear(int yearToPick) {
+        String year;
         datepicker = browser.findElement(By.id("ui-datepicker-div"));
-        String year = datepicker.findElement(By.className("ui-datepicker-year")).getText();
+        year = datepicker.findElement(By.className("ui-datepicker-year"))
+            .getText();
 
-        if (Integer.parseInt(year) < yearInt) {
-            while (Integer.parseInt(year) !=  yearInt) {
+        if (Integer.parseInt(year) < yearToPick) {
+            while (Integer.parseInt(year) != yearToPick) {
                 datepicker.findElement(By.className("ui-datepicker-next")).click();
-                datepicker = browser.findElement(By.id("datepicker"));
-                year = datepicker.findElement(By.className("ui-datepicker-year")).getText();
+                datepicker = browser.findElement(By.id("ui-datepicker-div"));
+                year = datepicker.findElement(By.className("ui-datepicker-year"))
+                    .getText();
             }
-        } else if (Integer.parseInt(year) > yearInt) {
-            while (Integer.parseInt(year) != yearInt) {
+        } else if (Integer.parseInt(year) > yearToPick) {
+            while (Integer.parseInt(year) != yearToPick) {
                 datepicker.findElement(By.className("ui-datepicker-prev")).click();
                 datepicker = browser.findElement(By.id("ui-datepicker-div"));
-                year = datepicker.findElement(By.className("ui-datepicker-year")).getText();
+                year = datepicker.findElement(By.className("ui-datepicker-year"))
+                    .getText();
             }
         }
     }
 
-    private void pickMonth(int month1) {
+    private void pickMonth(int monthToPick) {
         String month = datepicker.findElement(By.className("ui-datepicker-month")).getText();
-        if (Month.valueOf(month.toUpperCase()).ordinal() < month1) {
-            while (Month.valueOf(month.toUpperCase()).ordinal() != month1) {
+        if (Month.valueOf(month.toUpperCase()).ordinal() < monthToPick) {
+            while (Month.valueOf(month.toUpperCase()).ordinal() != monthToPick) {
                 datepicker.findElement(By.className("ui-datepicker-next")).click();
                 datepicker = browser.findElement(By.id("ui-datepicker-div"));
                 month = datepicker.findElement(By.className("ui-datepicker-month")).getText();
             }
-        } else if (Month.valueOf(month.toUpperCase()).ordinal() > month1) {
-            while (Month.valueOf(month.toUpperCase()).ordinal() != month1) {
+        } else if (Month.valueOf(month.toUpperCase()).ordinal() > monthToPick) {
+            while (Month.valueOf(month.toUpperCase()).ordinal() != monthToPick) {
                 datepicker.findElement(By.className("ui-datepicker-prev")).click();
                 datepicker = browser.findElement(By.id("ui-datepicker-div"));
                 month = datepicker.findElement(By.className("ui-datepicker-month")).getText();
@@ -73,9 +76,9 @@ public class BetterJQueryDatepicker {
         }
     }
 
-    private void pickDay(int day) {
+    private void pickDay(int dayToPick) {
         browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.linkText(String.valueOf(day))).click();
+            .findElement(By.linkText(String.valueOf(dayToPick))).click();
 
         new FluentWait<>(browser).until(
             (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||

@@ -7,25 +7,25 @@ import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch15pageflow.v2.framework.Element;
 
 import java.time.Month;
-import java.util.Calendar;
+import java.util.Date;
 
 
-public class NaiveDatepicker {
+public class BrokenDatepicker {
 
     private final Browser browser;
 
-    public NaiveDatepicker(Browser browser) {
+    public BrokenDatepicker(Browser browser) {
         this.browser = browser;
     }
 
-    public void pickDate(Calendar date) {
+    public void pickDate(Date date) {
         //show - begin
         Element trigger = browser.untilFound(() -> By.id("datepicker"));
         trigger.click();
         //show – end
 
-        int yearToPick = date.get(Calendar.YEAR);
         //pickYear - begin
+        int yearToPick = date.getYear() + 1900;
         WebElement datepicker = browser.findElement(By.id("ui-datepicker-div"));
 
         String year = datepicker.findElement(
@@ -35,11 +35,11 @@ public class NaiveDatepicker {
             while (Integer.parseInt(year) != yearToPick) {
                 datepicker.findElement(
                     By.className("ui-datepicker-next")).click();
-                datepicker = browser.findElement(By.id("datepicker"));
+                datepicker = browser.findElement(By.id("ui-datepicker-div"));
                 year = datepicker.findElement(
                     By.className("ui-datepicker-year")).getText();
             }
-        } else if (Integer.parseInt(year) > yearToPick) {
+        } else if (Integer.parseInt(year) > date.getYear()) {
             while (Integer.parseInt(year) != yearToPick) {
                 datepicker.findElement(
                     By.className("ui-datepicker-prev")).click();
@@ -51,12 +51,10 @@ public class NaiveDatepicker {
         }
         //pickYear - end
 
-        int monthToPick = date.get(Calendar.MONTH);
-
         //pickMonth - begin
+        int monthToPick = date.getMonth();
         String month = datepicker.findElement(
             By.className("ui-datepicker-month")).getText();
-
         if (Month.valueOf(month.toUpperCase()).ordinal() < monthToPick) {
             while (Month.valueOf(month.toUpperCase()).ordinal() != monthToPick) {
                 datepicker.findElement
@@ -76,8 +74,8 @@ public class NaiveDatepicker {
         }
         //pickMonth - end
 
-        int dayToPick = date.get(Calendar.DAY_OF_MONTH);
         //pickDay - begin
+        int dayToPick = date.getDay();
         datepicker.findElement(By.linkText(String.valueOf(dayToPick))).click();
 
         new FluentWait<>(browser).until(

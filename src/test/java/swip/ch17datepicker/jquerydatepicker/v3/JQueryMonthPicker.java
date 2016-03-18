@@ -18,30 +18,29 @@ public class JQueryMonthPicker {
     }
 
     public void pickMonth(int month) {
-        int difference =  displayedMonth() - month;
+        int difference = displayedMonth() - month;
         if (difference < 0) {
             for (int i = difference; i < 0; i++) {
                 nextMonth();
             }
         } else if (difference > 0) {
             for (int i = 0; i < difference; i++) {
-               previousMonth();
+                previousMonth();
             }
         }
     }
 
     private void previousMonth() {
-        browser.untilFound(UI_DATEPICKER_DIV).untilFound(PREV_MONTH_BUTTON).click();  //<3>
+        browser.untilFound(UI_DATEPICKER_DIV).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(UI_DATEPICKER_DIV).untilFound(NEXT_MONTH_BUTTON).click();  //<4>
+        browser.untilFound(UI_DATEPICKER_DIV).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayedMonth() {
         return Month.valueOf(
-        browser.untilFound(UI_DATEPICKER_DIV).untilFound(DISPLAY_MONTH)
-                .getText()
+            browser.untilFound(UI_DATEPICKER_DIV).getText(DISPLAY_MONTH)
                 .toUpperCase()
         ).ordinal();   //<7>
     }

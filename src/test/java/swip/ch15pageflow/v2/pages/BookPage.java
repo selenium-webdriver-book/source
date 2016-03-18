@@ -1,7 +1,6 @@
 package swip.ch15pageflow.v2.pages;
 
 import swip.ch15pageflow.v2.framework.Browser;
-import swip.ch15pageflow.v2.framework.Element;
 
 import static swip.ch15pageflow.locators.ClassName.CART_BUTTON;
 import static swip.ch15pageflow.locators.Id.TOP_NAV;
@@ -24,12 +23,7 @@ public class BookPage {
     }
 
     public void gotoCart() {
-        cartButton().click();
-    }
-
-    public Element cartButton() {
-        return browser.untilFound(TOP_NAV)
-            .untilFound(CART_BUTTON);
+        browser.untilFound(TOP_NAV).click(CART_BUTTON);
     }
 
 }

@@ -1,4 +1,4 @@
-package swip.ch17datepicker.datepicker;
+package swip.ch17datepicker.bootstrapdatepicker;
 
 import java.time.Month;
 import java.util.function.Function;

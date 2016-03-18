@@ -1,4 +1,4 @@
-package swip.ch13framework.v6;
+package swip.ch13framework.v6_nonjava8;
 
 import org.openqa.selenium.WebDriver;
 
