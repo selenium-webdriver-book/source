@@ -35,7 +35,7 @@ public class JQueryDatepicker {
     }
 
     private void pickYear(int year) {
-        int difference =  displayedYear() - year;
+        int difference = displayedYear() - year;
         if (difference < 0) {
             for (int i = difference; i < 0; i++) {
                 nextYear();
@@ -45,29 +45,6 @@ public class JQueryDatepicker {
                 previousYear();
             }
         }
-    }
-
-    private void pickMonth(int month) {
-        int difference =  displayedMonth() - month;
-        if (difference < 0) {
-            for (int i = difference; i < 0; i++) {
-                nextMonth();
-            }
-        } else if (difference > 0) {
-            for (int i = 0; i < difference; i++) {
-               previousMonth();
-            }
-        }
-    }
-
-    private void pickDay(int day) {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.linkText(String.valueOf(day))).click();
-
-        new FluentWait<>(browser).until(
-            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
-                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
-        );
     }
 
     private void previousYear() {
@@ -82,25 +59,55 @@ public class JQueryDatepicker {
         }
     }
 
-    private void previousMonth() {
-        browser.findElement(By.id("ui-datepicker-div")).findElement(By.className("ui-datepicker-prev")).click();  //<3>
-    }
-
-    private void nextMonth() {
-        browser.findElement(By.id("ui-datepicker-div")).findElement(By.className("ui-datepicker-next")).click();  //<4>
-    }
-
     private int displayedYear() {
         return Integer.parseInt(
-            browser.findElement(By.id("ui-datepicker-div")).findElement(By.className("ui-datepicker-year")).getText()
+            browser.findElement(By.id("ui-datepicker-div"))
+                .findElement(By.className("ui-datepicker-year")).getText()
         );
     }
 
+    private void pickMonth(int month) {
+        int difference = displayedMonth() - month;
+        if (difference < 0) {
+            for (int i = difference; i < 0; i++) {
+                nextMonth();
+            }
+        } else if (difference > 0) {
+            for (int i = 0; i < difference; i++) {
+                previousMonth();
+            }
+        }
+    }
+
+    private void previousMonth() {
+        browser.findElement(By.id("ui-datepicker-div"))
+            .findElement(By.className("ui-datepicker-prev"))
+            .click();  //<3>
+    }
+
+    private void nextMonth() {
+        browser.findElement(By.id("ui-datepicker-div"))
+            .findElement(By.className("ui-datepicker-next"))
+            .click();  //<4>
+    }
+
+
     private int displayedMonth() {
         return Month.valueOf(
-            browser.findElement(By.id("ui-datepicker-div")).findElement(By.className("ui-datepicker-month"))
+            browser.findElement(By.id("ui-datepicker-div"))
+                .findElement(By.className("ui-datepicker-month"))
                 .getText()
                 .toUpperCase()
         ).ordinal();   //<7>
+    }
+
+    private void pickDay(int day) {
+        browser.findElement(By.id("ui-datepicker-div"))
+            .findElement(By.linkText(String.valueOf(day))).click();
+
+        new FluentWait<>(browser).until(
+            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
+                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
+        );
     }
 }

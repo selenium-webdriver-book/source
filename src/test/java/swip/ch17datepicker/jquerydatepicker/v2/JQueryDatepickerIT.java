@@ -29,12 +29,12 @@ public class JQueryDatepickerIT extends TestTimer {
     @Before
     public void setup() {
         browser.get("/datepicker.html");
-        jQueryDatepicker = new JQueryDatepicker(new JQueryCalendar(browser), new JQueryYearControl(browser), new JQueryMonthControl(browser), new JQueryDayPicker(browser));
+        jQueryDatepicker = new JQueryDatepicker(new JQueryCalendar(browser), new JQueryYearPicker(browser), new JQueryMonthPicker(browser), new JQueryDayPicker(browser));
     }
 
     @Test
-    public void muchBetterDatePicker() {
-        jQueryDatepicker.pick(APRIL, 1, 2012);
-        assertEquals("04/01/2012", browser.findElement(By.id("datepicker")).getAttribute("value"));
+    public void shouldPickADate() {
+        jQueryDatepicker.pick(APRIL, 1, 2014);
+        assertEquals("04/01/2014", browser.findElement(By.id("datepicker")).getAttribute("value"));
     }
 }

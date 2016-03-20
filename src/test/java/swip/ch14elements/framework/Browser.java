@@ -10,15 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Browser extends DelegatingWebDriver implements ExplicitWait, SearchScope {
+public class Browser extends DelegatingWebDriver  {
 
     public Browser(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public Element findElement(By by) {
-        return new Element(super.findElement(by));
     }
 
     public void setInputText(By by, String value) {

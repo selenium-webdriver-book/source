@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class DelegatingSearchContext<T extends SearchContext>  //<1>
-    implements SearchContext {
+    implements SearchContext, ExplicitWait {
     protected final T delegate; // <2>
 
     public DelegatingSearchContext(T delegate) {
@@ -20,8 +20,8 @@ public class DelegatingSearchContext<T extends SearchContext>  //<1>
     }
 
     @Override
-    public WebElement findElement(By by) {
-        return delegate.findElement(by);
+    public Element findElement(By by) {
+        return new Element(delegate.findElement(by));
     }
 
 }

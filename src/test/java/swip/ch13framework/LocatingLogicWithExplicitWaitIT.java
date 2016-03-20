@@ -1,9 +1,6 @@
 package swip.ch13framework;
 
 import com.google.common.base.Function;
-import org.apache.commons.lang3.time.StopWatch;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -12,31 +9,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import swip.framework.TestTimer;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
 
 @RunWith(WebDriverRunner.class)
-public class LocatingLogicWithExplicitWaitIT {
+public class LocatingLogicWithExplicitWaitIT extends TestTimer {
 
-    private final StopWatch stopWatch = new StopWatch();
     @Inject
     private WebDriver driver;
-
-    @Before
-    public void startStopWatch() {
-        stopWatch.start();
-    }
-
-    @After
-    public void print() {
-        System.out.println("Time taken " + stopWatch);
-    }
 
     @Test
     public void usingExplicitWait() {
@@ -55,8 +41,8 @@ public class LocatingLogicWithExplicitWaitIT {
         );
 
         FluentWait<WebElement> webElementWait              //<2>
-            = new FluentWait<WebElement>(location)
-            .withTimeout(30, SECONDS)
+            = new FluentWait<>(location)
+            .withTimeout(5000, MILLISECONDS)
             .ignoring(NoSuchElementException.class);
         WebElement canada = webElementWait.until(
             new Function<WebElement, WebElement>() {
@@ -92,7 +78,7 @@ public class LocatingLogicWithExplicitWaitIT {
             .until((WebDriver d) -> driver.findElement(By.id("location")));
 
         FluentWait<WebElement> webElementWait = new FluentWait<>(tabMenu) // <2>
-            .withTimeout(5, SECONDS)
+            .withTimeout(5000, MILLISECONDS)
             .pollingEvery(100, MILLISECONDS)
             .ignoring(Exception.class);
 

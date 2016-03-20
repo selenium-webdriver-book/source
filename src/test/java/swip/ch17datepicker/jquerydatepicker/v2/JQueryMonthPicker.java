@@ -3,58 +3,50 @@ package swip.ch17datepicker.jquerydatepicker.v2;
 import org.openqa.selenium.By;
 import swip.ch15pageflow.v2.framework.Browser;
 
+import java.time.Month;
 
-public class JQueryYearControl {
+
+public class JQueryMonthPicker {
 
     private final Browser browser;
 
-    public JQueryYearControl(Browser browser) {
+
+    public JQueryMonthPicker(Browser browser) {
         this.browser = browser;
     }
 
-    public void pickYear(int year) {
-        int difference = displayedYear() - year;
+    public void pickMonth(int month) {
+        int difference = displayedMonth() - month;
         if (difference < 0) {
             for (int i = difference; i < 0; i++) {
-                nextYear();
+                nextMonth();
             }
         } else if (difference > 0) {
             for (int i = 0; i < difference; i++) {
-                previousYear();
+                previousMonth();
             }
         }
     }
 
-    private void previousYear() {
-        for (int i = 0; i < 12; i++) {
-            previousMonth();
-        }
-    }
 
-    private void nextYear() {
-        for (int i = 0; i < 12; i++) {
-            nextMonth();
-        }
-    }
-
-    private void previousMonth() {
+    void previousMonth() {
         browser.findElement(By.id("ui-datepicker-div"))
             .findElement(By.className("ui-datepicker-prev"))
             .click();  //<3>
     }
 
-    private void nextMonth() {
+    void nextMonth() {
         browser.findElement(By.id("ui-datepicker-div"))
             .findElement(By.className("ui-datepicker-next"))
             .click();  //<4>
     }
 
-    private int displayedYear() {
-        return Integer.parseInt(
+    private int displayedMonth() {
+        return Month.valueOf(
             browser.findElement(By.id("ui-datepicker-div"))
-                .findElement(By.className("ui-datepicker-year"))
+                .findElement(By.className("ui-datepicker-month"))
                 .getText()
-        );
+                .toUpperCase()
+        ).ordinal();   //<7>
     }
-
 }
