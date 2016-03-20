@@ -30,22 +30,19 @@ public class BrokenDatepickerIT extends TestTimer {
     private BrokenDatepicker naiveDatepicker;
 
     @Before
-    public void setup() {
+    public void setup() throws Exception {
         browser.get("/datepicker.html");
         naiveDatepicker = new BrokenDatepicker(browser);
 
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-            date = dateFormat.parse("04/01/2014");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        date = dateFormat.parse("04/01/2014");
+
     }
 
     @Test
     public void brokenNaiveDatePicker() {
         naiveDatepicker.pickDate(date);
-        assertEquals("04/02/2014",naiveDatepicker.getDate());
+        assertEquals("04/02/2014", naiveDatepicker.getDate());
     }
 
 }
