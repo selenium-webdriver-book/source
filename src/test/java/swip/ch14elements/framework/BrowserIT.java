@@ -33,6 +33,12 @@ public class BrowserIT {
     }
 
     @Test
+    public void textInputLambda() throws Exception {
+        browser.setInputTextLambda(By.name("email"), "john.lambda@email.com");
+        assertEquals("john.lambda@email.com", browser.getInputText(By.name("email")));
+    }
+
+    @Test
     public void checkbox() throws Exception {
         browser.setCheckboxValue(By.name("terms"), true);
         assertTrue(browser.isChecked(By.name("terms")));
@@ -47,5 +53,10 @@ public class BrowserIT {
     @Test
     public void select() throws Exception {
         browser.getSelect(By.name("interest")).selectByVisibleText("Music");
+    }
+
+    @Test
+    public void selectLambda() throws Exception {
+        browser.getSelectLambda(By.name("interest")).selectByVisibleText("Music");
     }
 }

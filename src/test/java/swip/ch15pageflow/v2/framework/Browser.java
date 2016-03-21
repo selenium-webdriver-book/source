@@ -23,26 +23,10 @@ public class Browser extends DelegatingWebDriver {
         Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
 
         retry.attempt(
-            new Attemptable() {
-                @Override
-                public void attempt() throws Exception {
-                    Element element = findElement(by);
-                    element.clear();
-                    element.sendKeys(value.toString());
-                    assert value.toString().equals(element.getAttribute("value"));
-                }
-            }
-        );
-    }
-
-    public void setInputTextLambda(Supplier<By> by, String value) {
-        Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
-
-        retry.attempt(
             () -> {
                 Element element = findElement(by);
                 element.clear();
-                element.sendKeys(value);
+                element.sendKeys(value.toString());
                 assert value.toString().equals(element.getAttribute("value"));
             }
         );
@@ -92,14 +76,11 @@ public class Browser extends DelegatingWebDriver {
     }
 
     public Select getSelect(Supplier<By> by) {
-        final Element element = untilFound(by);
+        Element element = untilFound(by);
         new WebDriverWait(this, 3, 100)
-            .until(new Predicate<WebDriver>() {
-                @Override
-                public boolean apply(WebDriver driver) {
-                    element.click();
-                    return !element.findElements(By.tagName("option")).isEmpty();
-                }
+            .until((WebDriver driver) -> {
+                element.click();
+                return !element.findElements(By.tagName("option")).isEmpty();
             });
         return new Select(element);
     }
@@ -126,13 +107,4 @@ public class Browser extends DelegatingWebDriver {
         }
     }
 
-    public Select getSelectLambda(Supplier<By> by) {
-        Element element = untilFound(by);
-        new WebDriverWait(this, 3, 100)
-            .until((WebDriver driver) -> {
-                element.click();
-                return !element.findElements(By.tagName("option")).isEmpty();
-            });
-        return new Select(element);
-    }
 }

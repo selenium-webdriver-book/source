@@ -1,7 +1,6 @@
 package swip.ch15pageflow.v1.framework;
 
 
-import com.google.common.base.Predicate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public class Browser extends DelegatingWebDriver  {
 
@@ -20,22 +18,6 @@ public class Browser extends DelegatingWebDriver  {
     }
 
     public void setInputText(Supplier<By> by, String value) {
-        Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
-
-        retry.attempt(
-            new Attemptable() {
-                @Override
-                public void attempt() throws Exception {
-                    Element element = findElement(by);
-                    element.clear();
-                    element.sendKeys(value);
-                    assert value.equals(element.getAttribute("value"));
-                }
-            }
-        );
-    }
-
-    public void setInputTextLambda(Supplier<By> by, String value) {
         Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
 
         retry.attempt(
@@ -92,14 +74,11 @@ public class Browser extends DelegatingWebDriver  {
     }
 
     public Select getSelect(Supplier<By> by) {
-        final Element element = untilFound(by);
+        Element element = untilFound(by);
         new WebDriverWait(this, 3, 100)
-            .until(new Predicate<WebDriver>() {
-                @Override
-                public boolean apply(WebDriver driver) {
-                    element.click();
-                    return !element.findElements(By.tagName("option")).isEmpty();
-                }
+            .until((WebDriver driver) -> {
+                element.click();
+                return !element.findElements(By.tagName("option")).isEmpty();
             });
         return new Select(element);
     }
@@ -126,13 +105,4 @@ public class Browser extends DelegatingWebDriver  {
         }
     }
 
-    public Select getSelectLambda(Supplier<By> by) {
-        Element element = untilFound(by);
-        new WebDriverWait(this, 3, 100)
-            .until((WebDriver driver) -> {
-                element.click();
-                return !element.findElements(By.tagName("option")).isEmpty();
-            });
-        return new Select(element);
-    }
 }
