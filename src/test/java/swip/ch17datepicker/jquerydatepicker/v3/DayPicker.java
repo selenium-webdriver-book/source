@@ -1,4 +1,4 @@
-package swip.ch17datepicker.jquerydatepicker.v4;
+package swip.ch17datepicker.jquerydatepicker.v3;
 
 public interface DayPicker {
 

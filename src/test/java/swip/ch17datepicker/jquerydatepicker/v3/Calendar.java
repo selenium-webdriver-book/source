@@ -1,4 +1,4 @@
-package swip.ch17datepicker.jquerydatepicker.v4;
+package swip.ch17datepicker.jquerydatepicker.v3;
 
 import swip.ch15pageflow.v2.framework.Browser;
 

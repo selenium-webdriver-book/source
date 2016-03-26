@@ -1,4 +1,4 @@
-package swip.ch17datepicker.jquerydatepicker.v3;
+package swip.ch17datepicker.jquerydatepicker;
 
 import org.openqa.selenium.By;
 

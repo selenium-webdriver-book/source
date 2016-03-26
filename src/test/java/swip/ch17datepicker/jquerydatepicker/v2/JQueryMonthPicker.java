@@ -1,9 +1,11 @@
 package swip.ch17datepicker.jquerydatepicker.v2;
 
-import org.openqa.selenium.By;
 import swip.ch15pageflow.v2.framework.Browser;
 
 import java.time.Month;
+
+import static swip.ch17datepicker.jquerydatepicker.JQueryByClassName.*;
+import static swip.ch17datepicker.jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
 
 public class JQueryMonthPicker {
@@ -28,24 +30,17 @@ public class JQueryMonthPicker {
         }
     }
 
-
-    void previousMonth() {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.className("ui-datepicker-prev"))
-            .click();  //<3>
+    private void previousMonth() {
+        browser.untilFound(UI_DATEPICKER_DIV).click(PREV_MONTH_BUTTON);  //<3>
     }
 
-    void nextMonth() {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.className("ui-datepicker-next"))
-            .click();  //<4>
+    private void nextMonth() {
+        browser.untilFound(UI_DATEPICKER_DIV).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayedMonth() {
         return Month.valueOf(
-            browser.findElement(By.id("ui-datepicker-div"))
-                .findElement(By.className("ui-datepicker-month"))
-                .getText()
+            browser.untilFound(UI_DATEPICKER_DIV).getText(DISPLAY_MONTH)
                 .toUpperCase()
         ).ordinal();   //<7>
     }

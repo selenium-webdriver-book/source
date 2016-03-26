@@ -33,7 +33,7 @@ public class JQueryDatepickerIT extends TestTimer {
     }
 
     @Test
-    public void shouldPickADate() {
+    public void shouldPickaDate() {
         jQueryDatepicker.pick(APRIL, 1, 2014);
         assertEquals("04/01/2014", browser.findElement(By.id("datepicker")).getAttribute("value"));
     }

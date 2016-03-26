@@ -1,8 +1,8 @@
 package swip.ch17datepicker.jquerydatepicker.v2;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import swip.ch15pageflow.v2.framework.Browser;
+
+import static swip.ch17datepicker.jquerydatepicker.JQueryById.DATE_FIELD;
 
 
 public class JQueryCalendar {
@@ -14,7 +14,6 @@ public class JQueryCalendar {
     }
 
     public void show() {
-        WebElement element = browser.findElement(By.id("datepicker"));
-        element.click();
+        browser.click(DATE_FIELD);
     }
 }

@@ -1,12 +1,15 @@
 package swip.ch17datepicker.jquerydatepicker.v1;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.FluentWait;
 import swip.ch15pageflow.v2.framework.Browser;
 
 import java.time.LocalDate;
 import java.time.Month;
+
+import static org.openqa.selenium.By.linkText;
+import static swip.ch17datepicker.jquerydatepicker.JQueryByClassName.*;
+import static swip.ch17datepicker.jquerydatepicker.JQueryById.DATE_FIELD;
+import static swip.ch17datepicker.jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch17datepicker.jquerydatepicker.JQueryPredicates.CALENDAR_CLOSED;
 
 
 public class JQueryDatepicker {
@@ -17,97 +20,73 @@ public class JQueryDatepicker {
         this.browser = browser;
     }
 
+    public String getDate() {                                  //<7>
+        return browser.getInputText(DATE_FIELD);
+    }
+
     public void pick(Month month, int day, int year) {
-        LocalDate.of(year, month.ordinal() + 1, day);    //<1>
+        LocalDate.of(year, month, day);    //<1>
         show();                                          //<2>
         pickYear(year);                                  //<3>
         pickMonth(month.ordinal());                      //<4>
         pickDay(day);                                    //<5>
     }
 
-    public String getDate() {
-        return browser.findElement(By.id("datepicker")).getAttribute("value");
-    }
-
     private void show() {
-        WebElement element = browser.findElement(By.id("datepicker"));
-        element.click();
+        browser.click(DATE_FIELD);
     }
 
     private void pickYear(int year) {
-        int difference = displayedYear() - year;
-        if (difference < 0) {
-            for (int i = difference; i < 0; i++) {
-                nextYear();
+        if (displayedYear() < year) {        //<1>
+            while (displayedYear() != year) {
+                nextMonth();
             }
-        } else if (difference > 0) {
-            for (int i = 0; i < difference; i++) {
-                previousYear();
+        } else if (displayedYear() > year) {
+            while (displayedYear() != year) {
+                previousMonth();
             }
-        }
-    }
-
-    private void previousYear() {
-        for (int i = 0; i < 12; i++) {
-            previousMonth();
-        }
-    }
-
-    private void nextYear() {
-        for (int i = 0; i < 12; i++) {
-            nextMonth();
         }
     }
 
     private int displayedYear() {
         return Integer.parseInt(
-            browser.findElement(By.id("ui-datepicker-div"))
-                .findElement(By.className("ui-datepicker-year")).getText()
+            browser.untilFound(UI_DATEPICKER_DIV)
+                .getText(DISPLAY_YEAR)
         );
     }
 
     private void pickMonth(int month) {
-        int difference = displayedMonth() - month;
-        if (difference < 0) {
-            for (int i = difference; i < 0; i++) {
+        if (displayedMonth() < month) {             //<2>
+            while (displayedMonth() != month) {
                 nextMonth();
             }
-        } else if (difference > 0) {
-            for (int i = 0; i < difference; i++) {
+        } else if (displayedMonth() > month) {
+            while (displayedMonth() != month) {
                 previousMonth();
             }
         }
     }
 
     private void previousMonth() {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.className("ui-datepicker-prev"))
-            .click();  //<3>
+        browser.untilFound(UI_DATEPICKER_DIV)
+            .click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.className("ui-datepicker-next"))
-            .click();  //<4>
+        browser.untilFound(UI_DATEPICKER_DIV)
+            .click(NEXT_MONTH_BUTTON);  //<4>
     }
-
 
     private int displayedMonth() {
         return Month.valueOf(
-            browser.findElement(By.id("ui-datepicker-div"))
-                .findElement(By.className("ui-datepicker-month"))
-                .getText()
+            browser.untilFound(UI_DATEPICKER_DIV).getText(DISPLAY_MONTH)
                 .toUpperCase()
         ).ordinal();   //<7>
     }
 
-    private void pickDay(int day) {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.linkText(String.valueOf(day))).click();
-
-        new FluentWait<>(browser).until(
-            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
-                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
-        );
+    public void pickDay(int day) {
+        browser.untilFound(UI_DATEPICKER_DIV)
+            .click(() -> linkText(String.valueOf(day))); //<9>
+        browser.until(CALENDAR_CLOSED);  //<11>
     }
 }

@@ -1,8 +1,10 @@
 package swip.ch17datepicker.jquerydatepicker.v2;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.FluentWait;
 import swip.ch15pageflow.v2.framework.Browser;
+
+import static org.openqa.selenium.By.linkText;
+import static swip.ch17datepicker.jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch17datepicker.jquerydatepicker.JQueryPredicates.CALENDAR_CLOSED;
 
 public class JQueryDayPicker {
 
@@ -13,14 +15,8 @@ public class JQueryDayPicker {
     }
 
     public void pickDay(int day) {
-        browser.findElement(By.id("ui-datepicker-div"))
-            .findElement(By.linkText(String.valueOf(day))).click();
-
-        new FluentWait<>(browser).until(
-            (Browser b) -> b.findElements(By.id("ui-datepicker-div")).size() == 0 ||
-                !b.findElements(By.id("ui-datepicker-div")).get(0).isDisplayed()
-        );
-
+        browser.untilFound(UI_DATEPICKER_DIV)
+            .click(() -> linkText(String.valueOf(day))); //<9>
+        browser.until(CALENDAR_CLOSED);  //<11>
     }
-
 }

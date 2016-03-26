@@ -1,10 +1,7 @@
 package swip.ch17datepicker.jquerydatepicker.v4;
 
-
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch15pageflow.v2.framework.BrowserRunner;
@@ -15,11 +12,9 @@ import javax.inject.Inject;
 import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
 
-@RunWith(BrowserRunner.class)
-public class JQueryDatepickerIT extends TestTimer {
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
+@RunWith(BrowserRunner.class)
+public class JQueryDate_PickerIT extends TestTimer{
 
     @Inject
     private Browser browser;
