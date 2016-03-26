@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 
 @RunWith(BrowserRunner.class)
-public class JQueryDate_PickerIT extends TestTimer{
+public class JQueryDatepickerIT extends TestTimer{
 
     @Inject
     private Browser browser;
