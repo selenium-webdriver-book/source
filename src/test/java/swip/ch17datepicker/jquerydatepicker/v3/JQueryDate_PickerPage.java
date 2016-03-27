@@ -10,7 +10,7 @@ import static swip.ch17datepicker.jquerydatepicker.JQueryById.DATE_FIELD;
 import static swip.ch17datepicker.jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
 
-public class JQueryDatePickerPage {
+public class JQueryDate_PickerPage {
 
     private final Browser browser;    //<1>
 
@@ -24,7 +24,7 @@ public class JQueryDatePickerPage {
         return browser.getInputText(DATE_FIELD);
     }       //<10>
 
-    public JQueryDatePickerPage(Browser b) {   //<3>
+    public JQueryDate_PickerPage(Browser b) {   //<3>
         this.browser = b;
         this.datepicker = new Datepicker(  //<4>
             new Calendar(browser,

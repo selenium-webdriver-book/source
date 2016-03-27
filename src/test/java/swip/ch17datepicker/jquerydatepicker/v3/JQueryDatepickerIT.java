@@ -23,12 +23,12 @@ public class JQueryDatepickerIT extends TestTimer {
 
     @Inject
     private Browser browser;
-    private JQueryDatePickerPage jQueryDatePickerPage;
+    private JQueryDate_PickerPage jQueryDatePickerPage;
 
     @Before
     public void setup() {
         browser.get("/datepicker.html");
-        jQueryDatePickerPage = new JQueryDatePickerPage(browser);
+        jQueryDatePickerPage = new JQueryDate_PickerPage(browser);
     }
 
     @Test

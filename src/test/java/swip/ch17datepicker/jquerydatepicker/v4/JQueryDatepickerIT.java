@@ -14,16 +14,16 @@ import static org.junit.Assert.assertEquals;
 
 
 @RunWith(BrowserRunner.class)
-public class JQueryDatepicker_IT extends TestTimer{
+public class JQueryDatepickerIT extends TestTimer{
 
     @Inject
     private Browser browser;
-    private JQueryDatePickerPage jQueryDatePickerPage;
+    private JQueryDate_PickerPage jQueryDatePickerPage;
 
     @Before
     public void setup() {
         browser.get("/datepicker.html");
-        jQueryDatePickerPage = new JQueryDatePickerPage(browser);
+        jQueryDatePickerPage = new JQueryDate_PickerPage(browser);
     }
 
     @Test
