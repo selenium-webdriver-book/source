@@ -39,12 +39,24 @@ public class JQueryDatepicker {
     private void pickYear(int year) {
         if (displayedYear() < year) {        //<1>
             while (displayedYear() != year) {
-                nextMonth();
+                nextYear();
             }
         } else if (displayedYear() > year) {
             while (displayedYear() != year) {
-                previousMonth();
+                previousYear();
             }
+        }
+    }
+
+    private void previousYear() {
+        for (int i = 0; i < 12; i++) {
+            previousMonth();
+        }
+    }
+
+    private void nextYear() {
+        for (int i = 0; i < 12; i++) {
+            nextMonth();
         }
     }
 
