@@ -14,13 +14,13 @@ import static swip.ch17datepicker.jquerydatepicker.v4.JQueryCalendarDisplayValue
 import static swip.ch17datepicker.jquerydatepicker.v4.JQueryCalendarDisplayValue.YEAR;
 
 
-public class JQueryDate_PickerPage {
+public class JQueryDatepickerPage {
 
     private final Browser browser;
 
     private final Datepicker datepicker;
 
-    public JQueryDate_PickerPage(Browser browser) {
+    public JQueryDatepickerPage(Browser browser) {
         this.browser = browser;
         this.datepicker = new Datepicker(  //<1>
             new Calendar(browser, TRIGGER),        //<2>
