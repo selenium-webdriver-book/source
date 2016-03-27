@@ -30,11 +30,11 @@ public class JQueryMonthPicker {
         }
     }
 
-    private void previousMonth() {
+    public void previousMonth() {
         browser.untilFound(UI_DATEPICKER_DIV).click(PREV_MONTH_BUTTON);  //<3>
     }
 
-    private void nextMonth() {
+    public void nextMonth() {
         browser.untilFound(UI_DATEPICKER_DIV).click(NEXT_MONTH_BUTTON);  //<4>
     }
 

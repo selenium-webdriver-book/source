@@ -27,7 +27,7 @@ public class BootstrapDatepickerPage {
             new Calendar(browser, TRIGGER),
             new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),
             new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),
-            new BootstrapDayPicker(browser, CALENDAR_CLOSED)
+            new BootstrapDayPicker(browser)
         );
     }
 

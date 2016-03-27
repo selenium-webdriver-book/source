@@ -7,18 +7,18 @@ import java.util.function.Consumer;
 
 import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.*;
 
-public enum BootstrapCalendarControls implements Consumer<Browser> {
+public enum BootstrapCalendarControls implements Consumer<Browser> {    //<6>
     TRIGGER {
         @Override
         public void accept(Browser browser) {
-            browser.click(DATE_FIELD);
+            browser.click(DATE_FIELD);            // <1>
         }
     },
     NEXT_MONTH {
         @Override
         public void accept(Browser browser) {
             browser.untilFound(CALENDAR)
-                .click(NEXT_MONTH_BUTTON);
+                .click(NEXT_MONTH_BUTTON);          // <2>
         }
 
     },
@@ -26,14 +26,14 @@ public enum BootstrapCalendarControls implements Consumer<Browser> {
         @Override
         public void accept(Browser browser) {
             browser.untilFound(CALENDAR)
-                .click(PREV_MONTH_BUTTON);
+                .click(PREV_MONTH_BUTTON);           //<3>
         }
     },
 
     NEXT_YEAR {
         @Override
         public void accept(Browser browser) {
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < 12; i++) {       //<4>
                 NEXT_MONTH.accept(browser);
             }
         }
@@ -41,7 +41,7 @@ public enum BootstrapCalendarControls implements Consumer<Browser> {
     PREVIOUS_YEAR {
         @Override
         public void accept(Browser browser) {
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < 12; i++) {        // <5>
                 PREVIOUS_MONTH.accept(browser);
             }
         }

@@ -46,10 +46,10 @@ public class Datepicker {
      * @param year  an ineger representing the year appearing on the calendar
      */
     public void pick(Month month, int day, int year) {  //<6>
-        LocalDate.of(year, month, day);   //<7>
-        calendar.show();      //<8>
-        yearPicker.pick(year);              //<9>
-        monthPicker.pick(month.ordinal());  //<10>
-        dayPicker.pick(day);                //<11>
+        LocalDate.of(year, month, day);
+        calendar.show();      //<7>
+        yearPicker.pick(year);              //<8>
+        monthPicker.pick(month.ordinal());  //<9>
+        dayPicker.pick(day);                //<10>
     }
 }
