@@ -22,7 +22,7 @@ public class JQueryDatepicker {
     }
 
     public void pick(Month month, int day, int year) {
-        LocalDate.of(year, month.ordinal() + 1, day);
+        LocalDate.of(year, month, day);
         calendar.show();
         yearPicker.pickYear(year);
         monthPicker.pickMonth(month.ordinal());

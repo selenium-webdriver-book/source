@@ -22,7 +22,7 @@ public class Datepicker {
     }                                        //<5>
 
     public void pick(Month month, int day, int year) {   //<6>
-        LocalDate.of(year, month.ordinal() + 1, day);     //<7>
+        LocalDate.of(year, month, day);     //<7>
         calendar.show();                               //<8>
         yearPicker.pickYear(year);                    //<9>
         monthPicker.pickMonth(month.ordinal());       //<10>
