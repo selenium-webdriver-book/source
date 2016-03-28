@@ -43,11 +43,11 @@ public class JQueryDatepickerPage {
                         nextMonth();
                     }
                 },
-                (Browser browser) ->
-                    Integer.parseInt(
-                        browser.untilFound(UI_DATEPICKER_DIV)
-                            .getText(DISPLAY_YEAR)
-                    )
+                (Browser browser) -> {
+                    String text = browser.untilFound(UI_DATEPICKER_DIV)
+                        .getText(DISPLAY_YEAR);
+                    return Integer.parseInt(text);
+                }
 
             ),
             new MonthPicker(browser,
@@ -57,12 +57,12 @@ public class JQueryDatepickerPage {
                 (Browser browser) -> {
                     nextMonth();
                 },
-                (Browser browser) ->
-                    Month.valueOf(
-                        browser.untilFound(UI_DATEPICKER_DIV)
-                            .getText(DISPLAY_MONTH)
-                            .toUpperCase()
-                    ).ordinal()
+                (Browser browser) -> {
+                    String text = browser.untilFound(UI_DATEPICKER_DIV)
+                        .getText(DISPLAY_MONTH)
+                        .toUpperCase();
+                    return Month.valueOf(text).ordinal();
+                }
             ), new JQueryDayPicker(browser));
     }
 

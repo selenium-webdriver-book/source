@@ -15,18 +15,18 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
     /**
      * Locate the integer value representing displayed year on a calendar
      */
-    YEAR {
+    DISPLAY_YEAR {
         public Integer apply(Browser browser) {
-            return parseInt(extract(browser, 1));
+            return parseInt(extract(browser, 1));       //<1>
         }
     },
 
     /**
      * Locate the integer value representing displayed month on a calendar
      */
-    MONTH {
+    DISPLAY_MONTH {
         public Integer apply(Browser browser) {
-            return TO_MONTH.apply(extract(browser, 0)).ordinal();
+            return TO_MONTH.apply(extract(browser, 0)).ordinal();       //<2>
         }
     };
 

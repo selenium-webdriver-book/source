@@ -61,10 +61,9 @@ public class JQueryDatepicker {
     }
 
     private int displayedYear() {
-        return Integer.parseInt(
-            browser.untilFound(UI_DATEPICKER_DIV)
-                .getText(DISPLAY_YEAR)
-        );
+        String text = browser.untilFound(UI_DATEPICKER_DIV)
+            .getText(DISPLAY_YEAR);
+        return Integer.parseInt(text);
     }
 
     private void pickMonth(int month) {
@@ -90,10 +89,9 @@ public class JQueryDatepicker {
     }
 
     private int displayedMonth() {
-        return Month.valueOf(
-            browser.untilFound(UI_DATEPICKER_DIV).getText(DISPLAY_MONTH)
-                .toUpperCase()
-        ).ordinal();   //<7>
+        String text = browser.untilFound(UI_DATEPICKER_DIV)
+            .getText(DISPLAY_MONTH).toUpperCase();
+        return Month.valueOf(text).ordinal();   //<7>
     }
 
     public void pickDay(int day) {

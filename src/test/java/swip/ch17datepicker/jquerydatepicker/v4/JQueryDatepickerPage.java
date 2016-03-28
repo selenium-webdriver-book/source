@@ -10,8 +10,8 @@ import java.time.Month;
 
 import static swip.ch17datepicker.jquerydatepicker.JQueryById.DATE_FIELD;
 import static swip.ch17datepicker.jquerydatepicker.v4.JQueryCalendarControls.*;
-import static swip.ch17datepicker.jquerydatepicker.v4.JQueryCalendarDisplayValue.MONTH;
-import static swip.ch17datepicker.jquerydatepicker.v4.JQueryCalendarDisplayValue.YEAR;
+import static swip.ch17datepicker.jquerydatepicker.v4.JQueryCalendarDisplayValue.DISPLAY_MONTH;
+import static swip.ch17datepicker.jquerydatepicker.v4.JQueryCalendarDisplayValue.DISPLAY_YEAR;
 
 
 public class JQueryDatepickerPage {
@@ -24,8 +24,8 @@ public class JQueryDatepickerPage {
         this.browser = browser;
         this.datepicker = new Datepicker(  //<1>
             new Calendar(browser, TRIGGER),        //<2>
-            new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, YEAR),     //<3>
-            new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, MONTH),  //<4>
+            new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, DISPLAY_YEAR),     //<3>
+            new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, DISPLAY_MONTH),  //<4>
             new JQueryDayPicker(browser)      //<5>
         );
     }

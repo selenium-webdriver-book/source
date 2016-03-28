@@ -39,9 +39,8 @@ public class JQueryMonthPicker {
     }
 
     private int displayedMonth() {
-        return Month.valueOf(
-            browser.untilFound(UI_DATEPICKER_DIV).getText(DISPLAY_MONTH)
-                .toUpperCase()
-        ).ordinal();   //<7>
+        String text = browser.untilFound(UI_DATEPICKER_DIV)
+            .getText(DISPLAY_MONTH).toUpperCase();
+        return Month.valueOf(text).ordinal();   //<7>
     }
 }
