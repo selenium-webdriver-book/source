@@ -2,7 +2,7 @@ package swip.ch18datepicker.jquerydatepicker.v2;
 
 import swip.ch15pageflow.v2.framework.Browser;
 
-import static swip.ch17datepicker.jquerydatepicker.JQueryById.DATE_FIELD;
+import static swip.ch18datepicker.jquerydatepicker.JQueryById.DATE_FIELD;
 
 
 public class JQueryCalendar {

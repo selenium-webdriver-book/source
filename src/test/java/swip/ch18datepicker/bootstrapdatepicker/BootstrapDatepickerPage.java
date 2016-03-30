@@ -8,10 +8,10 @@ import swip.ch15pageflow.v2.framework.Browser;
 
 import java.time.Month;
 
-import static swip.ch17datepicker.bootstrapdatepicker.BootstrapByClassName.DATE_FIELD;
-import static swip.ch17datepicker.bootstrapdatepicker.BootstrapCalendarControls.*;
-import static swip.ch17datepicker.bootstrapdatepicker.BootstrapCalendarDisplayValue.DISPLAY_MONTH;
-import static swip.ch17datepicker.bootstrapdatepicker.BootstrapCalendarDisplayValue.DISPLAY_YEAR;
+import static swip.ch18datepicker.bootstrapdatepicker.BootstrapByClassName.DATE_FIELD;
+import static swip.ch18datepicker.bootstrapdatepicker.BootstrapCalendarControls.*;
+import static swip.ch18datepicker.bootstrapdatepicker.BootstrapCalendarDisplayValue.DISPLAY_MONTH;
+import static swip.ch18datepicker.bootstrapdatepicker.BootstrapCalendarDisplayValue.DISPLAY_YEAR;
 
 
 public class BootstrapDatepickerPage {

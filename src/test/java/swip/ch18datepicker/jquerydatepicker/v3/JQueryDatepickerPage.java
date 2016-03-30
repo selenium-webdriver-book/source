@@ -5,9 +5,9 @@ import swip.ch15pageflow.v2.framework.Browser;
 
 import java.time.Month;
 
-import static swip.ch17datepicker.jquerydatepicker.JQueryByClassName.*;
-import static swip.ch17datepicker.jquerydatepicker.JQueryById.DATE_FIELD;
-import static swip.ch17datepicker.jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch18datepicker.jquerydatepicker.JQueryByClassName.*;
+import static swip.ch18datepicker.jquerydatepicker.JQueryById.DATE_FIELD;
+import static swip.ch18datepicker.jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
 
 public class JQueryDatepickerPage {
