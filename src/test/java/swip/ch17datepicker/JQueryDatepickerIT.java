@@ -1,4 +1,4 @@
-package swip.ch18;
+package swip.ch17datepicker;
 
 import org.junit.Before;
 import org.junit.Test;
