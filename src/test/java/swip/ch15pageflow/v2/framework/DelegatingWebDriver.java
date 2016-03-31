@@ -64,4 +64,9 @@ public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> impl
     public Options manage() {
         return delegate.manage();
     }
+
+    @Override
+    public String getText() {
+        return delegate.getCurrentUrl();
+    }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public class DelegatingSearchContext<T extends SearchContext>  //<1>
+public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
     implements SearchContext, ExplicitWait {
     protected T delegate; // <2>
 
