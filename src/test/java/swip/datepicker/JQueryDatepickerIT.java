@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch15pageflow.v2.framework.BrowserRunner;
-import swip.ch17datepicker.jquerydatepicker.v4.JQueryDatepickerPage;
 import swip.framework.TestTimer;
 
 import javax.inject.Inject;
