@@ -1,8 +1,13 @@
 package swip.ch17datepicker.datepicker;
 
 
+import swip.ch15pageflow.v2.framework.Retry;
+
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.concurrent.TimeUnit;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * A general purpose DatePicker can be used to pick a given date from
@@ -47,9 +52,13 @@ public class Datepicker {
      */
     public void pick(Month month, int day, int year) {  //<6>
         LocalDate.of(year, month, day);
-        calendar.show();      //<7>
-        yearPicker.pick(year);              //<8>
-        monthPicker.pick(month.ordinal());  //<9>
-        dayPicker.pick(day);                //<10>
+        Retry retry = new Retry(3, 1, SECONDS);
+        retry.attempt(() -> {
+            calendar.show();      //<7>
+            yearPicker.pick(year);              //<8>
+            monthPicker.pick(month.ordinal());  //<9>
+            dayPicker.pick(day);                //<10>
+        });
+
     }
 }
