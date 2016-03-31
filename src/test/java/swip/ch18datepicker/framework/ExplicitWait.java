@@ -1,7 +1,5 @@
-package swip.ch15pageflow.v2.framework;
+package swip.ch18datepicker.framework;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -13,8 +11,6 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public interface ExplicitWait extends SearchScope {
-
-    Log log = LogFactory.getLog(ExplicitWait.class);
 
     default Element untilFound(Supplier<By> by) {
         Element element = new FluentWait<>(this)
