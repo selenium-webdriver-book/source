@@ -24,7 +24,7 @@ public class YearPicker {
         this.displayYear = displayYear;
     }  //<5>
 
-    public void pickYear(int year) {
+    public void pick(int year) {
         int difference =  displayYear.apply(browser) - year;   //<6>
         if (difference < 0) {                                 //<7>
             for (int i = difference; i < 0; i++) {            //<8>

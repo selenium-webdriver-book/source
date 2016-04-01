@@ -24,7 +24,7 @@ public class MonthPicker {
         this.displayMonth = displayMonth;
     }
 
-    public void pickMonth(int month) {
+    public void pick(int month) {
         int difference =  displayMonth.apply(browser) - month;
         if (difference < 0) {
             for (int i = difference; i < 0; i++) {

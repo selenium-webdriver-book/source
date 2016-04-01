@@ -10,13 +10,13 @@ import static org.openqa.selenium.By.className;
 /**
  * This enum is a Supplier of ByClassName from Selenium By API.
  */
-public enum BootstrapByClassName implements Supplier<By> {
+public enum BootstrapByClassName implements Supplier<By> {     //<6>
 
-    CALENDAR("datepicker-days"),
-    DATE_FIELD("trigger"),
-    NEXT_MONTH_BUTTON("next"),
-    PREV_MONTH_BUTTON("prev"),
-    DISPLAY_MONTH_YEAR("datepicker-switch");
+    CALENDAR("datepicker-days"),            //<1>
+    DATE_FIELD("trigger"),                  //<2>
+    NEXT_MONTH_BUTTON("next"),              //<3>
+    PREV_MONTH_BUTTON("prev"),              //<4>
+    DISPLAY_MONTH_YEAR("datepicker-switch");      //<5>
 
     private final By by;
 

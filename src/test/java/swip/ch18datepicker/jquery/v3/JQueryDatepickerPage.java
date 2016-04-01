@@ -26,8 +26,10 @@ public class JQueryDatepickerPage {
         this.browser = b;
         this.datepicker = new Datepicker(  //<4>
             new Calendar(browser, new Trigger()),
-            new YearPicker(browser, new PreviousYear(), new NextYear(), new DisplayYear()),
-            new MonthPicker(browser, new PreviousMonth(), new NextMonth(), new DisplayMonth()),
+            new YearPicker(browser,
+                new PreviousYear(), new NextYear(), new DisplayYear()),
+            new MonthPicker(browser,
+                new PreviousMonth(), new NextMonth(), new DisplayMonth()),
             new JQueryDayPicker(browser)
         );
     }
