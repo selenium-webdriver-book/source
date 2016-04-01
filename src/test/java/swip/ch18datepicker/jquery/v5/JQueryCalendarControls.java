@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import static swip.ch17jquerydatepicker.JQueryByClassName.NEXT_MONTH_BUTTON;
 import static swip.ch17jquerydatepicker.JQueryByClassName.PREV_MONTH_BUTTON;
 import static swip.ch17jquerydatepicker.JQueryById.DATE_FIELD;
-import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch17jquerydatepicker.JQueryById.CALENDAR;
 
 
 public enum JQueryCalendarControls implements Consumer<Browser> {
@@ -24,7 +24,7 @@ public enum JQueryCalendarControls implements Consumer<Browser> {
 
         @Override
         public void accept(Browser browser) {
-            browser.untilFound(UI_DATEPICKER_DIV)
+            browser.untilFound(CALENDAR)
                 .click(NEXT_MONTH_BUTTON);
         }
     },
@@ -32,7 +32,7 @@ public enum JQueryCalendarControls implements Consumer<Browser> {
 
         @Override
         public void accept(Browser browser) {
-            browser.untilFound(UI_DATEPICKER_DIV)
+            browser.untilFound(CALENDAR)
                 .click(PREV_MONTH_BUTTON);
         }
     },

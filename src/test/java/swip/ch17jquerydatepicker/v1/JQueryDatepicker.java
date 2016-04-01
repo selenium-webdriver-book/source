@@ -10,7 +10,7 @@ import java.time.Month;
 import java.util.function.Supplier;
 
 import static swip.ch17jquerydatepicker.JQueryByClassName.*;
-import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch17jquerydatepicker.JQueryById.CALENDAR;
 
 
 public class JQueryDatepicker {
@@ -62,7 +62,7 @@ public class JQueryDatepicker {
     }
 
     private int displayedYear() {
-        String text = browser.untilFound(UI_DATEPICKER_DIV)
+        String text = browser.untilFound(CALENDAR)
             .getText(DISPLAY_YEAR);
         return Integer.parseInt(text);
     }
@@ -80,23 +80,23 @@ public class JQueryDatepicker {
     }
 
     private void previousMonth() {
-        browser.untilFound(UI_DATEPICKER_DIV)
+        browser.untilFound(CALENDAR)
             .click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(UI_DATEPICKER_DIV)
+        browser.untilFound(CALENDAR)
             .click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayedMonth() {
-        String text = browser.untilFound(UI_DATEPICKER_DIV)
+        String text = browser.untilFound(CALENDAR)
             .getText(DISPLAY_MONTH).toUpperCase();
         return Month.valueOf(text).ordinal();   //<7>
     }
 
     private void pickDay(int day) {
-        browser.untilFound(UI_DATEPICKER_DIV)
+        browser.untilFound(CALENDAR)
             .click(new Supplier<By>() {
                 @Override
                 public By get() {

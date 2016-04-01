@@ -4,7 +4,7 @@ package swip.ch18datepicker.jquery.v3;
 import swip.ch18datepicker.framework.Browser;
 
 import static org.openqa.selenium.By.linkText;
-import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch17jquerydatepicker.JQueryById.CALENDAR;
 import static swip.ch18datepicker.jquery.JQueryPredicates.CALENDAR_CLOSED;
 
 
@@ -17,7 +17,7 @@ public class JQueryDayPicker implements DayPicker {
     }
 
     public void pick(int day) {
-        browser.untilFound(UI_DATEPICKER_DIV)
+        browser.untilFound(CALENDAR)
             .click(() -> linkText(String.valueOf(day))); //<9>
         browser.until(CALENDAR_CLOSED);  //<11>
     }

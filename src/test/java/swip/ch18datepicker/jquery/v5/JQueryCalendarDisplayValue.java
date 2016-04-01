@@ -7,7 +7,7 @@ import swip.ch18datepicker.framework.Browser;
 import java.time.Month;
 import java.util.function.Function;
 
-import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch17jquerydatepicker.JQueryById.CALENDAR;
 
 
 
@@ -18,7 +18,7 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
      */
     DISPLAY_YEAR {
         public Integer apply(Browser browser) {
-            String text = browser.untilFound(UI_DATEPICKER_DIV)
+            String text = browser.untilFound(CALENDAR)
                 .getText(JQueryByClassName.DISPLAY_YEAR);
             return Integer.parseInt(text);
         }
@@ -29,7 +29,7 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
      */
     DISPLAY_MONTH {
         public Integer apply(Browser browser) {
-            String text = browser.untilFound(UI_DATEPICKER_DIV)
+            String text = browser.untilFound(CALENDAR)
                 .getText(JQueryByClassName.DISPLAY_MONTH).toUpperCase();
             return Month.valueOf(text).ordinal();
         }

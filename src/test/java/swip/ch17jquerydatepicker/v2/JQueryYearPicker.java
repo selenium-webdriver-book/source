@@ -4,7 +4,7 @@ package swip.ch17jquerydatepicker.v2;
 import swip.ch17jquerydatepicker.framework.Browser;
 
 import static swip.ch17jquerydatepicker.JQueryByClassName.*;
-import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
+import static swip.ch17jquerydatepicker.JQueryById.CALENDAR;
 
 
 public class JQueryYearPicker {
@@ -43,7 +43,7 @@ public class JQueryYearPicker {
     }
 
     private int displayedYear() {
-        String text = browser.untilFound(UI_DATEPICKER_DIV).getText(DISPLAY_YEAR);
+        String text = browser.untilFound(CALENDAR).getText(DISPLAY_YEAR);
         return Integer.parseInt(text);
     }
 
