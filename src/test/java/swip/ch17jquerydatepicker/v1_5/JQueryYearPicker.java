@@ -1,9 +1,9 @@
 package swip.ch17jquerydatepicker.v1_5;
 
-import swip.ch17jquerydatepicker.JQueryById;
 import swip.ch17jquerydatepicker.framework.Browser;
 
 import static swip.ch17jquerydatepicker.JQueryByClassName.*;
+import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
 
 public class JQueryYearPicker {
@@ -40,20 +40,17 @@ public class JQueryYearPicker {
     }
 
     private int displayedYear() {
-        return Integer.parseInt(
-            browser.untilFound(JQueryById.UI_DATEPICKER_DIV)
-                .getText(DISPLAY_YEAR)
-        );
+        String text = browser.untilFound(UI_DATEPICKER_DIV)
+            .getText(DISPLAY_YEAR);
+        return Integer.parseInt(text);
     }
 
     private void previousMonth() {
-        browser.untilFound(JQueryById.UI_DATEPICKER_DIV)
-            .click(PREV_MONTH_BUTTON);  //<3>
+        browser.untilFound(UI_DATEPICKER_DIV).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(JQueryById.UI_DATEPICKER_DIV)
-            .click(NEXT_MONTH_BUTTON);  //<4>
+        browser.untilFound(UI_DATEPICKER_DIV).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
 }
