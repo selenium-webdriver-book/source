@@ -13,68 +13,66 @@ import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
 public class JQueryDatepickerPage {
 
-    private final Browser browser;    //<1>
+    private final Browser browser;
 
-    private final Datepicker datepicker;   //<2>
+    private final Datepicker datepicker;
 
     public void pick(Month month, int day, int year) {
         datepicker.pick(month, day, year);
-    }  //<9>
+    }
 
     public String getDate() {
         return browser.getInputText(DATE_FIELD);
-    }       //<10>
+    }
 
-    public JQueryDatepickerPage(Browser b) {   //<3>
+    public JQueryDatepickerPage(Browser b) {
         this.browser = b;
-        this.datepicker = new Datepicker(  //<4>
+        this.datepicker = new Datepicker(
             new Calendar(browser,
-                (Browser browser) -> {
-                    browser.click(DATE_FIELD);
-                }
+                (Browser browser) -> browser.click(DATE_FIELD)
             ),
             new YearPicker(browser,
-                (Browser browser) -> {
-                    for (int i = 0; i < 12; i++) {
-                        previousMonth();
-                    }
-                },
-                (Browser browser) -> {
-                    for (int i = 0; i < 12; i++) {
-                        nextMonth();
-                    }
-                },
-                (Browser browser) -> {
-                    String text = browser.untilFound(UI_DATEPICKER_DIV)
-                        .getText(DISPLAY_YEAR);
-                    return Integer.parseInt(text);
-                }
-
+                (Browser browser) -> previousYear(),
+                (Browser browser) -> nextYear(),
+                (Browser browser) -> displayYear()
             ),
             new MonthPicker(browser,
-                (Browser browser) -> {
-                    previousMonth();
-                },
-                (Browser browser) -> {
-                    nextMonth();
-                },
-                (Browser browser) -> {
-                    String text = browser.untilFound(UI_DATEPICKER_DIV)
-                        .getText(DISPLAY_MONTH)
-                        .toUpperCase();
-                    return Month.valueOf(text).ordinal();
-                }
+                (Browser browser) -> previousMonth(),
+                (Browser browser) -> nextMonth(),
+                (Browser browser) -> displayMonth()
             ), new JQueryDayPicker(browser));
     }
 
+    private int displayMonth() {
+        String text = browser.untilFound(UI_DATEPICKER_DIV)
+            .getText(DISPLAY_MONTH)
+            .toUpperCase();
+        return Month.valueOf(text).ordinal();
+    }
+
+    private int displayYear() {
+        String text = browser.untilFound(UI_DATEPICKER_DIV)
+            .getText(DISPLAY_YEAR);
+        return Integer.parseInt(text);
+    }
+
+    private void nextYear() {
+        for (int i = 0; i < 12; i++) {
+            nextMonth();
+        }
+    }
+
+    private void previousYear() {
+        for (int i = 0; i < 12; i++) {
+            previousMonth();
+        }
+    }
+
     private void previousMonth() {
-        browser.findElement(UI_DATEPICKER_DIV)
-            .click(PREV_MONTH_BUTTON);  //<3>
+        browser.findElement(UI_DATEPICKER_DIV).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.findElement(UI_DATEPICKER_DIV)
-            .click(NEXT_MONTH_BUTTON);  //<4>
+        browser.findElement(UI_DATEPICKER_DIV).click(NEXT_MONTH_BUTTON);  //<4>
     }
-
 }
