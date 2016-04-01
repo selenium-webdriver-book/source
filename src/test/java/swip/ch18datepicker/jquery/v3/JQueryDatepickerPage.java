@@ -5,9 +5,7 @@ import swip.ch18datepicker.framework.Browser;
 
 import java.time.Month;
 
-import static swip.ch17jquerydatepicker.JQueryByClassName.*;
 import static swip.ch17jquerydatepicker.JQueryById.DATE_FIELD;
-import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
 
 public class JQueryDatepickerPage {
@@ -29,7 +27,8 @@ public class JQueryDatepickerPage {
         this.datepicker = new Datepicker(  //<4>
             new Calendar(browser, new Trigger()),
             new YearPicker(browser, new PreviousYear(), new NextYear(), new DisplayYear()),
-            new MonthPicker(browser,new PreviousMonth(), new NextMonth(), new DisplayMonth()
-            ), new JQueryDayPicker(browser));
+            new MonthPicker(browser, new PreviousMonth(), new NextMonth(), new DisplayMonth()),
+            new JQueryDayPicker(browser)
+        );
     }
 }
