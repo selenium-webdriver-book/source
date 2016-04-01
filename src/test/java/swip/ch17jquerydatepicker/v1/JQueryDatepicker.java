@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.function.Supplier;
 
-import static org.openqa.selenium.By.linkText;
 import static swip.ch17jquerydatepicker.JQueryByClassName.*;
 import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
