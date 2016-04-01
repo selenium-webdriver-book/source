@@ -12,12 +12,9 @@ import static org.openqa.selenium.By.className;
  */
 public enum JQueryByClassName implements Supplier<By> {
 
-    CALENDAR("ui-datepicker-calendar"),      //<1>
     NEXT_MONTH_BUTTON("ui-datepicker-next"), //<2>
     PREV_MONTH_BUTTON("ui-datepicker-prev"), //<3>
     DISPLAY_MONTH("ui-datepicker-month"),    //<4>
-    CALENDAR_HEADER("ui-datepicker-header"),
-    CALENDAR_TITLE("ui-datepicker-title"),
     DISPLAY_YEAR("ui-datepicker-year");      //<5>
 
     private final By by;

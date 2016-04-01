@@ -1,7 +1,8 @@
 package swip.ch17jquerydatepicker.v2;
 
-import swip.ch15pageflow.v2.framework.Browser;
-import swip.ch17jquerydatepicker.JQueryById;
+import swip.ch17jquerydatepicker.framework.Browser;
+
+import static swip.ch17jquerydatepicker.JQueryById.DATE_FIELD;
 
 
 public class JQueryCalendar {
@@ -13,6 +14,6 @@ public class JQueryCalendar {
     }
 
     public void show() {
-        browser.click(JQueryById.DATE_FIELD);
+        browser.click(DATE_FIELD);
     }
 }

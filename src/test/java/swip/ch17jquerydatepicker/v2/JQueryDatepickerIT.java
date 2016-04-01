@@ -7,8 +7,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import swip.ch15pageflow.v2.framework.Browser;
-import swip.ch15pageflow.v2.framework.BrowserRunner;
+import swip.ch17jquerydatepicker.framework.Browser;
+import swip.ch17jquerydatepicker.framework.BrowserRunner;
 import swip.framework.TestTimer;
 
 import javax.inject.Inject;

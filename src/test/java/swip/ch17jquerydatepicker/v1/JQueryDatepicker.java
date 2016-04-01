@@ -1,9 +1,9 @@
 package swip.ch17jquerydatepicker.v1;
 
-import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch17jquerydatepicker.JQueryByClassName;
 import swip.ch17jquerydatepicker.JQueryById;
 import swip.ch17jquerydatepicker.JQueryPredicates;
+import swip.ch17jquerydatepicker.framework.Browser;
 
 import java.time.LocalDate;
 import java.time.Month;
