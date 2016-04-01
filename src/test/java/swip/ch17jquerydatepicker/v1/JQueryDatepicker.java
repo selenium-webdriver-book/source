@@ -1,14 +1,17 @@
 package swip.ch17jquerydatepicker.v1;
 
-import swip.ch17jquerydatepicker.JQueryByClassName;
+import org.openqa.selenium.By;
 import swip.ch17jquerydatepicker.JQueryById;
 import swip.ch17jquerydatepicker.JQueryPredicates;
 import swip.ch17jquerydatepicker.framework.Browser;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.function.Supplier;
 
 import static org.openqa.selenium.By.linkText;
+import static swip.ch17jquerydatepicker.JQueryByClassName.*;
+import static swip.ch17jquerydatepicker.JQueryById.UI_DATEPICKER_DIV;
 
 
 public class JQueryDatepicker {
@@ -60,8 +63,8 @@ public class JQueryDatepicker {
     }
 
     private int displayedYear() {
-        String text = browser.untilFound(JQueryById.UI_DATEPICKER_DIV)
-            .getText(JQueryByClassName.DISPLAY_YEAR);
+        String text = browser.untilFound(UI_DATEPICKER_DIV)
+            .getText(DISPLAY_YEAR);
         return Integer.parseInt(text);
     }
 
@@ -78,24 +81,29 @@ public class JQueryDatepicker {
     }
 
     private void previousMonth() {
-        browser.untilFound(JQueryById.UI_DATEPICKER_DIV)
-            .click(JQueryByClassName.PREV_MONTH_BUTTON);  //<3>
+        browser.untilFound(UI_DATEPICKER_DIV)
+            .click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(JQueryById.UI_DATEPICKER_DIV)
-            .click(JQueryByClassName.NEXT_MONTH_BUTTON);  //<4>
+        browser.untilFound(UI_DATEPICKER_DIV)
+            .click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayedMonth() {
-        String text = browser.untilFound(JQueryById.UI_DATEPICKER_DIV)
-            .getText(JQueryByClassName.DISPLAY_MONTH).toUpperCase();
+        String text = browser.untilFound(UI_DATEPICKER_DIV)
+            .getText(DISPLAY_MONTH).toUpperCase();
         return Month.valueOf(text).ordinal();   //<7>
     }
 
     public void pickDay(int day) {
-        browser.untilFound(JQueryById.UI_DATEPICKER_DIV)
-            .click(() -> linkText(String.valueOf(day))); //<9>
+        browser.untilFound(UI_DATEPICKER_DIV)
+            .click(new Supplier<By>() {
+                @Override
+                public By get() {
+                    return By.linkText(String.valueOf(day));
+                }
+            }); //<9>
         browser.until(JQueryPredicates.CALENDAR_CLOSED);  //<11>
     }
 }
