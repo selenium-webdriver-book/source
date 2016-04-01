@@ -96,7 +96,7 @@ public class JQueryDatepicker {
         return Month.valueOf(text).ordinal();   //<7>
     }
 
-    public void pickDay(int day) {
+    private void pickDay(int day) {
         browser.untilFound(UI_DATEPICKER_DIV)
             .click(new Supplier<By>() {
                 @Override
