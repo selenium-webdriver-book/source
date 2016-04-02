@@ -45,14 +45,14 @@ public class JQueryDatepickerPage {
 
     private int displayMonth() {
         String text = browser.untilFound(CALENDAR)
-            .getText(DISPLAY_MONTH)
+            .getText(MONTH)
             .toUpperCase();
         return Month.valueOf(text).ordinal();
     }
 
     private int displayYear() {
         String text = browser.untilFound(CALENDAR)
-            .getText(DISPLAY_YEAR);
+            .getText(YEAR);
         return Integer.parseInt(text);
     }
 

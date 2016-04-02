@@ -63,7 +63,7 @@ public class JQueryDatepicker {
 
     private int displayedYear() {
         String text = browser.untilFound(CALENDAR)
-            .getText(DISPLAY_YEAR);
+            .getText(YEAR);
         return Integer.parseInt(text);
     }
 
@@ -91,7 +91,7 @@ public class JQueryDatepicker {
 
     private int displayedMonth() {
         String text = browser.untilFound(CALENDAR)
-            .getText(DISPLAY_MONTH).toUpperCase();
+            .getText(MONTH).toUpperCase();
         return Month.valueOf(text).ordinal();   //<7>
     }
 

@@ -14,8 +14,8 @@ public enum JQueryByClassName implements Supplier<By> {
 
     NEXT_MONTH_BUTTON("ui-datepicker-next"), //<2>
     PREV_MONTH_BUTTON("ui-datepicker-prev"), //<3>
-    DISPLAY_MONTH("ui-datepicker-month"),    //<4>
-    DISPLAY_YEAR("ui-datepicker-year");      //<5>
+    MONTH("ui-datepicker-month"),    //<4>
+    YEAR("ui-datepicker-year");      //<5>
 
     private final By by;
 

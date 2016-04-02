@@ -5,7 +5,7 @@ import swip.ch18datepicker.framework.Browser;
 import java.time.Month;
 import java.util.function.Function;
 
-import static swip.ch17jquerydatepicker.JQueryByClassName.DISPLAY_MONTH;
+import static swip.ch17jquerydatepicker.JQueryByClassName.MONTH;
 import static swip.ch17jquerydatepicker.JQueryById.CALENDAR;
 
 /**
@@ -16,7 +16,7 @@ public class DisplayMonth implements Function<Browser, Integer> {
     @Override
     public Integer apply(Browser browser) {
         String text = browser.untilFound(CALENDAR)
-            .getText(DISPLAY_MONTH).toUpperCase();
+            .getText(MONTH).toUpperCase();
         return Month.valueOf(text).ordinal();
     }
 }
