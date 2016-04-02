@@ -1,8 +1,6 @@
 package swip.ch16table.v1.person;
 
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import swip.ch16table.domain.Person;
 
 import java.util.ArrayList;
@@ -16,11 +14,6 @@ class PersonTableContents {
     PersonTableContents(List<String> headers, List<Person> rows) {
         this.headers = headers;
         this.rows = rows;
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return EqualsBuilder.reflectionEquals(this, other);
     }
 
     public String describeDiff(PersonTableContents other) {
@@ -40,10 +33,4 @@ class PersonTableContents {
 
         return diff.isEmpty() ? "" : s + diff + "\n";
     }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
 }

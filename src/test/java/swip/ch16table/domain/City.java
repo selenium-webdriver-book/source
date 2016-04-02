@@ -1,9 +1,6 @@
 package swip.ch16table.domain;
 
-import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
-import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
-
-public class City {
+public class City extends DomainBase{
     private final int id;
     private final String name;
     private final String stateName;
@@ -19,15 +16,5 @@ public class City {
         return "new City(" + id +
                 ",\"" + name + "\",\"" +
             stateName  + "\")\n";
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return reflectionEquals(this, other);
-    }
-
-    @Override
-    public int hashCode() {
-        return reflectionHashCode(this);
     }
 }

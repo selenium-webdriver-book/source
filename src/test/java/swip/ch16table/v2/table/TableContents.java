@@ -1,13 +1,12 @@
 package swip.ch16table.v2.table;
 
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import swip.ch16table.domain.DomainBase;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableContents<T> {
+public class TableContents<T> extends DomainBase {
 
     private final List<String> headers;
     private final List<T> rows;
@@ -15,11 +14,6 @@ public class TableContents<T> {
     public TableContents(List<String> headers, List<T> rows) {
         this.headers = headers;
         this.rows = rows;
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return EqualsBuilder.reflectionEquals(this, other);
     }
 
     public String describeDiff(TableContents<T> other) {
@@ -39,10 +33,4 @@ public class TableContents<T> {
 
         return diff.isEmpty() ? "" : s + diff + "\n";
     }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
-
 }

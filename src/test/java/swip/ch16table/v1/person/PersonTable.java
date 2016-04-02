@@ -13,6 +13,19 @@ public class PersonTable {
 
     private final Element table;
 
+    public static final Function<List<Element>, Person> MAPPER_NON_JAVA_8
+        = new Function<List<Element>, Person>() {
+        @Override
+        public Person apply(List<Element> cells) {
+            return new Person(
+                Integer.parseInt(cells.get(0).getText()),
+                cells.get(1).getText(),
+                cells.get(2).getText(),
+                Integer.parseInt(cells.get(3).getText())
+            );
+        }
+    };
+
     public PersonTable(Element table) {
         this.table = table;
     }
@@ -28,13 +41,6 @@ public class PersonTable {
     public List<Person> getRows() {
         List<Person> rows = new ArrayList<>();
 
-        Function<List<Element>, Person> mapper = (cells) -> new Person(
-            Integer.parseInt(cells.get(0).getText()),
-            cells.get(1).getText(),
-            cells.get(2).getText(),
-            Integer.parseInt(cells.get(3).getText())
-        );
-
         for (WebElement tr : table.findElement(By.tagName("tbody"))
             .findElements(By.tagName("tr"))) {
 
@@ -43,7 +49,7 @@ public class PersonTable {
                 cells.add(new Element(cell));
             }
 
-            rows.add(mapper.apply(cells));
+            rows.add(MAPPER_NON_JAVA_8.apply(cells));
 
         }
         return rows;
