@@ -25,7 +25,6 @@ public class ContextMenuIT {
 
         new Actions(driver)
                 .contextClick(driver.findElement(By.id("hascontextmenu")))
-                .build()
                 .perform();
     }
 }
