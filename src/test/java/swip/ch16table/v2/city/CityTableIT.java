@@ -29,23 +29,17 @@ public class CityTableIT {
     @Inject
     private Browser browser;
 
-    private final Function<List<Element>, City> mapper = (cells) -> new City(
-        Integer.parseInt(cells.get(0).getText()),
-        cells.get(1).getText(),
-        cells.get(2).getText()
-    );
-
-
-    private final Function<List<Element>, City> mapperNonJava8 = new Function<List<Element>, City>() {
-        @Override
-        public City apply(List<Element> cells) {
-            return new City(
-                Integer.parseInt(cells.get(0).getText()),
-                cells.get(1).getText(),
-                cells.get(2).getText()
-            );
-        }
-    };
+    private final Function<List<Element>, City> mapperNonJava8 =
+        new Function<List<Element>, City>() {
+            @Override
+            public City apply(List<Element> cells) {
+                return new City(
+                    Integer.parseInt(cells.get(0).getText()),
+                    cells.get(1).getText(),
+                    cells.get(2).getText()
+                );
+            }
+        };
 
 
     @Test
@@ -54,7 +48,13 @@ public class CityTableIT {
         browser.get("/city-table.html");
 
         Table<City> table = new Table<>(
-            browser.untilFound(TABLE), mapper
+            browser.untilFound(TABLE),
+            (cells) ->
+                new City(
+                    Integer.parseInt(cells.get(0).getText()),
+                    cells.get(1).getText(),
+                    cells.get(2).getText()
+                )
         );
 
         TableContents<City> actual = table.getContents();
@@ -81,7 +81,7 @@ public class CityTableIT {
     }
 
     @Test
-    @Ignore("You can remove this to run ir and check the output")
+    @Ignore("You can remove this to run it and check the output")
     public void testReadFromTableButFailed() {
 
         browser.get("/city-table.html");

@@ -26,20 +26,13 @@ public class PersonTableIT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-    @Inject private Browser browser;
+    @Inject
+    private Browser browser;
 
-
-    private final Function<List<Element>, Person> mapper = (cells) -> new Person(
-        Integer.parseInt(cells.get(0).getText()),
-        cells.get(1).getText(),
-        cells.get(2).getText(),
-        Integer.parseInt(cells.get(3).getText())
-    );
-
-    Function<List<Element>, Person> mapperNonJava8 = new Function<List<Element>, Person>() {
+    private final static Function<List<Element>, Person> mapperNonJava8 = new Function<List<Element>, Person>() {
         @Override
         public Person apply(List<Element> cells) {
-            return  new Person(
+            return new Person(
                 Integer.parseInt(cells.get(0).getText()),
                 cells.get(1).getText(),
                 cells.get(2).getText(),
@@ -54,46 +47,52 @@ public class PersonTableIT {
         browser.get("/people-table.html");
 
         Table<Person> table = new Table<>(
-                browser.untilFound(TABLE),
-                mapper
+            browser.untilFound(TABLE),
+            (cells) ->
+                new Person(
+                    Integer.parseInt(cells.get(0).getText()),
+                    cells.get(1).getText(),
+                    cells.get(2).getText(),
+                    Integer.parseInt(cells.get(3).getText())
+                )
         );
 
         TableContents<Person> actual = table.getContents();
 
         TableContents<Person> expected = new TableContents<>(
-                Arrays.asList("Id", "First Name", "Last Name", "Age"),
-                Arrays.asList(
-                        new Person(1, "Eve", "Jackson", 94)
-                        , new Person(2, "John", "Doe", 80)
-                        , new Person(3, "Adam", "Johnson", 67)
-                        , new Person(4, "Jill", "Smith", 50)
-                )
+            Arrays.asList("Id", "First Name", "Last Name", "Age"),
+            Arrays.asList(
+                new Person(1, "Eve", "Jackson", 94)
+                , new Person(2, "John", "Doe", 80)
+                , new Person(3, "Adam", "Johnson", 67)
+                , new Person(4, "Jill", "Smith", 50)
+            )
         );
 
         assertEquals(expected.describeDiff(actual), expected, actual);
     }
 
     @Test
-    @Ignore("You can remove this to run ir and check the output")
+    @Ignore("You can remove this to run it and check the output")
     public void missingExpectedValues() {
 
         browser.get("/people-table.html");
 
         Table<Person> table = new Table<>(
-                browser.untilFound(TABLE),
-                mapperNonJava8
+            browser.untilFound(TABLE),
+            mapperNonJava8
         );
 
         TableContents<Person> actual = table.getContents();
 
         TableContents<Person> expected = new TableContents<>(
-                Arrays.asList("Id", "First Name", "Last Name", "Age"),
-                Arrays.asList(
-                        new Person(1, "Eve", "Jackson", 94)
-                        , new Person(2, "John", "Doe", 80)
-                        , new Person(4, "Jill", "Smith", 50)
-                        , new Person(5, "Jack", "Clyde", 78)
-                )
+            Arrays.asList("Id", "First Name", "Last Name", "Age"),
+            Arrays.asList(
+                new Person(1, "Eve", "Jackson", 94)
+                , new Person(2, "John", "Doe", 80)
+                , new Person(4, "Jill", "Smith", 50)
+                , new Person(5, "Jack", "Clyde", 78)
+            )
         );
 
         assertEquals(expected.describeDiff(actual), expected, actual);
