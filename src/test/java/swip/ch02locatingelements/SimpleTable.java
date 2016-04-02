@@ -5,8 +5,12 @@ import org.openqa.selenium.WebElement;
 
 public class SimpleTable extends DelegatingWebElement implements Table {
 
+    private final ColumnNumberFinder columnNumberFinder;
+
     public SimpleTable(WebElement delegate) {
         super(delegate);
+        columnNumberFinder = new ColumnNumberFinder(
+                delegate.findElement(By.tagName("thead")));
     }
 
     @Override
@@ -18,8 +22,7 @@ public class SimpleTable extends DelegatingWebElement implements Table {
 
     @Override
     public WebElement getBodyCell(int rowNumber, String header) {
-        ColumnNumberFinder finder = new ColumnNumberFinder(header);
-        int columnNumber = finder.find(delegate.findElement(By.tagName("thead")));
+        int columnNumber = columnNumberFinder.find(header);
         return getBodyCell(rowNumber, columnNumber);
     }
 

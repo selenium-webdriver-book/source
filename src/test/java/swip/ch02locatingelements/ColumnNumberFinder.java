@@ -5,13 +5,13 @@ import org.openqa.selenium.SearchContext;
 
 class ColumnNumberFinder {
 
-    private final String headerText;
+    private final SearchContext context;
 
-    ColumnNumberFinder(String headerText) {
-        this.headerText = headerText;
+    ColumnNumberFinder(SearchContext context) {
+        this.context = context;
     }
 
-    public int find(SearchContext context) {
+    public int find(String headerText) {
         for (int columnNumber = 1; ; columnNumber++) {
             if (context
                     .findElement(By.cssSelector(String.format("th:nth-child(%d)", columnNumber)))

@@ -25,8 +25,8 @@ public class TableIT {
     public void findCell() throws Exception {
         int columnNumber = 1;
         while (!driver
-                    .findElement(By.cssSelector(String.format("table#users-table th:nth-child(%d)", columnNumber)))
-                    .getText().equals("Name")) {
+                .findElement(By.cssSelector(String.format("table#users-table th:nth-child(%d)", columnNumber)))
+                .getText().equals("Name")) {
             columnNumber++;
         }
         assertEquals("John Doe",
@@ -38,8 +38,8 @@ public class TableIT {
     @Test
     public void columnNumberLocator() throws Exception {
 
-        int columnNumber = new ColumnNumberFinder("Name")
-                .find(driver.findElement(By.cssSelector("table#users-table")));
+        int columnNumber = new ColumnNumberFinder(driver.findElement(By.cssSelector("table#users-table")))
+                .find("Name");
 
         driver.findElement(By.cssSelector(String.format("table#users-table tbody tr:nth-child(1) td:nth-child(%d)", columnNumber)));
     }
