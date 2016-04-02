@@ -9,10 +9,10 @@ import swip.framework.WebDriverRunner;
 import javax.inject.Inject;
 import java.net.URI;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(WebDriverRunner.class)
-public class ElementIsVisibleIT {
+public class ElementIsInvisibleIT {
     @Inject
     private WebDriver driver;
     @Inject
@@ -22,6 +22,6 @@ public class ElementIsVisibleIT {
     public void visibleElementIsDisplayed() throws Exception {
         driver.get(baseUrl + "/styled-elements.html");
 
-        assertTrue(driver.findElement(By.id("visible")).isDisplayed());
+        assertFalse(driver.findElement(By.id("invisible")).isDisplayed());
     }
 }
