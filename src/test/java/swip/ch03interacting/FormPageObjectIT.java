@@ -8,18 +8,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
-import java.net.URI;
 
 @RunWith(WebDriverRunner.class)
 public class FormPageObjectIT {
     @Inject
     private WebDriver driver;
-    @Inject
-    private URI baseUrl;
 
     @Test
     public void completingAForm() throws Exception {
-        driver.get(baseUrl + "/registration-form.html");
+        driver.get("/registration-form.html");
         RegistrationForm registrationForm = PageFactory.initElements(driver, RegistrationForm.class);
 
         registrationForm.setEmail("john@doe.com");

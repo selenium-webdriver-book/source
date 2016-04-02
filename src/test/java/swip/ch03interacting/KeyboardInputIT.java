@@ -11,7 +11,6 @@ import org.openqa.selenium.interactions.HasInputDevices;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
-import java.net.URI;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -20,12 +19,10 @@ public class KeyboardInputIT<W extends WebDriver & HasInputDevices> {
 
     @Inject
     private W driver;
-    @Inject
-    private URI baseUrl;
 
     @Test
     public void completingAForm() throws Exception {
-        driver.get(baseUrl + "/mailing-list.html");
+        driver.get("/mailing-list.html");
         driver
                 .findElement(By.name("email")) // #A locate the email input
                 .sendKeys("john.doe@swip.com"); // #B you enter text here into the input

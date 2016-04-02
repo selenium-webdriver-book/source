@@ -9,19 +9,16 @@ import org.openqa.selenium.interactions.Actions;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
-import java.net.URI;
 
 @RunWith(WebDriverRunner.class)
 public class MouseInputIT {
 
     @Inject
     private WebDriver driver;
-    @Inject
-    private URI baseUrl;
 
     @Test
     public void completeAFormUsingBothMouseAndKeyboard() throws Exception {
-        driver.get(baseUrl + "/mailing-list.html");
+        driver.get("/mailing-list.html");
         driver
                 .findElement(By.name("email"))
                 .sendKeys("john.doe@swip.com");
