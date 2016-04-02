@@ -48,7 +48,7 @@ public class PersonTableIT {
     }
 
     @Test
-    @Ignore("fails in both FF and Chrome, you can remove this to run it and check the output")
+    @Ignore("You can remove this to run it and check the output")
     public void testReadFromPersonTableButFailed() {
 
         browser.get("/people-table.html");
