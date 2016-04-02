@@ -1,6 +1,7 @@
-package swip.ch16table.city;
+package swip.ch16table.v1.city;
 
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -8,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import swip.ch14elements.framework.Browser;
 import swip.ch14elements.framework.BrowserRunner;
+import swip.ch16table.domain.City;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -46,6 +48,31 @@ public class CityTableIT {
                 , new City(9, "Singapore", "Singapore")
                 , new City(9, "New York", "New York")
                 , new City(10, "Sydney", "New South Wales")
+                , new City(11, "Dallas", "Texas")
+            )
+        );
+
+        assertEquals(expected.describeDiff(actual), expected, actual);
+    }
+
+    @Test
+    @Ignore("fails in both FF and Chrome, you can remove this to run ir and check the output")
+    public void failedToReadFromTable() {
+
+        browser.get("/city-table.html");
+
+        CityTable table = new CityTable(
+            browser.findElement(By.tagName("table"))
+        );
+
+        CityTableContents actual = table.getContents();
+
+        CityTableContents expected = new CityTableContents(
+            Arrays.asList("Id", "City Name", "State Name"),
+            Arrays.asList(
+                new City(1, "Xian", "Shanxi")
+                , new City(2, "Guangzhou", "Guangdong")
+                , new City(3, "Shaoguan", "Guangdong")
                 , new City(11, "Dallas", "Texas")
             )
         );

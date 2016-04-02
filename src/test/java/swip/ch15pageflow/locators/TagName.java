@@ -26,6 +26,7 @@ public enum TagName implements Supplier<By> {
     SPAN("span"),
     STRONG("strong"),
     TABLE("table"),
+    TBODY("tbody"),
     TD("td"),
     TR("tr"),
     TH("th"),

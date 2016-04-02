@@ -1,4 +1,4 @@
-package swip.ch16table;
+package swip.ch16table.v2.person;
 
 
 import org.junit.Ignore;
@@ -6,11 +6,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import swip.ch14elements.framework.Browser;
-import swip.ch14elements.framework.BrowserRunner;
-import swip.ch14elements.framework.Element;
-import swip.ch16table.person.Person;
+import swip.ch15pageflow.v2.framework.Browser;
+import swip.ch15pageflow.v2.framework.BrowserRunner;
+import swip.ch15pageflow.v2.framework.Element;
+import swip.ch16table.domain.Person;
+import swip.ch16table.v2.table.Table;
+import swip.ch16table.v2.table.TableContents;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
+import static swip.ch15pageflow.locators.TagName.TABLE;
 
 @RunWith(BrowserRunner.class)
 public class PersonTableIT {
@@ -26,19 +28,33 @@ public class PersonTableIT {
     public ExpectedException expectedException = ExpectedException.none();
     @Inject private Browser browser;
 
+
+    private final Function<List<Element>, Person> mapper = (cells) -> new Person(
+        Integer.parseInt(cells.get(0).getText()),
+        cells.get(1).getText(),
+        cells.get(2).getText(),
+        Integer.parseInt(cells.get(3).getText())
+    );
+
+    Function<List<Element>, Person> mapperNonJava8 = new Function<List<Element>, Person>() {
+        @Override
+        public Person apply(List<Element> cells) {
+            return  new Person(
+                Integer.parseInt(cells.get(0).getText()),
+                cells.get(1).getText(),
+                cells.get(2).getText(),
+                Integer.parseInt(cells.get(3).getText())
+            );
+        }
+    };
+
     @Test
     public void testReadFromTable() {
 
         browser.get("/people-table.html");
 
-        Function<List<Element>, Person> mapper = (cells) -> new Person(
-                Integer.parseInt(cells.get(0).getText()),
-                cells.get(1).getText(),
-                cells.get(2).getText(),
-                Integer.parseInt(cells.get(3).getText())
-        );
         Table<Person> table = new Table<>(
-                browser.findElement(By.tagName("table")),
+                browser.untilFound(TABLE),
                 mapper
         );
 
@@ -58,24 +74,14 @@ public class PersonTableIT {
     }
 
     @Test
-    @Ignore("fails in both FF and Chrome")
+    @Ignore("fails in both FF and Chrome, you can remove this to run ir and check the output")
     public void missingExpectedValues() {
-
-        expectedException.expect(AssertionError.class);
-        expectedException.expectMessage("unexpected rows appeared: [new Person(\"3\",\"Adam\",\"Johnson\",67)]\n" +
-                "expected rows not found: [new Person(\"5\",\"Jack\",\"Clyde\",78)] ");
 
         browser.get("/people-table.html");
 
-        Function<List<Element>, Person> mapper = (cells) -> new Person(
-                Integer.parseInt(cells.get(0).getText()),
-                cells.get(1).getText(),
-                cells.get(2).getText(),
-                Integer.parseInt(cells.get(3).getText())
-        );
         Table<Person> table = new Table<>(
-                browser.findElement(By.tagName("table")),
-                mapper
+                browser.untilFound(TABLE),
+                mapperNonJava8
         );
 
         TableContents<Person> actual = table.getContents();

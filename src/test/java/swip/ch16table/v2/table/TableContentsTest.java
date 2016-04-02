@@ -1,4 +1,4 @@
-package swip.ch16table;
+package swip.ch16table.v2.table;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

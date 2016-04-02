@@ -1,21 +1,20 @@
-package swip.ch16table;
+package swip.ch16table.v1.city;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import swip.ch14elements.framework.Element;
+import swip.ch16table.domain.City;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-public class Table<T> {
+public class CityTable {
 
     private final Element table;
-    private final Function<List<Element>, T> rowMapper;
 
-    public Table(Element table, Function<List<Element>,T> rowMapper) {
+    public CityTable(Element table) {
         this.table = table;
-        this.rowMapper = rowMapper;
     }
 
     public List<String> getHeaders() {
@@ -26,24 +25,30 @@ public class Table<T> {
         return headers;
     }
 
-    public List<T> getRows() {
-        List<T> rows = new ArrayList<>();
-        for (WebElement tr : table.findElements(By.tagName("tr"))) {
+    public List<City> getRows() {
+        List<City> rows = new ArrayList<>();
+
+        Function<List<Element>, City> mapper = (cells) -> new City(
+            Integer.parseInt(cells.get(0).getText()),
+            cells.get(1).getText(),
+            cells.get(2).getText()
+        );
+
+        for (WebElement tr : table.findElement(By.tagName("tbody"))
+            .findElements(By.tagName("tr"))) {
 
             List<Element> cells = new ArrayList<>();
             for (WebElement cell : tr.findElements(By.tagName("td"))) {
                 cells.add(new Element(cell));
             }
 
-            // skip header row, which will be empty
-            if (!cells.isEmpty()) {
-                rows.add(rowMapper.apply(cells));
-            }
+            rows.add(mapper.apply(cells));
+
         }
         return rows;
     }
 
-    public TableContents<T> getContents() {
-        return new TableContents<>(getHeaders(), getRows());
+    public CityTableContents getContents() {
+        return new CityTableContents(getHeaders(), getRows());
     }
 }

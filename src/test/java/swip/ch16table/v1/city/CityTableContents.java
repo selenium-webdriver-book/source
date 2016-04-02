@@ -1,8 +1,10 @@
-package swip.ch16table.city;
+package swip.ch16table.v1.city;
 
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import swip.ch16table.domain.City;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +21,7 @@ public class CityTableContents {
 
     @Override
     public boolean equals(Object other) {
-        if (other instanceof CityTableContents) {
-            CityTableContents actual = (CityTableContents) other;
-
-            return headers.equals(actual.headers) && this.rows.equals(actual.rows);
-        } else {
-            return false;
-        }
+        return EqualsBuilder.reflectionEquals(this, other);
     }
 
     public String describeDiff(CityTableContents other) {
@@ -33,18 +29,17 @@ public class CityTableContents {
         if (!headers.equals(other.headers)) {
             diff += "headers differ " + headers + " vs " + other.headers + "\n";
         }
-        List<City> missingRows = new ArrayList<>(rows);
-        missingRows.removeAll(other.rows);
-        List<City> unexpectedRows = new ArrayList<>(other.rows);
-        unexpectedRows.removeAll(rows);
 
-        if (!unexpectedRows.isEmpty()) {
-            diff += "unexpected rows appeared: " + unexpectedRows + "\n";
-        }
-        if (!missingRows.isEmpty()) {
-            diff += "expected rows not found: " + missingRows + "\n";
-        }
+        diff += diff(this.rows, other.rows, "expected rows not found: ");
+        diff += diff(other.rows, this.rows, "unexpected rows appeared: ");
         return diff.trim();
+    }
+
+    private String diff(List<City> rows1, List<City> rows2, String s) {
+        List<City> diff = new ArrayList<>(rows1);
+        diff.removeAll(rows2);
+
+        return diff.isEmpty() ? "" : s + diff + "\n";
     }
 
     @Override
