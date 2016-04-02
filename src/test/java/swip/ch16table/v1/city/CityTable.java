@@ -13,6 +13,13 @@ public class CityTable {
 
     private final Element table;
 
+    private final static Function<List<Element>, City> MAPPER = (cells) -> new City(
+        Integer.parseInt(cells.get(0).getText()),
+        cells.get(1).getText(),
+        cells.get(2).getText()
+    );
+
+
     public CityTable(Element table) {
         this.table = table;
     }
@@ -28,12 +35,6 @@ public class CityTable {
     public List<City> getRows() {
         List<City> rows = new ArrayList<>();
 
-        Function<List<Element>, City> mapper = (cells) -> new City(
-            Integer.parseInt(cells.get(0).getText()),
-            cells.get(1).getText(),
-            cells.get(2).getText()
-        );
-
         for (WebElement tr : table.findElement(By.tagName("tbody"))
             .findElements(By.tagName("tr"))) {
 
@@ -42,7 +43,7 @@ public class CityTable {
                 cells.add(new Element(cell));
             }
 
-            rows.add(mapper.apply(cells));
+            rows.add(MAPPER.apply(cells));
 
         }
         return rows;

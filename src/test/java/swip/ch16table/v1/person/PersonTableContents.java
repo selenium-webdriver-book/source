@@ -1,12 +1,13 @@
 package swip.ch16table.v1.person;
 
 
+import swip.ch16table.domain.DomainBase;
 import swip.ch16table.domain.Person;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class PersonTableContents {
+class PersonTableContents extends DomainBase {
 
     private final List<String> headers;
     private final List<Person> rows;

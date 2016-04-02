@@ -12,25 +12,13 @@ import static org.openqa.selenium.By.tagName;
  */
 public enum TagName implements Supplier<By> {
     A("a"),
-    EM("em"),
-    H1("h1"),
-    H5("h5"),
-    I("i"),
-    P("p"),
-    DIV("div"),
     FORM("form"),
-    IMG("img"),
     INPUT("input"),
-    LI("li"),
-    OPTION("option"),
-    SPAN("span"),
-    STRONG("strong"),
     TABLE("table"),
     TBODY("tbody"),
     TD("td"),
     TR("tr"),
-    TH("th"),
-    UL("ul");
+    TH("th"),;
 
     private final By by;
 

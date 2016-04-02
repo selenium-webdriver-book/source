@@ -1,6 +1,6 @@
 package swip.ch16table.domain;
 
-public class Person {
+public class Person extends DomainBase {
     private final int id;
     private final String firstName;
     private final String lastName;
@@ -16,7 +16,7 @@ public class Person {
     @Override
     public String toString() {
         return "new Person(\"" + id +
-                "\",\"" + firstName + "\",\"" +
-                lastName + "\"," + age + ")\n";
+            "\",\"" + firstName + "\",\"" +
+            lastName + "\"," + age + ")\n";
     }
 }
