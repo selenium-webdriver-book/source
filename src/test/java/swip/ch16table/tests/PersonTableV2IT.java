@@ -20,7 +20,7 @@ import static swip.ch15pageflow.locators.TagName.TABLE;
 import static swip.ch16table.mapper.PersonMapper.MAPPER_NON_JAVA_8;
 
 @RunWith(BrowserRunner.class)
-public class PersonTableIT {
+public class PersonTableV2IT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

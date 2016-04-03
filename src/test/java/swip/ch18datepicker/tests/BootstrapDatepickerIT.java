@@ -29,8 +29,8 @@ public class BootstrapDatepickerIT extends TestTimer {
 
     @Test
     public void pickADate() {
-        bootstrapDatepickerPage.pick(APRIL, 1, 2012);
-        assertEquals("01-04-2012", bootstrapDatepickerPage.getDate());
+        bootstrapDatepickerPage.pick(APRIL, 1, 2015);
+        assertEquals("01-04-2015", bootstrapDatepickerPage.getDate());
     }
 
 }
