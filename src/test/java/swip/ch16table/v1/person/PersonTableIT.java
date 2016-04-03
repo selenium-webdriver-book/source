@@ -21,7 +21,30 @@ public class PersonTableIT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-    @Inject private Browser browser;
+    @Inject
+    private Browser browser;
+
+    public static final PersonTableContents EXPECTED =
+        new PersonTableContents(
+            Arrays.asList("Id", "First Name", "Last Name", "Age"),
+            Arrays.asList(
+                new Person(1, "Eve", "Jackson", 94)
+                , new Person(2, "John", "Doe", 80)
+                , new Person(3, "Adam", "Johnson", 67)
+                , new Person(4, "Jill", "Smith", 50)
+            )
+        );
+
+    public static final PersonTableContents EXPECTED_FAILURE =
+        new PersonTableContents(
+            Arrays.asList("Id", "First Name", "Last Name", "Age"),
+            Arrays.asList(
+                new Person(1, "Eve", "Jackson", 94)
+                , new Person(2, "John", "Doe", 80)
+                , new Person(4, "Jill", "Smith", 50)
+                , new Person(5, "Jack", "Clyde", 78)
+            )
+        );
 
     @Test
     public void testReadFromPersonTable() {
@@ -34,17 +57,7 @@ public class PersonTableIT {
 
         PersonTableContents actual = table.getContents();
 
-        PersonTableContents expected = new PersonTableContents(
-            Arrays.asList("Id", "First Name", "Last Name", "Age"),
-            Arrays.asList(
-                new Person(1, "Eve", "Jackson", 94)
-                , new Person(2, "John", "Doe", 80)
-                , new Person(3, "Adam", "Johnson", 67)
-                , new Person(4, "Jill", "Smith", 50)
-            )
-        );
-
-        assertEquals(expected.describeDiff(actual), expected, actual);
+        assertEquals(EXPECTED.describeDiff(actual), EXPECTED, actual);
     }
 
     @Test
@@ -59,17 +72,7 @@ public class PersonTableIT {
 
         PersonTableContents actual = table.getContents();
 
-        PersonTableContents expected = new PersonTableContents(
-            Arrays.asList("Id", "First Name", "Last Name", "Age"),
-            Arrays.asList(
-                new Person(1, "Eve", "Jackson", 94)
-                , new Person(2, "John", "Doe", 80)
-                , new Person(4, "Jill", "Smith", 50)
-                , new Person(5, "Jack", "Clyde", 78)
-            )
-        );
-
-        assertEquals(expected.describeDiff(actual), expected, actual);
+        assertEquals(EXPECTED_FAILURE.describeDiff(actual), EXPECTED_FAILURE, actual);
     }
 
 }

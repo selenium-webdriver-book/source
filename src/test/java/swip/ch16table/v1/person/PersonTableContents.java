@@ -28,8 +28,8 @@ class PersonTableContents extends DomainBase {
         return diff.trim();
     }
 
-    private String diff(List<Person> rows1, List<Person> rows2, String s) {
-        List<Person> diff = new ArrayList<>(rows1);
+    private <T> String diff(List<T> rows1, List<T> rows2, String s) {
+        List<T> diff = new ArrayList<>(rows1);
         diff.removeAll(rows2);
 
         return diff.isEmpty() ? "" : s + diff + "\n";

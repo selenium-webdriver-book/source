@@ -13,12 +13,11 @@ public class CityTable {
 
     private final Element table;
 
-    private final static Function<List<Element>, City> MAPPER = (cells) -> new City(
+    private final static Function<List<Element>, City> MAPPER_NON_JAVA_8 = (cells) -> new City(
         Integer.parseInt(cells.get(0).getText()),
         cells.get(1).getText(),
         cells.get(2).getText()
     );
-
 
     public CityTable(Element table) {
         this.table = table;
@@ -43,7 +42,7 @@ public class CityTable {
                 cells.add(new Element(cell));
             }
 
-            rows.add(MAPPER.apply(cells));
+            rows.add(MAPPER_NON_JAVA_8.apply(cells));
 
         }
         return rows;

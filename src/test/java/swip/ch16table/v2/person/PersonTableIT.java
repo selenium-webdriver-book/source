@@ -29,7 +29,7 @@ public class PersonTableIT {
     @Inject
     private Browser browser;
 
-    private final static Function<List<Element>, Person> mapperNonJava8 = new Function<List<Element>, Person>() {
+    private final static Function<List<Element>, Person> MAPPER_NON_JAVA_8 = new Function<List<Element>, Person>() {
         @Override
         public Person apply(List<Element> cells) {
             return new Person(
@@ -41,13 +41,32 @@ public class PersonTableIT {
         }
     };
 
+    private static final TableContents<Person> EXPECTED = new TableContents<>(
+        Arrays.asList("Id", "First Name", "Last Name", "Age"),
+        Arrays.asList(
+            new Person(1, "Eve", "Jackson", 94)
+            , new Person(2, "John", "Doe", 80)
+            , new Person(3, "Adam", "Johnson", 67)
+            , new Person(4, "Jill", "Smith", 50)
+        )
+    );
+
+    private static final TableContents<Person> EXPECTED_FAILURE = new TableContents<>(
+        Arrays.asList("Id", "First Name", "Last Name", "Age"),
+        Arrays.asList(
+            new Person(1, "Eve", "Jackson", 94)
+            , new Person(2, "John", "Doe", 80)
+            , new Person(4, "Jill", "Smith", 50)
+            , new Person(5, "Jack", "Clyde", 78)
+        )
+    );
+
     @Test
     public void testReadFromTable() {
 
         browser.get("/people-table.html");
 
-        Table<Person> table = new Table<>(
-            browser.untilFound(TABLE),
+        Table<Person> table = new Table<>(browser.untilFound(TABLE),
             (cells) ->
                 new Person(
                     Integer.parseInt(cells.get(0).getText()),
@@ -59,17 +78,7 @@ public class PersonTableIT {
 
         TableContents<Person> actual = table.getContents();
 
-        TableContents<Person> expected = new TableContents<>(
-            Arrays.asList("Id", "First Name", "Last Name", "Age"),
-            Arrays.asList(
-                new Person(1, "Eve", "Jackson", 94)
-                , new Person(2, "John", "Doe", 80)
-                , new Person(3, "Adam", "Johnson", 67)
-                , new Person(4, "Jill", "Smith", 50)
-            )
-        );
-
-        assertEquals(expected.describeDiff(actual), expected, actual);
+        assertEquals(EXPECTED.describeDiff(actual), EXPECTED, actual);
     }
 
     @Test
@@ -78,23 +87,10 @@ public class PersonTableIT {
 
         browser.get("/people-table.html");
 
-        Table<Person> table = new Table<>(
-            browser.untilFound(TABLE),
-            mapperNonJava8
-        );
+        Table<Person> table = new Table<>(browser.untilFound(TABLE), MAPPER_NON_JAVA_8);
 
         TableContents<Person> actual = table.getContents();
 
-        TableContents<Person> expected = new TableContents<>(
-            Arrays.asList("Id", "First Name", "Last Name", "Age"),
-            Arrays.asList(
-                new Person(1, "Eve", "Jackson", 94)
-                , new Person(2, "John", "Doe", 80)
-                , new Person(4, "Jill", "Smith", 50)
-                , new Person(5, "Jack", "Clyde", 78)
-            )
-        );
-
-        assertEquals(expected.describeDiff(actual), expected, actual);
+        assertEquals(EXPECTED_FAILURE.describeDiff(actual), EXPECTED_FAILURE, actual);
     }
 }

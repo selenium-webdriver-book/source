@@ -29,7 +29,7 @@ public class CityTableIT {
     @Inject
     private Browser browser;
 
-    private final Function<List<Element>, City> mapperNonJava8 =
+    private final static Function<List<Element>, City> MAPPER_NON_JAVA_8 =
         new Function<List<Element>, City>() {
             @Override
             public City apply(List<Element> cells) {
@@ -41,14 +41,40 @@ public class CityTableIT {
             }
         };
 
+    private static final TableContents<City> EXPECTED = new TableContents<>(
+        Arrays.asList("Id", "City Name", "State Name"),
+        Arrays.asList(
+            new City(1, "Xian", "Shanxi")
+            , new City(2, "Guangzhou", "Guangdong")
+            , new City(3, "Shaoguan", "Guangdong")
+            , new City(4, "Tianjin", "Tianjin")
+            , new City(5, "Changsha", "Huana")
+            , new City(6, "Shenzhen", "Guangzhou")
+            , new City(7, "Hong Kong", "Hong Kong")
+            , new City(8, "Hangzhou", "Zhejiang")
+            , new City(9, "Singapore", "Singapore")
+            , new City(9, "New York", "New York")
+            , new City(10, "Sydney", "New South Wales")
+            , new City(11, "Dallas", "Texas")
+        )
+    );
+
+    private static final TableContents<City> EXPECTED_FAILURE = new TableContents<>(
+        Arrays.asList("Id", "City Name", "State Name"),
+        Arrays.asList(
+            new City(1, "Xian", "Shanxi")
+            , new City(2, "Guangzhou", "Guangdong")
+            , new City(3, "Shaoguan", "Guangdong")
+            , new City(4, "Dallas", "Texas")
+        )
+    );
 
     @Test
     public void testReadFromTableJava8() {
 
         browser.get("/city-table.html");
 
-        Table<City> table = new Table<>(
-            browser.untilFound(TABLE),
+        Table<City> table = new Table<>(browser.untilFound(TABLE),
             (cells) ->
                 new City(
                     Integer.parseInt(cells.get(0).getText()),
@@ -59,25 +85,7 @@ public class CityTableIT {
 
         TableContents<City> actual = table.getContents();
 
-        TableContents<City> expected = new TableContents<>(
-            Arrays.asList("Id", "City Name", "State Name"),
-            Arrays.asList(
-                new City(1, "Xian", "Shanxi")
-                , new City(2, "Guangzhou", "Guangdong")
-                , new City(3, "Shaoguan", "Guangdong")
-                , new City(4, "Tianjin", "Tianjin")
-                , new City(5, "Changsha", "Huana")
-                , new City(6, "Shenzhen", "Guangzhou")
-                , new City(7, "Hong Kong", "Hong Kong")
-                , new City(8, "Hangzhou", "Zhejiang")
-                , new City(9, "Singapore", "Singapore")
-                , new City(9, "New York", "New York")
-                , new City(10, "Sydney", "New South Wales")
-                , new City(11, "Dallas", "Texas")
-            )
-        );
-
-        assertEquals(expected.describeDiff(actual), expected, actual);
+        assertEquals(EXPECTED.describeDiff(actual), EXPECTED, actual);
     }
 
     @Test
@@ -87,22 +95,12 @@ public class CityTableIT {
         browser.get("/city-table.html");
 
         Table<City> table = new Table<>(
-            browser.untilFound(TABLE), mapperNonJava8
+            browser.untilFound(TABLE), MAPPER_NON_JAVA_8
         );
 
         TableContents<City> actual = table.getContents();
 
-        TableContents<City> expected = new TableContents<>(
-            Arrays.asList("Id", "City Name", "State Name"),
-            Arrays.asList(
-                new City(1, "Xian", "Shanxi")
-                , new City(2, "Guangzhou", "Guangdong")
-                , new City(3, "Shaoguan", "Guangdong")
-                , new City(4, "Dallas", "Texas")
-            )
-        );
-
-        assertEquals(expected.describeDiff(actual), expected, actual);
+        assertEquals(EXPECTED_FAILURE.describeDiff(actual), EXPECTED_FAILURE, actual);
     }
 
 }

@@ -1,6 +1,6 @@
 package swip.ch16table.domain;
 
-public class City extends DomainBase{
+public class City extends DomainBase {
     private final int id;
     private final String name;
     private final String stateName;

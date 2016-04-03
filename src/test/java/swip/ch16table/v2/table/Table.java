@@ -12,7 +12,7 @@ import static swip.ch15pageflow.locators.TagName.*;
 public class Table<T> {
 
     private final Element table;
-    private final Function<List<Element>, T> rowMapper;  // <1>
+    private final Function<List<Element>, T> rowMapper;  //<1>
 
     public Table(Element table, Function<List<Element>, T> rowMapper) {
         this.table = table;
@@ -20,19 +20,19 @@ public class Table<T> {
     }
 
     private List<String> getHeaders() {
-        return table.findElements(TH) // <3>
-            .map(Element::getText) // <4>
-            .collect(Collectors.toList());    //  <5>
+        return table.findElements(TH) //<3>
+            .map(Element::getText) //<4>
+            .collect(Collectors.toList());    //<5>
     }
 
-    private List<T> getRows() {           // <2>
-        return table.untilFound(TBODY)  // <6>
-            .findElements(TR)         // <7>
-            .map(                   //   <8>
+    private List<T> getRows() {           //<2>
+        return table.untilFound(TBODY)  //<6>
+            .findElements(TR)         //<7>
+            .map(                   //<8>
                 (tr) ->
-                    rowMapper.apply(  // <9>
-                        tr.findElements(TD)    // <10>
-                            .collect(Collectors.toList()) // <11>
+                    rowMapper.apply(  //<9>
+                        tr.findElements(TD)    //<10>
+                            .collect(Collectors.toList()) //<11>
                     )
             ).collect(toList());   //<12>
     }

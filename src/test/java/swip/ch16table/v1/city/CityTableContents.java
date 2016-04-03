@@ -1,10 +1,6 @@
 package swip.ch16table.v1.city;
 
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import swip.ch16table.domain.City;
 import swip.ch16table.domain.DomainBase;
 
@@ -32,8 +28,8 @@ public class CityTableContents extends DomainBase {
         return diff.trim();
     }
 
-    private String diff(List<City> rows1, List<City> rows2, String s) {
-        List<City> diff = new ArrayList<>(rows1);
+    private <T> String diff(List<T> rows1, List<T> rows2, String s) {
+        List<T> diff = new ArrayList<>(rows1);
         diff.removeAll(rows2);
 
         return diff.isEmpty() ? "" : s + diff + "\n";
