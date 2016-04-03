@@ -1,11 +1,10 @@
 package swip.ch18datepicker.jquery.v3;
 
-
-import swip.ch18datepicker.framework.Browser;
+import swip.ch15pageflow.v2.framework.Browser;
 
 import static org.openqa.selenium.By.linkText;
 import static swip.ch17jquerydatepicker.JQueryById.CALENDAR;
-import static swip.ch18datepicker.jquery.JQueryPredicates.CALENDAR_CLOSED;
+import static swip.ch17jquerydatepicker.JQueryPredicates.CALENDAR_CLOSED;
 
 
 public class JQueryDayPicker implements DayPicker {

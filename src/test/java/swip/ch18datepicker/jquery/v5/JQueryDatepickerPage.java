@@ -1,10 +1,10 @@
 package swip.ch18datepicker.jquery.v5;
 
 
+import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch18datepicker.datepicker.Calendar;
 import swip.ch18datepicker.datepicker.CalendarPicker;
 import swip.ch18datepicker.datepicker.Datepicker;
-import swip.ch18datepicker.framework.Browser;
 
 import java.time.Month;
 

@@ -1,9 +1,7 @@
 package swip.ch18datepicker.bootstrap;
 
-
-
-import swip.ch18datepicker.framework.Element;
-import swip.ch18datepicker.framework.ExplicitWait;
+import swip.ch15pageflow.v2.framework.Element;
+import swip.ch15pageflow.v2.framework.ExplicitWait;
 
 import java.util.Optional;
 import java.util.function.Predicate;
