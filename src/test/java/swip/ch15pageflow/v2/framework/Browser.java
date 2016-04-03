@@ -94,8 +94,7 @@ public class Browser extends DelegatingWebDriver {
                     .getOptions()
                     .stream()
                     .filter(
-                        (WebElement e) ->
-                            e.getText().equals(select.toString()))
+                        e -> e.getText().equals(select.toString()))
                     .findFirst()
                     .get()
                     .click();

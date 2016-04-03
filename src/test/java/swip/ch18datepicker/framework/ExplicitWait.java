@@ -19,7 +19,7 @@ public interface ExplicitWait extends SearchScope {
             .ignoring(Exception.class)
             .until((ExplicitWait e) -> e.findElement(by));
         element.setSearchContext(this);
-        element.setLocator((SearchScope e) -> this.untilFound(by));
+        element.setLocator(e -> this.untilFound(by));
         return element;
     }
 

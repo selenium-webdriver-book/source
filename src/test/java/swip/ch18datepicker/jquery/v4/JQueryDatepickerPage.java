@@ -29,17 +29,17 @@ public class JQueryDatepickerPage {
         this.browser = b;
         this.datepicker = new Datepicker(
             new Calendar(browser,
-                (Browser browser) -> browser.click(DATE_FIELD)
+                browser -> browser.click(DATE_FIELD)
             ),
             new YearPicker(browser,
-                (Browser browser) -> previousYear(),
-                (Browser browser) -> nextYear(),
-                (Browser browser) -> displayYear()
+                browser -> previousYear(),
+                browser -> nextYear(),
+                browser -> displayYear()
             ),
             new MonthPicker(browser,
-                (Browser browser) -> previousMonth(),
-                (Browser browser) -> nextMonth(),
-                (Browser browser) -> displayMonth()
+                browser -> previousMonth(),
+                browser -> nextMonth(),
+                browser -> displayMonth()
             ), new JQueryDayPicker(browser));
     }
 

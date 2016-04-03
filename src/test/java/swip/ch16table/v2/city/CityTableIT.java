@@ -75,7 +75,7 @@ public class CityTableIT {
         browser.get("/city-table.html");
 
         Table<City> table = new Table<>(browser.untilFound(TABLE),
-            (cells) ->
+            cells ->
                 new City(
                     Integer.parseInt(cells.get(0).getText()),
                     cells.get(1).getText(),

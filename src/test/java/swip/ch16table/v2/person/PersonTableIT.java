@@ -67,7 +67,7 @@ public class PersonTableIT {
         browser.get("/people-table.html");
 
         Table<Person> table = new Table<>(browser.untilFound(TABLE),
-            (cells) ->
+            cells ->
                 new Person(
                     Integer.parseInt(cells.get(0).getText()),
                     cells.get(1).getText(),

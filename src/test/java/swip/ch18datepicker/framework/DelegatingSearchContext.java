@@ -30,7 +30,7 @@ public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
     public Element findElement(Supplier<By> by) {
         Element element = new Element(findElement(by.get()));
         element.setSearchContext(this);
-        element.setLocator((SearchScope e) -> this.untilFound(by));
+        element.setLocator(e -> this.untilFound(by));
         return element;
     }
 

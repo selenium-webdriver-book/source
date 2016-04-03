@@ -22,7 +22,7 @@ public class BookPage {
     public void addToCart() throws InterruptedException {
         browser.findElements(By.tagName("input"))
             .stream()
-            .filter((e) -> e.getAttribute("value").equals("add to cart"))
+            .filter(e -> e.getAttribute("value").equals("add to cart"))
             .findFirst()
             .get()
             .click();

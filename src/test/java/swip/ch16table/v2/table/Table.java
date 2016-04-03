@@ -29,7 +29,7 @@ public class Table<T> {
         return table.untilFound(TBODY)  //<6>
             .findElements(TR)         //<7>
             .map(                   //<8>
-                (tr) ->
+                tr ->
                     rowMapper.apply(  //<9>
                         tr.findElements(TD)    //<10>
                             .collect(Collectors.toList()) //<11>

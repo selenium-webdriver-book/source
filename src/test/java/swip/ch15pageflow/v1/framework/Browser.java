@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
-public class Browser extends DelegatingWebDriver  {
+public class Browser extends DelegatingWebDriver {
 
     public Browser(WebDriver driver) {
         super(driver);
@@ -94,8 +94,7 @@ public class Browser extends DelegatingWebDriver  {
                     .getOptions()
                     .stream()
                     .filter(
-                        (WebElement e) ->
-                            e.getText().equals(select.toString()))
+                        e -> e.getText().equals(select.toString()))
                     .findFirst()
                     .get()
                     .click();

@@ -16,7 +16,7 @@ public class BookPage {
 
     public void addToCart() {
         browser.findElements(INPUT)
-            .filter((e) -> e.getAttribute("value").equals("add to cart"))
+            .filter(e -> e.getAttribute("value").equals("add to cart"))
             .findFirst()
             .get()
             .click();
