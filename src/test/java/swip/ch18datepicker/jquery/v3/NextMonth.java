@@ -3,8 +3,8 @@ import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Consumer;
 
-import static swip.ch17jquerydatepicker.JQueryByClassName.NEXT_MONTH_BUTTON;
-import static swip.ch17jquerydatepicker.JQueryById.CALENDAR;
+import static swip.ch17jquerydatepicker.locators.JQueryByClassName.NEXT_MONTH_BUTTON;
+import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
 
 public class NextMonth implements Consumer<Browser> {
     @Override
