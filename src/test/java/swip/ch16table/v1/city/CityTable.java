@@ -2,22 +2,17 @@ package swip.ch16table.v1.city;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import swip.ch14elements.framework.Element;
+import swip.ch15pageflow.v2.framework.Element;
 import swip.ch16table.domain.City;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+
+import static swip.ch16table.mapper.CityMapper.MAPPER_LAMBDA;
 
 public class CityTable {
 
     private final Element table;
-
-    private final static Function<List<Element>, City> MAPPER_NON_JAVA_8 = (cells) -> new City(
-        Integer.parseInt(cells.get(0).getText()),
-        cells.get(1).getText(),
-        cells.get(2).getText()
-    );
 
     public CityTable(Element table) {
         this.table = table;
@@ -42,7 +37,7 @@ public class CityTable {
                 cells.add(new Element(cell));
             }
 
-            rows.add(MAPPER_NON_JAVA_8.apply(cells));
+            rows.add(MAPPER_LAMBDA.apply(cells));
 
         }
         return rows;

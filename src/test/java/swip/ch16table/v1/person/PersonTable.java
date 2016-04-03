@@ -2,7 +2,7 @@ package swip.ch16table.v1.person;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import swip.ch14elements.framework.Element;
+import swip.ch15pageflow.v2.framework.Element;
 import swip.ch16table.domain.Person;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class PersonTable {
 
     private final Element table;
 
-    public static final Function<List<Element>, Person> MAPPER_NON_JAVA_8
+    private static final Function<List<Element>, Person> MAPPER_NON_JAVA_8
         = new Function<List<Element>, Person>() {
         @Override
         public Person apply(List<Element> cells) {

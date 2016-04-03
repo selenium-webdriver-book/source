@@ -6,15 +6,15 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import swip.ch14elements.framework.Browser;
-import swip.ch14elements.framework.BrowserRunner;
+import swip.ch15pageflow.v2.framework.Browser;
+import swip.ch15pageflow.v2.framework.BrowserRunner;
 import swip.ch16table.domain.Person;
 
 import javax.inject.Inject;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
+import static swip.ch15pageflow.locators.TagName.TABLE;
 
 @RunWith(BrowserRunner.class)
 public class PersonTableIT {
@@ -35,7 +35,7 @@ public class PersonTableIT {
             )
         );
 
-    public static final PersonTableContents EXPECTED_FAILURE =
+    public static final PersonTableContents OUTDATED_EXPECTATION =
         new PersonTableContents(
             Arrays.asList("Id", "First Name", "Last Name", "Age"),
             Arrays.asList(
@@ -51,9 +51,7 @@ public class PersonTableIT {
 
         browser.get("/people-table.html");
 
-        PersonTable table = new PersonTable(
-            browser.findElement(By.tagName("table"))
-        );
+        PersonTable table = new PersonTable(browser.untilFound(TABLE));
 
         PersonTableContents actual = table.getContents();
 
@@ -66,13 +64,11 @@ public class PersonTableIT {
 
         browser.get("/people-table.html");
 
-        PersonTable table = new PersonTable(
-            browser.findElement(By.tagName("table"))
-        );
+        PersonTable table = new PersonTable(browser.untilFound(TABLE));
 
         PersonTableContents actual = table.getContents();
 
-        assertEquals(EXPECTED_FAILURE.describeDiff(actual), EXPECTED_FAILURE, actual);
+        assertEquals(OUTDATED_EXPECTATION.describeDiff(actual), OUTDATED_EXPECTATION, actual);
     }
 
 }

@@ -8,18 +8,16 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch15pageflow.v2.framework.BrowserRunner;
-import swip.ch15pageflow.v2.framework.Element;
 import swip.ch16table.domain.City;
 import swip.ch16table.v2.table.Table;
 import swip.ch16table.v2.table.TableContents;
 
 import javax.inject.Inject;
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
 import static swip.ch15pageflow.locators.TagName.TABLE;
+import static swip.ch16table.mapper.CityMapper.MAPPER_LAMBDA;
 
 @RunWith(BrowserRunner.class)
 public class CityTableIT {
@@ -28,18 +26,6 @@ public class CityTableIT {
     public ExpectedException expectedException = ExpectedException.none();
     @Inject
     private Browser browser;
-
-    private final static Function<List<Element>, City> MAPPER_NON_JAVA_8 =
-        new Function<List<Element>, City>() {
-            @Override
-            public City apply(List<Element> cells) {
-                return new City(
-                    Integer.parseInt(cells.get(0).getText()),
-                    cells.get(1).getText(),
-                    cells.get(2).getText()
-                );
-            }
-        };
 
     private static final TableContents<City> EXPECTED = new TableContents<>(
         Arrays.asList("Id", "City Name", "State Name"),
@@ -76,11 +62,9 @@ public class CityTableIT {
 
         Table<City> table = new Table<>(browser.untilFound(TABLE),
             cells ->
-                new City(
-                    Integer.parseInt(cells.get(0).getText()),
+                new City(Integer.parseInt(cells.get(0).getText()),
                     cells.get(1).getText(),
-                    cells.get(2).getText()
-                )
+                    cells.get(2).getText())
         );
 
         TableContents<City> actual = table.getContents();
@@ -95,7 +79,7 @@ public class CityTableIT {
         browser.get("/city-table.html");
 
         Table<City> table = new Table<>(
-            browser.untilFound(TABLE), MAPPER_NON_JAVA_8
+            browser.untilFound(TABLE), MAPPER_LAMBDA
         );
 
         TableContents<City> actual = table.getContents();

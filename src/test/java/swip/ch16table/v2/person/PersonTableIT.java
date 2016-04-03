@@ -8,18 +8,16 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.v2.framework.Browser;
 import swip.ch15pageflow.v2.framework.BrowserRunner;
-import swip.ch15pageflow.v2.framework.Element;
 import swip.ch16table.domain.Person;
 import swip.ch16table.v2.table.Table;
 import swip.ch16table.v2.table.TableContents;
 
 import javax.inject.Inject;
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
 import static swip.ch15pageflow.locators.TagName.TABLE;
+import static swip.ch16table.mapper.PersonMapper.MAPPER_NON_JAVA_8;
 
 @RunWith(BrowserRunner.class)
 public class PersonTableIT {
@@ -28,18 +26,6 @@ public class PersonTableIT {
     public ExpectedException expectedException = ExpectedException.none();
     @Inject
     private Browser browser;
-
-    private final static Function<List<Element>, Person> MAPPER_NON_JAVA_8 = new Function<List<Element>, Person>() {
-        @Override
-        public Person apply(List<Element> cells) {
-            return new Person(
-                Integer.parseInt(cells.get(0).getText()),
-                cells.get(1).getText(),
-                cells.get(2).getText(),
-                Integer.parseInt(cells.get(3).getText())
-            );
-        }
-    };
 
     private static final TableContents<Person> EXPECTED = new TableContents<>(
         Arrays.asList("Id", "First Name", "Last Name", "Age"),
@@ -68,12 +54,10 @@ public class PersonTableIT {
 
         Table<Person> table = new Table<>(browser.untilFound(TABLE),
             cells ->
-                new Person(
-                    Integer.parseInt(cells.get(0).getText()),
+                new Person(Integer.parseInt(cells.get(0).getText()),
                     cells.get(1).getText(),
                     cells.get(2).getText(),
-                    Integer.parseInt(cells.get(3).getText())
-                )
+                    Integer.parseInt(cells.get(3).getText()))
         );
 
         TableContents<Person> actual = table.getContents();

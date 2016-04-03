@@ -18,14 +18,16 @@ public class CityTableContents extends DomainBase {
     }
 
     public String describeDiff(CityTableContents other) {
-        String diff = "";
+        StringBuilder diff = new StringBuilder();
         if (!headers.equals(other.headers)) {
-            diff += "headers differ " + headers + " vs " + other.headers + "\n";
+            diff.append("headers differ ")
+                .append(headers).append(" vs ")
+                .append(other.headers).append("\n");
         }
 
-        diff += diff(this.rows, other.rows, "expected rows not found: ");
-        diff += diff(other.rows, this.rows, "unexpected rows appeared: ");
-        return diff.trim();
+        diff.append(diff(this.rows, other.rows, "expected rows not found: "));
+        diff.append(diff(other.rows, this.rows, "unexpected rows appeared: "));
+        return diff.toString();
     }
 
     private <T> String diff(List<T> rows1, List<T> rows2, String s) {

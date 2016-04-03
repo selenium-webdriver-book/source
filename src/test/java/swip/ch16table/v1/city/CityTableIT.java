@@ -6,35 +6,28 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import swip.ch14elements.framework.Browser;
-import swip.ch14elements.framework.BrowserRunner;
+import swip.ch15pageflow.v2.framework.Browser;
+import swip.ch15pageflow.v2.framework.BrowserRunner;
 import swip.ch16table.domain.City;
 
 import javax.inject.Inject;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
+import static swip.ch15pageflow.locators.TagName.TABLE;
+
+;
 
 @RunWith(BrowserRunner.class)
 public class CityTableIT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-    @Inject private Browser browser;
+    @Inject
+    private Browser browser;
 
-    @Test
-    public void testReadFromTable() {
-
-        browser.get("/city-table.html");
-
-        CityTable table = new CityTable(
-            browser.findElement(By.tagName("table"))
-        );
-
-        CityTableContents actual = table.getContents();
-
-        CityTableContents expected = new CityTableContents(
+    private static final CityTableContents EXPECTED =
+        new CityTableContents(
             Arrays.asList("Id", "City Name", "State Name"),
             Arrays.asList(
                 new City(1, "Xian", "Shanxi")
@@ -52,22 +45,20 @@ public class CityTableIT {
             )
         );
 
-        assertEquals(expected.describeDiff(actual), expected, actual);
-    }
-
     @Test
-    @Ignore("You can remove this to run it and check the output")
-    public void failedToReadFromTable() {
+    public void testReadFromTable() {
 
         browser.get("/city-table.html");
 
-        CityTable table = new CityTable(
-            browser.findElement(By.tagName("table"))
-        );
+        CityTable table = new CityTable(browser.untilFound(TABLE));
 
         CityTableContents actual = table.getContents();
 
-        CityTableContents expected = new CityTableContents(
+        assertEquals(EXPECTED.describeDiff(actual), EXPECTED, actual);
+    }
+
+    private static final CityTableContents OUTDATED_EXPECTATION =
+        new CityTableContents(
             Arrays.asList("Id", "City Name", "State Name"),
             Arrays.asList(
                 new City(1, "Xian", "Shanxi")
@@ -77,7 +68,18 @@ public class CityTableIT {
             )
         );
 
-        assertEquals(expected.describeDiff(actual), expected, actual);
+    @Test
+    @Ignore("You can remove this to run it and check the output")
+    public void failedToReadFromTable() {
+
+        browser.get("/city-table.html");
+
+        CityTable table = new CityTable(browser.untilFound(TABLE));
+
+        CityTableContents actual = table.getContents();
+
+        assertEquals(OUTDATED_EXPECTATION.describeDiff(actual),
+            OUTDATED_EXPECTATION, actual);
     }
 
 }
