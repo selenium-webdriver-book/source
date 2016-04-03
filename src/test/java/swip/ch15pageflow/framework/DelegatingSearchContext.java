@@ -28,10 +28,7 @@ public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
 
     @Override
     public Element findElement(Supplier<By> by) {
-        Element element = new Element(findElement(by.get()));
-        element.setSearchContext(this);
-        element.setLocator(e -> this.findElement(by));
-        return element;
+        return new Element(findElement(by.get()));
     }
 
     public Stream<Element> findElements(Supplier<By> by) {

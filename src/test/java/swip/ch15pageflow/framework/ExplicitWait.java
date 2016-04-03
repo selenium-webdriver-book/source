@@ -13,17 +13,12 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public interface ExplicitWait extends SearchScope {
 
     default Element untilFound(Supplier<By> by) {
-        Element element = new FluentWait<>(this)
+        return new FluentWait<>(this)
             .withTimeout(10, SECONDS)
             .pollingEvery(5, MILLISECONDS)
             .ignoring(Exception.class)
             .until((ExplicitWait e) -> e.findElement(by));
-        element.setSearchContext(this);
-        element.setLocator(e -> this.untilFound(by));
-        return element;
     }
-
-    String getText();
 
     default void until(Predicate<ExplicitWait> predicate) {
         FluentWait<ExplicitWait> fluentWait = new FluentWait<>(this)
