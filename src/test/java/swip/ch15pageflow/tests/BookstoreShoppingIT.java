@@ -1,4 +1,4 @@
-package swip.ch15pageflow.tests.v2;
+package swip.ch15pageflow.tests;
 
 
 import org.junit.Before;

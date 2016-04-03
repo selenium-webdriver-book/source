@@ -1,4 +1,4 @@
-package swip.ch15pageflow.tests.v2;
+package swip.ch15pageflow.tests;
 
 
 import org.junit.Test;
@@ -10,7 +10,7 @@ import swip.ch15pageflow.pages.v2.BookstoreHomepage;
 import javax.inject.Inject;
 
 @RunWith(BrowserRunner.class)
-public class BookstoreSearchIT {
+public class BookstoreSearchV2IT {
     @Inject
     private Browser browser;
 
