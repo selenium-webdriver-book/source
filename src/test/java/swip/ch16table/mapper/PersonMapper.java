@@ -1,6 +1,6 @@
 package swip.ch16table.mapper;
 
-import swip.ch15pageflow.v2.framework.Element;
+import swip.ch15pageflow.framework.Element;
 import swip.ch16table.domain.Person;
 
 import java.util.List;

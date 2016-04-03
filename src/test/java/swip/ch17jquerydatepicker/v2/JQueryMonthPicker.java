@@ -2,7 +2,7 @@ package swip.ch17jquerydatepicker.v2;
 
 
 
-import swip.ch15pageflow.v2.framework.Browser;
+import swip.ch15pageflow.framework.Browser;
 
 import java.time.Month;
 

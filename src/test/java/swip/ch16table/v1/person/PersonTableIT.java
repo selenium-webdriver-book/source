@@ -6,8 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import swip.ch15pageflow.v2.framework.Browser;
-import swip.ch15pageflow.v2.framework.BrowserRunner;
+import swip.ch15pageflow.framework.Browser;
+import swip.ch15pageflow.framework.BrowserRunner;
 import swip.ch16table.domain.Person;
 
 import javax.inject.Inject;

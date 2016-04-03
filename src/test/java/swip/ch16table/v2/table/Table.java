@@ -1,6 +1,6 @@
 package swip.ch16table.v2.table;
 
-import swip.ch15pageflow.v2.framework.Element;
+import swip.ch15pageflow.framework.Element;
 
 import java.util.List;
 import java.util.function.Function;

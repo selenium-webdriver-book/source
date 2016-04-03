@@ -3,8 +3,8 @@ package swip.ch18datepicker.bootstrap;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import swip.ch15pageflow.v2.framework.Browser;
-import swip.ch15pageflow.v2.framework.BrowserRunner;
+import swip.ch15pageflow.framework.Browser;
+import swip.ch15pageflow.framework.BrowserRunner;
 import swip.framework.TestTimer;
 
 import javax.inject.Inject;

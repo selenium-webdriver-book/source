@@ -1,6 +1,6 @@
 package swip.ch17jquerydatepicker.v2;
 
-import swip.ch15pageflow.v2.framework.Browser;
+import swip.ch15pageflow.framework.Browser;
 import swip.ch17jquerydatepicker.JQueryById;
 
 import static org.openqa.selenium.By.linkText;
