@@ -1,14 +1,12 @@
 package swip.ch18datepicker.jquery.v4;
 
-
-import swip.ch18datepicker.framework.Browser;
-
+import swip.ch15pageflow.framework.Browser;
 
 import java.time.Month;
 
-import static swip.ch17jquerydatepicker.JQueryByClassName.*;
-import static swip.ch17jquerydatepicker.JQueryById.DATE_FIELD;
-import static swip.ch17jquerydatepicker.JQueryById.CALENDAR;
+import static swip.ch17jquerydatepicker.locators.JQueryByClassName.*;
+import static swip.ch17jquerydatepicker.locators.JQueryById.DATE_FIELD;
+import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
 
 
 public class JQueryDatepickerPage {
@@ -29,17 +27,17 @@ public class JQueryDatepickerPage {
         this.browser = b;
         this.datepicker = new Datepicker(
             new Calendar(browser,
-                (Browser browser) -> browser.click(DATE_FIELD)
+                browser -> browser.click(DATE_FIELD)
             ),
             new YearPicker(browser,
-                (Browser browser) -> previousYear(),
-                (Browser browser) -> nextYear(),
-                (Browser browser) -> displayYear()
+                browser -> previousYear(),
+                browser -> nextYear(),
+                browser -> displayYear()
             ),
             new MonthPicker(browser,
-                (Browser browser) -> previousMonth(),
-                (Browser browser) -> nextMonth(),
-                (Browser browser) -> displayMonth()
+                browser -> previousMonth(),
+                browser -> nextMonth(),
+                browser -> displayMonth()
             ), new JQueryDayPicker(browser));
     }
 

@@ -47,7 +47,6 @@ public class Datepicker {
      */
     public void pick(Month month, int day, int year) {  //<6>
         LocalDate.of(year, month, day);
-
         calendar.show();      //<7>
         yearPicker.pick(year);              //<8>
         monthPicker.pick(month.ordinal());  //<9>

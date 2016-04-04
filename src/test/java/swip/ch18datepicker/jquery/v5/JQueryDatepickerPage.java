@@ -1,14 +1,14 @@
 package swip.ch18datepicker.jquery.v5;
 
 
+import swip.ch15pageflow.framework.Browser;
 import swip.ch18datepicker.datepicker.Calendar;
 import swip.ch18datepicker.datepicker.CalendarPicker;
 import swip.ch18datepicker.datepicker.Datepicker;
-import swip.ch18datepicker.framework.Browser;
 
 import java.time.Month;
 
-import static swip.ch17jquerydatepicker.JQueryById.DATE_FIELD;
+import static swip.ch17jquerydatepicker.locators.JQueryById.DATE_FIELD;
 import static swip.ch18datepicker.jquery.v5.JQueryCalendarControls.*;
 import static swip.ch18datepicker.jquery.v5.JQueryCalendarDisplayValue.DISPLAY_MONTH;
 import static swip.ch18datepicker.jquery.v5.JQueryCalendarDisplayValue.DISPLAY_YEAR;
