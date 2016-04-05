@@ -51,7 +51,5 @@ public class Datepicker {
         yearPicker.pick(year);              //<8>
         monthPicker.pick(month.ordinal());  //<9>
         dayPicker.pick(day);                //<10>
-
-
     }
 }
