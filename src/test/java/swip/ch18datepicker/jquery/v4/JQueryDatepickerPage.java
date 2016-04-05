@@ -30,14 +30,14 @@ public class JQueryDatepickerPage {
                 browser -> browser.click(DATE_FIELD)
             ),
             new YearPicker(browser,
-                browser -> previousYear(),
-                browser -> nextYear(),
-                browser -> displayYear()
+                browser -> this.previousYear(),
+                browser -> this.nextYear(),
+                browser -> this.displayYear()
             ),
             new MonthPicker(browser,
-                browser -> previousMonth(),
-                browser -> nextMonth(),
-                browser -> displayMonth()
+                browser -> this.previousMonth(),
+                browser -> this.nextMonth(),
+                browser -> this.displayMonth()
             ), new JQueryDayPicker(browser));
     }
 
@@ -67,10 +67,10 @@ public class JQueryDatepickerPage {
     }
 
     private void previousMonth() {
-        browser.findElement(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
+        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.findElement(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
+        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 }
