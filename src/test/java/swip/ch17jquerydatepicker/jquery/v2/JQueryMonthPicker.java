@@ -20,7 +20,7 @@ public class JQueryMonthPicker {
     }
 
     public void pickMonth(int month) {
-        int difference = displayedMonth() - month;
+        int difference = displayMonth() - month;
         if (difference < 0) {
             for (int i = difference; i < 0; i++) {
                 nextMonth();
@@ -40,7 +40,7 @@ public class JQueryMonthPicker {
         browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
-    private int displayedMonth() {
+    private int displayMonth() {
         String text = browser.untilFound(CALENDAR)
             .getText(MONTH).toUpperCase();
         return Month.valueOf(text).ordinal();   //<7>

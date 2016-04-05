@@ -16,7 +16,7 @@ public class JQueryYearPicker {
     }
 
     public void pickYear(int year) {
-        int difference = displayedYear() - year;
+        int difference = displayYear() - year;
         if (difference < 0) {
             for (int i = difference; i < 0; i++) {
                 nextYear();
@@ -40,7 +40,7 @@ public class JQueryYearPicker {
         }
     }
 
-    private int displayedYear() {
+    private int displayYear() {
         String text = browser.untilFound(CALENDAR)
             .getText(YEAR);
         return Integer.parseInt(text);
