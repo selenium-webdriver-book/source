@@ -1,10 +1,14 @@
 package swip.framework;
 
 import org.apache.commons.lang3.time.StopWatch;       //<1>
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.After;
 import org.junit.Before;
 
 public class TestTimer {
+
+    private static final Log LOG = LogFactory.getLog(TestTimer.class);
 
     private StopWatch stopWatch = new StopWatch();
 
@@ -15,10 +19,10 @@ public class TestTimer {
 
     @After
     public void print() {
-        System.out.println();
-        System.out.println("==========================");
-        System.out.println("Taken " + stopWatch);          //<3>
-        System.out.println("==========================");
+        LOG.info("");
+        LOG.info("==========================");
+        LOG.info("Taken " + stopWatch);          //<3>
+        LOG.info("==========================");
     }
 
 }

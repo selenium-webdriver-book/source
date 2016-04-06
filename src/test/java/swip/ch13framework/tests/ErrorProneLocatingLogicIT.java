@@ -1,5 +1,8 @@
 package swip.ch13framework.tests;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.*;
@@ -19,22 +22,36 @@ public class ErrorProneLocatingLogicIT extends TestTimer {
     @Inject
     private WebDriver driver;
 
+    private static final Log LOG = LogFactory.getLog(ErrorProneLocatingLogicIT.class);
+
+    @Before
+    public void before() {
+
+    }
+
     @Test
     public void errorProneLocatingLogic() {
         try {
-            driver.get("/location-chooser.html");
-            driver.findElement(linkText("change location")).click();
-            WebElement tabMenu = driver.findElement(By.id("location"));
-            tabMenu.findElement(linkText("CANADA")).click();
-            tabMenu.findElement(linkText("Ontario")).click();                  //<2>
-            assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
-            assertEquals("Ontario", driver
-                .findElement(By.cssSelector(".tools-location strong"))
-                .getText());
+            errorProneLocatingLogicWithoutMessage();
             fail("It should pass with an exception.");
         } catch (NoSuchElementException e) {
-            e.printStackTrace();
+            LOG.info("======================================");
+            LOG.info("The following exception is expected...");
+            LOG.info("======================================", e);
             assertTrue(true);
         }
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void errorProneLocatingLogicWithoutMessage() {
+        driver.get("/location-chooser.html");
+        driver.findElement(linkText("change location")).click();
+        WebElement tabMenu = driver.findElement(By.id("location"));
+        tabMenu.findElement(linkText("CANADA")).click();
+        tabMenu.findElement(linkText("Ontario")).click();                  //<2>
+        assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
+        assertEquals("Ontario", driver
+            .findElement(By.cssSelector(".tools-location strong"))
+            .getText());
     }
 }
