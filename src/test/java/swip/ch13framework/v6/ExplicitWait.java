@@ -7,13 +7,13 @@ import org.openqa.selenium.support.ui.FluentWait;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-public interface ExplicitWait extends SearchScope{
+public interface ExplicitWait extends SearchScope {
 
     default Element untilFound(By by) {  // <2>
         return new FluentWait<>(this)
-                .withTimeout(10, SECONDS)
-                .pollingEvery(100, MILLISECONDS)
-                .ignoring(NoSuchElementException.class)
-                .until((ExplicitWait e) -> findElement(by)); // <3>
+            .withTimeout(10, SECONDS)
+            .pollingEvery(100, MILLISECONDS)
+            .ignoring(NoSuchElementException.class)
+            .until((ExplicitWait e) -> findElement(by)); // <3>
     }
 }
