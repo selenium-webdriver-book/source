@@ -1,4 +1,4 @@
-package swip.ch13framework;
+package swip.ch13framework.tests;
 
 import com.google.common.base.Function;
 import org.junit.Test;

@@ -1,5 +1,6 @@
 package swip.ch13framework.v3_nonjava8;
 
+import com.google.common.base.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -33,8 +34,11 @@ public class Element implements ExplicitWait {
             .withTimeout(10, TimeUnit.SECONDS)
             .pollingEvery(100, TimeUnit.MILLISECONDS)
             .ignoring(NoSuchElementException.class)
-            .until((ExplicitWait e) -> findElement(by)); // <3>
+            .until(new Function<Element, Element>() {
+                @Override
+                public Element apply(Element element) {
+                    return element.findElement(by);
+                }
+            }); // <3>
     }
-
-
 }

@@ -1,9 +1,11 @@
-package swip.ch13framework.v5;
+package swip.ch13framework.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import swip.ch13framework.v6_nonjava8.Browser;
+import swip.ch13framework.v6_nonjava8.Element;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -13,7 +15,7 @@ import static org.junit.Assert.assertFalse;
 import static org.openqa.selenium.By.linkText;
 
 @RunWith(WebDriverRunner.class)
-public class ExplicitWaitIT {
+public class ExplicitWaitV6_nonjava8IT {
 
     private Browser browser;
 

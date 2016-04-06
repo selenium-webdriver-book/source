@@ -1,4 +1,4 @@
-package swip.ch13framework;
+package swip.ch13framework.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
