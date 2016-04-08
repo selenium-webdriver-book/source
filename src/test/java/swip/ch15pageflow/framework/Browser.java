@@ -4,6 +4,10 @@ package swip.ch15pageflow.framework;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.HasInputDevices;
+import org.openqa.selenium.interactions.Keyboard;
+import org.openqa.selenium.interactions.Mouse;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,7 +15,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
-public class Browser extends DelegatingWebDriver {
+public class Browser extends DelegatingWebDriver implements HasInputDevices {
 
     public Browser(WebDriver driver) {
         super(driver);
@@ -102,5 +106,23 @@ public class Browser extends DelegatingWebDriver {
         } catch (Exception e) {
             //Don't need to handle it.
         }
+    }
+
+    public void doubleClick(Supplier<By> by) {
+
+        Element element = untilFound(by);
+        new Actions(this) // #C create actions from the driver
+            .doubleClick(element) // #D add a double-click to the sequence
+            .perform(); // #E perform the sequence
+    }
+
+    @Override
+    public Keyboard getKeyboard() {
+        return ((HasInputDevices) delegate).getKeyboard();
+    }
+
+    @Override
+    public Mouse getMouse() {
+        return ((HasInputDevices) delegate).getMouse();
     }
 }
