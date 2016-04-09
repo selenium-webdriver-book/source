@@ -15,7 +15,7 @@
         <selenium.version>2.48.2</selenium.version>
         <jquery-ui.version>1.11.3</jquery-ui.version>
         <jquery.version>2.1.3</jquery.version>
-        <jetty.version>9.2.3.v20140905</jetty.version>
+        <jetty.version>9.3.7.v20160115</jetty.version>
         <spring.version>4.2.5.RELEASE</spring.version>
     </properties>
 
