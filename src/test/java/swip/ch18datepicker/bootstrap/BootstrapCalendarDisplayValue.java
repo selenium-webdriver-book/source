@@ -16,6 +16,7 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
      * Locate the integer value representing displayed year on a calendar
      */
     DISPLAY_YEAR {
+        @Override
         public Integer apply(Browser browser) {
             return parseInt(extract(browser, 1));       //<1>
         }
@@ -25,6 +26,7 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
      * Locate the integer value representing displayed month on a calendar
      */
     DISPLAY_MONTH {
+        @Override
         public Integer apply(Browser browser) {
             return TO_MONTH.apply(extract(browser, 0)).ordinal();       //<2>
         }

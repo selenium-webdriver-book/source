@@ -5,10 +5,13 @@ import org.openqa.selenium.NoSuchElementException;
 
 import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 interface SearchScope {
 
     Element findElement(Supplier<By> by);
+
+    Stream<Element> findElements(Supplier<By> by);
 
     default Optional<Element> optionalElement(Supplier<By> by) {
         try {

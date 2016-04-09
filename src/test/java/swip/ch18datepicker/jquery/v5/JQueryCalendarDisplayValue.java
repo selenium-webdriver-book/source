@@ -18,6 +18,7 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
      * Locate the integer value representing displayed year on a calendar
      */
     DISPLAY_YEAR {
+        @Override
         public Integer apply(Browser browser) {
             String text = browser.untilFound(CALENDAR)
                 .getText(YEAR);
@@ -29,6 +30,7 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
      * Locate the integer value representing displayed month on a calendar
      */
     DISPLAY_MONTH {
+        @Override
         public Integer apply(Browser browser) {
             String text = browser.untilFound(CALENDAR)
                 .getText(MONTH).toUpperCase();

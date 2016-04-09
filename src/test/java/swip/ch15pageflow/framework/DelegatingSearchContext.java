@@ -31,6 +31,7 @@ public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
         return new Element(findElement(by.get()));
     }
 
+    @Override
     public Stream<Element> findElements(Supplier<By> by) {
         return findElements(by.get()).stream().map(Element::new);
     }
