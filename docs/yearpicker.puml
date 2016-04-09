@@ -29,28 +29,32 @@ deactivate DisplayYear
 
 alt pick a future date
 
- YearPicker -> NextYear: accept(browser) (2018 - displayYear) times
-  activate NextYear
-  NextYear -> Browser : untilFound(CALENDAR)
-  Browser -> NextYear : Element
-  NextYear -> Element: click(NEXT_MONTH_BUTTON)
-  activate Element
-  Element -> Element: click()
-  deactivate Element
-  deactivate NextYear
+ loop (2018 - displayYear) times
+
+      YearPicker -> NextYear: accept(browser)
+      activate NextYear
+      NextYear -> Browser : untilFound(CALENDAR)
+      Browser -> Element: <<create>>
+      activate Element
+      Element -> NextYear : Element
+      NextYear -> Element: click(NEXT_MONTH_BUTTON)
+      deactivate Element
+      deactivate NextYear
+ end
 
 else pick a past date
 
- YearPicker -> PreviousYear: accept(browser) (displayYear - 2018) times
- activate PreviousYear
- PreviousYear -> Browser : untilFound(CALENDAR)
- Browser -> PreviousYear : Element
- PreviousYear -> Element: click(PREV_MONTH_BUTTON)
- activate Element
- Element -> Element: click()
- deactivate Element
- deactivate PreviousYear
-
+ loop (displayYear - 2018) times
+     YearPicker -> PreviousYear: accept(browser)
+     activate PreviousYear
+     PreviousYear -> Browser : untilFound(CALENDAR)
+     Browser -> Element: <<create>>
+     activate Element
+     Element -> PreviousYear : Element
+     PreviousYear -> Element: click(PREV_MONTH_BUTTON)
+     deactivate Element
+     deactivate PreviousYear
+ end
 end
 
 deactivate YearPicker
