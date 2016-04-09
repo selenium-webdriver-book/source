@@ -14,7 +14,7 @@ public class Browser implements ExplicitWait {
         driver.get(url);
     }
 
-    public Element findElement(By by) {
+    @Override public Element findElement(By by) {
         return new Element(driver.findElement(by));
     }
 }

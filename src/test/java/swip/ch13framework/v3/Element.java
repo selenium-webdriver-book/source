@@ -15,8 +15,7 @@ public class Element implements ExplicitWait {
     }
 
 
-    @Override
-    public Element findElement(By by) {
+    @Override public Element findElement(By by) {
         return new Element(webElement.findElement(by));
     }
 

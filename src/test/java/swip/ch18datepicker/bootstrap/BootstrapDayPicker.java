@@ -17,7 +17,7 @@ public class BootstrapDayPicker implements DayPicker {
         this.browser = browser;
     }
 
-    public void pick(int day) {
+    @Override public void pick(int day) {
         browser.untilFound(CALENDAR)
             .findElements(TD)
             .filter(e -> e.getText().equals(String.valueOf(day)))

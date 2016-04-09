@@ -26,13 +26,11 @@ public enum JQueryByClassName implements Supplier<By> {
     /**
      * @return the by instance variable which is a ByClassName.
      */
-    @Override
-    public By get() {
+    @Override public By get() {
         return by;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return by.toString();
     }
 }

@@ -18,13 +18,11 @@ public enum ClassName implements Supplier<By> {  //<5>
         this.by = className(id); // <3>
     }
 
-    @Override
-    public By get() {
+    @Override public By get() {
         return by;     //<4>
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return by.toString();
     }
 }

@@ -14,17 +14,14 @@ import static org.junit.Assert.assertEquals;
 @RunWith(BrowserRunner.class)
 public class NaiveRadioIT {
 
-    @Inject
-    private Browser browser;
+    @Inject private Browser browser;
     private String value;
 
-    @Before
-    public void setup() {
+    @Before public void setup() {
         browser.get("/registration-form.html");
     }
 
-    @Test
-    public void conact() throws Exception {
+    @Test public void conact() throws Exception {
         List<WebElement> radiobuttons =  browser
             .findElements(By.name("contact"));
 
@@ -40,8 +37,7 @@ public class NaiveRadioIT {
     }
 
 
-    @Test
-    public void frequency() throws Exception {
+    @Test public void frequency() throws Exception {
         List<WebElement> radiobuttons = browser
             .findElements(By.name("frequency"));
 

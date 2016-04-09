@@ -12,24 +12,20 @@ import static org.junit.Assert.assertEquals;
 @RunWith(BrowserRunner.class)
 public class RadioIT {
 
-    @Inject
-    private Browser browser;
+    @Inject private Browser browser;
     private String value;
 
-    @Before
-    public void setup() {
+    @Before public void setup() {
         browser.get("/registration-form.html");
     }
 
-    @Test
-    public void conact() throws Exception {
+    @Test public void conact() throws Exception {
         value = browser.getRadio(By.name("contact"));
         assertEquals("email",  value);
     }
 
 
-    @Test
-    public void frequency() throws Exception {
+    @Test public void frequency() throws Exception {
         value = browser.getRadio(By.name("frequency"));
         assertEquals("hourly", value);
     }

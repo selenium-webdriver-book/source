@@ -7,8 +7,7 @@ import static swip.ch17jquerydatepicker.locators.JQueryByClassName.NEXT_MONTH_BU
 import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
 
 public class NextMonth implements Consumer<Browser> {
-    @Override
-    public void accept(Browser browser) {
+    @Override public void accept(Browser browser) {
         browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);
     }
 }

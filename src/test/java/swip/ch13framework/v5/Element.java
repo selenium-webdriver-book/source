@@ -9,8 +9,7 @@ public class Element extends DelegatingWebElement implements ExplicitWait, Searc
         super(delegate);
     }
 
-    @Override
-    public Element findElement(By by) {
+    @Override public Element findElement(By by) {
         return new Element(super.findElement(by));
     }
 }

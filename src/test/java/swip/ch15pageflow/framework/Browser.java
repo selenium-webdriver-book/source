@@ -116,13 +116,11 @@ public class Browser extends DelegatingWebDriver implements HasInputDevices {
             .perform(); // #E perform the sequence
     }
 
-    @Override
-    public Keyboard getKeyboard() {
+    @Override public Keyboard getKeyboard() {
         return ((HasInputDevices) delegate).getKeyboard();
     }
 
-    @Override
-    public Mouse getMouse() {
+    @Override public Mouse getMouse() {
         return ((HasInputDevices) delegate).getMouse();
     }
 }

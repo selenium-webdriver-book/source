@@ -9,8 +9,7 @@ public class Browser extends DelegatingWebDriver implements SearchScope {
         super(driver);
     } // <1>
 
-    @Override
-    public Element findElement(By by) {
+    @Override public Element findElement(By by) {
         return new Element(super.findElement(by)); // <2>
     }
 }

@@ -16,18 +16,15 @@ public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
         this.delegate = delegate;
     }
 
-    @Override
-    public List<WebElement> findElements(By by) {
+    @Override public List<WebElement> findElements(By by) {
         return delegate.findElements(by);
     }
 
-    @Override
-    public WebElement findElement(By by) {
+    @Override public WebElement findElement(By by) {
         return delegate.findElement(by);
     }
 
-    @Override
-    public Element findElement(Supplier<By> by) {
+    @Override public Element findElement(Supplier<By> by) {
         return new Element(findElement(by.get()));
     }
 

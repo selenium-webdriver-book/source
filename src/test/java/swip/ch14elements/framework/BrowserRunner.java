@@ -10,8 +10,7 @@ public class BrowserRunner extends SpringJUnit4ClassRunner {
         super(clazz);
     }
 
-    @Override
-    protected TestContextManager createTestContextManager(Class<?> clazz) {
+    @Override protected TestContextManager createTestContextManager(Class<?> clazz) {
         return super.createTestContextManager(ConfigShim.class);
     }
 

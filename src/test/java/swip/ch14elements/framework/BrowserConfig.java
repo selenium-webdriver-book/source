@@ -10,8 +10,7 @@ import swip.framework.WebDriverConfig;
 @Import(WebDriverConfig.class)
 public class BrowserConfig {
 
-    @Bean
-    public Browser browser(WebDriver driver) {
+    @Bean public Browser browser(WebDriver driver) {
         return new Browser(driver);
     }
 }
