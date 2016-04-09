@@ -1,0 +1,71 @@
+@startuml
+
+actor You
+participant "Test Script"
+participant Hub
+participant "Windows Node"
+participant "Mac Node"
+
+activate "Windows Node"
+"Windows Node" -> Hub : Hello, I have Chrome and IE\n installed and I'm Windows\n - I'm ready to run tests!
+activate Hub
+Hub -> Hub : I'll store that for later on.
+activate Hub
+deactivate Hub
+deactivate Hub
+Hub -> "Windows Node" : OK
+deactivate "Windows Node"
+
+activate "Mac Node"
+"Mac Node" -> Hub : Hello, I'm running Safari and Firefox on Mac\n - I'm ready to run tests!
+activate Hub
+Hub -> Hub : I'll store that for later on.
+activate Hub
+deactivate Hub
+deactivate Hub
+Hub -> "Mac Node" : OK
+deactivate "Mac Node"
+
+activate You
+
+You -> "Test Script" : Run the test script.
+
+activate "Test Script"
+"Test Script" -> Hub : Open a Chrome browser\n on Windows please.
+activate Hub
+Hub -> Hub : Hmmm... I wonder which\n node can do that?
+activate Hub
+deactivate Hub
+Hub -> "Windows Node" : Open a Chrome browser\n please.
+activate "Windows Node"
+"Windows Node" -> Hub : OK
+Hub -> "Test Script" : OK
+deactivate Hub
+
+"Test Script" -> Hub : Open a web page
+activate Hub
+Hub -> "Windows Node" : Open a web page
+"Windows Node" -> Hub : OK
+Hub -> "Test Script" : OK
+deactivate Hub
+
+... other operations, e.g. click buttons etc ...
+
+note left
+    When test script
+    has finished.
+end note
+
+"Test Script" -> Hub : Quit browser.
+activate Hub
+Hub -> "Windows Node" : Quit browser.
+"Windows Node" -> Hub : OK
+deactivate "Windows Node"
+Hub -> "Test Script" : OK
+deactivate Hub
+"Test Script" -> You : Tests passed/failed.
+deactivate "Test Script"
+deactivate  You
+
+
+@enduml
