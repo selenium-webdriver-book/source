@@ -11,11 +11,9 @@ import javax.inject.Inject;
 
 @RunWith(BrowserRunner.class)
 public class BookstoreSearchV2IT {
-    @Inject
-    private Browser browser;
+    @Inject private Browser browser;
 
-    @Test
-    public void invalidCardInfo() {
+    @Test public void invalidCardInfo() {
         new BookstoreHomepage(browser) {{
             searchBook("Selenium WebDriver in Practice");
         }};

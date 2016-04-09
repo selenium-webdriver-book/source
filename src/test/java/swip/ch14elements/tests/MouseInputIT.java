@@ -11,11 +11,9 @@ import javax.inject.Inject;
 @RunWith(BrowserRunner.class)
 public class MouseInputIT {
 
-    @Inject
-    private Browser driver;
+    @Inject private Browser driver;
 
-    @Test
-    public void completeAFormUsingBothMouseAndKeyboard() throws Exception {
+    @Test public void completeAFormUsingBothMouseAndKeyboard() throws Exception {
         driver.get("/mailing-list.html");
         driver.setInputText((By.name("email")), "john.doe@swip.com");
         driver.untilFound(By.name("terms")).click();

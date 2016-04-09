@@ -15,13 +15,11 @@ public class LoginV2IT {
 
     private Browser driver;
 
-    @Inject
-    public void setDriver(WebDriver webDriver) {
+    @Inject public void setDriver(WebDriver webDriver) {
         this.driver = new Browser(webDriver);
     }
 
-    @Test
-    public void login() throws Exception {
+    @Test public void login() throws Exception {
         driver.get("/login.html");
 
         Element email = driver.untilFound(By.name("email"));

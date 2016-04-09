@@ -24,8 +24,7 @@ public class BookstoreShoppingIT {
         "The cardNumber must be between 19 and 19 characters long";
     public static final String EXPECTED_ORDER_NUMBER = "#00008";
 
-    @Inject
-    private Browser browser;
+    @Inject private Browser browser;
 
     private Address billingAddress = new Address(
         "1111 Mountain Dr",
@@ -57,8 +56,7 @@ public class BookstoreShoppingIT {
         "no comments"
     );
 
-    @Before
-    public void addToCartAndSetSomeInformation() {
+    @Before public void addToCartAndSetSomeInformation() {
         BookstoreHomepage homePage = new BookstoreHomepage(browser);   //<1>
         homePage.searchBook("Selenium WebDriver in Practice");         //<2>
 
@@ -67,8 +65,7 @@ public class BookstoreShoppingIT {
         bookPage.gotoCart();                                          //<5>
     }
 
-    @Test
-    public void invalidCreditCard() {
+    @Test public void invalidCreditCard() {
         ShoppingCartPage cartPage = new ShoppingCartPage(browser);                     //<6>
         cartPage.setBillingAddress(billingAddress);                   //<7>
         cartPage.setOtherInformation(otherInformation);               //<8>
@@ -78,8 +75,7 @@ public class BookstoreShoppingIT {
         assertEquals(EXPECTED_ERROR_MESSAGE, browser.getText(ERROR_MESSAGE));  //<11>
     }
 
-    @Test
-    public void purchaseSuccessful() {
+    @Test public void purchaseSuccessful() {
         new ShoppingCartPage(browser) {{
             setBillingAddress(billingAddress);
             setOtherInformation(otherInformation);
