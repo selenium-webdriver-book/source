@@ -16,7 +16,7 @@
         <jquery-ui.version>1.11.3</jquery-ui.version>
         <jquery.version>2.1.3</jquery.version>
         <jetty.version>9.2.3.v20140905</jetty.version>
-        <spring.version>4.1.7.RELEASE</spring.version>
+        <spring.version>4.2.5.RELEASE</spring.version>
     </properties>
 
     <dependencies>
