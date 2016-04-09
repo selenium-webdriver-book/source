@@ -1,0 +1,60 @@
+@startuml
+
+actor "Test Script"
+participant Datepicker
+participant YearPicker
+participant DisplayYear
+participant PreviousYear
+participant NextYear
+participant Browser
+participant Element
+
+activate "Test Script"
+activate Browser
+"Test Script" -> Datepicker : pick(APRIL, 1, 2018)
+activate Datepicker
+Datepicker -> YearPicker : pickYear(2018)
+activate YearPicker
+YearPicker -> DisplayYear: displayYear()
+activate DisplayYear
+DisplayYear -> Browser: untilFound(CALENDAR)
+Browser -> Element: <<create>>
+activate Element
+Element -> DisplayYear:
+DisplayYear -> Element : getText(DISPLAY_YEAR)
+
+Element -> YearPicker: displayYear
+deactivate Element
+deactivate DisplayYear
+
+alt pick a future date
+
+ YearPicker -> NextYear: accept(browser) (2018 - displayYear) times
+  activate NextYear
+  NextYear -> Browser : untilFound(CALENDAR)
+  Browser -> NextYear : Element
+  NextYear -> Element: click(NEXT_MONTH_BUTTON)
+  activate Element
+  Element -> Element: click()
+  deactivate Element
+  deactivate NextYear
+
+else pick a past date
+
+ YearPicker -> PreviousYear: accept(browser) (displayYear - 2018) times
+ activate PreviousYear
+ PreviousYear -> Browser : untilFound(CALENDAR)
+ Browser -> PreviousYear : Element
+ PreviousYear -> Element: click(PREV_MONTH_BUTTON)
+ activate Element
+ Element -> Element: click()
+ deactivate Element
+ deactivate PreviousYear
+
+end
+
+deactivate YearPicker
+deactivate Datepicker
+
+
+@enduml
