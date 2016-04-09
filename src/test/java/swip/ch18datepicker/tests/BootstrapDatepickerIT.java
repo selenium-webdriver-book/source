@@ -19,18 +19,17 @@ public class BootstrapDatepickerIT extends TestTimer {
 
     @Inject
     private Browser browser;
-    private BootstrapDatepickerPage bootstrapDatepickerPage;
 
     @Before
     public void setup() {
         browser.get("/bootstrap-datepicker.html");
-        bootstrapDatepickerPage = new BootstrapDatepickerPage(browser);
     }
 
     @Test
     public void pickADate() {
-        bootstrapDatepickerPage.pick(APRIL, 1, 2015);
-        assertEquals("01-04-2015", bootstrapDatepickerPage.getDate());
+        new BootstrapDatepickerPage(browser){{
+            pick(APRIL, 1, 2015);
+            assertEquals("01-04-2015", getDate());
+        }};
     }
-
 }

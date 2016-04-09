@@ -29,11 +29,11 @@ public class JQueryDatepickerV4IT extends TestTimer {
     @Before
     public void setup() {
         browser.get("/datepicker.html");
-        jQueryDatePickerPage = new JQueryDatepickerPage(browser);
     }
 
     @Test
     public void pickADate() {
+        jQueryDatePickerPage = new JQueryDatepickerPage(browser);
         jQueryDatePickerPage.pick(APRIL, 1, 2018);
         assertEquals("04/01/2018", jQueryDatePickerPage.getDate());
     }

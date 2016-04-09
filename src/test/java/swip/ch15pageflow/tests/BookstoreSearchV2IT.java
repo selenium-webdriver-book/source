@@ -14,11 +14,10 @@ public class BookstoreSearchV2IT {
     @Inject
     private Browser browser;
 
-    private BookstoreHomepage homePage;
-
     @Test
     public void invalidCardInfo() {
-        homePage = new BookstoreHomepage(browser);
-        homePage.searchBook("Selenium WebDriver in Practice");
+        new BookstoreHomepage(browser) {{
+            searchBook("Selenium WebDriver in Practice");
+        }};
     }
 }

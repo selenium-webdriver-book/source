@@ -26,7 +26,6 @@ public class BookstoreShoppingIT {
 
     @Inject
     private Browser browser;
-    private ShoppingCartPage cartPage;
 
     private Address billingAddress = new Address(
         "1111 Mountain Dr",
@@ -66,14 +65,13 @@ public class BookstoreShoppingIT {
         BookPage bookPage = new BookPage(browser);                    //<3>
         bookPage.addToCart();                                         //<4>
         bookPage.gotoCart();                                          //<5>
-
-        cartPage = new ShoppingCartPage(browser);                     //<6>
-        cartPage.setBillingAddress(billingAddress);                   //<7>
-        cartPage.setOtherInformation(otherInformation);               //<8>
     }
 
     @Test
     public void invalidCreditCard() {
+        ShoppingCartPage cartPage = new ShoppingCartPage(browser);                     //<6>
+        cartPage.setBillingAddress(billingAddress);                   //<7>
+        cartPage.setOtherInformation(otherInformation);               //<8>
         cartPage.setCreditCard(invalidCreditCard);          //<9>
         cartPage.continues();                               //<10>
 
@@ -82,11 +80,13 @@ public class BookstoreShoppingIT {
 
     @Test
     public void purchaseSuccessful() {
-        cartPage.setCreditCard(creditCard);
-        cartPage.continues();
-
-        assertEquals(EXPECTED_ORDER_NUMBER, cartPage.getOrderNumber());  //<1>
+        new ShoppingCartPage(browser) {{
+            setBillingAddress(billingAddress);
+            setOtherInformation(otherInformation);
+            setCreditCard(creditCard);    //<1>
+            continues();
+            assertEquals(EXPECTED_ORDER_NUMBER, getOrderNumber());  //<2>
+        }};
     }
-
 }
 
