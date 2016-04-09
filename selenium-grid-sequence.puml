@@ -4,7 +4,6 @@ actor You
 participant "Test Script"
 participant Hub
 participant "Windows Node"
-participant "Mac Node"
 
 activate "Windows Node"
 "Windows Node" -> Hub : Hello, I have Chrome and IE\n installed and I'm Windows\n - I'm ready to run tests!
@@ -12,19 +11,16 @@ activate Hub
 Hub -> Hub : I'll store that for later on.
 activate Hub
 deactivate Hub
-deactivate Hub
 Hub -> "Windows Node" : OK
+deactivate Hub
 deactivate "Windows Node"
 
-activate "Mac Node"
-"Mac Node" -> Hub : Hello, I'm running Safari and Firefox on Mac\n - I'm ready to run tests!
-activate Hub
-Hub -> Hub : I'll store that for later on.
-activate Hub
-deactivate Hub
-deactivate Hub
-Hub -> "Mac Node" : OK
-deactivate "Mac Node"
+note right
+    you'll have many nodes
+    with different
+    operating systems
+    and browsers
+end note
 
 activate You
 
@@ -39,6 +35,9 @@ deactivate Hub
 Hub -> "Windows Node" : Open a Chrome browser\n please.
 activate "Windows Node"
 "Windows Node" -> Hub : OK
+Hub -> Hub : lock node
+activate Hub
+deactivate Hub
 Hub -> "Test Script" : OK
 deactivate Hub
 
@@ -61,6 +60,9 @@ activate Hub
 Hub -> "Windows Node" : Quit browser.
 "Windows Node" -> Hub : OK
 deactivate "Windows Node"
+Hub -> Hub : unlock node
+activate Hub
+deactivate Hub
 Hub -> "Test Script" : OK
 deactivate Hub
 "Test Script" -> You : Tests passed/failed.
