@@ -21,15 +21,18 @@ public class DelegatingSearchContext<T extends SearchContext>  //<1>
         this.delegate = delegate;
     }
 
-    @Override public List<WebElement> findElements(By by) {
+    @Override
+    public List<WebElement> findElements(By by) {
         return delegate.findElements(by);
     }
 
-    @Override public Element findElement(By by) {
+    @Override
+    public Element findElement(By by) {
         return new Element(delegate.findElement(by));
     }
 
-    @Override public Optional<Element> optionalElement(By by) {
+    @Override
+    public Optional<Element> optionalElement(By by) {
         try {
             return Optional.of(findElement(by));
         } catch (NoSuchElementException ignored) {
@@ -37,7 +40,8 @@ public class DelegatingSearchContext<T extends SearchContext>  //<1>
         }
     }
 
-    @Override public Element untilFound(By by) {
+    @Override
+    public Element untilFound(By by) {
         return new FluentWait<>(this)
             .withTimeout(10, SECONDS)
             .pollingEvery(100, MILLISECONDS)

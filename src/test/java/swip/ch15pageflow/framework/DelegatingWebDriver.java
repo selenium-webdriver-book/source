@@ -10,48 +10,59 @@ public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> impl
        super( delegate);
     }
 
-    @Override public void get(String url) {
+    @Override
+    public void get(String url) {
         delegate.get(url);
         delegate.switchTo().window(delegate.getWindowHandle());
     }
 
-    @Override public String getCurrentUrl() {
+    @Override
+    public String getCurrentUrl() {
         return delegate.getCurrentUrl();
     }
 
-    @Override public String getTitle() {
+    @Override
+    public String getTitle() {
         return delegate.getTitle();
     }
 
-    @Override public String getPageSource() {
+    @Override
+    public String getPageSource() {
         return delegate.getPageSource();
     }
 
-    @Override public void close() {
+    @Override
+    public void close() {
         delegate.close();
     }
 
-    @Override public void quit() {
+    @Override
+    public void quit() {
         delegate.quit();
     }
 
-    @Override public Set<String> getWindowHandles() {
+    @Override
+    public Set<String> getWindowHandles() {
         return delegate.getWindowHandles();
     }
 
-    @Override public String getWindowHandle() {
+    @Override
+    public String getWindowHandle() {
         return delegate.getWindowHandle();
     }
 
-    @Override public TargetLocator switchTo() {
+    @Override
+    public TargetLocator switchTo() {
         return delegate.switchTo();
     }
 
-    @Override public Navigation navigate() {
+    @Override
+    public Navigation navigate() {
         return delegate.navigate();
     }
 
-    @Override public Options manage() {
+    @Override
+    public Options manage() {
         return delegate.manage();
     }
 }

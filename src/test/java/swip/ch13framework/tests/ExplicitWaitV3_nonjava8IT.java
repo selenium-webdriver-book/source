@@ -18,11 +18,13 @@ public class ExplicitWaitV3_nonjava8IT {
 
     private Browser browser;
 
-    @Inject private void setWebDriver(WebDriver driver) {
+    @Inject
+    private void setWebDriver(WebDriver driver) {
         this.browser = new Browser(driver);
     }
 
-    @Test public void explicitWait() throws Exception {
+    @Test
+    public void explicitWait() throws Exception {
         browser.get("/location-chooser.html");
         browser.untilFound(linkText("change location")).click();
         Element tabMenu = browser.findElement(By.id("location"));

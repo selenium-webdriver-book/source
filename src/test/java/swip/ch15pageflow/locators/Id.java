@@ -42,11 +42,13 @@ public enum Id implements Supplier<By> {
         this.by = id(id);
     }
 
-    @Override public By get() {
+    @Override
+    public By get() {
         return by;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return by.toString();
     }
 }

@@ -19,11 +19,13 @@ public class ExplicitWaitV5IT {
 
     private Browser browser;
 
-    @Inject private void setWebDriver(WebDriver driver) {
+    @Inject
+    private void setWebDriver(WebDriver driver) {
         this.browser = new Browser(driver);
     }
 
-    @Test public void searchScope() throws Exception {
+    @Test
+    public void searchScope() throws Exception {
         browser.get("/location-chooser.html");
         browser.findElement(linkText("change location")).click();
         Element tabMenu = browser.findElement(By.id("location"));

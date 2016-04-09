@@ -9,7 +9,8 @@ import static swip.ch17jquerydatepicker.locators.JQueryById.DATE_FIELD;
 
 public class Trigger implements Consumer<Browser> {
 
-    @Override public void accept(Browser browser) {
+    @Override
+    public void accept(Browser browser) {
         browser.click(DATE_FIELD);
     }
 }

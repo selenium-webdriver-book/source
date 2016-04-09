@@ -2,7 +2,9 @@ package swip.ch16table.tests;
 
 
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.framework.Browser;
 import swip.ch15pageflow.framework.BrowserRunner;
@@ -20,7 +22,10 @@ import static swip.ch16table.mapper.CityMapper.MAPPER_LAMBDA;
 @RunWith(BrowserRunner.class)
 public class CityTableV2IT {
 
-    @Inject private Browser browser;
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+    @Inject
+    private Browser browser;
 
     private static final TableContents<City> EXPECTED = new TableContents<>(
         Arrays.asList("Id", "City Name", "State Name"),
@@ -50,7 +55,8 @@ public class CityTableV2IT {
         )
     );
 
-    @Test public void testReadFromTableJava8() {
+    @Test
+    public void testReadFromTableJava8() {
 
         browser.get("/city-table.html");
 

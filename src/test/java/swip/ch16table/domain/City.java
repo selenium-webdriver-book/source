@@ -11,7 +11,8 @@ public class City extends DomainBase {
         this.stateName = stateName;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return "new City(" + id +
                 ",\"" + name + "\",\"" +
             stateName  + "\")\n";

@@ -10,7 +10,8 @@ public class Element extends DelegatingWebElement implements Locatable {
         super(delegate);
     }
 
-    @Override public Coordinates getCoordinates() {
+    @Override
+    public Coordinates getCoordinates() {
         return ((Locatable) delegate).getCoordinates();
     }
 

@@ -29,14 +29,16 @@ public class ShoppingCartPageIT {
         "no comments"
     );
 
-    @Before public void addBookToCart() throws InterruptedException {
+    @Before
+    public void addBookToCart() throws InterruptedException {
         browser.get("/bookstore/books/selenium-webdriver-in-practice");
         BookPage bookPage = new BookPage(browser);
         bookPage.addToCart();
         bookPage.gotoCart();
     }
 
-    @Test public void weShouldBeABleToCompleteOtherInformationIndividually() {
+    @Test
+    public void weShouldBeABleToCompleteOtherInformationIndividually() {
         NaiveShoppingCartPage page = new NaiveShoppingCartPage(browser);
         page.setComment("no comments");                                    //<1>
         page.setCoupon("no code");
@@ -51,7 +53,8 @@ public class ShoppingCartPageIT {
         assertTrue(page.isSendOrderMessages());
     }
 
-    @Test public void weShouldBeABleToCompleteOtherInformation() {
+    @Test
+    public void weShouldBeABleToCompleteOtherInformation() {
         ShoppingCartPage page = new ShoppingCartPage(browser);
         page.setOtherInformation(info);
 

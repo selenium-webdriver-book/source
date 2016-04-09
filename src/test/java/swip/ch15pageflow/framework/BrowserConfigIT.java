@@ -8,9 +8,11 @@ import javax.inject.Inject;
 @RunWith(BrowserRunner.class)
 public class BrowserConfigIT {
 
-    @Inject private Browser browser;
+    @Inject
+    private Browser browser;
 
-    @Test public void pass() throws Exception {
+    @Test
+    public void pass() throws Exception {
         browser.get("/");
     }
 }

@@ -10,7 +10,8 @@ public class NextYear implements Consumer<Browser> {
 
     private final NextMonth nextMonth = new NextMonth();
 
-    @Override public void accept(Browser browser) {
+    @Override
+    public void accept(Browser browser) {
         for (int i = 0; i < 12; i++) {
             nextMonth.accept(browser);
         }

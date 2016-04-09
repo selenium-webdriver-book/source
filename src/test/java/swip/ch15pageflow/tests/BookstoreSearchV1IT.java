@@ -11,11 +11,13 @@ import javax.inject.Inject;
 
 @RunWith(BrowserRunner.class)
 public class BookstoreSearchV1IT {
-    @Inject private Browser browser;
+    @Inject
+    private Browser browser;
 
     private BookstoreHomepage homePage;
 
-    @Test public void invalidCardInfo() {
+    @Test
+    public void invalidCardInfo() {
         homePage = new BookstoreHomepage(browser);
         homePage.searchBook("Selenium WebDriver in Practice");
     }

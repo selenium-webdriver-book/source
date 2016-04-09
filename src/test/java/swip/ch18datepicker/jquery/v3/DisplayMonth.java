@@ -14,7 +14,8 @@ import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
  */
 public class DisplayMonth implements Function<Browser, Integer> {
 
-    @Override public Integer apply(Browser browser) {
+    @Override
+    public Integer apply(Browser browser) {
         String text = browser.untilFound(CALENDAR)
             .getText(MONTH).toUpperCase();
         return Month.valueOf(text).ordinal();

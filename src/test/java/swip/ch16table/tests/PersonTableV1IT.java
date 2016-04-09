@@ -2,7 +2,9 @@ package swip.ch16table.tests;
 
 
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.framework.Browser;
 import swip.ch15pageflow.framework.BrowserRunner;
@@ -19,7 +21,10 @@ import static swip.ch15pageflow.locators.TagName.TABLE;
 @RunWith(BrowserRunner.class)
 public class PersonTableV1IT {
 
-    @Inject private Browser browser;
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+    @Inject
+    private Browser browser;
 
     public static final PersonTableContents EXPECTED =
         new PersonTableContents(
@@ -43,7 +48,8 @@ public class PersonTableV1IT {
             )
         );
 
-    @Test public void testReadFromPersonTable() {
+    @Test
+    public void testReadFromPersonTable() {
 
         browser.get("/people-table.html");
 
@@ -54,7 +60,8 @@ public class PersonTableV1IT {
         assertEquals(EXPECTED.describeDiff(actual), EXPECTED, actual);
     }
 
-    @Test @Ignore("You can remove this to run it and check the output")
+    @Test
+    @Ignore("You can remove this to run it and check the output")
     public void testReadFromPersonTableButFailed() {
 
         browser.get("/people-table.html");

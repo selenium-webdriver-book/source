@@ -18,11 +18,11 @@ public class Browser implements ExplicitWait {
         driver.get(url);
     }
 
-    @Override public Element findElement(By by) {
+    public Element findElement(By by) {
         return new Element(driver.findElement(by));
     }
 
-    @Override public Element untilFound(By by) {  // <2>
+    public Element untilFound(By by) {  // <2>
         return new FluentWait<>(this)
             .withTimeout(10, TimeUnit.SECONDS)
             .pollingEvery(100, TimeUnit.MILLISECONDS)

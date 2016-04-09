@@ -3,7 +3,7 @@ package swip.ch13framework.v4;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Element implements ExplicitWait {
+public class Element implements ExplicitWait, SearchScope {
     private final WebElement webElement;
 
     public Element(WebElement webElement) {
@@ -14,7 +14,8 @@ public class Element implements ExplicitWait {
         webElement.click();
     }
 
-    @Override public Element findElement(By by) {
+    @Override
+    public Element findElement(By by) {
         return new Element(webElement.findElement(by));
     }
 

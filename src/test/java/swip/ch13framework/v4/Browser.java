@@ -14,7 +14,8 @@ public class Browser implements SearchScope {
         driver.get(url);
     }
 
-    @Override public Element findElement(By by) {
+    @Override
+    public Element findElement(By by) {
         return new Element(driver.findElement(by));
     }
 }

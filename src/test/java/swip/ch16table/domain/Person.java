@@ -13,7 +13,8 @@ public class Person extends DomainBase {
         this.age = age;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return "new Person(\"" + id +
             "\",\"" + firstName + "\",\"" +
             lastName + "\"," + age + ")\n";

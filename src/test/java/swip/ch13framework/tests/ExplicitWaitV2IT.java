@@ -19,7 +19,8 @@ public class ExplicitWaitV2IT {
 
     private Browser browser;
 
-    @Inject private void setWebDriver(WebDriver driver) {
+    @Inject
+    private void setWebDriver(WebDriver driver) {
         this.browser = new Browser(driver, "http://localhost:8080");
     }
 

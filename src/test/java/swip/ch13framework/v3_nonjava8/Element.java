@@ -19,7 +19,9 @@ public class Element implements ExplicitWait {
         webElement.click();
     }
 
-    @Override public Element findElement(By by) {
+
+    @Override
+    public Element findElement(By by) {
         return new Element(webElement.findElement(by));
     }
 
@@ -27,7 +29,7 @@ public class Element implements ExplicitWait {
         return webElement.getText();
     }
 
-    @Override public Element untilFound(By by) {  // <2>
+    public Element untilFound(By by) {  // <2>
         return new FluentWait<>(this)
             .withTimeout(10, TimeUnit.SECONDS)
             .pollingEvery(100, TimeUnit.MILLISECONDS)

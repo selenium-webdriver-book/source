@@ -1,7 +1,9 @@
 package swip.ch16table.tests;
 
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,9 +19,12 @@ import static org.junit.Assert.assertEquals;
 @RunWith(BrowserRunner.class)
 public class NaiveTableIT {
 
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
     @Inject private Browser browser;
 
-    @Test public void testReadFromTable() {
+    @Test
+    public void testReadFromTable() {
 
         browser.get("/people-table.html");
 

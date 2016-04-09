@@ -21,9 +21,11 @@ import static org.openqa.selenium.By.linkText;
 @RunWith(WebDriverRunner.class)
 public class LocatingLogicWithExplicitWaitIT extends TestTimer {
 
-    @Inject private WebDriver driver;
+    @Inject
+    private WebDriver driver;
 
-    @Test public void usingExplicitWait() {
+    @Test
+    public void usingExplicitWait() {
         driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
 
@@ -66,7 +68,8 @@ public class LocatingLogicWithExplicitWaitIT extends TestTimer {
             .getText());
     }
 
-    @Test public void usingExplicitWaitLambda() {
+    @Test
+    public void usingExplicitWaitLambda() {
         driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5); // <1>

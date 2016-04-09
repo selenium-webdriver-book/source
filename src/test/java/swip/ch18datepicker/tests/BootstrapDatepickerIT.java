@@ -17,13 +17,16 @@ import static org.junit.Assert.assertEquals;
 @RunWith(BrowserRunner.class)
 public class BootstrapDatepickerIT extends TestTimer {
 
-    @Inject private Browser browser;
+    @Inject
+    private Browser browser;
 
-    @Before public void setup() {
+    @Before
+    public void setup() {
         browser.get("/bootstrap-datepicker.html");
     }
 
-    @Test public void pickADate() {
+    @Test
+    public void pickADate() {
         new BootstrapDatepickerPage(browser){{
             pick(APRIL, 1, 2015);
             assertEquals("01-04-2015", getDate());

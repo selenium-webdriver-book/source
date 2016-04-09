@@ -18,9 +18,11 @@ import static org.openqa.selenium.By.linkText;
 @RunWith(WebDriverRunner.class)
 public class LocatingLogicWithImplicitWaitIT extends TestTimer{
 
-    @Inject private WebDriver driver;
+    @Inject
+    private WebDriver driver;
 
-    @Test public void usingImplicitWait() {
+    @Test
+    public void usingImplicitWait() {
         driver.manage().timeouts().implicitlyWait(5, SECONDS); // <1>
         driver.get("/location-chooser.html");
         driver.findElement(linkText("change location")).click();

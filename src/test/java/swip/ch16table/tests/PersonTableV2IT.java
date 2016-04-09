@@ -22,7 +22,10 @@ import static swip.ch16table.mapper.PersonMapper.MAPPER_NON_JAVA_8;
 @RunWith(BrowserRunner.class)
 public class PersonTableV2IT {
 
-    @Inject private Browser browser;
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+    @Inject
+    private Browser browser;
 
     private static final TableContents<Person> EXPECTED = new TableContents<>(
         Arrays.asList("Id", "First Name", "Last Name", "Age"),
@@ -44,7 +47,8 @@ public class PersonTableV2IT {
         )
     );
 
-    @Test public void testReadFromTable() {
+    @Test
+    public void testReadFromTable() {
 
         browser.get("/people-table.html");
 
@@ -61,7 +65,8 @@ public class PersonTableV2IT {
         assertEquals(EXPECTED.describeDiff(actual), EXPECTED, actual);
     }
 
-    @Test @Ignore("You can remove this to run it and check the output")
+    @Test
+    @Ignore("You can remove this to run it and check the output")
     public void missingExpectedValues() {
 
         browser.get("/people-table.html");

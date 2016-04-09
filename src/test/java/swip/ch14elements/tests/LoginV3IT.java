@@ -12,9 +12,11 @@ import javax.inject.Inject;
 @RunWith(BrowserRunner.class)
 public class LoginV3IT {
 
-    @Inject private Browser driver;
+    @Inject
+    private Browser driver;
 
-    @Test public void login() throws Exception {
+    @Test
+    public void login() throws Exception {
         driver.get("/login.html");
         driver.setInputText(By.name("email"),"foo@bar.com");
         driver.setInputText(By.name("password"),"secret");
