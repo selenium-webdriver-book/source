@@ -58,6 +58,12 @@ public class DelegatingWebElement
         return delegate.getSize();
     }
 
+    @Override
+    public Rectangle getRect() {
+        return delegate.getRect();
+    }
+
+
     @Override public String getCssValue(String propertyName) {
         return delegate.getCssValue(propertyName);
     }

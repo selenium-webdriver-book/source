@@ -56,6 +56,11 @@ public class DelegatingWebElement extends DelegatingSearchContext<WebElement> im
         return delegate.getSize();
     }
 
+    @Override
+    public Rectangle getRect() {
+        return delegate.getRect();
+    }
+
     @Override public String getCssValue(String propertyName) {
         return delegate.getCssValue(propertyName);
     }

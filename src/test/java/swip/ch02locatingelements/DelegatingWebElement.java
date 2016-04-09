@@ -1,11 +1,6 @@
 package swip.ch02locatingelements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.List;
 
@@ -91,6 +86,10 @@ public abstract class DelegatingWebElement implements WebElement {
         return delegate.getText();
     }
 
+    @Override
+    public Rectangle getRect() {
+        return delegate.getRect();
+    }
 
     @Override
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {

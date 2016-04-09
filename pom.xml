@@ -12,7 +12,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <selenium.version>2.52.0</selenium.version>
+        <selenium.version>2.53.0</selenium.version>
+        <selenium.htmlunit.version>2.52.0</selenium.htmlunit.version>
         <jquery-ui.version>1.11.3</jquery-ui.version>
         <jquery.version>2.1.3</jquery.version>
         <jetty.version>9.3.7.v20160115</jetty.version>
@@ -68,7 +69,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-htmlunit-driver</artifactId>
-            <version>${selenium.version}</version>
+            <version>${selenium.htmlunit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

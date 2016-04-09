@@ -2,8 +2,6 @@ package swip.ch15pageflow.framework;
 
 import org.openqa.selenium.*;
 
-import java.util.function.Function;
-
 public class DelegatingWebElement extends DelegatingSearchContext<WebElement> implements WebElement {
 
     public DelegatingWebElement(WebElement delegate) {
@@ -56,6 +54,11 @@ public class DelegatingWebElement extends DelegatingSearchContext<WebElement> im
 
     @Override public Dimension getSize() {
         return delegate.getSize();
+    }
+
+    @Override
+    public Rectangle getRect() {
+        return delegate.getRect();
     }
 
     @Override public String getCssValue(String propertyName) {
