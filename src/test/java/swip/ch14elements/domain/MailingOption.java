@@ -17,6 +17,11 @@ public enum MailingOption {
         this.string = string;
     }
 
+    @Override
+    public String toString() {
+        return string;
+    }
+
     public static MailingOption from(String string) {
         for (MailingOption o : values()) {
             if (o.string.equals(string)) {
