@@ -1,6 +1,6 @@
 package swip.ch16table.tests;
 
-
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
@@ -48,10 +48,15 @@ public class PersonTableV1IT {
             )
         );
 
+
+    @Before
+    public void gotoSite() {
+        browser.get("/people-table.html");
+    }
+
+
     @Test
     public void testReadFromPersonTable() {
-
-        browser.get("/people-table.html");
 
         PersonTable table = new PersonTable(browser.untilFound(TABLE));
 
@@ -63,8 +68,6 @@ public class PersonTableV1IT {
     @Test
     @Ignore("You can remove this to run it and check the output")
     public void testReadFromPersonTableButFailed() {
-
-        browser.get("/people-table.html");
 
         PersonTable table = new PersonTable(browser.untilFound(TABLE));
 

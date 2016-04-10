@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.toList;
 import static swip.ch15pageflow.locators.TagName.*;
 
 public class Table<T> {
@@ -34,7 +33,7 @@ public class Table<T> {
                         tr.findElements(TD)    //<10>
                             .collect(Collectors.toList()) //<11>
                     )
-            ).collect(toList());   //<12>
+            ).collect(Collectors.toList());   //<12>
     }
 
     public TableContents<T> getContents() {

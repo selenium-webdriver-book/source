@@ -1,6 +1,7 @@
 package swip.ch16table.tests;
 
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
@@ -47,10 +48,13 @@ public class PersonTableV2IT {
         )
     );
 
+    @Before
+    public void gotoSite() {
+        browser.get("/people-table.html");
+    }
+
     @Test
     public void testReadFromTable() {
-
-        browser.get("/people-table.html");
 
         Table<Person> table = new Table<>(browser.untilFound(TABLE),
             cells ->
@@ -68,8 +72,6 @@ public class PersonTableV2IT {
     @Test
     @Ignore("You can remove this to run it and check the output")
     public void missingExpectedValues() {
-
-        browser.get("/people-table.html");
 
         Table<Person> table = new Table<>(browser.untilFound(TABLE), MAPPER_NON_JAVA_8);
 

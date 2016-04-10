@@ -1,6 +1,7 @@
 package swip.ch16table.tests;
 
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
@@ -17,8 +18,6 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static swip.ch15pageflow.locators.TagName.TABLE;
-
-;
 
 @RunWith(BrowserRunner.class)
 public class CityTableV1IT {
@@ -47,10 +46,13 @@ public class CityTableV1IT {
             )
         );
 
+    @Before
+    public void gotoSite() {
+        browser.get("/city-table.html");
+    }
+
     @Test
     public void testReadFromTable() {
-
-        browser.get("/city-table.html");
 
         CityTable table = new CityTable(browser.untilFound(TABLE));
 
@@ -73,8 +75,6 @@ public class CityTableV1IT {
     @Test
     @Ignore("You can remove this to run it and check the output")
     public void failedToReadFromTable() {
-
-        browser.get("/city-table.html");
 
         CityTable table = new CityTable(browser.untilFound(TABLE));
 

@@ -1,6 +1,7 @@
 package swip.ch16table.tests;
 
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
@@ -55,10 +56,14 @@ public class CityTableV2IT {
         )
     );
 
+    @Before
+    public void gotoSite() {
+        browser.get("/city-table.html");
+    }
+
+
     @Test
     public void testReadFromTableJava8() {
-
-        browser.get("/city-table.html");
 
         Table<City> table = new Table<>(browser.untilFound(TABLE),
             cells ->
@@ -75,8 +80,6 @@ public class CityTableV2IT {
     @Test
     @Ignore("You can remove this to run it and check the output")
     public void testReadFromTableButFailed() {
-
-        browser.get("/city-table.html");
 
         Table<City> table = new Table<>(
             browser.untilFound(TABLE), MAPPER_LAMBDA
