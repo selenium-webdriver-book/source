@@ -3,7 +3,6 @@ package swip.ch17jquerydatepicker.jquery.v2;
 import java.time.LocalDate;
 import java.time.Month;
 
-
 public class JQueryDatepicker {
 
     private final JQueryCalendar calendar;

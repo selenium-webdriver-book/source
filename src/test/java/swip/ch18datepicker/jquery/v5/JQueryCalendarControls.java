@@ -9,7 +9,6 @@ import static swip.ch17jquerydatepicker.locators.JQueryByClassName.NEXT_MONTH_BU
 import static swip.ch17jquerydatepicker.locators.JQueryByClassName.PREV_MONTH_BUTTON;
 import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
 
-
 public enum JQueryCalendarControls implements Consumer<Browser> {
 
     TRIGGER {

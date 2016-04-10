@@ -1,6 +1,5 @@
 package swip.ch18datepicker.tests;
 
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,7 +20,6 @@ public class JQueryDatepickerV4IT extends TestTimer {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-
     @Inject
     private Browser browser;
     private JQueryDatepickerPage jQueryDatePickerPage;
@@ -37,5 +35,4 @@ public class JQueryDatepickerV4IT extends TestTimer {
         jQueryDatePickerPage.pick(APRIL, 1, 2018);
         assertEquals("04/01/2018", jQueryDatePickerPage.getDate());
     }
-
 }

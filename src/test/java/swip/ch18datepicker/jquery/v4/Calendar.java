@@ -4,7 +4,6 @@ import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Consumer;
 
-
 public class Calendar {
 
     private final Browser browser;        //<1>

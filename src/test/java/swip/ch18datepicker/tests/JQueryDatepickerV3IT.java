@@ -1,6 +1,5 @@
 package swip.ch18datepicker.tests;
 
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,7 +20,6 @@ public class JQueryDatepickerV3IT extends TestTimer {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-
     @Inject
     private Browser browser;
     private JQueryDatepickerPage jQueryDatePickerPage;

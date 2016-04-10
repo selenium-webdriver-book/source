@@ -13,9 +13,8 @@ import javax.inject.Inject;
 import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
 
-
 @RunWith(BrowserRunner.class)
-public class JQueryDatepickerV5IT extends TestTimer{
+public class JQueryDatepickerV5IT extends TestTimer {
 
     @Inject
     private Browser browser;
@@ -32,5 +31,4 @@ public class JQueryDatepickerV5IT extends TestTimer{
         jQueryDatePickerPage.pick(APRIL, 1, 2014);
         assertEquals("04/01/2014", jQueryDatePickerPage.getDate());
     }
-
 }

@@ -1,13 +1,10 @@
 package swip.ch18datepicker.bootstrap;
 
-
-
 import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Consumer;
 
 import static swip.ch18datepicker.bootstrap.BootstrapByClassName.*;
-
 
 public enum BootstrapCalendarControls implements Consumer<Browser> {    //<6>
     TRIGGER {
@@ -19,16 +16,14 @@ public enum BootstrapCalendarControls implements Consumer<Browser> {    //<6>
     NEXT_MONTH {
         @Override
         public void accept(Browser browser) {
-            browser.untilFound(CALENDAR)
-                .click(NEXT_MONTH_BUTTON);          // <2>
+            browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);          // <2>
         }
 
     },
     PREVIOUS_MONTH {
         @Override
         public void accept(Browser browser) {
-            browser.untilFound(CALENDAR)
-                .click(PREV_MONTH_BUTTON);           //<3>
+            browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);           //<3>
         }
     },
 

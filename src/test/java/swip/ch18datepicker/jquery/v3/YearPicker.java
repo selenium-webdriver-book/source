@@ -5,7 +5,6 @@ import swip.ch15pageflow.framework.Browser;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-
 public class YearPicker {
 
     private final Browser browser;                             //<1>

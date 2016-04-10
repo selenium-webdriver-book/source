@@ -1,6 +1,5 @@
 package swip.ch18datepicker.datepicker;
 
-
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -22,9 +21,9 @@ public class Datepicker {
      * Constructor of the Datepicker
      *
      * @param calendar    calendar
-     * @param yearPicker
-     * @param monthPicker
-     * @param dayPicker
+     * @param yearPicker  yearPicker
+     * @param monthPicker monthPicker
+     * @param dayPicker   dayPicker
      */
     public Datepicker(Calendar calendar,
                       CalendarPicker yearPicker,

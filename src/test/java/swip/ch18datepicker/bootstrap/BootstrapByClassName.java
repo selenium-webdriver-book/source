@@ -1,6 +1,5 @@
 package swip.ch18datepicker.bootstrap;
 
-
 import org.openqa.selenium.By;
 
 import java.util.function.Supplier;

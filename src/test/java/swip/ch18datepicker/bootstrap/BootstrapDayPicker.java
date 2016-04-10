@@ -1,6 +1,5 @@
 package swip.ch18datepicker.bootstrap;
 
-
 import swip.ch15pageflow.framework.Browser;
 import swip.ch18datepicker.datepicker.DayPicker;
 

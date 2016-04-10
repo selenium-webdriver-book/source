@@ -13,7 +13,6 @@ public class MonthPicker {
     private final Consumer<Browser> nextMonth;                //<3>
     private final Function<Browser, Integer> displayMonth;      //<4>
 
-
     public MonthPicker(Browser browser,                         //<5>
                        Consumer<Browser> previousMonth,
                        Consumer<Browser> nextMonth,

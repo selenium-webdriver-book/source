@@ -1,6 +1,5 @@
 package swip.ch18datepicker.jquery.v5;
 
-
 import swip.ch15pageflow.framework.Browser;
 import swip.ch18datepicker.datepicker.DayPicker;
 

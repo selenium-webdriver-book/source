@@ -5,14 +5,12 @@ import swip.ch15pageflow.framework.Browser;
 import swip.ch17jquerydatepicker.locators.JQueryById;
 import swip.ch17jquerydatepicker.locators.JQueryPredicates;
 
-
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.function.Supplier;
 
 import static swip.ch17jquerydatepicker.locators.JQueryByClassName.*;
 import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
-
 
 public class JQueryDatepicker {
 

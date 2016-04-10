@@ -6,7 +6,6 @@ import static org.openqa.selenium.By.linkText;
 import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
 import static swip.ch17jquerydatepicker.locators.JQueryPredicates.CALENDAR_CLOSED;
 
-
 public class JQueryDayPicker implements DayPicker {
 
     private final Browser browser;

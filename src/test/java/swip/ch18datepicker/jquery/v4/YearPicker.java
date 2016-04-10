@@ -5,7 +5,6 @@ import swip.ch15pageflow.framework.Browser;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-
 public class YearPicker {
 
     private final Browser browser;                             //<1>
@@ -24,7 +23,7 @@ public class YearPicker {
     }  //<5>
 
     public void pick(int year) {
-        int difference =  displayYear.apply(browser) - year;   //<6>
+        int difference = displayYear.apply(browser) - year;   //<6>
         if (difference < 0) {                                 //<7>
             for (int i = difference; i < 0; i++) {            //<8>
                 nextYear.accept(browser);

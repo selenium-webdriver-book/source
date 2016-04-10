@@ -13,7 +13,6 @@ import javax.inject.Inject;
 import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
 
-
 @RunWith(BrowserRunner.class)
 public class BootstrapDatepickerIT extends TestTimer {
 
@@ -27,7 +26,7 @@ public class BootstrapDatepickerIT extends TestTimer {
 
     @Test
     public void pickADate() {
-        new BootstrapDatepickerPage(browser){{
+        new BootstrapDatepickerPage(browser) {{
             pick(APRIL, 1, 2015);
             assertEquals("01-04-2015", getDate());
         }};

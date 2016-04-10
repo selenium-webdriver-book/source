@@ -1,9 +1,9 @@
 package swip.ch18datepicker.jquery.v4;
+
 import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
-
 
 public class MonthPicker {
 
@@ -11,7 +11,6 @@ public class MonthPicker {
     private final Consumer<Browser> previousMonth;
     private final Consumer<Browser> nextMonth;
     private final Function<Browser, Integer> displayMonth;
-
 
     public MonthPicker(Browser browser,
                        Consumer<Browser> previousMonth,
@@ -24,14 +23,14 @@ public class MonthPicker {
     }
 
     public void pick(int month) {
-        int difference =  displayMonth.apply(browser) - month;
+        int difference = displayMonth.apply(browser) - month;
         if (difference < 0) {
             for (int i = difference; i < 0; i++) {
                 nextMonth.accept(browser);
             }
         } else if (difference > 0) {
             for (int i = 0; i < difference; i++) {
-               previousMonth.accept(browser);
+                previousMonth.accept(browser);
             }
         }
     }

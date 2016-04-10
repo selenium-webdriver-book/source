@@ -1,7 +1,5 @@
 package swip.ch17jquerydatepicker.locators;
 
-
-
 import swip.ch15pageflow.framework.Element;
 import swip.ch15pageflow.framework.ExplicitWait;
 

@@ -1,6 +1,5 @@
 package swip.ch17jquerydatepicker.locators;
 
-
 import org.openqa.selenium.By;
 
 import java.util.function.Supplier;
