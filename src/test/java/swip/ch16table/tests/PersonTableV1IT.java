@@ -1,6 +1,5 @@
 package swip.ch16table.tests;
 
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
@@ -37,24 +36,6 @@ public class PersonTableV1IT {
             )
         );
 
-    public static final PersonTableContents OUTDATED_EXPECTATION =
-        new PersonTableContents(
-            Arrays.asList("Id", "First Name", "Last Name", "Age"),
-            Arrays.asList(
-                new Person(1, "Eve", "Jackson", 94)
-                , new Person(2, "John", "Doe", 80)
-                , new Person(4, "Jill", "Smith", 50)
-                , new Person(5, "Jack", "Clyde", 78)
-            )
-        );
-
-
-    @Before
-    public void gotoSite() {
-        browser.get("/people-table.html");
-    }
-
-
     @Test
     public void testReadFromPersonTable() {
 
@@ -65,6 +46,17 @@ public class PersonTableV1IT {
         assertEquals(EXPECTED.describeDiff(actual), EXPECTED, actual);
     }
 
+    public static final PersonTableContents OUTDATED_EXPECTED =
+        new PersonTableContents(
+            Arrays.asList("Id", "First Name", "Last Name", "Age"),
+            Arrays.asList(
+                new Person(1, "Eve", "Jackson", 94)
+                , new Person(2, "John", "Doe", 80)
+                , new Person(4, "Jill", "Smith", 50)
+                , new Person(5, "Jack", "Clyde", 78)
+            )
+        );
+
     @Test
     @Ignore("You can remove this to run it and check the output")
     public void testReadFromPersonTableButFailed() {
@@ -73,7 +65,7 @@ public class PersonTableV1IT {
 
         PersonTableContents actual = table.getContents();
 
-        assertEquals(OUTDATED_EXPECTATION.describeDiff(actual), OUTDATED_EXPECTATION, actual);
+        assertEquals(OUTDATED_EXPECTED.describeDiff(actual), OUTDATED_EXPECTED, actual);
     }
 
 }

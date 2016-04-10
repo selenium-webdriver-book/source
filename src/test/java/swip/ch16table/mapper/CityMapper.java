@@ -13,6 +13,4 @@ public class CityMapper {
             new City(Integer.parseInt(cells.get(0).getText()),
                 cells.get(1).getText(),
                 cells.get(2).getText());
-
-
 }

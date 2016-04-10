@@ -1,6 +1,5 @@
 package swip.ch16table.tests;
 
-
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -28,6 +27,11 @@ public class CityTableV2IT {
     @Inject
     private Browser browser;
 
+    @Before
+    public void gotoSite() {
+        browser.get("/city-table.html");
+    }
+
     private static final TableContents<City> EXPECTED = new TableContents<>(
         Arrays.asList("Id", "City Name", "State Name"),
         Arrays.asList(
@@ -46,22 +50,6 @@ public class CityTableV2IT {
         )
     );
 
-    private static final TableContents<City> EXPECTED_FAILURE = new TableContents<>(
-        Arrays.asList("Id", "City Name", "State Name"),
-        Arrays.asList(
-            new City(1, "Xian", "Shanxi")
-            , new City(2, "Guangzhou", "Guangdong")
-            , new City(3, "Shaoguan", "Guangdong")
-            , new City(4, "Dallas", "Texas")
-        )
-    );
-
-    @Before
-    public void gotoSite() {
-        browser.get("/city-table.html");
-    }
-
-
     @Test
     public void testReadFromTableJava8() {
 
@@ -77,6 +65,16 @@ public class CityTableV2IT {
         assertEquals(EXPECTED.describeDiff(actual), EXPECTED, actual);
     }
 
+    private static final TableContents<City> OUTDATED_EXPECTED = new TableContents<>(
+        Arrays.asList("Id", "City Name", "State Name"),
+        Arrays.asList(
+            new City(1, "Xian", "Shanxi")
+            , new City(2, "Guangzhou", "Guangdong")
+            , new City(3, "Shaoguan", "Guangdong")
+            , new City(4, "Dallas", "Texas")
+        )
+    );
+
     @Test
     @Ignore("You can remove this to run it and check the output")
     public void testReadFromTableButFailed() {
@@ -87,7 +85,6 @@ public class CityTableV2IT {
 
         TableContents<City> actual = table.getContents();
 
-        assertEquals(EXPECTED_FAILURE.describeDiff(actual), EXPECTED_FAILURE, actual);
+        assertEquals(OUTDATED_EXPECTED.describeDiff(actual), OUTDATED_EXPECTED, actual);
     }
-
 }

@@ -1,13 +1,13 @@
-package swip.ch16table.v1;
+package swip.ch16table.v0_8;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import swip.ch15pageflow.framework.Element;
 import swip.ch16table.domain.Person;
-import swip.ch16table.mapper.PersonMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class PersonTable {
 
@@ -25,6 +25,19 @@ public class PersonTable {
         return headers;
     }
 
+    private static final Function<List<Element>, Person> MAPPER_NON_JAVA_8
+        = new Function<List<Element>, Person>() {
+        @Override
+        public Person apply(List<Element> cells) {
+            return new Person(
+                Integer.parseInt(cells.get(0).getText()),
+                cells.get(1).getText(),
+                cells.get(2).getText(),
+                Integer.parseInt(cells.get(3).getText())
+            );
+        }
+    };
+
     public List<Person> getRows() {
         List<Person> rows = new ArrayList<>();
 
@@ -36,13 +49,9 @@ public class PersonTable {
                 cells.add(new Element(cell));
             }
 
-            rows.add(PersonMapper.MAPPER_NON_JAVA_8.apply(cells));
+            rows.add(MAPPER_NON_JAVA_8.apply(cells));
 
         }
         return rows;
-    }
-
-    public PersonTableContents getContents() {
-        return new PersonTableContents(getHeaders(), getRows());
     }
 }

@@ -27,6 +27,11 @@ public class CityTableV1IT {
     @Inject
     private Browser browser;
 
+    @Before
+    public void gotoSite() {
+        browser.get("/city-table.html");
+    }
+
     private static final CityTableContents EXPECTED =
         new CityTableContents(
             Arrays.asList("Id", "City Name", "State Name"),
@@ -46,11 +51,6 @@ public class CityTableV1IT {
             )
         );
 
-    @Before
-    public void gotoSite() {
-        browser.get("/city-table.html");
-    }
-
     @Test
     public void testReadFromTable() {
 
@@ -61,7 +61,7 @@ public class CityTableV1IT {
         assertEquals(EXPECTED.describeDiff(actual), EXPECTED, actual);
     }
 
-    private static final CityTableContents OUTDATED_EXPECTATION =
+    private static final CityTableContents OUTDATED_EXPECTED =
         new CityTableContents(
             Arrays.asList("Id", "City Name", "State Name"),
             Arrays.asList(
@@ -80,8 +80,7 @@ public class CityTableV1IT {
 
         CityTableContents actual = table.getContents();
 
-        assertEquals(OUTDATED_EXPECTATION.describeDiff(actual),
-            OUTDATED_EXPECTATION, actual);
+        assertEquals(OUTDATED_EXPECTED.describeDiff(actual), OUTDATED_EXPECTED, actual);
     }
 
 }
