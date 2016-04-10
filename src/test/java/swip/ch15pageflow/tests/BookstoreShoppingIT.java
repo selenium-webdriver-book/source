@@ -3,6 +3,8 @@ package swip.ch15pageflow.tests;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import swip.ch14elements.domain.MailingOption;
+import swip.ch14elements.domain.OtherInformation;
 import swip.ch15pageflow.domain.*;
 import swip.ch15pageflow.framework.Browser;
 import swip.ch15pageflow.framework.BrowserRunner;
@@ -45,6 +47,18 @@ public class BookstoreShoppingIT {
         "no comments"
     );
 
+    private CreditCard invalidCreditCard = new CreditCard(
+        CreditCardType.MasterCard,
+        "4111-1111-1111",
+        "123",
+        Month.DECEMBER, 2020);
+
+
+    private CreditCard creditCard = new CreditCard(
+        CreditCardType.MasterCard,
+        "4111-1111-1111-1111",
+        "123",
+        Month.DECEMBER, 2020);
     @Before
     public void searchBookAndAddToCart() {
         BookstoreHomepage homePage = new BookstoreHomepage(browser);   //<1>
@@ -54,12 +68,6 @@ public class BookstoreShoppingIT {
         bookPage.addToCart();                                         //<4>
         bookPage.gotoCart();                                          //<5>
     }
-
-    private CreditCard invalidCreditCard = new CreditCard(
-        CreditCardType.MasterCard,
-        "4111-1111-1111",
-        "123",
-        Month.DECEMBER, 2020);
 
     @Test
     public void invalidCreditCard() {
@@ -71,12 +79,6 @@ public class BookstoreShoppingIT {
 
         assertEquals(EXPECTED_ERROR_MESSAGE, browser.getText(ERROR_MESSAGE));  //<11>
     }
-
-    private CreditCard creditCard = new CreditCard(
-        CreditCardType.MasterCard,
-        "4111-1111-1111-1111",
-        "123",
-        Month.DECEMBER, 2020);
 
     @Test
     public void purchaseSuccessful() {

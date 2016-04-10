@@ -1,7 +1,6 @@
 package swip.ch15pageflow.pages.v2;
 
-
-import swip.ch15pageflow.domain.OtherInformation;
+import swip.ch14elements.domain.OtherInformation;
 import swip.ch15pageflow.framework.Browser;
 
 import static swip.ch15pageflow.locators.Id.*;
