@@ -1,6 +1,5 @@
 package swip.ch16table.v1;
 
-
 import swip.ch16table.domain.DomainBase;
 import swip.ch16table.domain.Person;
 

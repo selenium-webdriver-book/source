@@ -1,6 +1,5 @@
 package swip.ch16table.v2;
 
-
 import swip.ch16table.domain.DomainBase;
 
 import java.util.ArrayList;

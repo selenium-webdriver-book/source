@@ -1,6 +1,5 @@
 package swip.ch15pageflow.locators;
 
-
 import org.openqa.selenium.By;
 
 import java.util.function.Supplier;
@@ -12,10 +11,7 @@ import static org.openqa.selenium.By.cssSelector;
  */
 public enum CssSelector implements Supplier<By> {
 
-    UPDATE("input[value='Update']"),
-    CONTINUE("input[value='Continue']"),
-    NEED_CONIRM("input[value='Need Confirm']"),
-    SUBMIT("input[type='Submit']");
+    CONTINUE("input[value='Continue']");
 
     private final By by;
 

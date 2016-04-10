@@ -40,7 +40,6 @@ public class ShoppingCartPage {
     }
 
     public String getOrderNumber() {
-        return browser.untilFound(ORDER_NUMBER_ID)
-            .getText(ORDER_NUMBER);    //<2>
+        return browser.untilFound(ORDER_NUMBER_ID).getText(ORDER_NUMBER);    //<2>
     }
 }

@@ -1,6 +1,5 @@
 package swip.ch15pageflow.tests;
 
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch15pageflow.framework.Browser;

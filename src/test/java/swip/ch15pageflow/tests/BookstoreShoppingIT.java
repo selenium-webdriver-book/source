@@ -1,6 +1,5 @@
 package swip.ch15pageflow.tests;
 
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,17 +35,6 @@ public class BookstoreShoppingIT {
         Countries.United_States,
         "Sanjay",
         "Rao");
-    private CreditCard creditCard = new CreditCard(
-        CreditCardType.MasterCard,
-        "4111-1111-1111-1111",
-        "123",
-        Month.DECEMBER, 2020);
-
-    private CreditCard invalidCreditCard = new CreditCard(
-        CreditCardType.MasterCard,
-        "4111-1111-1111",
-        "123",
-        Month.DECEMBER, 2020);
 
     private OtherInformation otherInformation = new OtherInformation(
         "no code",
@@ -67,6 +55,12 @@ public class BookstoreShoppingIT {
         bookPage.gotoCart();                                          //<5>
     }
 
+    private CreditCard invalidCreditCard = new CreditCard(
+        CreditCardType.MasterCard,
+        "4111-1111-1111",
+        "123",
+        Month.DECEMBER, 2020);
+
     @Test
     public void invalidCreditCard() {
         ShoppingCartPage cartPage = new ShoppingCartPage(browser);                     //<6>
@@ -77,6 +71,12 @@ public class BookstoreShoppingIT {
 
         assertEquals(EXPECTED_ERROR_MESSAGE, browser.getText(ERROR_MESSAGE));  //<11>
     }
+
+    private CreditCard creditCard = new CreditCard(
+        CreditCardType.MasterCard,
+        "4111-1111-1111-1111",
+        "123",
+        Month.DECEMBER, 2020);
 
     @Test
     public void purchaseSuccessful() {

@@ -17,6 +17,5 @@ public class BrowserRunner extends SpringJUnit4ClassRunner {
 
     @ContextConfiguration(classes = BrowserConfig.class)
     public static class ConfigShim {
-
     }
 }
