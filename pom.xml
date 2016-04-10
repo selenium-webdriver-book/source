@@ -265,6 +265,7 @@
                 <groupId>com.lazerycode.selenium</groupId>
                 <artifactId>driver-binary-downloader-maven-plugin</artifactId>
                 <version>1.0.7</version>
+<!--
                 <executions>
                     <execution>
                         <phase>pre-integration-test</phase>
@@ -273,6 +274,7 @@
                         </goals>
                     </execution>
                 </executions>
+-->
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
