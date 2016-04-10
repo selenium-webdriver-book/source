@@ -23,7 +23,7 @@ public class YearPicker {
     }  //<5>
 
     public void pick(int year) {
-        int difference =  displayYear.apply(browser) - year;   //<6>
+        int difference = displayYear.apply(browser) - year;   //<6>
         if (difference < 0) {                                 //<7>
             for (int i = difference; i < 0; i++) {            //<8>
                 nextYear.accept(browser);
