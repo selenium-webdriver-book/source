@@ -59,6 +59,7 @@ public class BookstoreShoppingIT {
         "4111-1111-1111-1111",
         "123",
         Month.DECEMBER, 2020);
+
     @Before
     public void searchBookAndAddToCart() {
         BookstoreHomepage homePage = new BookstoreHomepage(browser);   //<1>
