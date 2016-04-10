@@ -16,7 +16,7 @@ public class BookstoreSearchV1IT {
     private BookstoreHomepage homePage;
 
     @Test
-    public void invalidCardInfo() {
+    public void searchBook() {
         homePage = new BookstoreHomepage(browser);
         homePage.searchBook("Selenium WebDriver in Practice");
     }

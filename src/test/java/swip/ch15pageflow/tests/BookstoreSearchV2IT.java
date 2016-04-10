@@ -14,7 +14,7 @@ public class BookstoreSearchV2IT {
     private Browser browser;
 
     @Test
-    public void invalidCardInfo() {
+    public void searchBook() {
         new BookstoreHomepage(browser) {{
             searchBook("Selenium WebDriver in Practice");
         }};

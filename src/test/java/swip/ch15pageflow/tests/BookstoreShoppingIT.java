@@ -46,7 +46,7 @@ public class BookstoreShoppingIT {
     );
 
     @Before
-    public void addToCartAndSetSomeInformation() {
+    public void searchBookAndAddToCart() {
         BookstoreHomepage homePage = new BookstoreHomepage(browser);   //<1>
         homePage.searchBook("Selenium WebDriver in Practice");         //<2>
 
