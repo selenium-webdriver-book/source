@@ -36,18 +36,6 @@ public class JQueryDatepicker {
         browser.click(JQueryById.TRIGGER_BY);
     }
 
-    private void pickYear(int year) {
-        if (displayYear() < year) {        //<1>
-            while (displayYear() != year) {
-                nextYear();
-            }
-        } else if (displayYear() > year) {
-            while (displayYear() != year) {
-                previousYear();
-            }
-        }
-    }
-
     private void previousYear() {
         for (int i = 0; i < 12; i++) {
             previousMonth();
@@ -65,12 +53,29 @@ public class JQueryDatepicker {
         return Integer.parseInt(text);
     }
 
+    private void pickYear(int year) {
+        if (displayYear() < year) {        //<1>
+            while (displayYear() != year) {
+                nextYear();
+            }
+        } else if (displayYear() > year) {
+            while (displayYear() != year) {
+                previousYear();
+            }
+        }
+    }
+
     private void previousMonth() {
         browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
         browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
+    }
+
+    private int displayMonth() {
+        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
+        return Month.valueOf(text).ordinal();   //<7>
     }
 
     private void pickMonth(int month) {
@@ -83,11 +88,6 @@ public class JQueryDatepicker {
                 previousMonth();
             }
         }
-    }
-
-    private int displayMonth() {
-        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
-        return Month.valueOf(text).ordinal();   //<7>
     }
 
     private void pickDay(int day) {
