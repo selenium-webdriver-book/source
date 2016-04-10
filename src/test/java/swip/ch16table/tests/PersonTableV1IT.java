@@ -1,5 +1,6 @@
 package swip.ch16table.tests;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
@@ -24,6 +25,11 @@ public class PersonTableV1IT {
     public ExpectedException expectedException = ExpectedException.none();
     @Inject
     private Browser browser;
+
+    @Before
+    public void gotoSite() {
+        browser.get("/people-table.html");
+    }
 
     public static final PersonTableContents EXPECTED =
         new PersonTableContents(
