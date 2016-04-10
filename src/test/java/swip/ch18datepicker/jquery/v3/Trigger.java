@@ -5,12 +5,12 @@ import swip.ch15pageflow.framework.Browser;
 
 import java.util.function.Consumer;
 
-import static swip.ch17jquerydatepicker.locators.JQueryById.DATE_FIELD;
+import static swip.ch17jquerydatepicker.locators.JQueryById.TRIGGER_BY;
 
 public class Trigger implements Consumer<Browser> {
 
     @Override
     public void accept(Browser browser) {
-        browser.click(DATE_FIELD);
+        browser.click(TRIGGER_BY);
     }
 }

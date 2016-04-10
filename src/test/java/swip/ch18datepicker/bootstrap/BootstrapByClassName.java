@@ -13,7 +13,7 @@ import static org.openqa.selenium.By.className;
 public enum BootstrapByClassName implements Supplier<By> {     //<6>
 
     CALENDAR("datepicker-days"),            //<1>
-    DATE_FIELD("trigger"),                  //<2>
+    TRIGGER_BY("trigger"),                  //<2>
     NEXT_MONTH_BUTTON("next"),              //<3>
     PREV_MONTH_BUTTON("prev"),              //<4>
     DISPLAY_MONTH_YEAR("datepicker-switch");      //<5>

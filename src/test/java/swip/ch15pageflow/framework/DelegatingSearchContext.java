@@ -40,6 +40,10 @@ public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
         return untilFound(by).getText();
     }
 
+    public String getUpperText(Supplier<By> by) {
+        return untilFound(by).getText().toUpperCase();
+    }
+
     public void click(Supplier<By> by) {
         untilFound(by).click();
     }

@@ -3,22 +3,32 @@
 actor "Test Script"
 participant Datepicker
 participant Calendar
-participant Trigger
+participant YearPicker
+participant MonthPicker
+participant DayPicker
 
 activate "Test Script"
-activate Browser
+
 
 "Test Script" -> Datepicker : pick(APRIL, 1, 2018)
 activate Datepicker
 Datepicker -> Calendar : show()
 activate Calendar
-Calendar -> Trigger: accept(browser)
-activate Trigger
-Trigger -> Browser: click(DATE_FIELD)
-Browser -> Browser: diaplay the calendar
 
-deactivate Trigger
 deactivate Calendar
+Datepicker -> YearPicker: pickYear(2018)
+activate YearPicker
+deactivate YearPicker
+
+Datepicker -> MonthPicker: pickMonth(APRIL)
+activate MonthPicker
+deactivate MonthPicker
+
+
+Datepicker -> DayPicker: pickDay(1)
+activate DayPicker
+deactivate DayPicker
+
 deactivate Datepicker
 
 deactivate "Test Script"

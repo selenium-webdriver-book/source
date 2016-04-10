@@ -1,0 +1,36 @@
+@startuml
+
+actor "Test Script"
+participant JQueryDatepicker
+participant JQueryCalendar
+participant JQueryYearPicker
+participant JQueryMonthPicker
+participant JQueryDayPicker
+
+activate "Test Script"
+
+
+"Test Script" -> JQueryDatepicker : pick(APRIL, 1, 2018)
+activate JQueryDatepicker
+JQueryDatepicker -> JQueryCalendar : show()
+activate JQueryCalendar
+
+deactivate JQueryCalendar
+JQueryDatepicker -> JQueryYearPicker: pickYear(2018)
+activate JQueryYearPicker
+deactivate JQueryYearPicker
+
+JQueryDatepicker -> JQueryMonthPicker: pickMonth(APRIL)
+activate JQueryMonthPicker
+deactivate JQueryMonthPicker
+
+
+JQueryDatepicker -> JQueryDayPicker: pickDay(1)
+activate JQueryDayPicker
+deactivate JQueryDayPicker
+
+deactivate JQueryDatepicker
+
+deactivate "Test Script"
+
+@enduml

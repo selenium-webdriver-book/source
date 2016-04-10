@@ -11,7 +11,6 @@ import static swip.ch17jquerydatepicker.locators.JQueryByClassName.YEAR;
 import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
 
 
-
 public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
 
     /**
@@ -20,11 +19,10 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
     DISPLAY_YEAR {
         @Override
         public Integer apply(Browser browser) {
-            String text = browser.untilFound(CALENDAR)
-                .getText(YEAR);
+            String text = browser.untilFound(CALENDAR).getText(YEAR);
             return Integer.parseInt(text);
         }
-    },               //<1>
+    },
 
     /**
      * Locate the integer value representing displayed month on a calendar
@@ -32,9 +30,8 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
     DISPLAY_MONTH {
         @Override
         public Integer apply(Browser browser) {
-            String text = browser.untilFound(CALENDAR)
-                .getText(MONTH).toUpperCase();
+            String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
             return Month.valueOf(text).ordinal();
         }
-    }             //<2>
+    }
 }

@@ -8,7 +8,7 @@ import swip.ch18datepicker.datepicker.Datepicker;
 
 import java.time.Month;
 
-import static swip.ch17jquerydatepicker.locators.JQueryById.DATE_FIELD;
+import static swip.ch17jquerydatepicker.locators.JQueryById.TRIGGER_BY;
 import static swip.ch18datepicker.jquery.v5.JQueryCalendarControls.*;
 import static swip.ch18datepicker.jquery.v5.JQueryCalendarDisplayValue.DISPLAY_MONTH;
 import static swip.ch18datepicker.jquery.v5.JQueryCalendarDisplayValue.DISPLAY_YEAR;
@@ -35,6 +35,6 @@ public class JQueryDatepickerPage {
     }
 
     public String getDate() {                                  //<7>
-        return browser.getInputText(DATE_FIELD);
+        return browser.getInputText(TRIGGER_BY);
     }
 }

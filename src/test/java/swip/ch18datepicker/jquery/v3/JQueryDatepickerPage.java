@@ -3,7 +3,7 @@ package swip.ch18datepicker.jquery.v3;
 import swip.ch15pageflow.framework.Browser;
 
 import java.time.Month;
-import static swip.ch17jquerydatepicker.locators.JQueryById.DATE_FIELD;
+import static swip.ch17jquerydatepicker.locators.JQueryById.TRIGGER_BY;
 
 
 public class JQueryDatepickerPage {
@@ -17,7 +17,7 @@ public class JQueryDatepickerPage {
     }  //<9>
 
     public String getDate() {
-        return browser.getInputText(DATE_FIELD);
+        return browser.getInputText(TRIGGER_BY);
     }       //<10>
 
     public JQueryDatepickerPage(Browser b) {   //<3>

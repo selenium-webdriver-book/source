@@ -12,7 +12,7 @@ import static org.openqa.selenium.By.id;
 public enum JQueryById implements Supplier<By> {
 
     CALENDAR("ui-datepicker-div"),
-    DATE_FIELD("datepicker");
+    TRIGGER_BY("datepicker");
 
     private final By by;
 

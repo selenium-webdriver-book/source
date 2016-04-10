@@ -5,7 +5,7 @@ import swip.ch15pageflow.framework.Browser;
 import java.time.Month;
 
 import static swip.ch17jquerydatepicker.locators.JQueryByClassName.*;
-import static swip.ch17jquerydatepicker.locators.JQueryById.DATE_FIELD;
+import static swip.ch17jquerydatepicker.locators.JQueryById.TRIGGER_BY;
 import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
 
 
@@ -20,14 +20,14 @@ public class JQueryDatepickerPage {
     }
 
     public String getDate() {
-        return browser.getInputText(DATE_FIELD);
+        return browser.getInputText(TRIGGER_BY);
     }
 
     public JQueryDatepickerPage(Browser b) {
         this.browser = b;
         this.datepicker = new Datepicker(
             new Calendar(browser,
-                browser -> browser.click(DATE_FIELD)
+                browser -> browser.click(TRIGGER_BY)
             ),
             new YearPicker(browser,
                 browser -> this.previousYear(),
@@ -42,15 +42,12 @@ public class JQueryDatepickerPage {
     }
 
     private int displayMonth() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(MONTH)
-            .toUpperCase();
+        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
         return Month.valueOf(text).ordinal();
     }
 
     private int displayYear() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(YEAR);
+        String text = browser.untilFound(CALENDAR).getText(YEAR);
         return Integer.parseInt(text);
     }
 

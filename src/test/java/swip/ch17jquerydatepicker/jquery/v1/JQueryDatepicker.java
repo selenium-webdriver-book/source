@@ -23,7 +23,7 @@ public class JQueryDatepicker {
     }
 
     public String getDate() {                                  //<7>
-        return browser.getInputText(JQueryById.DATE_FIELD);
+        return browser.getInputText(JQueryById.TRIGGER_BY);
     }
 
     public void pick(Month month, int day, int year) {
@@ -35,7 +35,7 @@ public class JQueryDatepicker {
     }
 
     private void show() {
-        browser.click(JQueryById.DATE_FIELD);
+        browser.click(JQueryById.TRIGGER_BY);
     }
 
     private void pickYear(int year) {
@@ -63,8 +63,7 @@ public class JQueryDatepicker {
     }
 
     private int displayYear() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(YEAR);
+        String text = browser.untilFound(CALENDAR).getText(YEAR);
         return Integer.parseInt(text);
     }
 
@@ -81,18 +80,15 @@ public class JQueryDatepicker {
     }
 
     private void previousMonth() {
-        browser.untilFound(CALENDAR)
-            .click(PREV_MONTH_BUTTON);  //<3>
+        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(CALENDAR)
-            .click(NEXT_MONTH_BUTTON);  //<4>
+        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayMonth() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(MONTH).toUpperCase();
+        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
         return Month.valueOf(text).ordinal();   //<7>
     }
 
