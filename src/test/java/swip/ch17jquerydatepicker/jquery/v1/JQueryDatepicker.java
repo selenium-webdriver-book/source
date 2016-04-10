@@ -65,6 +65,14 @@ public class JQueryDatepicker {
         return Integer.parseInt(text);
     }
 
+    private void previousMonth() {
+        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
+    }
+
+    private void nextMonth() {
+        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
+    }
+
     private void pickMonth(int month) {
         if (displayMonth() < month) {             //<2>
             while (displayMonth() != month) {
@@ -75,14 +83,6 @@ public class JQueryDatepicker {
                 previousMonth();
             }
         }
-    }
-
-    private void previousMonth() {
-        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
-    }
-
-    private void nextMonth() {
-        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayMonth() {
