@@ -80,7 +80,6 @@ public class DelegatingWebElement
         return delegate.getRect();
     }
 
-
     @Override
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
         return delegate.getScreenshotAs(outputType);

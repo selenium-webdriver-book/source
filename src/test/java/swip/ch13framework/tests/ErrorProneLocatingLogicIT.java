@@ -2,18 +2,18 @@ package swip.ch13framework.tests;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import swip.framework.TestTimer;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 import static org.openqa.selenium.By.linkText;
 
 @RunWith(WebDriverRunner.class)
@@ -23,11 +23,6 @@ public class ErrorProneLocatingLogicIT extends TestTimer {
     private WebDriver driver;
 
     private static final Log LOG = LogFactory.getLog(ErrorProneLocatingLogicIT.class);
-
-    @Before
-    public void before() {
-
-    }
 
     @Test
     public void errorProneLocatingLogic() {

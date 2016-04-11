@@ -14,7 +14,6 @@ public class Element implements ExplicitWait {
         webElement.click();
     }
 
-
     @Override
     public Element findElement(By by) {
         return new Element(webElement.findElement(by));
@@ -23,6 +22,4 @@ public class Element implements ExplicitWait {
     public String getText() {
         return webElement.getText();
     }
-
-
 }

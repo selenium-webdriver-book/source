@@ -1,17 +1,18 @@
-package swip.ch13framework.v3;
+package swip.ch13framework.v2_5;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.FluentWait;
+import swip.ch13framework.v3.Element;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-public interface ExplicitWait {
+public abstract class ExplicitWait {
 
-    Element findElement(By by); // <1>
+    public abstract Element findElement(By by); // <1>
 
-    default Element untilFound(By by) {  // <2>
+    public Element untilFound(By by) {  // <2>
         return new FluentWait<>(this)
             .withTimeout(10, SECONDS)
             .pollingEvery(100, MILLISECONDS)

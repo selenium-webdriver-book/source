@@ -75,7 +75,6 @@ public class DelegatingWebElement
         return delegate.getRect();
     }
 
-
     @Override
     public String getCssValue(String propertyName) {
         return delegate.getCssValue(propertyName);
