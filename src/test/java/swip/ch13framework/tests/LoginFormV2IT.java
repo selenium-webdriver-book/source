@@ -1,5 +1,6 @@
 package swip.ch13framework.tests;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -17,10 +18,13 @@ public class LoginFormV2IT  {
     @Inject
     private Browser driver;
 
+    @Before
+    public void gotoLoginPage() {
+        driver.get("/login.html");
+    }
+
     @Test
     public void checkLoginForm() throws Exception {
-        driver.get("/login.html");
-
         Element login = driver.untilFound(By.id("login"));
 
         LoginForm loginForm = new LoginForm(login);
