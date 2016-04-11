@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
-public class Browser extends DelegatingWebDriver implements HasInputDevices {
+public class Browser extends DelegatingWebDriver  {
 
     public Browser(WebDriver driver) {
         super(driver);
@@ -115,16 +115,6 @@ public class Browser extends DelegatingWebDriver implements HasInputDevices {
                 return !element.findElements(By.tagName("option")).isEmpty();
             });
         return new Select(element);
-    }
-
-    @Override
-    public Keyboard getKeyboard() {
-        return ((HasInputDevices) delegate).getKeyboard();
-    }
-
-    @Override
-    public Mouse getMouse() {
-        return ((HasInputDevices) delegate).getMouse();
     }
 
     public void doubleClick(By by) {

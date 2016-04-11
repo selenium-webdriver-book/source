@@ -1,10 +1,13 @@
 package swip.ch15pageflow.framework;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.HasInputDevices;
+import org.openqa.selenium.interactions.Keyboard;
+import org.openqa.selenium.interactions.Mouse;
 
 import java.util.Set;
 
-public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> implements WebDriver {
+public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> implements WebDriver, HasInputDevices {
 
     public DelegatingWebDriver(WebDriver delegate) {
        super( delegate);
@@ -64,5 +67,15 @@ public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> impl
     @Override
     public Options manage() {
         return delegate.manage();
+    }
+
+    @Override
+    public Keyboard getKeyboard() {
+        return ((HasInputDevices) delegate).getKeyboard();
+    }
+
+    @Override
+    public Mouse getMouse() {
+        return ((HasInputDevices) delegate).getMouse();
     }
 }

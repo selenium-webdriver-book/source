@@ -27,7 +27,6 @@ public class RadioIT {
         assertEquals("email",  value);
     }
 
-
     @Test
     public void frequency() throws Exception {
         value = browser.getRadio(By.name("frequency"));

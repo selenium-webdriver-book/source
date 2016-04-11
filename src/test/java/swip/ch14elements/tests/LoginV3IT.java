@@ -1,6 +1,5 @@
 package swip.ch14elements.tests;
 
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
