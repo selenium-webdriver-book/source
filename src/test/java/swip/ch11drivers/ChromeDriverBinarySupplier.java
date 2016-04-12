@@ -1,88 +1,122 @@
 package swip.ch11drivers;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URL;
-import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Collections;
 import java.util.Scanner;
 
+import static java.lang.System.getProperty;
+import static java.net.URI.create;
+import static java.nio.channels.Channels.newChannel;
+import static java.nio.file.FileSystems.newFileSystem;
+import static java.nio.file.FileVisitResult.CONTINUE;
+import static java.nio.file.Files.copy;
+import static java.nio.file.Files.walkFileTree;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import static java.util.Collections.emptyMap;
+import static org.slf4j.LoggerFactory.getLogger;
+
 public class ChromeDriverBinarySupplier implements WebDriverBinarySupplier {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ChromeDriverBinarySupplier.class);
-    private static final String BASE_PATH = "http://chromedriver.storage.googleapis.com";
+
+    private Logger LOGGER = getLogger(ChromeDriverBinarySupplier.class);
+
+    private String BASE_PATH = "http://chromedriver.storage.googleapis.com";
+
+    private Path download = Paths.get(getProperty("java.io.tmpdir"),
+        "chrome-driver");  //<3>
+
+    private String osName = getProperty("os.name"); // <1>
+
+    private String osArch = getProperty("os.arch");
+
+    private String os = osName.contains("win") ? "win" :
+        osName.contains("nix") ? "linux" : "mac";
+
+    private int arch = os.equals("linux") && osArch.endsWith("64") ? 64 : 32;   //<2>
 
     @Override
     public Path get(Path driverDir) throws IOException {
-        String osName = System.getProperty("os.name"); // <1> You typically need to know what operating system and architecture you are running on to get the binary.
-        String osArch = System.getProperty("os.arch");
 
-        String os = osName.contains("win") ? "win" : osName.contains("nix") ? "linux" : "mac";
-        int arch = os.equals("linux") && osArch.endsWith("64") ? 64 : 32; // <2> Chrome has a 64 bit version for linux, 32 bit for everyone else.
+        Path driverPath = resolvePath(driverDir);
 
-        Path download = Paths.get(System.getProperty("java.io.tmpdir"), "chrome-driver"); // <3> The name and download destination.
-        Path driverPath = driverDir.resolve(os.equals("win") ? "chromedriver.exe" : "chromedriver");
-
-        if (!driverPath.toFile().exists()) { // <4> Do not do this if you already have it.
-
-            String version = getLatestRelease();
-
-            URL url = new URL(BASE_PATH + "/" + version + "/chromedriver_" + os + arch + ".zip");
+        if (!driverPath.toFile().exists()) { //<4>
 
             if (!download.toFile().exists()) {
-                LOGGER.info("downloading " + url + " to " + download);
-
-                try (ReadableByteChannel rbc = Channels.newChannel(url.openStream()); // <5> Download the file using Java 7's NIO APIs.
-                     FileOutputStream fos = new FileOutputStream(download.toFile())) {
-                    fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                }
+                download();
             }
 
-            LOGGER.info("extracting chrome driver to " + driverPath);
+            unzipFiles(driverPath);
 
-            try (FileSystem fileSystem = FileSystems.newFileSystem(
-                    URI.create("jar:file:" + download), // <6> Java 7 can unpack a jar file automatically. A jar file is a zip file.
-                    Collections.emptyMap())
-            ) {
-                Files.walkFileTree(fileSystem.getPath("/"), new SimpleFileVisitor<Path>() {
-                    @Override
-                    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-
-                        LOGGER.info("unzipping " + file); // <7> We assume we wil only find a single file is the zip.
-                        Files.copy(
-                                file,
-                                driverPath,
-                                StandardCopyOption.REPLACE_EXISTING
-                        );
-
-                        return FileVisitResult.CONTINUE;
-                    }
-                });
-            }
-
-
-            LOGGER.info("making " + driverPath + " executable");
-
-            if (!driverPath.toFile().setExecutable(true)) { // <8> Finally, we need to make it executable.
-                throw new IllegalStateException("failed to make " + driverPath + " executable");
-            }
+            makeExecutable(driverPath);
         }
 
         return driverPath;
     }
 
-    private String getLatestRelease() throws IOException {
+    private void download() throws IOException {
+        try (FileOutputStream fos = new FileOutputStream(download.toFile())) {
+            fos.getChannel().transferFrom(createChannel(), 0, Long.MAX_VALUE);
+        }
+    }
+
+    private void unzipFiles(final Path driverPath) throws IOException {
+        LOGGER.info("extracting chrome driver to " + driverPath);
+
+        try (FileSystem fileSystem = createFile()) {
+            walkFileTree(fileSystem.getPath("/"), new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(
+                    Path file, BasicFileAttributes attrs) throws IOException {
+
+                    LOGGER.info("unzipping " + file); //<7>
+                    copy(file, driverPath, REPLACE_EXISTING);
+
+                    return CONTINUE;
+                }
+            });
+        }
+    }
+
+    private void makeExecutable(Path path) {
+        LOGGER.info("making " + path + " executable");
+
+        if (!path.toFile().setExecutable(true)) { //<8>
+            throw new IllegalStateException("failed to make " + path + " executable");
+        }
+    }
+
+    private ReadableByteChannel createChannel() throws IOException {
+        URL url = createUrl();
+
+        LOGGER.info("downloading " + url + " to " + download);
+        return newChannel(url.openStream());           //<5>
+    }
+
+    private FileSystem createFile() throws IOException {
+        return newFileSystem(create("jar:file:" + download), emptyMap());  //<6>
+    }
+
+    private URL createUrl() throws IOException {
+        return new URL(BASE_PATH + "/" + lastRelease() +
+            "/chromedriver_" + os + arch + ".zip");
+    }
+
+    private Path resolvePath(Path driverDir) {
+        return driverDir.resolve(os.equals("win") ?
+            "chromedriver.exe" : "chromedriver");
+    }
+
+    private String lastRelease() throws IOException {
 
         URL url = new URL(BASE_PATH + "/LATEST_RELEASE");
 
         try (Scanner scanner = new Scanner(url.openStream())) {
-            return scanner.useDelimiter("\\A").next().trim(); // <9> get the version from the URL
+            return scanner.useDelimiter("\\A").next().trim(); //<9>
         }
     }
 }
