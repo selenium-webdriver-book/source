@@ -26,7 +26,8 @@ public class ScreenshotIT {
 
             @Override
             public void afterNavigateTo(String url, WebDriver driver) {
-                File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                File screenshotFile = ((TakesScreenshot) driver)
+                    .getScreenshotAs(OutputType.FILE);
 
                 System.out.println("saved " + url + " as " + screenshotFile);
             }

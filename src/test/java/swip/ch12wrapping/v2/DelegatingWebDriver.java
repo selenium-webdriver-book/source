@@ -1,4 +1,4 @@
-package swip.framework;
+package swip.ch12wrapping.v2;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.HasInputDevices;
@@ -14,204 +14,206 @@ import java.util.Set;
  *
  * @see org.openqa.selenium.remote.RemoteWebDriver
  */
-class DelegatingWebDriver extends DelegatingSearchContext<WebDriver>
-    implements WebDriver, FindsById, FindsByClassName,
-    FindsByLinkText, FindsByName, FindsByCssSelector, FindsByTagName,
-    FindsByXPath, JavascriptExecutor, HasInputDevices, HasCapabilities, TakesScreenshot {
+class DelegatingWebDriver
+    implements WebDriver, JavascriptExecutor, HasInputDevices, HasCapabilities, TakesScreenshot,
+    FindsById, FindsByClassName, FindsByLinkText, FindsByName,
+    FindsByCssSelector, FindsByTagName, FindsByXPath {
+
+    private final WebDriver driver;
 
     DelegatingWebDriver(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
 
     @Override
     public Options manage() {
-        return delegate.manage();
+        return driver.manage();
     }
 
     @Override
     public void get(String url) {
-        delegate.get(url);
-        delegate.switchTo().window(delegate.getWindowHandle());
+        driver.get(url);
+        driver.switchTo().window(driver.getWindowHandle());
     }
 
     @Override
     public String getCurrentUrl() {
-        return delegate.getCurrentUrl();
+        return driver.getCurrentUrl();
     }
 
     @Override
     public String getTitle() {
-        return delegate.getTitle();
+        return driver.getTitle();
     }
 
     @Override
     public List<WebElement> findElements(By by) {
-        return delegate.findElements(by);
+        return driver.findElements(by);
     }
 
     @Override
     public WebElement findElement(By by) {
-        return delegate.findElement(by);
+        return driver.findElement(by);
     }
 
     @Override
     public String getPageSource() {
-        return delegate.getPageSource();
+        return driver.getPageSource();
     }
 
     @Override
     public void close() {
-        delegate.close();
+        driver.close();
     }
 
     @Override
     public void quit() {
-        delegate.quit();
+        driver.quit();
     }
 
     @Override
     public Set<String> getWindowHandles() {
-        return delegate.getWindowHandles();
+        return driver.getWindowHandles();
     }
 
     @Override
     public String getWindowHandle() {
-        return delegate.getWindowHandle();
+        return driver.getWindowHandle();
     }
 
     @Override
     public TargetLocator switchTo() {
-        return delegate.switchTo();
+        return driver.switchTo();
     }
 
     @Override
     public Navigation navigate() {
-        return delegate.navigate();
+        return driver.navigate();
     }
 
     @Override
     public Object executeScript(String script, Object... args) {
-        return ((JavascriptExecutor) delegate).executeScript(script, args);
+        return ((JavascriptExecutor) driver).executeScript(script, args);
     }
 
     @Override
     public Object executeAsyncScript(String script, Object... args) {
-        return ((JavascriptExecutor) delegate).executeAsyncScript(script, args);
+        return ((JavascriptExecutor) driver).executeAsyncScript(script, args);
     }
 
     @Override
     public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
-        return ((TakesScreenshot) delegate).getScreenshotAs(target);
+        return ((TakesScreenshot) driver).getScreenshotAs(target);
     }
 
     @Override
     public Keyboard getKeyboard() {
-        return ((HasInputDevices) delegate).getKeyboard();
+        return ((HasInputDevices) driver).getKeyboard();
     }
 
     @Override
     public Mouse getMouse() {
-        return ((HasInputDevices) delegate).getMouse();
+        return ((HasInputDevices) driver).getMouse();
     }
 
     @Deprecated
     @Override
     public WebElement findElementByClassName(String using) {
-        return ((FindsByClassName) delegate).findElementByClassName(using);
+        return ((FindsByClassName) driver).findElementByClassName(using);
     }
 
     @Deprecated
     @Override
     public List<WebElement> findElementsByClassName(String using) {
-        return ((FindsByClassName) delegate).findElementsByClassName(using);
+        return ((FindsByClassName) driver).findElementsByClassName(using);
     }
 
     @Deprecated
     @Override
     public WebElement findElementByCssSelector(String using) {
-        return ((FindsByCssSelector) delegate).findElementByCssSelector(using);
+        return ((FindsByCssSelector) driver).findElementByCssSelector(using);
     }
 
     @Deprecated
     @Override
     public List<WebElement> findElementsByCssSelector(String using) {
-        return ((FindsByCssSelector) delegate).findElementsByCssSelector(using);
+        return ((FindsByCssSelector) driver).findElementsByCssSelector(using);
     }
 
     @Deprecated
     @Override
     public WebElement findElementById(String using) {
-        return ((FindsById) delegate).findElementById(using);
+        return ((FindsById) driver).findElementById(using);
     }
 
     @Deprecated
     @Override
     public List<WebElement> findElementsById(String using) {
-        return ((FindsById) delegate).findElementsById(using);
+        return ((FindsById) driver).findElementsById(using);
     }
 
     @Deprecated
     @Override
     public WebElement findElementByLinkText(String using) {
-        return ((FindsByLinkText) delegate).findElementByLinkText(using);
+        return ((FindsByLinkText) driver).findElementByLinkText(using);
     }
 
     @Deprecated
     @Override
     public List<WebElement> findElementsByLinkText(String using) {
-        return ((FindsByLinkText) delegate).findElementsByLinkText(using);
+        return ((FindsByLinkText) driver).findElementsByLinkText(using);
     }
 
     @Deprecated
     @Override
     public WebElement findElementByPartialLinkText(String using) {
-        return ((FindsByLinkText) delegate).findElementByPartialLinkText(using);
+        return ((FindsByLinkText) driver).findElementByPartialLinkText(using);
     }
 
     @Deprecated
     @Override
     public List<WebElement> findElementsByPartialLinkText(String using) {
-        return ((FindsByLinkText) delegate).findElementsByPartialLinkText(using);
+        return ((FindsByLinkText) driver).findElementsByPartialLinkText(using);
     }
 
     @Deprecated
     @Override
     public WebElement findElementByName(String using) {
-        return ((FindsByName) delegate).findElementByName(using);
+        return ((FindsByName) driver).findElementByName(using);
     }
 
     @Deprecated
     @Override
     public List<WebElement> findElementsByName(String using) {
-        return ((FindsByName) delegate).findElementsByName(using);
+        return ((FindsByName) driver).findElementsByName(using);
     }
 
     @Deprecated
     @Override
     public WebElement findElementByTagName(String using) {
-        return ((FindsByTagName) delegate).findElementByTagName(using);
+        return ((FindsByTagName) driver).findElementByTagName(using);
     }
 
     @Deprecated
     @Override
     public List<WebElement> findElementsByTagName(String using) {
-        return ((FindsByTagName) delegate).findElementsByTagName(using);
+        return ((FindsByTagName) driver).findElementsByTagName(using);
     }
 
     @Deprecated
     @Override
     public WebElement findElementByXPath(String using) {
-        return ((FindsByXPath) delegate).findElementByXPath(using);
+        return ((FindsByXPath) driver).findElementByXPath(using);
     }
 
     @Deprecated
     @Override
     public List<WebElement> findElementsByXPath(String using) {
-        return ((FindsByXPath) delegate).findElementsByXPath(using);
+        return ((FindsByXPath) driver).findElementsByXPath(using);
     }
 
     @Override
     public Capabilities getCapabilities() {
-        return ((HasCapabilities) delegate).getCapabilities();
+        return ((HasCapabilities) driver).getCapabilities();
     }
 }
