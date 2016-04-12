@@ -4,7 +4,7 @@ import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
 
-class MapFactory {
+public class MapFactory {
 
     private static void populate(Map<String, String> properties, Map<String, Object> map) {
         properties.entrySet().stream()
@@ -56,7 +56,7 @@ class MapFactory {
         return map;
     }
 
-    Map<String, Object> create(Map<String, String> properties) {
+    public Map<String, Object> create(Map<String, String> properties) {
         HashMap<String, Object> map = new HashMap<>();
 
         populate(properties, map);

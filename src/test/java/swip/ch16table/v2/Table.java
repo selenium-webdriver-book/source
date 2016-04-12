@@ -1,12 +1,12 @@
 package swip.ch16table.v2;
 
-import swip.ch15pageflow.framework.Element;
+import swip.framework.Element;
 
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static swip.ch15pageflow.locators.TagName.*;
+import static swip.locators.TagName.*;
 
 public class Table<T> {
 

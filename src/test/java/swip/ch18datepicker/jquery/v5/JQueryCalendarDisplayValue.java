@@ -1,13 +1,13 @@
 package swip.ch18datepicker.jquery.v5;
 
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
 import java.time.Month;
 import java.util.function.Function;
 
-import static swip.ch17jquerydatepicker.locators.JQueryByClassName.MONTH;
-import static swip.ch17jquerydatepicker.locators.JQueryByClassName.YEAR;
-import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
+import static swip.locators.JQueryByClassName.MONTH;
+import static swip.locators.JQueryByClassName.YEAR;
+import static swip.locators.JQueryById.CALENDAR;
 
 public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
 

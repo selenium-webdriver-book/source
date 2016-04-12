@@ -1,8 +1,8 @@
 package swip.ch17jquerydatepicker.jquery.v2;
 
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
-import static swip.ch17jquerydatepicker.locators.JQueryById.TRIGGER_BY;
+import static swip.locators.JQueryById.TRIGGER_BY;
 
 public class JQueryCalendar {
 

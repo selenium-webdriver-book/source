@@ -1,10 +1,10 @@
 package swip.ch18datepicker.bootstrap;
 
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
 import java.util.function.Consumer;
 
-import static swip.ch18datepicker.bootstrap.BootstrapByClassName.*;
+import static swip.locators.BootstrapByClassName.*;
 
 public enum BootstrapCalendarControls implements Consumer<Browser> {    //<6>
     TRIGGER {

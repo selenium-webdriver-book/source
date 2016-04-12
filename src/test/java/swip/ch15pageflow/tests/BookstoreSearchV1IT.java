@@ -2,8 +2,8 @@ package swip.ch15pageflow.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import swip.ch15pageflow.framework.Browser;
-import swip.ch15pageflow.framework.BrowserRunner;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
 import swip.ch15pageflow.pages.v1.BookstoreHomepage;
 
 import javax.inject.Inject;

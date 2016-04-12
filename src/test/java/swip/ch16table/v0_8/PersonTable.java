@@ -2,7 +2,7 @@ package swip.ch16table.v0_8;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import swip.ch15pageflow.framework.Element;
+import swip.framework.Element;
 import swip.ch16table.domain.Person;
 
 import java.util.ArrayList;

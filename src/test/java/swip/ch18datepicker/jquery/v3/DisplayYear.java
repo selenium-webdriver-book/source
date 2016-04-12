@@ -1,11 +1,11 @@
 package swip.ch18datepicker.jquery.v3;
 
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
 import java.util.function.Function;
 
-import static swip.ch17jquerydatepicker.locators.JQueryByClassName.YEAR;
-import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
+import static swip.locators.JQueryByClassName.YEAR;
+import static swip.locators.JQueryById.CALENDAR;
 
 public class DisplayYear implements Function<Browser, Integer> {
 

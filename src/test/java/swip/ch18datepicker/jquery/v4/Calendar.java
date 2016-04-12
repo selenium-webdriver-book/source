@@ -1,6 +1,6 @@
 package swip.ch18datepicker.jquery.v4;
 
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
 import java.util.function.Consumer;
 

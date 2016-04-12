@@ -6,8 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import swip.ch15pageflow.framework.Browser;
-import swip.ch15pageflow.framework.BrowserRunner;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
 import swip.ch16table.domain.Person;
 import swip.ch16table.v1.PersonTable;
 import swip.ch16table.v1.PersonTableContents;
@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
-import static swip.ch15pageflow.locators.TagName.TABLE;
+import static swip.locators.TagName.TABLE;
 
 @RunWith(BrowserRunner.class)
 public class PersonTableV1IT {

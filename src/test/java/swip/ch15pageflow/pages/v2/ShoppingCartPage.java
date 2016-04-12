@@ -3,11 +3,11 @@ package swip.ch15pageflow.pages.v2;
 import swip.ch14elements.domain.OtherInformation;
 import swip.ch15pageflow.domain.Address;
 import swip.ch15pageflow.domain.CreditCard;
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
-import static swip.ch15pageflow.locators.ClassName.ORDER_NUMBER;
-import static swip.ch15pageflow.locators.CssSelector.CONTINUE;
-import static swip.ch15pageflow.locators.Id.ORDER_NUMBER_ID;
+import static swip.locators.ClassName.ORDER_NUMBER;
+import static swip.locators.CssSelector.CONTINUE;
+import static swip.locators.Id.ORDER_NUMBER_ID;
 
 public class ShoppingCartPage {
 

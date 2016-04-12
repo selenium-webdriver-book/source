@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 import swip.ch14elements.domain.MailingOption;
 import swip.ch14elements.domain.OtherInformation;
 import swip.ch15pageflow.domain.*;
-import swip.ch15pageflow.framework.Browser;
-import swip.ch15pageflow.framework.BrowserRunner;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
 import swip.ch15pageflow.pages.v2.BookPage;
 import swip.ch15pageflow.pages.v2.BookstoreHomepage;
 import swip.ch15pageflow.pages.v2.ShoppingCartPage;
@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import java.time.Month;
 
 import static org.junit.Assert.assertEquals;
-import static swip.ch15pageflow.locators.Id.ERROR_MESSAGE;
+import static swip.locators.Id.ERROR_MESSAGE;
 
 @RunWith(BrowserRunner.class)
 public class BookstoreShoppingIT {

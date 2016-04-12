@@ -1,16 +1,16 @@
 package swip.ch17jquerydatepicker.jquery.v1;
 
 import org.openqa.selenium.By;
-import swip.ch15pageflow.framework.Browser;
-import swip.ch17jquerydatepicker.locators.JQueryById;
-import swip.ch17jquerydatepicker.locators.JQueryPredicates;
+import swip.framework.Browser;
+import swip.locators.JQueryById;
+import swip.locators.JQueryPredicates;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.function.Supplier;
 
-import static swip.ch17jquerydatepicker.locators.JQueryByClassName.*;
-import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
+import static swip.locators.JQueryByClassName.*;
+import static swip.locators.JQueryById.CALENDAR;
 
 public class JQueryDatepicker {
 

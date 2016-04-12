@@ -1,12 +1,12 @@
 package swip.ch18datepicker.bootstrap;
 
-import swip.ch15pageflow.framework.Element;
-import swip.ch15pageflow.framework.ExplicitWait;
+import swip.framework.Element;
+import swip.framework.ExplicitWait;
 
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import static swip.ch18datepicker.bootstrap.BootstrapByClassName.CALENDAR;
+import static swip.locators.BootstrapByClassName.CALENDAR;
 
 public enum BootstrapPredicates implements Predicate<ExplicitWait> {
 
