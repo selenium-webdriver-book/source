@@ -5,10 +5,10 @@ import swip.framework.Browser;
 import java.util.function.Function;
 
 import static java.lang.Integer.parseInt;
-    import static swip.locators.BootstrapByClassName.CALENDAR;
-    import static swip.locators.BootstrapByClassName.DISPLAY_MONTH_YEAR;
+import static swip.locators.BootstrapByClassName.CALENDAR;
+import static swip.locators.BootstrapByClassName.DISPLAY_MONTH_YEAR;
 
-    public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> {
+public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> {
 
     /**
      * Locate the integer value representing displayed year on a calendar
