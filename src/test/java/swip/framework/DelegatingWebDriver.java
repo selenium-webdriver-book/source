@@ -28,6 +28,7 @@ class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> implements 
     @Override
     public void get(String url) {
         delegate.get(url);
+        delegate.switchTo().window(delegate.getWindowHandle());
     }
 
     @Override
