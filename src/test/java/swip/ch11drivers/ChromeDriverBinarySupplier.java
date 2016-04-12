@@ -24,37 +24,26 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class ChromeDriverBinarySupplier implements WebDriverBinarySupplier {
 
     private Logger LOGGER = getLogger(ChromeDriverBinarySupplier.class);
-
     private String BASE_PATH = "http://chromedriver.storage.googleapis.com";
-
     private Path download = Paths.get(getProperty("java.io.tmpdir"),
         "chrome-driver");  //<3>
-
     private String osName = getProperty("os.name"); // <1>
-
     private String osArch = getProperty("os.arch");
-
     private String os = osName.contains("win") ? "win" :
         osName.contains("nix") ? "linux" : "mac";
-
     private int arch = os.equals("linux") && osArch.endsWith("64") ? 64 : 32;   //<2>
 
     @Override
     public Path get(Path driverDir) throws IOException {
 
         Path driverPath = resolvePath(driverDir);
-
         if (!driverPath.toFile().exists()) { //<4>
-
             if (!download.toFile().exists()) {
                 download();
             }
-
             unzipFiles(driverPath);
-
             makeExecutable(driverPath);
         }
-
         return driverPath;
     }
 
