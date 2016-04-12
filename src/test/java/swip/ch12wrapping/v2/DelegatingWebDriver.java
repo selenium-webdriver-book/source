@@ -15,7 +15,8 @@ import java.util.Set;
  * @see org.openqa.selenium.remote.RemoteWebDriver
  */
 class DelegatingWebDriver
-    implements WebDriver, JavascriptExecutor, HasInputDevices, HasCapabilities, TakesScreenshot,
+    implements WebDriver, JavascriptExecutor, HasInputDevices,
+    HasCapabilities, TakesScreenshot,
     FindsById, FindsByClassName, FindsByLinkText, FindsByName,
     FindsByCssSelector, FindsByTagName, FindsByXPath {
 
