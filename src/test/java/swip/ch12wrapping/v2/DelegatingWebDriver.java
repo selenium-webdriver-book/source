@@ -103,7 +103,8 @@ class DelegatingWebDriver
     }
 
     @Override
-    public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
+    public <X> X getScreenshotAs(OutputType<X> target)
+        throws WebDriverException {
         return ((TakesScreenshot) driver).getScreenshotAs(target);
     }
 
