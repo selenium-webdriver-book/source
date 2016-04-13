@@ -23,7 +23,7 @@ public class FindElementExampleIT {
     }
 
     @Test
-    public void findHeading1ElementButGotException() throws Exception {
+    public void findHeading1Element() throws Exception {
         WebElement h1 = ((FindsByTagName) delegatingWebDriver).findElementByTagName("h1");
         assertEquals("Selenium WebDriver In Practice - Index", h1.getText());
     }
