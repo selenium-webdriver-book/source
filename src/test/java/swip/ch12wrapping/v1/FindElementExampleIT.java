@@ -22,6 +22,7 @@ public class FindElementExampleIT {
     @Before
     public void setUp() throws Exception {
         driver.get("/index.html");
+        delegatingWebDriver = new DelegatingWebDriver(driver);
     }
 
     @Test()
@@ -32,7 +33,6 @@ public class FindElementExampleIT {
 
     @Test(expected = ClassCastException.class)
     public void findHeading1ElementButGotException() throws Exception {
-        delegatingWebDriver = new DelegatingWebDriver(driver);
         ((FindsByTagName) delegatingWebDriver).findElementByTagName("h1");
     }
 

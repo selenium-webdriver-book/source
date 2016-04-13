@@ -1,6 +1,5 @@
 package swip.ch12wrapping.v2;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -15,24 +14,16 @@ import static org.junit.Assert.assertEquals;
 @RunWith(WebDriverRunner.class)
 public class FindElementExampleIT {
 
-    @Inject
-    private WebDriver driver;
     private DelegatingWebDriver delegatingWebDriver;
 
-    @Before
-    public void setUp() throws Exception {
+    @Inject
+    public void setUp(WebDriver driver) throws Exception {
         driver.get("/index.html");
-    }
-
-    @Test()
-    public void findHeading1Element() throws Exception {
-        WebElement h1 = ((FindsByTagName) driver).findElementByTagName("h1");
-        assertEquals("Selenium WebDriver In Practice - Index", h1.getText());
+        delegatingWebDriver = new DelegatingWebDriver(driver);
     }
 
     @Test
     public void findHeading1ElementButGotException() throws Exception {
-        delegatingWebDriver = new DelegatingWebDriver(driver);
         WebElement h1 = ((FindsByTagName) delegatingWebDriver).findElementByTagName("h1");
         assertEquals("Selenium WebDriver In Practice - Index", h1.getText());
     }
