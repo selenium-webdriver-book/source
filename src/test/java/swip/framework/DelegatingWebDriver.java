@@ -4,7 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.HasInputDevices;
 import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.interactions.Mouse;
-import org.openqa.selenium.internal.*;
 
 import java.util.List;
 import java.util.Set;
@@ -15,9 +14,7 @@ import java.util.Set;
  * @see org.openqa.selenium.remote.RemoteWebDriver
  */
 class DelegatingWebDriver extends DelegatingSearchContext<WebDriver>
-    implements WebDriver, FindsById, FindsByClassName,
-    FindsByLinkText, FindsByName, FindsByCssSelector, FindsByTagName,
-    FindsByXPath, JavascriptExecutor, HasInputDevices, HasCapabilities, TakesScreenshot {
+        implements WebDriver, JavascriptExecutor, HasInputDevices, HasCapabilities, TakesScreenshot {
 
     DelegatingWebDriver(WebDriver driver) {
         super(driver);
@@ -114,101 +111,6 @@ class DelegatingWebDriver extends DelegatingSearchContext<WebDriver>
         return ((HasInputDevices) delegate).getMouse();
     }
 
-    @Deprecated
-    @Override
-    public WebElement findElementByClassName(String using) {
-        return ((FindsByClassName) delegate).findElementByClassName(using);
-    }
-
-    @Deprecated
-    @Override
-    public List<WebElement> findElementsByClassName(String using) {
-        return ((FindsByClassName) delegate).findElementsByClassName(using);
-    }
-
-    @Deprecated
-    @Override
-    public WebElement findElementByCssSelector(String using) {
-        return ((FindsByCssSelector) delegate).findElementByCssSelector(using);
-    }
-
-    @Deprecated
-    @Override
-    public List<WebElement> findElementsByCssSelector(String using) {
-        return ((FindsByCssSelector) delegate).findElementsByCssSelector(using);
-    }
-
-    @Deprecated
-    @Override
-    public WebElement findElementById(String using) {
-        return ((FindsById) delegate).findElementById(using);
-    }
-
-    @Deprecated
-    @Override
-    public List<WebElement> findElementsById(String using) {
-        return ((FindsById) delegate).findElementsById(using);
-    }
-
-    @Deprecated
-    @Override
-    public WebElement findElementByLinkText(String using) {
-        return ((FindsByLinkText) delegate).findElementByLinkText(using);
-    }
-
-    @Deprecated
-    @Override
-    public List<WebElement> findElementsByLinkText(String using) {
-        return ((FindsByLinkText) delegate).findElementsByLinkText(using);
-    }
-
-    @Deprecated
-    @Override
-    public WebElement findElementByPartialLinkText(String using) {
-        return ((FindsByLinkText) delegate).findElementByPartialLinkText(using);
-    }
-
-    @Deprecated
-    @Override
-    public List<WebElement> findElementsByPartialLinkText(String using) {
-        return ((FindsByLinkText) delegate).findElementsByPartialLinkText(using);
-    }
-
-    @Deprecated
-    @Override
-    public WebElement findElementByName(String using) {
-        return ((FindsByName) delegate).findElementByName(using);
-    }
-
-    @Deprecated
-    @Override
-    public List<WebElement> findElementsByName(String using) {
-        return ((FindsByName) delegate).findElementsByName(using);
-    }
-
-    @Deprecated
-    @Override
-    public WebElement findElementByTagName(String using) {
-        return ((FindsByTagName) delegate).findElementByTagName(using);
-    }
-
-    @Deprecated
-    @Override
-    public List<WebElement> findElementsByTagName(String using) {
-        return ((FindsByTagName) delegate).findElementsByTagName(using);
-    }
-
-    @Deprecated
-    @Override
-    public WebElement findElementByXPath(String using) {
-        return ((FindsByXPath) delegate).findElementByXPath(using);
-    }
-
-    @Deprecated
-    @Override
-    public List<WebElement> findElementsByXPath(String using) {
-        return ((FindsByXPath) delegate).findElementsByXPath(using);
-    }
 
     @Override
     public Capabilities getCapabilities() {
