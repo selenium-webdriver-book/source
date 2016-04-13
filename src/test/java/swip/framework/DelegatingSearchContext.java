@@ -16,11 +16,13 @@ public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
         this.delegate = delegate;
     }
 
+    @Deprecated
     @Override
     public List<WebElement> findElements(By by) {
         return delegate.findElements(by);
     }
 
+    @Deprecated
     @Override
     public WebElement findElement(By by) {
         return delegate.findElement(by);
