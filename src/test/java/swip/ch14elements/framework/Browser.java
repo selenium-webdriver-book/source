@@ -1,6 +1,5 @@
 package swip.ch14elements.framework;
 
-import com.google.common.base.Predicate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,9 +13,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class Browser extends DelegatingWebDriver  {
+public class Browser extends DelegatingWebDriver {
 
     public Browser(WebDriver driver) {
         super(driver);
@@ -96,31 +96,27 @@ public class Browser extends DelegatingWebDriver  {
 
     public Select getSelect(By by) {
         final Element element = untilFound(by);
-        new WebDriverWait(this, 3, 100)
-            .until(new Predicate<WebDriver>() {
-                @Override
-                public boolean apply(WebDriver driver) {
-                    element.click();
-                    return !element.findElements(By.tagName("option")).isEmpty();
-                }
-            });
+        until(new Predicate<ExplicitWait>() {
+            @Override
+            public boolean test(ExplicitWait driver) {
+                element.click();
+                return !element.findElements(By.tagName("option")).isEmpty();
+            }
+        });
         return new Select(element);
     }
 
     public Select getSelectLambda(By by) {
         Element element = untilFound(by);
-        new WebDriverWait(this, 3, 100)
-            .until((WebDriver driver) -> {
-                element.click();
-                return !element.findElements(By.tagName("option")).isEmpty();
-            });
+        until((ExplicitWait driver) -> {
+            element.click();
+            return !element.findElements(By.tagName("option")).isEmpty();
+        });
         return new Select(element);
     }
 
     public void doubleClick(By by) {
         Element element = untilFound(by);
-        new Actions(delegate) // #C create actions from the driver
-            .doubleClick(element) // #D add a double-click to the sequence
-            .perform(); // #E perform the sequence
+        new Actions(delegate).doubleClick(element).perform();
     }
 }
