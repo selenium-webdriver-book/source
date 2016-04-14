@@ -8,13 +8,14 @@ import java.util.function.Consumer;
 import static swip.locators.JQueryByClassName.NEXT_MONTH_BUTTON;
 import static swip.locators.JQueryByClassName.PREV_MONTH_BUTTON;
 import static swip.locators.JQueryById.CALENDAR;
+import static swip.locators.JQueryById.TRIGGER_BY;
 
 public enum JQueryCalendarControls implements Consumer<Browser> {
 
     TRIGGER {
         @Override
         public void accept(Browser browser) {
-            browser.click(JQueryById.TRIGGER_BY);
+            browser.click(TRIGGER_BY);
         }
     },
     NEXT_MONTH {

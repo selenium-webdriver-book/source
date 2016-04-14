@@ -1,6 +1,7 @@
 package swip.ch18datepicker.jquery.v3;
 
 import swip.framework.Browser;
+import swip.framework.datepicker.DayPicker;
 
 import static org.openqa.selenium.By.linkText;
 import static swip.locators.JQueryById.CALENDAR;

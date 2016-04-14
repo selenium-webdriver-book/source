@@ -1,8 +1,10 @@
 package swip.ch14elements.framework;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.internal.Coordinates;
+import org.openqa.selenium.internal.Locatable;
 
-public class DelegatingWebElement extends DelegatingSearchContext<WebElement> implements WebElement {
+public class DelegatingWebElement extends DelegatingSearchContext<WebElement> implements WebElement, Locatable {
 
     public DelegatingWebElement(WebElement delegate) {
         super(delegate);
@@ -81,5 +83,10 @@ public class DelegatingWebElement extends DelegatingSearchContext<WebElement> im
     @Override
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
         return delegate.getScreenshotAs(outputType);
+    }
+
+    @Override
+    public Coordinates getCoordinates() {
+        return ((Locatable) delegate).getCoordinates();
     }
 }

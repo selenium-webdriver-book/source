@@ -1,5 +1,6 @@
 package swip.ch18datepicker.jquery.v5;
 
+import swip.ch18datepicker.jquery.v3.JQueryDayPicker;
 import swip.framework.Browser;
 import swip.framework.datepicker.Calendar;
 import swip.framework.datepicker.CalendarPicker;

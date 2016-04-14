@@ -26,7 +26,6 @@ class DelegatingWebDriver
     @Override
     public void get(String url) {
         driver.get(url);
-        driver.switchTo().window(driver.getWindowHandle());
     }
 
     @Override

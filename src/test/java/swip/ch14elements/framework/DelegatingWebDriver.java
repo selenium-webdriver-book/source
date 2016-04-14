@@ -1,16 +1,23 @@
 package swip.ch14elements.framework;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.HasInputDevices;
 import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.interactions.Mouse;
 
 import java.util.Set;
 
-public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> implements WebDriver, HasInputDevices {
+public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver>
+    implements WebDriver, JavascriptExecutor, TakesScreenshot,
+    HasInputDevices, HasCapabilities {
 
-    public DelegatingWebDriver(WebDriver delegate) {
-       super( delegate);
+    public DelegatingWebDriver(WebDriver driver) {
+        super(driver);
+    }
+
+    @Override
+    public Options manage() {
+        return delegate.manage();
     }
 
     @Override
@@ -64,8 +71,18 @@ public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> impl
     }
 
     @Override
-    public Options manage() {
-        return delegate.manage();
+    public Object executeScript(String script, Object... args) {
+        return ((JavascriptExecutor) delegate).executeScript(script, args);
+    }
+
+    @Override
+    public Object executeAsyncScript(String script, Object... args) {
+        return ((JavascriptExecutor) delegate).executeAsyncScript(script, args);
+    }
+
+    @Override
+    public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
+        return ((TakesScreenshot) delegate).getScreenshotAs(target);
     }
 
     @Override
@@ -76,5 +93,10 @@ public class DelegatingWebDriver extends DelegatingSearchContext<WebDriver> impl
     @Override
     public Mouse getMouse() {
         return ((HasInputDevices) delegate).getMouse();
+    }
+
+    @Override
+    public Capabilities getCapabilities() {
+        return ((HasCapabilities) delegate).getCapabilities();
     }
 }

@@ -1,5 +1,8 @@
 package swip.ch18datepicker.jquery.v3;
 
+import swip.framework.datepicker.Calendar;
+import swip.framework.datepicker.DayPicker;
+
 import java.time.LocalDate;
 import java.time.Month;
 
