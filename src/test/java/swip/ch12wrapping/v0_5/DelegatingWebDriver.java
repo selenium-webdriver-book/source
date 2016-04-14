@@ -1,4 +1,4 @@
-package swip.ch12wrapping.v1;
+package swip.ch12wrapping.v0_5;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
