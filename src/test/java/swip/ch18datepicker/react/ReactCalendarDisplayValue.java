@@ -8,7 +8,6 @@ import java.util.function.Function;
 import static java.lang.Integer.parseInt;
 import static swip.locators.ReactByClassName.*;
 
-
 public enum ReactCalendarDisplayValue implements Function<Browser, Integer> {
 
     /**
