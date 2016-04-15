@@ -6,7 +6,8 @@ import swip.framework.Browser;
 import java.util.function.Function;
 
 import static java.lang.Integer.parseInt;
-import static swip.locators.ReactByClassName.*;
+import static swip.locators.ReactByClassName.CALENDAR;
+import static swip.locators.ReactByClassName.DISPLAY_MONTH_YEAR;
 
 public enum ReactCalendarDisplayValue implements Function<Browser, Integer> {
 
