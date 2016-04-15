@@ -11,7 +11,7 @@ import static org.openqa.selenium.By.xpath;
  */
 public enum ReactByXpath implements Supplier<By> {
 
-    TRIGGER_BY("//*[@id=\"app\"]/div/div[1]/div/div[2]/div/input");
+    TRIGGER_BY("//*[@id=\"app\"]/descendant::input");
 
     private final By by;
 
