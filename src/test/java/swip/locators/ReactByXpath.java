@@ -4,11 +4,10 @@ import org.openqa.selenium.By;
 
 import java.util.function.Supplier;
 
-import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
 
 /**
- * This enum is a Supplier of ById from Selenium By API.
+ * This enum is a Supplier of By.ByXpath from Selenium By API.
  */
 public enum ReactByXpath implements Supplier<By> {
 
@@ -21,7 +20,7 @@ public enum ReactByXpath implements Supplier<By> {
     }
 
     /**
-     * @return the by instance variable which is a ById.
+     * @return the by instance variable which is a By.ByXpath.
      */
     @Override
     public By get() {
