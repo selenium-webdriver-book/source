@@ -1,4 +1,4 @@
-package swip.ch13framework.v0_8;
+package swip.ch12wrapping.v0_8;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.HasInputDevices;
