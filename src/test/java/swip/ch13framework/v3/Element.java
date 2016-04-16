@@ -1,8 +1,8 @@
-package swip.ch13framework.v2;
+package swip.ch13framework.v3;
 
 import org.openqa.selenium.WebElement;
 
-public class Element extends DelegatingWebElement implements ExplicitWait {
+public class Element extends DelegatingWebElement  {
 
     public Element(WebElement delegate) {
         super(delegate);

@@ -3,6 +3,7 @@ package swip.ch13framework.v3;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
+
 import java.util.Optional;
 
 public interface SearchScope {
