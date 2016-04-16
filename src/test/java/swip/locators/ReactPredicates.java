@@ -1,4 +1,4 @@
-package swip.ch18datepicker.react;
+package swip.locators;
 
 import swip.framework.Element;
 import swip.framework.ExplicitWait;

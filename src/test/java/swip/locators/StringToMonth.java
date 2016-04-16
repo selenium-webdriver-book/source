@@ -1,4 +1,4 @@
-package swip.ch18datepicker.bootstrap;
+package swip.locators;
 
 import java.time.Month;
 import java.util.function.Function;

@@ -9,18 +9,18 @@ import static org.openqa.selenium.By.className;
 /**
  * This enum is a Supplier of ByClassName from Selenium By API.
  */
-public enum ReactByClassName implements Supplier<By> {     //<6>
+public enum JsDatepickByClassName implements Supplier<By> {     //<6>
 
-    TRIGGER_CONTAINER("react-datepicker__input-container"),
-    TRIGGER_BY("ignore-react-onclickoutside"),
-    CALENDAR("react-datepicker"),            //<1>
-    NEXT_MONTH_BUTTON("react-datepicker__navigation--next"),              //<2>
-    PREV_MONTH_BUTTON("react-datepicker__navigation--previous"),              //<3>
-    DISPLAY_MONTH_YEAR("react-datepicker__current-month");      //<4>
+    CALENDAR("boxMainInner"),            //<1>
+    NEXT_MONTH_BUTTON("monthForwardButton"),              //<2>
+    PREV_MONTH_BUTTON("monthBackwardButton"),              //<3>
+    NEXT_YEAR_BUTTON("yearForwardButton"),              //<2>
+    PREV_YEAR_BUTTON("yearBackwardButton"),              //<3>
+    DISPLAY_MONTH_YEAR("controlsBarText");      //<4>
 
     private final By by;
 
-    ReactByClassName(String id) {
+    JsDatepickByClassName(String id) {
         this.by = className(id);
     }
 

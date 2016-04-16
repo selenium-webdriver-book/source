@@ -1,17 +1,18 @@
-package swip.ch18datepicker.react;
+package swip.ch18datepicker.jsdatepick;
 
 import swip.framework.Browser;
 import swip.framework.datepicker.DayPicker;
 
-import static swip.locators.ReactPredicates.CALENDAR_CLOSED;
-import static swip.locators.ReactByClassName.CALENDAR;
+
+import static swip.ch18datepicker.jsdatepick.JsPredicates.CALENDAR_CLOSED;
+import static swip.locators.JsDatepickByClassName.CALENDAR;
 import static swip.locators.TagName.DIV;
 
-public class ReactDayPicker implements DayPicker {
+public class JsDayPicker implements DayPicker {
 
     private Browser browser;
 
-    public ReactDayPicker(Browser browser) {
+    public JsDayPicker(Browser browser) {
         this.browser = browser;
     }
 

@@ -1,6 +1,5 @@
 package swip.ch18datepicker.react;
 
-import swip.ch18datepicker.bootstrap.StringToMonth;
 import swip.framework.Browser;
 
 import java.util.function.Function;
@@ -8,6 +7,7 @@ import java.util.function.Function;
 import static java.lang.Integer.parseInt;
 import static swip.locators.ReactByClassName.CALENDAR;
 import static swip.locators.ReactByClassName.DISPLAY_MONTH_YEAR;
+import static swip.locators.StringToMonth.TO_MONTH;
 
 public enum ReactCalendarDisplayValue implements Function<Browser, Integer> {
 
@@ -27,7 +27,7 @@ public enum ReactCalendarDisplayValue implements Function<Browser, Integer> {
     DISPLAY_MONTH {
         @Override
         public Integer apply(Browser browser) {
-            return StringToMonth.TO_MONTH.apply(extract(browser, 0)).ordinal();       //<2>
+            return TO_MONTH.apply(extract(browser, 0)).ordinal();       //<2>
         }
     };
 

@@ -1,22 +1,20 @@
-package swip.ch18datepicker.react;
+package swip.ch17reactdatepicker.react.v2;
 
 import swip.framework.Browser;
-import swip.framework.datepicker.DayPicker;
 
-import static swip.locators.ReactPredicates.CALENDAR_CLOSED;
 import static swip.locators.ReactByClassName.CALENDAR;
+import static swip.locators.ReactPredicates.CALENDAR_CLOSED;
 import static swip.locators.TagName.DIV;
 
-public class ReactDayPicker implements DayPicker {
+public class ReactDayPicker {
 
-    private Browser browser;
+    private final Browser browser;
 
     public ReactDayPicker(Browser browser) {
         this.browser = browser;
     }
 
-    @Override
-    public void pick(int day) {
+    public void pickDay(int day) {
         browser.untilFound(CALENDAR).findElements(DIV)
             .filter(e -> e.getText().equals(String.valueOf(day)))
             .findFirst()

@@ -1,15 +1,16 @@
-package swip.ch18datepicker.bootstrap;
+package swip.ch18datepicker.jsdatepick;
 
 import swip.framework.Browser;
-import swip.locators.StringToMonth;
 
 import java.util.function.Function;
 
 import static java.lang.Integer.parseInt;
-import static swip.locators.BootstrapByClassName.CALENDAR;
-import static swip.locators.BootstrapByClassName.DISPLAY_MONTH_YEAR;
+import static swip.locators.JsDatepickByClassName.CALENDAR;
+import static swip.locators.JsDatepickByClassName.DISPLAY_MONTH_YEAR;
+import static swip.locators.StringToMonth.TO_MONTH;
 
-public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> {
+
+public enum JsDatepickDisplayValue implements Function<Browser, Integer> {
 
     /**
      * Locate the integer value representing displayed year on a calendar
@@ -17,7 +18,7 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
     DISPLAY_YEAR {
         @Override
         public Integer apply(Browser browser) {
-            return parseInt(extract(browser, 1));       //<1>
+            return parseInt(extract(browser, 1).trim());       //<1>
         }
     },
 
@@ -27,12 +28,12 @@ public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> 
     DISPLAY_MONTH {
         @Override
         public Integer apply(Browser browser) {
-            return StringToMonth.TO_MONTH.apply(extract(browser, 0)).ordinal();       //<2>
+            return TO_MONTH.apply(extract(browser, 0)).ordinal();       //<2>
         }
     };
 
     private static String extract(Browser browser, int i) {  //<1>
-        return browser.untilFound(CALENDAR).getText(DISPLAY_MONTH_YEAR).split(" ")[i];
+        return browser.untilFound(CALENDAR).getText(DISPLAY_MONTH_YEAR).split(",")[i];
     }
 
 }
