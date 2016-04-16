@@ -1,20 +1,12 @@
 package swip.ch13framework.v1;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import swip.ch13framework.v0_8.DelegatingWebDriver;
 
-public class Browser {
-    private final WebDriver driver; // <1>
+public class Browser extends DelegatingWebDriver implements ExplicitWait {
 
     public Browser(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    public Element findElement(By by) {
-        return new Element(driver.findElement(by));
-    } // <3>
-
-    public void get(String url) {
-        driver.get(url);
-    }
 }

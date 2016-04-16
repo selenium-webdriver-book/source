@@ -29,5 +29,4 @@ public interface ExplicitWait extends SearchScope {
                 (ExplicitWait where) -> predicate.test(where)
             );
     }
-
 }

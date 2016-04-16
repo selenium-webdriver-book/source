@@ -4,8 +4,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import swip.ch13framework.v6.Browser;
-import swip.ch13framework.v6.Element;
+import swip.ch13framework.v3.Browser;
+import swip.ch13framework.v3.Element;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
