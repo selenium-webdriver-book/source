@@ -1,5 +1,8 @@
 @startuml
 
+skinparam monochrome true
+skinparam shadowing false
+
 actor You
 participant "Test Script"
 participant Hub
