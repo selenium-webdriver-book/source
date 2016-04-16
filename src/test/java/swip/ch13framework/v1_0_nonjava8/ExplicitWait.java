@@ -5,6 +5,5 @@ import org.openqa.selenium.WebElement;
 
 public interface ExplicitWait {
     WebElement findElement(By by); // <1>
-
     WebElement untilFound(By by);
 }
