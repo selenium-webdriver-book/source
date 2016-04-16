@@ -7,11 +7,11 @@ import org.openqa.selenium.interactions.Mouse;
 
 import java.util.Set;
 
-class DelegatingWebDriver  extends DelegatingSearchContext<WebDriver>
+public class DelegatingWebDriver  extends DelegatingSearchContext<WebDriver>
     implements WebDriver, JavascriptExecutor, TakesScreenshot,
     HasInputDevices, HasCapabilities {
 
-    DelegatingWebDriver(WebDriver driver) {
+    protected DelegatingWebDriver(WebDriver driver) {
         super(driver);
     }
 

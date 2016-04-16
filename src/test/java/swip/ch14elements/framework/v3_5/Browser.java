@@ -1,11 +1,11 @@
-package swip.ch14elements.v3_5;
+package swip.ch14elements.framework.v3_5;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import swip.ch14elements.framework.DelegatingWebDriver;
-import swip.ch14elements.framework.Element;
+import swip.ch13framework.v3.DelegatingWebDriver;
+import swip.ch13framework.v3.Element;
 
-public class Browser extends DelegatingWebDriver  {
+public class Browser extends DelegatingWebDriver {
 
     public Browser(WebDriver driver) {
         super(driver);

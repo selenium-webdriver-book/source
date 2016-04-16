@@ -24,13 +24,13 @@ public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
 
     @Deprecated
     @Override
-    public WebElement findElement(By by) {
-        return delegate.findElement(by);
+    public Element findElement(By by) {
+        return new Element(delegate.findElement(by));
     }
 
     @Override
     public Element findElement(Supplier<By> by) {
-        return new Element(findElement(by.get()));
+        return findElement(by.get());
     }
 
     @Override
