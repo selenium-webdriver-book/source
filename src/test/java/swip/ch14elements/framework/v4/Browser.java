@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import swip.ch13framework.v3.DelegatingWebDriver;
-import swip.ch13framework.v3.Element;
-import swip.ch13framework.v3.ExplicitWait;
+import swip.ch13framework.v4.DelegatingWebDriver;
+import swip.ch13framework.v4.Element;
+import swip.ch13framework.v4.ExplicitWait;
 import swip.framework.robust.Attemptable;
 import swip.framework.robust.Retry;
 

@@ -7,9 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.ch05pageobjects.LoginForm;
-import swip.ch13framework.v3.Browser;
-import swip.ch13framework.v3.BrowserRunner;
-import swip.ch13framework.v3.Element;
+import swip.ch13framework.v4.Browser;
+import swip.ch13framework.v4.BrowserRunner;
+import swip.ch13framework.v4.Element;
 
 import javax.inject.Inject;
 

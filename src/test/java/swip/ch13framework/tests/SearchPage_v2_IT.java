@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch05pageobjects.d.SearchPage;
-import swip.ch13framework.v3.Browser;
-import swip.ch13framework.v3.BrowserRunner;
+import swip.ch13framework.v4.Browser;
+import swip.ch13framework.v4.BrowserRunner;
 
 import javax.inject.Inject;
 

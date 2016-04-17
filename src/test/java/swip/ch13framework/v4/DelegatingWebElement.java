@@ -1,30 +1,20 @@
-package swip.ch13framework.v3;
+package swip.ch13framework.v4;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.internal.Coordinates;
+import org.openqa.selenium.internal.Locatable;
 import org.openqa.selenium.internal.WrapsElement;
 
-import java.util.List;
-
-public class DelegatingWebElement implements WebElement, WrapsElement {
-    protected final WebElement delegate;
+public class DelegatingWebElement extends DelegatingSearchContext<WebElement> //<1>
+    implements WebElement, Locatable, WrapsElement {
 
     public DelegatingWebElement(WebElement delegate) {
-        this.delegate = delegate;
-    }
-
-    @Override
-    public List<WebElement> findElements(By by) {
-        return delegate.findElements(by);
-    }
-
-    @Override
-    public Element findElement(By by) {
-        return new Element(delegate.findElement(by));
+      super(delegate);                   //<2>
     }
 
     @Override
     public void click() {
-        delegate.click();
+        delegate.click();      //<3>
     }
 
     @Override
@@ -83,13 +73,13 @@ public class DelegatingWebElement implements WebElement, WrapsElement {
     }
 
     @Override
-    public Rectangle getRect() {
-        return delegate.getRect();
+    public String getCssValue(String propertyName) {
+        return delegate.getCssValue(propertyName);
     }
 
     @Override
-    public String getCssValue(String propertyName) {
-        return delegate.getCssValue(propertyName);
+    public Rectangle getRect() {
+        return delegate.getRect();
     }
 
     @Override
@@ -98,8 +88,12 @@ public class DelegatingWebElement implements WebElement, WrapsElement {
     }
 
     @Override
+    public Coordinates getCoordinates() {
+        return ((Locatable)delegate).getCoordinates();
+    }
+
+    @Override
     public WebElement getWrappedElement() {
         return ((WrapsElement)delegate).getWrappedElement();
     }
 }
-
