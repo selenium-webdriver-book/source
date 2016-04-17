@@ -15,12 +15,16 @@ import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("Convert2Lambda")
 public class PhantomJSDriver extends RemoteWebDriver {
-    private static final String BINARY_PATH = System.getProperty("phantomjs.binary.path", "phantomjs"); // <1>
-    private static final int PORT = Integer.parseInt(System.getProperty("phantomjs.PORT", "5555"));
-    private static final Logger LOGGER = LoggerFactory.getLogger(PhantomJSDriver.class);
+    private static final String BINARY_PATH =
+            System.getProperty("phantomjs.binary.path", "phantomjs"); // <1>
+    private static final int PORT =
+            Integer.parseInt(System.getProperty("phantomjs.PORT", "5555"));
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(PhantomJSDriver.class);
     private Process process; // <2>
 
-    public PhantomJSDriver(DesiredCapabilities desiredCapabilities) throws MalformedURLException {
+    public PhantomJSDriver(DesiredCapabilities desiredCapabilities)
+            throws MalformedURLException {
         super(new URL("http://localhost:" + PORT), desiredCapabilities);
     }
 
@@ -28,7 +32,8 @@ public class PhantomJSDriver extends RemoteWebDriver {
     protected void startClient() {
 
         try {
-            process = Runtime.getRuntime().exec(BINARY_PATH + " --webdriver=" + PORT); // <3>
+            process = Runtime.getRuntime()
+                    .exec(BINARY_PATH + " --webdriver=" + PORT); // <3>
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -38,7 +43,8 @@ public class PhantomJSDriver extends RemoteWebDriver {
         new Thread(new Runnable() { // <5>
             @Override
             public void run() {
-                BufferedReader in = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(process.getErrorStream()));
                 String l;
                 try {
                     while ((l = in.readLine()) != null) {
@@ -53,7 +59,8 @@ public class PhantomJSDriver extends RemoteWebDriver {
         new Thread(new Runnable() { // <6>
             @Override
             public void run() {
-                BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(process.getInputStream()));
                 String l;
                 try {
                     while ((l = in.readLine()) != null) {
