@@ -11,7 +11,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import swip.ch11drivers.ChromeDriverBinarySupplier;
-import swip.framework.phantomjs.PhantomJSDriver;
 
 import java.io.IOException;
 import java.net.URI;
