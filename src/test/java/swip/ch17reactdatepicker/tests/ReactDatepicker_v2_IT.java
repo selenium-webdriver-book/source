@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
-import static swip.locators.ReactByXpath.TRIGGER_BY;
+import static swip.locators.react.ReactByXpath.TRIGGER_BY;
 
 
 @RunWith(BrowserRunner.class)

@@ -4,8 +4,8 @@ import swip.framework.Browser;
 
 import java.util.function.Function;
 
-import static swip.locators.JQueryByClassName.YEAR;
-import static swip.locators.JQueryById.CALENDAR;
+import static swip.locators.jquery.JQueryByClassName.YEAR;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class DisplayYear implements Function<Browser, Integer> {
 

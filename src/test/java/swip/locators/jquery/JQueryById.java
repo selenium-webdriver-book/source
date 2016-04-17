@@ -1,4 +1,4 @@
-package swip.locators;
+package swip.locators.jquery;
 
 import org.openqa.selenium.By;
 

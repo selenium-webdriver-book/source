@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import swip.ch13framework.v4.DelegatingWebDriver;
 import swip.ch13framework.v4.Element;
-import swip.ch13framework.v4.ExplicitWait;
+import swip.ch13framework.v4.SearchScope;
 import swip.framework.robust.Attemptable;
 import swip.framework.robust.Retry;
 
@@ -95,9 +95,9 @@ public class Browser extends DelegatingWebDriver {
 
     public Select getSelect(By by) {
         final Element element = untilFound(by);
-        until(new Predicate<ExplicitWait>() {
+        until(new Predicate<SearchScope>() {
             @Override
-            public boolean test(ExplicitWait driver) {
+            public boolean test(SearchScope driver) {
                 element.click();
                 return !element.findElements(By.tagName("option")).isEmpty();
             }
@@ -107,7 +107,7 @@ public class Browser extends DelegatingWebDriver {
 
     public Select getSelectLambda(By by) {
         Element element = untilFound(by);
-        until((ExplicitWait driver) -> {
+        until((SearchScope driver) -> {
             element.click();
             return !element.findElements(By.tagName("option")).isEmpty();
         });

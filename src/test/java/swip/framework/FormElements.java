@@ -64,7 +64,7 @@ public interface FormElements extends ExplicitWait {
 
     default Select getSelect(Supplier<By> by) {
         Element element = untilFound(by);
-        until((ExplicitWait driver) -> {
+        until((SearchScope driver) -> {
             element.click();
             return !element.findElements(By.tagName("option")).isEmpty();
         });

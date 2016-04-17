@@ -14,7 +14,7 @@ import javax.inject.Inject;
 
 import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
-import static swip.locators.JQueryById.TRIGGER_BY;
+import static swip.locators.jquery.JQueryById.TRIGGER_BY;
 
 @RunWith(BrowserRunner.class)
 public class JQueryDatepickerV2IT extends TestTimer {

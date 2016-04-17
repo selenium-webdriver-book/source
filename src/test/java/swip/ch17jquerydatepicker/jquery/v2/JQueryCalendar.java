@@ -2,7 +2,7 @@ package swip.ch17jquerydatepicker.jquery.v2;
 
 import swip.framework.Browser;
 
-import static swip.locators.JQueryById.TRIGGER_BY;
+import static swip.locators.jquery.JQueryById.TRIGGER_BY;
 
 public class JQueryCalendar {
 

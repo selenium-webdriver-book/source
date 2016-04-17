@@ -10,7 +10,7 @@ import java.time.Month;
 import static swip.ch18datepicker.jsdatepick.JsDatepickControls.*;
 import static swip.ch18datepicker.jsdatepick.JsDatepickDisplayValue.DISPLAY_MONTH;
 import static swip.ch18datepicker.jsdatepick.JsDatepickDisplayValue.DISPLAY_YEAR;
-import static swip.locators.JsDatepickById.TRIGGER_BY;
+import static swip.locators.jsdatepick.JsDatepickById.TRIGGER_BY;
 
 public class JsDatepickPage {
 

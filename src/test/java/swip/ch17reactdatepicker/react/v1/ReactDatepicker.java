@@ -1,16 +1,16 @@
 package swip.ch17reactdatepicker.react.v1;
 
 import swip.framework.Browser;
+import swip.framework.ElementNotVisible;
 
 import java.time.LocalDate;
 import java.time.Month;
 
 import static java.lang.Integer.parseInt;
 import static swip.locators.StringToMonth.TO_MONTH;
-import static swip.locators.ReactByClassName.*;
-import static swip.locators.ReactByXpath.TRIGGER_BY;
-import static swip.locators.ReactPredicates.CALENDAR_CLOSED;
 import static swip.locators.TagName.DIV;
+import static swip.locators.react.ReactByClassName.*;
+import static swip.locators.react.ReactByXpath.TRIGGER_BY;
 
 public class ReactDatepicker {
 
@@ -94,7 +94,7 @@ public class ReactDatepicker {
             .findFirst()
             .get()
             .click();
-        browser.until(CALENDAR_CLOSED);
+        browser.until(new ElementNotVisible(CALENDAR));
     }
 
     private static String extract(Browser browser, int i) {  //<1>

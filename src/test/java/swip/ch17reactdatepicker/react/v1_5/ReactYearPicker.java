@@ -3,7 +3,7 @@ package swip.ch17reactdatepicker.react.v1_5;
 import swip.framework.Browser;
 
 import static java.lang.Integer.parseInt;
-import static swip.locators.ReactByClassName.*;
+import static swip.locators.react.ReactByClassName.*;
 
 public class ReactYearPicker {
 

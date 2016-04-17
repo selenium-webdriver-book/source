@@ -10,7 +10,7 @@ import swip.tests.TestTimer;
 
 import javax.inject.Inject;
 
-import static swip.locators.ReactByXpath.TRIGGER_BY;
+import static swip.locators.react.ReactByXpath.TRIGGER_BY;
 
 @RunWith(BrowserRunner.class)
 public class TriggerByXpathIT extends TestTimer {

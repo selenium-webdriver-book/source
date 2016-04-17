@@ -6,8 +6,8 @@ import swip.locators.StringToMonth;
 import java.util.function.Function;
 
 import static java.lang.Integer.parseInt;
-import static swip.locators.BootstrapByClassName.CALENDAR;
-import static swip.locators.BootstrapByClassName.DISPLAY_MONTH_YEAR;
+import static swip.locators.bootstrap.BootstrapByClassName.CALENDAR;
+import static swip.locators.bootstrap.BootstrapByClassName.DISPLAY_MONTH_YEAR;
 
 public enum BootstrapCalendarDisplayValue implements Function<Browser, Integer> {
 

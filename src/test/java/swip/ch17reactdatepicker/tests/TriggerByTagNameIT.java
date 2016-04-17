@@ -10,7 +10,7 @@ import swip.tests.TestTimer;
 
 import javax.inject.Inject;
 
-import static swip.locators.ReactByClassName.TRIGGER_CONTAINER;
+import static swip.locators.react.ReactByClassName.TRIGGER_CONTAINER;
 import static swip.locators.TagName.INPUT;
 
 @RunWith(BrowserRunner.class)

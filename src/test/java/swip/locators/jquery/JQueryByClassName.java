@@ -1,4 +1,4 @@
-package swip.locators;
+package swip.locators.jquery;
 
 import org.openqa.selenium.By;
 
@@ -9,17 +9,16 @@ import static org.openqa.selenium.By.className;
 /**
  * This enum is a Supplier of ByClassName from Selenium By API.
  */
-public enum BootstrapByClassName implements Supplier<By> {     //<6>
+public enum JQueryByClassName implements Supplier<By> {
 
-    CALENDAR("datepicker-days"),            //<1>
-    TRIGGER_BY("trigger"),                  //<2>
-    NEXT_MONTH_BUTTON("next"),              //<3>
-    PREV_MONTH_BUTTON("prev"),              //<4>
-    DISPLAY_MONTH_YEAR("datepicker-switch");      //<5>
+    NEXT_MONTH_BUTTON("ui-datepicker-next"), //<2>
+    PREV_MONTH_BUTTON("ui-datepicker-prev"), //<3>
+    MONTH("ui-datepicker-month"),    //<4>
+    YEAR("ui-datepicker-year");      //<5>
 
     private final By by;
 
-    BootstrapByClassName(String id) {
+    JQueryByClassName(String id) {
         this.by = className(id);
     }
 

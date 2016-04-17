@@ -2,8 +2,8 @@ package swip.ch17jquerydatepicker.jquery.v2;
 
 import swip.framework.Browser;
 
-import static swip.locators.JQueryByClassName.YEAR;
-import static swip.locators.JQueryById.CALENDAR;
+import static swip.locators.jquery.JQueryByClassName.YEAR;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class JQueryYearPicker {
 

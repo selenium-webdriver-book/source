@@ -2,7 +2,7 @@ package swip.ch17reactdatepicker.react.v2;
 
 import swip.framework.Browser;
 
-import static swip.locators.ReactByXpath.TRIGGER_BY;
+import static swip.locators.react.ReactByXpath.TRIGGER_BY;
 
 public class ReactCalendar {
 

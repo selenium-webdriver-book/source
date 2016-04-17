@@ -6,7 +6,7 @@ import swip.framework.ExplicitWait;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import static swip.locators.JsDatepickByClassName.CALENDAR;
+import static swip.locators.jsdatepick.JsDatepickByClassName.CALENDAR;
 
 
 public enum JsPredicates implements Predicate<ExplicitWait> {

@@ -1,11 +1,11 @@
 package swip.ch18datepicker.react;
 
 import swip.framework.Browser;
+import swip.framework.ElementNotVisible;
 import swip.framework.datepicker.DayPicker;
 
-import static swip.locators.ReactPredicates.CALENDAR_CLOSED;
-import static swip.locators.ReactByClassName.CALENDAR;
 import static swip.locators.TagName.DIV;
+import static swip.locators.react.ReactByClassName.CALENDAR;
 
 public class ReactDayPicker implements DayPicker {
 
@@ -22,6 +22,6 @@ public class ReactDayPicker implements DayPicker {
             .findFirst()
             .get()
             .click();
-        browser.until(CALENDAR_CLOSED);
+        browser.until(new ElementNotVisible(CALENDAR));
     }
 }

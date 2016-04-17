@@ -5,8 +5,8 @@ import swip.framework.Browser;
 import java.util.function.Function;
 
 import static java.lang.Integer.parseInt;
-import static swip.locators.JsDatepickByClassName.CALENDAR;
-import static swip.locators.JsDatepickByClassName.DISPLAY_MONTH_YEAR;
+import static swip.locators.jsdatepick.JsDatepickByClassName.CALENDAR;
+import static swip.locators.jsdatepick.JsDatepickByClassName.DISPLAY_MONTH_YEAR;
 import static swip.locators.StringToMonth.TO_MONTH;
 
 

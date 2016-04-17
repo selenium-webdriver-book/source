@@ -4,8 +4,8 @@ import swip.framework.Browser;
 
 import java.util.function.Consumer;
 
-import static swip.locators.JsDatepickByClassName.*;
-import static swip.locators.JsDatepickById.TRIGGER_BY;
+import static swip.locators.jsdatepick.JsDatepickByClassName.*;
+import static swip.locators.jsdatepick.JsDatepickById.TRIGGER_BY;
 
 public enum JsDatepickControls implements Consumer<Browser> {    //<6>
     TRIGGER {

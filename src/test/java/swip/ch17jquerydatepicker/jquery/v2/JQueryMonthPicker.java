@@ -4,8 +4,8 @@ import swip.framework.Browser;
 
 import java.time.Month;
 
-import static swip.locators.JQueryByClassName.*;
-import static swip.locators.JQueryById.CALENDAR;
+import static swip.locators.jquery.JQueryByClassName.*;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class JQueryMonthPicker {
 

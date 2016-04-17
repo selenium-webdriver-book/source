@@ -1,4 +1,4 @@
-package swip.locators;
+package swip.locators.jsdatepick;
 
 import org.openqa.selenium.By;
 

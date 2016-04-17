@@ -4,7 +4,7 @@ import swip.framework.Browser;
 
 import static java.lang.Integer.parseInt;
 import static swip.locators.StringToMonth.TO_MONTH;
-import static swip.locators.ReactByClassName.*;
+import static swip.locators.react.ReactByClassName.*;
 
 
 public class ReactMonthPicker {

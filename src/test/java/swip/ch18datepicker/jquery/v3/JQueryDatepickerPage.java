@@ -5,7 +5,7 @@ import swip.framework.datepicker.Calendar;
 
 import java.time.Month;
 
-import static swip.locators.JQueryById.TRIGGER_BY;
+import static swip.locators.jquery.JQueryById.TRIGGER_BY;
 
 public class JQueryDatepickerPage {
 

@@ -4,7 +4,7 @@ import swip.framework.Browser;
 
 import java.util.function.Consumer;
 
-import static swip.locators.JQueryById.TRIGGER_BY;
+import static swip.locators.jquery.JQueryById.TRIGGER_BY;
 
 public class Trigger implements Consumer<Browser> {
 

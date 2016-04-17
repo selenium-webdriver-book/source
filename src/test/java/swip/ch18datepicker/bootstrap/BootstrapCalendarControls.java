@@ -4,7 +4,7 @@ import swip.framework.Browser;
 
 import java.util.function.Consumer;
 
-import static swip.locators.BootstrapByClassName.*;
+import static swip.locators.bootstrap.BootstrapByClassName.*;
 
 public enum BootstrapCalendarControls implements Consumer<Browser> {    //<6>
     TRIGGER {

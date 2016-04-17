@@ -2,15 +2,15 @@ package swip.ch17jquerydatepicker.jquery.v1;
 
 import org.openqa.selenium.By;
 import swip.framework.Browser;
-import swip.locators.JQueryById;
-import swip.locators.JQueryPredicates;
+import swip.framework.ElementNotVisible;
+import swip.locators.jquery.JQueryById;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.function.Supplier;
 
-import static swip.locators.JQueryByClassName.*;
-import static swip.locators.JQueryById.CALENDAR;
+import static swip.locators.jquery.JQueryByClassName.*;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class JQueryDatepicker {
 
@@ -98,6 +98,6 @@ public class JQueryDatepicker {
                     return By.linkText(String.valueOf(day));
                 }
             }); //<9>
-        browser.until(JQueryPredicates.CALENDAR_CLOSED);  //<11>
+        browser.until(new ElementNotVisible(CALENDAR));  //<11>
     }
 }
