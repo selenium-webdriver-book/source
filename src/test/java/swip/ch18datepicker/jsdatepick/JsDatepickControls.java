@@ -27,7 +27,6 @@ public enum JsDatepickControls implements Consumer<Browser> {    //<6>
             browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);           //<3>
         }
     },
-
     NEXT_YEAR {
         @Override
         public void accept(Browser browser) {
