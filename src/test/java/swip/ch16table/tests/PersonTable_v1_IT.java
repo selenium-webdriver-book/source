@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static swip.locators.TagName.TABLE;
 
 @RunWith(BrowserRunner.class)
-public class PersonTableV1IT {
+public class PersonTable_v1_IT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

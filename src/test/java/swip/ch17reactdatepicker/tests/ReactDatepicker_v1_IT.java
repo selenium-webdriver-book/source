@@ -14,7 +14,7 @@ import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(BrowserRunner.class)
-public class ReactDatepickerV1IT extends TestTimer {
+public class ReactDatepicker_v1_IT extends TestTimer {
 
     @Inject
     private Browser browser;

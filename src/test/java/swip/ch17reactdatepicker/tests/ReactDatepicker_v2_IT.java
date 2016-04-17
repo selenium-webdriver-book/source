@@ -16,7 +16,7 @@ import static swip.locators.ReactByXpath.TRIGGER_BY;
 
 
 @RunWith(BrowserRunner.class)
-public class ReactDatepickerV2IT extends TestTimer {
+public class ReactDatepicker_v2_IT extends TestTimer {
 
     @Inject
     private Browser browser;

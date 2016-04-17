@@ -20,7 +20,7 @@ import static swip.locators.TagName.TABLE;
 import static swip.ch16table.mapper.CityMapper.MAPPER_LAMBDA;
 
 @RunWith(BrowserRunner.class)
-public class CityTableV2IT {
+public class CityTable_v2_IT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

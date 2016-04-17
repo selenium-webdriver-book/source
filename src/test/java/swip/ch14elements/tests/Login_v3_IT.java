@@ -9,7 +9,7 @@ import swip.ch14elements.framework.v4.BrowserRunner;
 import javax.inject.Inject;
 
 @RunWith(BrowserRunner.class)
-public class LoginV3IT {
+public class Login_v3_IT {
 
     @Inject
     private Browser driver;

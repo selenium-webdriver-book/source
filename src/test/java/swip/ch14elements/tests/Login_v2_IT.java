@@ -11,7 +11,7 @@ import swip.framework.WebDriverRunner;
 import javax.inject.Inject;
 
 @RunWith(WebDriverRunner.class)
-public class LoginV2IT {
+public class Login_v2_IT {
 
     private Browser driver;
 
