@@ -1,14 +1,13 @@
 package swip.ch18datepicker.jquery.v5;
 
 import swip.framework.Browser;
-import swip.locators.JQueryById;
 
 import java.util.function.Consumer;
 
-import static swip.locators.JQueryByClassName.NEXT_MONTH_BUTTON;
-import static swip.locators.JQueryByClassName.PREV_MONTH_BUTTON;
-import static swip.locators.JQueryById.CALENDAR;
-import static swip.locators.JQueryById.TRIGGER_BY;
+import static swip.locators.jquery.JQueryByClassName.NEXT_MONTH_BUTTON;
+import static swip.locators.jquery.JQueryByClassName.PREV_MONTH_BUTTON;
+import static swip.locators.jquery.JQueryById.CALENDAR;
+import static swip.locators.jquery.JQueryById.TRIGGER_BY;
 
 public enum JQueryCalendarControls implements Consumer<Browser> {
 

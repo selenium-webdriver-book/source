@@ -19033,9 +19033,7 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _example_components = __webpack_require__(156);
-
-	var _example_components2 = _interopRequireDefault(_example_components);
-
+        
 	var _hero_example = __webpack_require__(443);
 
 	var _hero_example2 = _interopRequireDefault(_hero_example);
@@ -19076,75 +19074,8 @@
 	            _react2.default.createElement(_hero_example2.default, null)
 	          )
 	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'wrapper' },
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'ReactJS Datepicker'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          _react2.default.createElement(
-	            'a',
-	            { href: 'https://npmjs.org/package/react-datepicker' },
-	            _react2.default.createElement('img', { src: 'https://badge.fury.io/js/react-datepicker.svg', className: 'badge' })
-	          ),
-	          _react2.default.createElement(
-	            'a',
-	            { href: 'https://travis-ci.org/Hacker0x01/react-datepicker' },
-	            _react2.default.createElement('img', { src: 'https://travis-ci.org/Hacker0x01/react-datepicker.svg?branch=master', className: 'badge' })
-	          ),
-	          _react2.default.createElement(
-	            'a',
-	            { href: 'https://david-dm.org/Hacker0x01/react-datepicker' },
-	            _react2.default.createElement('img', { src: 'https://david-dm.org/Hacker0x01/react-datepicker.svg', className: 'badge' })
-	          ),
-	          _react2.default.createElement(
-	            'a',
-	            { href: 'https://npmjs.org/package/react-datepicker' + '?__hstc=72727564.ca821b01b5b29b1831f0936a681f0483.1428679773810.1435582678273.1438354735499.5' + '&__hssc=72727564.1.1438354735499' + '&__hsfp=2497064007' },
-	            _react2.default.createElement('img', { src: 'https://img.shields.io/npm/dm/react-datepicker.svg', className: 'badge' })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'A simple and reusable datepicker component for React.'
-	        ),
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Installation'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'The package can be installed via NPM:'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          _react2.default.createElement(
-	            'code',
-	            null,
-	            'npm install react-datepicker --save'
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'wrapper' },
-	        _react2.default.createElement(_example_components2.default, null)
-	      ),
-	      _react2.default.createElement(
-	        'a',
-	        { href: 'https://github.com/Hacker0x01/react-datepicker/' },
-	        _react2.default.createElement('img', { className: 'github-ribbon', src: 'images/ribbon.png', alt: 'Fork me on GitHub' })
 	      )
-	    );
+	    )
 	  }
 	});
 

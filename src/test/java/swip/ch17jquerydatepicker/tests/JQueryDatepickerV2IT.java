@@ -5,16 +5,16 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
+import swip.ch17jquerydatepicker.jquery.v2.*;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
-import swip.ch17jquerydatepicker.jquery.v2.*;
 import swip.tests.TestTimer;
 
 import javax.inject.Inject;
 
 import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
+import static swip.locators.jquery.JQueryById.TRIGGER_BY;
 
 @RunWith(BrowserRunner.class)
 public class JQueryDatepickerV2IT extends TestTimer {
@@ -34,6 +34,6 @@ public class JQueryDatepickerV2IT extends TestTimer {
     @Test
     public void shouldPickaDate() {
         jQueryDatepicker.pick(APRIL, 1, 2014);
-        assertEquals("04/01/2014", browser.findElement(By.id("datepicker")).getAttribute("value"));
+        assertEquals("04/01/2014", browser.getInputText(TRIGGER_BY));
     }
 }

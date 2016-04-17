@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.Set;
 
-class DelegatingWebDriver implements WebDriver {
-    private final WebDriver driver;
+public class DelegatingWebDriver implements WebDriver {
+    protected final WebDriver driver;
 
-    DelegatingWebDriver(WebDriver driver) {
+    public DelegatingWebDriver(WebDriver driver) {
         this.driver = driver;
     }
 

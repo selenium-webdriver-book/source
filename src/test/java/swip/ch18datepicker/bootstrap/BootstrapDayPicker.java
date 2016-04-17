@@ -1,12 +1,12 @@
 package swip.ch18datepicker.bootstrap;
 
 import swip.framework.Browser;
+import swip.framework.ElementNotVisible;
 import swip.framework.datepicker.DayPicker;
 
 import static swip.locators.TagName.FORM;
 import static swip.locators.TagName.TD;
-import static swip.locators.BootstrapByClassName.CALENDAR;
-import static swip.ch18datepicker.bootstrap.BootstrapPredicates.CALENDAR_CLOSED;
+import static swip.locators.bootstrap.BootstrapByClassName.CALENDAR;
 
 public class BootstrapDayPicker implements DayPicker {
 
@@ -24,6 +24,6 @@ public class BootstrapDayPicker implements DayPicker {
             .get()
             .click();
         browser.click(FORM);
-        browser.until(CALENDAR_CLOSED);
+        browser.until(new ElementNotVisible(CALENDAR));
     }
 }

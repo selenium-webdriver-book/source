@@ -4,8 +4,8 @@ import swip.framework.Browser;
 
 import java.util.function.Consumer;
 
-import static swip.locators.ReactByClassName.*;
-import static swip.locators.ReactByXpath.TRIGGER_BY;
+import static swip.locators.react.ReactByClassName.*;
+import static swip.locators.react.ReactByXpath.TRIGGER_BY;
 
 public enum ReactCalendarControls implements Consumer<Browser> {    //<6>
     TRIGGER {

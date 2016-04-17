@@ -10,7 +10,7 @@ import java.time.Month;
 import static swip.ch18datepicker.react.ReactCalendarControls.*;
 import static swip.ch18datepicker.react.ReactCalendarDisplayValue.DISPLAY_MONTH;
 import static swip.ch18datepicker.react.ReactCalendarDisplayValue.DISPLAY_YEAR;
-import static swip.locators.ReactByXpath.TRIGGER_BY;
+import static swip.locators.react.ReactByXpath.TRIGGER_BY;
 
 public class ReactDatepickerPage {
 

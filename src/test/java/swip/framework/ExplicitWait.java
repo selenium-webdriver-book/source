@@ -20,14 +20,13 @@ public interface ExplicitWait extends SearchScope {
             .until((ExplicitWait e) -> e.findElement(by));
     }
 
-    default void until(Predicate<ExplicitWait> predicate) {
+    default void until(Predicate<SearchScope> predicate) {
         new FluentWait<>(this)
             .withTimeout(10, SECONDS)
             .pollingEvery(100, MILLISECONDS)
             .ignoring(NoSuchElementException.class)
             .until(
-                (ExplicitWait where) -> predicate.test(where)
+                (SearchScope where) -> predicate.test(where)
             );
     }
-
 }

@@ -5,8 +5,8 @@ import swip.framework.Browser;
 import java.time.Month;
 import java.util.function.Function;
 
-import static swip.locators.JQueryByClassName.MONTH;
-import static swip.locators.JQueryById.CALENDAR;
+import static swip.locators.jquery.JQueryByClassName.MONTH;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class DisplayMonth implements Function<Browser, Integer> {
 

@@ -4,8 +4,8 @@ import swip.framework.Browser;
 
 import java.util.function.Consumer;
 
-import static swip.locators.JQueryByClassName.NEXT_MONTH_BUTTON;
-import static swip.locators.JQueryById.CALENDAR;
+import static swip.locators.jquery.JQueryByClassName.NEXT_MONTH_BUTTON;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class NextMonth implements Consumer<Browser> {
 

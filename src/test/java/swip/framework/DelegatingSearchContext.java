@@ -8,29 +8,27 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
+public class DelegatingSearchContext<T extends SearchContext>  //<1>
     implements SearchContext, ExplicitWait {
-    protected T delegate; // <2>
+    protected final T delegate; // <2>
 
     public DelegatingSearchContext(T delegate) {
         this.delegate = delegate;
     }
 
-    @Deprecated
     @Override
     public List<WebElement> findElements(By by) {
         return delegate.findElements(by);
     }
 
-    @Deprecated
     @Override
-    public WebElement findElement(By by) {
-        return delegate.findElement(by);
+    public Element findElement(By by) {
+        return new Element(delegate.findElement(by));
     }
 
     @Override
     public Element findElement(Supplier<By> by) {
-        return new Element(findElement(by.get()));
+        return findElement(by.get());
     }
 
     @Override
@@ -49,5 +47,4 @@ public abstract class DelegatingSearchContext<T extends SearchContext>  //<1>
     public void click(Supplier<By> by) {
         untilFound(by).click();
     }
-
 }
