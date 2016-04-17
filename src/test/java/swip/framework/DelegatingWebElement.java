@@ -5,7 +5,9 @@ import org.openqa.selenium.interactions.internal.Coordinates;
 import org.openqa.selenium.internal.Locatable;
 import org.openqa.selenium.internal.WrapsElement;
 
-public class DelegatingWebElement extends DelegatingSearchContext<WebElement> implements WebElement, Locatable, WrapsElement {
+public class DelegatingWebElement
+    extends DelegatingSearchContext<WebElement>
+    implements WebElement, Locatable, WrapsElement {
 
     public DelegatingWebElement(WebElement delegate) {
       super( delegate);

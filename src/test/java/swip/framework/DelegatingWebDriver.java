@@ -4,12 +4,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.HasInputDevices;
 import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.interactions.Mouse;
+import org.openqa.selenium.internal.WrapsDriver;
 
 import java.util.Set;
 
 class DelegatingWebDriver extends DelegatingSearchContext<WebDriver>
     implements WebDriver, JavascriptExecutor, TakesScreenshot,
-    HasInputDevices, HasCapabilities, ExplicitWait {
+    HasInputDevices, HasCapabilities, ExplicitWait, WrapsDriver {
 
     DelegatingWebDriver(WebDriver driver) {
        super(driver);
@@ -96,9 +97,13 @@ class DelegatingWebDriver extends DelegatingSearchContext<WebDriver>
         return ((HasInputDevices) delegate).getMouse();
     }
 
-
     @Override
     public Capabilities getCapabilities() {
         return ((HasCapabilities) delegate).getCapabilities();
+    }
+
+    @Override
+    public WebDriver getWrappedDriver() {
+        return ((WrapsDriver) delegate).getWrappedDriver();
     }
 }
