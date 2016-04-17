@@ -1,7 +1,7 @@
 package swip.ch17reactdatepicker.react.v1;
 
 import swip.framework.Browser;
-import swip.framework.ElementNotVisible;
+import swip.framework.ElementVisible;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -94,7 +94,7 @@ public class ReactDatepicker {
             .findFirst()
             .get()
             .click();
-        browser.until(new ElementNotVisible(CALENDAR));
+        browser.until(new ElementVisible(CALENDAR).negate());
     }
 
     private static String extract(Browser browser, int i) {  //<1>

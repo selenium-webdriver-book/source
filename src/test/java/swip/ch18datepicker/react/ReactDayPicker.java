@@ -1,7 +1,7 @@
 package swip.ch18datepicker.react;
 
 import swip.framework.Browser;
-import swip.framework.ElementNotVisible;
+import swip.framework.ElementVisible;
 import swip.framework.datepicker.DayPicker;
 
 import static swip.locators.TagName.DIV;
@@ -22,6 +22,6 @@ public class ReactDayPicker implements DayPicker {
             .findFirst()
             .get()
             .click();
-        browser.until(new ElementNotVisible(CALENDAR));
+        browser.until(new ElementVisible(CALENDAR).negate());
     }
 }

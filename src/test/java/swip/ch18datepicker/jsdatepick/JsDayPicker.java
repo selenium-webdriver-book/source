@@ -1,11 +1,10 @@
 package swip.ch18datepicker.jsdatepick;
 
 import swip.framework.Browser;
-import swip.framework.ElementNotVisible;
+import swip.framework.ElementVisible;
 import swip.framework.datepicker.DayPicker;
 
 
-import static swip.ch18datepicker.jsdatepick.JsPredicates.CALENDAR_CLOSED;
 import static swip.locators.jsdatepick.JsDatepickByClassName.CALENDAR;
 import static swip.locators.TagName.DIV;
 
@@ -24,6 +23,6 @@ public class JsDayPicker implements DayPicker {
             .findFirst()
             .get()
             .click();
-        browser.until(new ElementNotVisible(CALENDAR));
+        browser.until(new ElementVisible(CALENDAR).negate());
     }
 }

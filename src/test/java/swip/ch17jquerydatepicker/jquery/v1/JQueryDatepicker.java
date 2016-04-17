@@ -2,7 +2,7 @@ package swip.ch17jquerydatepicker.jquery.v1;
 
 import org.openqa.selenium.By;
 import swip.framework.Browser;
-import swip.framework.ElementNotVisible;
+import swip.framework.ElementVisible;
 import swip.locators.jquery.JQueryById;
 
 import java.time.LocalDate;
@@ -98,6 +98,6 @@ public class JQueryDatepicker {
                     return By.linkText(String.valueOf(day));
                 }
             }); //<9>
-        browser.until(new ElementNotVisible(CALENDAR));  //<11>
+        browser.until(new ElementVisible(CALENDAR).negate());  //<11>
     }
 }

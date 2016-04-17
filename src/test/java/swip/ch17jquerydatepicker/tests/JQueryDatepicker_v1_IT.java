@@ -5,19 +5,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import swip.ch17jquerydatepicker.jquery.v2.*;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
+import swip.ch17jquerydatepicker.jquery.v1.JQueryDatepicker;
 import swip.tests.TestTimer;
 
 import javax.inject.Inject;
 
 import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
-import static swip.locators.jquery.JQueryById.TRIGGER_BY;
 
 @RunWith(BrowserRunner.class)
-public class JQueryDatepickerV2IT extends TestTimer {
+public class JQueryDatepicker_v1_IT extends TestTimer {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -28,12 +27,12 @@ public class JQueryDatepickerV2IT extends TestTimer {
     @Before
     public void setup() {
         browser.get("/datepicker.html");
-        jQueryDatepicker = new JQueryDatepicker(new JQueryCalendar(browser), new JQueryYearPicker(browser), new JQueryMonthPicker(browser), new JQueryDayPicker(browser));
+        jQueryDatepicker = new JQueryDatepicker(browser);
     }
 
     @Test
-    public void shouldPickaDate() {
+    public void muchBetterDatePicker() {
         jQueryDatepicker.pick(APRIL, 1, 2014);
-        assertEquals("04/01/2014", browser.getInputText(TRIGGER_BY));
+        assertEquals("04/01/2014", jQueryDatepicker.getDate());
     }
 }

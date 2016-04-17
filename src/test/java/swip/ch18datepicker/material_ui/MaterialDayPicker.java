@@ -1,7 +1,7 @@
 package swip.ch18datepicker.material_ui;
 
 import swip.framework.Browser;
-import swip.framework.ElementNotVisible;
+import swip.framework.ElementVisible;
 import swip.framework.datepicker.DayPicker;
 
 import static swip.locators.TagName.BUTTON;
@@ -24,6 +24,6 @@ public class MaterialDayPicker implements DayPicker {
             .get()
             .click();
         browser.click(OK_BUTTON);
-        browser.until(new ElementNotVisible(CALENDAR));
+        browser.until(new ElementVisible(CALENDAR).negate());
     }
 }

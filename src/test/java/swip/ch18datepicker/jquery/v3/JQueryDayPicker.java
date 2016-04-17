@@ -1,7 +1,7 @@
 package swip.ch18datepicker.jquery.v3;
 
 import swip.framework.Browser;
-import swip.framework.ElementNotVisible;
+import swip.framework.ElementVisible;
 import swip.framework.datepicker.DayPicker;
 
 import static org.openqa.selenium.By.linkText;
@@ -19,6 +19,6 @@ public class JQueryDayPicker implements DayPicker {
     public void pick(int day) {
         browser.untilFound(CALENDAR)
             .click(() -> linkText(String.valueOf(day))); //<9>
-        browser.until(new ElementNotVisible(CALENDAR));  //<11>
+        browser.until(new ElementVisible(CALENDAR).negate());  //<11>
     }
 }
