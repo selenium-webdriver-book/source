@@ -14,13 +14,13 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("Convert2Lambda")
-public class PhantomJsDriver extends RemoteWebDriver {
+public class PhantomJSDriver extends RemoteWebDriver {
     private static final String BINARY_PATH = System.getProperty("phantomjs.binary.path", "phantomjs");
     private static final int PORT = Integer.parseInt(System.getProperty("phantomjs.PORT", "5555"));
-    private static final Logger LOGGER = LoggerFactory.getLogger(PhantomJsDriver.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PhantomJSDriver.class);
     private Process process;
 
-    public PhantomJsDriver(DesiredCapabilities desiredCapabilities) throws MalformedURLException {
+    public PhantomJSDriver(DesiredCapabilities desiredCapabilities) throws MalformedURLException {
         super(new URL("http://localhost:" + PORT), desiredCapabilities);
     }
 
@@ -38,10 +38,10 @@ public class PhantomJsDriver extends RemoteWebDriver {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                BufferedReader err = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                BufferedReader in = new BufferedReader(new InputStreamReader(process.getErrorStream()));
                 String l;
                 try {
-                    while ((l = err.readLine()) != null) {
+                    while ((l = in.readLine()) != null) {
                         LOGGER.warn(l);
                     }
                 } catch (IOException e) {
@@ -53,14 +53,14 @@ public class PhantomJsDriver extends RemoteWebDriver {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                BufferedReader err = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
                 String l;
                 try {
-                    while ((l = err.readLine()) != null) {
+                    while ((l = in.readLine()) != null) {
+                        LOGGER.info(l);
                         if (l.contains("running")) {
                             latch.countDown();
                         }
-                        LOGGER.info(l);
                     }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -68,20 +68,20 @@ public class PhantomJsDriver extends RemoteWebDriver {
             }
         }).start();
 
-
-        if (!process.isAlive()) {
-            throw new IllegalStateException("failed to start phantomjs");
-        }
-
         try {
-            latch.await(10, TimeUnit.SECONDS);
+            if (!latch.await(10, TimeUnit.SECONDS)) {
+                throw new IllegalStateException("failed to start phantomjs");
+            }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
+        LOGGER.info("phantomjs running");
     }
 
     @Override
     protected void stopClient() {
+        LOGGER.info("destroying phantomjs");
         process.destroy();
     }
 }

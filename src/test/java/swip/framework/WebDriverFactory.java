@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import swip.ch11drivers.ChromeDriverBinarySupplier;
-import swip.framework.phantomjs.PhantomJsDriver;
+import swip.framework.phantomjs.PhantomJSDriver;
 
 import java.io.IOException;
 import java.net.URI;
@@ -51,7 +51,7 @@ public class WebDriverFactory {
             case BrowserType.IE:
                 return new InternetExplorerDriver(desiredCapabilities);
             case BrowserType.PHANTOMJS:
-                return new PhantomJsDriver(desiredCapabilities);
+                return new PhantomJSDriver(desiredCapabilities);
             default:
                 throw new IllegalStateException("unknown browser " + desiredCapabilities.getBrowserName());
         }
