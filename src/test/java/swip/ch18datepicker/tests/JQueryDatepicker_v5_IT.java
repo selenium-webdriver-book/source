@@ -14,7 +14,7 @@ import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(BrowserRunner.class)
-public class JQueryDatepickerV5IT extends TestTimer {
+public class JQueryDatepicker_v5_IT extends TestTimer {
 
     @Inject
     private Browser browser;

@@ -7,7 +7,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
-import swip.ch18datepicker.jquery.v3.JQueryDatepickerPage;
+import swip.ch18datepicker.jquery.v4.JQueryDatepickerPage;
 import swip.tests.TestTimer;
 
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(BrowserRunner.class)
-public class JQueryDatepickerV3IT extends TestTimer {
+public class JQueryDatepicker_v4_IT extends TestTimer {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -35,5 +35,4 @@ public class JQueryDatepickerV3IT extends TestTimer {
         jQueryDatePickerPage.pick(APRIL, 1, 2018);
         assertEquals("04/01/2018", jQueryDatePickerPage.getDate());
     }
-
 }
