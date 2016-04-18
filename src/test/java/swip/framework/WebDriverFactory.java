@@ -5,13 +5,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import swip.ch11drivers.ChromeDriverBinarySupplier;
-import swip.framework.phantomjs.PhantomJSDriver;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -29,6 +29,12 @@ public class WebDriverFactory {
         this.remoteUrl = remoteUrl;
     }
 
+    private static int freePort() throws IOException {
+        try (ServerSocket serverSocket = new ServerSocket(0)) {
+            return serverSocket.getLocalPort();
+        }
+    }
+
     public WebDriver webDriver(DesiredCapabilities desiredCapabilities, URI baseUrl) throws IOException {
 
         WebDriver baseDriver = remoteDriver ?
@@ -36,12 +42,6 @@ public class WebDriverFactory {
                 localDriver(desiredCapabilities);
 
         return new BaseUrlDriver(baseDriver, baseUrl);
-    }
-
-    private static int freePort() throws IOException {
-        try (ServerSocket serverSocket = new ServerSocket(0)) {
-            return serverSocket.getLocalPort();
-        }
     }
 
     private WebDriver localDriver(DesiredCapabilities desiredCapabilities) throws IOException {
@@ -58,7 +58,7 @@ public class WebDriverFactory {
             case BrowserType.IE:
                 return new InternetExplorerDriver(desiredCapabilities);
             case BrowserType.PHANTOMJS:
-                return new PhantomJSDriver(desiredCapabilities, Integer.getInteger("phantomjs.port", freePort()));
+                return new PhantomJSDriver(desiredCapabilities);
             default:
                 throw new IllegalStateException("unknown browser " + desiredCapabilities.getBrowserName());
         }
