@@ -4,6 +4,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +36,8 @@ public class WebDriverConfig {
                 return new ChromeDriver(desiredCapabilities);
             case BrowserType.FIREFOX:
                 return new FirefoxDriver(desiredCapabilities);
+            case BrowserType.PHANTOMJS:
+                return new PhantomJSDriver(desiredCapabilities);
             default:
                 throw new IllegalStateException("unknown browser " + desiredCapabilities.getBrowserName());
         }

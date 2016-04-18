@@ -2,6 +2,7 @@ package swip.ch07managingwebdriver.injectingdriver;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.remote.BrowserType;
@@ -33,6 +34,11 @@ public class WebDriverConfig {
                 return new FirefoxDriver(desiredCapabilities);
             case BrowserType.HTMLUNIT:
                 return new HtmlUnitDriver(desiredCapabilities);
+            case BrowserType.PHANTOMJS:
+                return new HtmlUnitDriver(desiredCapabilities);
+            case BrowserType.CHROME:
+                System.setProperty("webdriver.chrome.driver", "target/chromedriver");
+                return new ChromeDriver(desiredCapabilities);
             default:
                 throw new IllegalStateException("unknown browser " + desiredCapabilities.getBrowserName());
         }
