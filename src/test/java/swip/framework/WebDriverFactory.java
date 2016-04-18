@@ -14,6 +14,7 @@ import swip.ch11drivers.ChromeDriverBinarySupplier;
 import swip.framework.phantomjs.PhantomJSDriver;
 
 import java.io.IOException;
+import java.net.ServerSocket;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -37,6 +38,12 @@ public class WebDriverFactory {
         return new BaseUrlDriver(baseDriver, baseUrl);
     }
 
+    private static int freePort() throws IOException {
+        try (ServerSocket serverSocket = new ServerSocket(0)) {
+            return serverSocket.getLocalPort();
+        }
+    }
+
     private WebDriver localDriver(DesiredCapabilities desiredCapabilities) throws IOException {
         switch (desiredCapabilities.getBrowserName()) {
             case BrowserType.CHROME:
@@ -51,7 +58,7 @@ public class WebDriverFactory {
             case BrowserType.IE:
                 return new InternetExplorerDriver(desiredCapabilities);
             case BrowserType.PHANTOMJS:
-                return new PhantomJSDriver(desiredCapabilities);
+                return new PhantomJSDriver(desiredCapabilities, Integer.getInteger("phantomjs.port", freePort()));
             default:
                 throw new IllegalStateException("unknown browser " + desiredCapabilities.getBrowserName());
         }
