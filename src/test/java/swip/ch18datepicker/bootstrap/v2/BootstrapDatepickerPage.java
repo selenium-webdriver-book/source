@@ -1,5 +1,6 @@
-package swip.ch18datepicker.bootstrap;
+package swip.ch18datepicker.bootstrap.v2;
 
+import swip.ch18datepicker.bootstrap.v1.BootstrapDayPicker;
 import swip.framework.Browser;
 import swip.framework.datepicker.Calendar;
 import swip.framework.datepicker.CalendarPicker;
@@ -8,9 +9,9 @@ import swip.framework.datepicker.Datepicker;
 import java.time.Month;
 
 import static swip.locators.bootstrap.BootstrapByClassName.TRIGGER_BY;
-import static swip.ch18datepicker.bootstrap.BootstrapCalendarControls.*;
-import static swip.ch18datepicker.bootstrap.BootstrapCalendarDisplayValue.DISPLAY_MONTH;
-import static swip.ch18datepicker.bootstrap.BootstrapCalendarDisplayValue.DISPLAY_YEAR;
+import static swip.ch18datepicker.bootstrap.v2.BootstrapCalendarControls.*;
+import static swip.ch18datepicker.bootstrap.v2.BootstrapCalendarDisplayValue.DISPLAY_MONTH;
+import static swip.ch18datepicker.bootstrap.v2.BootstrapCalendarDisplayValue.DISPLAY_YEAR;
 
 public class BootstrapDatepickerPage {
 

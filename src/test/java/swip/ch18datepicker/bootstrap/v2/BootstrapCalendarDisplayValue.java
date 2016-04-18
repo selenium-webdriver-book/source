@@ -1,4 +1,4 @@
-package swip.ch18datepicker.bootstrap;
+package swip.ch18datepicker.bootstrap.v2;
 
 import swip.framework.Browser;
 import swip.locators.StringToMonth;

@@ -1,4 +1,4 @@
-package swip.ch18datepicker.bootstrap;
+package swip.ch18datepicker.bootstrap.v1;
 
 import swip.framework.Browser;
 import swip.framework.ElementVisible;

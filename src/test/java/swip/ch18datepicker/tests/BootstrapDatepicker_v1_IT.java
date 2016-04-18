@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
-import swip.ch18datepicker.bootstrap.BootstrapDatepickerPage;
+import swip.ch18datepicker.bootstrap.v1.BootstrapDatepickerPage;
 import swip.tests.TestTimer;
 
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ import static java.time.Month.APRIL;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(BrowserRunner.class)
-public class BootstrapDatepickerIT extends TestTimer {
+public class BootstrapDatepicker_v1_IT extends TestTimer {
 
     @Inject
     private Browser browser;
