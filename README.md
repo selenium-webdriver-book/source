@@ -36,6 +36,9 @@ To run a single test (using the Maven Failsafe Plugin):
 On just in another browser, other than Firefox:
 
 	mvn ... -Dwebdriver.capabilities.browserName=chrome
+	mvn ... -Dwebdriver.capabilities.browserName=htmlunit
+	mvn ... -Dwebdriver.capabilities.browserName=safari
+	mvn ... -Dwebdriver.capabilities.browserName=phantomjs
 
 To run remotely:
 

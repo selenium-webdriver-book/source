@@ -1,5 +1,10 @@
 package swip.ch14elements.domain;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class OtherInformation {
     public final String couponCode;
     public final String email;
@@ -23,29 +28,17 @@ public class OtherInformation {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        OtherInformation that = (OtherInformation) o;
-
-        if (sendOrdersToEmail != that.sendOrdersToEmail) return false;
-        if (sendRatingEmail != that.sendRatingEmail) return false;
-        if (couponCode != null ? !couponCode.equals(that.couponCode) : that.couponCode != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (mailingOption != that.mailingOption) return false;
-        return !(comments != null ? !comments.equals(that.comments) : that.comments != null);
-
+    public boolean equals(Object other) {
+        return EqualsBuilder.reflectionEquals(this, other);
     }
 
     @Override
     public int hashCode() {
-        int result = couponCode != null ? couponCode.hashCode() : 0;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (sendOrdersToEmail ? 1 : 0);
-        result = 31 * result + (sendRatingEmail ? 1 : 0);
-        result = 31 * result + (mailingOption != null ? mailingOption.hashCode() : 0);
-        result = 31 * result + (comments != null ? comments.hashCode() : 0);
-        return result;
+        return HashCodeBuilder.reflectionHashCode(this);
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SIMPLE_STYLE);
     }
 }

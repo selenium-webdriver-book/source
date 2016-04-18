@@ -8,8 +8,14 @@ import java.util.concurrent.TimeUnit;
 class WebDriverCleaner {
     WebDriver cleanWebDriver(WebDriver driver) {
 
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        driver.manage().deleteAllCookies();
+        WebDriver.Options manage = driver.manage();
+
+        manage.deleteAllCookies();
+
+        WebDriver.Timeouts timeouts = manage.timeouts();
+
+        timeouts.implicitlyWait(0, TimeUnit.SECONDS);
+        timeouts.setScriptTimeout(0, TimeUnit.SECONDS);
 
         closeRedundantWindows(driver);
 

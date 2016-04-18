@@ -1,11 +1,9 @@
 package swip.ch17jquerydatepicker.jquery.v1_5;
 
+import swip.framework.Browser;
 
-import swip.ch15pageflow.framework.Browser;
-
-import static swip.ch17jquerydatepicker.locators.JQueryByClassName.*;
-import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
-
+import static swip.locators.jquery.JQueryByClassName.*;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class JQueryYearPicker {
 
@@ -16,7 +14,7 @@ public class JQueryYearPicker {
     }
 
     public void pickYear(int year) {
-        int difference = displayedYear() - year;
+        int difference = displayYear() - year;
         if (difference < 0) {
             for (int i = difference; i < 0; i++) {
                 nextYear();
@@ -40,9 +38,8 @@ public class JQueryYearPicker {
         }
     }
 
-    private int displayedYear() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(YEAR);
+    private int displayYear() {
+        String text = browser.untilFound(CALENDAR).getText(YEAR);
         return Integer.parseInt(text);
     }
 

@@ -1,23 +1,21 @@
 package swip.ch18datepicker.jquery.v5;
 
-
-import swip.ch15pageflow.framework.Browser;
-import swip.ch18datepicker.datepicker.Calendar;
-import swip.ch18datepicker.datepicker.CalendarPicker;
-import swip.ch18datepicker.datepicker.Datepicker;
+import swip.ch18datepicker.jquery.v3.JQueryDayPicker;
+import swip.framework.Browser;
+import swip.framework.datepicker.Calendar;
+import swip.framework.datepicker.CalendarPicker;
+import swip.framework.datepicker.Datepicker;
 
 import java.time.Month;
 
-import static swip.ch17jquerydatepicker.locators.JQueryById.DATE_FIELD;
+import static swip.locators.jquery.JQueryById.TRIGGER_BY;
 import static swip.ch18datepicker.jquery.v5.JQueryCalendarControls.*;
 import static swip.ch18datepicker.jquery.v5.JQueryCalendarDisplayValue.DISPLAY_MONTH;
 import static swip.ch18datepicker.jquery.v5.JQueryCalendarDisplayValue.DISPLAY_YEAR;
 
-
 public class JQueryDatepickerPage {
 
     private final Browser browser;
-
     private final Datepicker datepicker;
 
     public JQueryDatepickerPage(Browser browser) {
@@ -35,6 +33,6 @@ public class JQueryDatepickerPage {
     }
 
     public String getDate() {                                  //<7>
-        return browser.getInputText(DATE_FIELD);
+        return browser.getInputText(TRIGGER_BY);
     }
 }

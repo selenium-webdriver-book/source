@@ -1,11 +1,11 @@
 package swip.ch15pageflow.pages.v2;
 
 import org.openqa.selenium.By;
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
-    import static swip.ch15pageflow.locators.ClassName.SEARCH_BUTTON;
-    import static swip.ch15pageflow.locators.Id.SEARCH_INPUT;
-    import static swip.ch15pageflow.locators.Id.SECOND_NAVBAR;
+import static swip.locators.ClassName.SEARCH_BUTTON;
+import static swip.locators.Id.SEARCH_INPUT;
+import static swip.locators.Id.SECOND_NAVBAR;
 
 public class BookstoreHomepage {
 

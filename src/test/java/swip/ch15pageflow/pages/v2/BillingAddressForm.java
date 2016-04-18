@@ -2,9 +2,9 @@ package swip.ch15pageflow.pages.v2;
 
 
 import swip.ch15pageflow.domain.Address;
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
-import static swip.ch15pageflow.locators.Id.*;
+import static swip.locators.Id.*;
 
 
 public class BillingAddressForm {

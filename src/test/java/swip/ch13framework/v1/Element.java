@@ -3,22 +3,16 @@ package swip.ch13framework.v1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Element {
-    private final WebElement webElement; // <1>
+public class Element implements ExplicitWait {
+
+    private final WebElement webElement;
 
     public Element(WebElement webElement) {
         this.webElement = webElement;
     }
 
-    public void click() {
-        webElement.click();
-    }
-
-    public Element findElement(By by) {
-        return new Element(webElement.findElement(by)); // <2>
-    }
-
-    public String getText() {
-        return webElement.getText();
+    @Override
+    public WebElement findElement(By by) {
+        return webElement.findElement(by);
     }
 }

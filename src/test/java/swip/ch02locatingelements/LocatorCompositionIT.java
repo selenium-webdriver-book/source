@@ -34,7 +34,7 @@ public class LocatorCompositionIT {
         driver.findElement(
                 new ByChained(
                         By.id("registration-form"),
-                        By.xpath("//label[contains(.,'email')]"),
+                        By.xpath("//label[contains(.,'Email')]"),
                         By.tagName("input")
                 )
         );

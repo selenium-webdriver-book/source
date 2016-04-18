@@ -90,6 +90,13 @@ public class LazyElement implements WebElement, Locatable {
         return get().getSize();
     }
 
+
+    @Override
+    public Rectangle getRect() {
+        return get().getRect();
+    }
+
+
     @Override
     public String getCssValue(String propertyName) {
         return get().getCssValue(propertyName);

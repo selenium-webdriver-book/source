@@ -1,15 +1,15 @@
 package swip.ch16table.tests;
 
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import swip.ch14elements.framework.Browser;
-import swip.ch14elements.framework.BrowserRunner;
-import swip.ch14elements.framework.Element;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
+import swip.framework.Element;
+
 
 import javax.inject.Inject;
 import java.util.List;
@@ -28,7 +28,7 @@ public class NaiveTableIT {
 
         browser.get("/people-table.html");
 
-        Element table = browser.findElement(By.tagName("table"));
+        WebElement table = browser.findElement(By.tagName("table"));
 
         List<WebElement> headers = table.findElements(By.tagName("tr"))
             .get(0).findElements(By.tagName("th"));

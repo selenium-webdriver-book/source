@@ -12,11 +12,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <selenium.version>2.48.2</selenium.version>
+        <selenium.version>2.53.0</selenium.version>
+        <selenium.htmlunit.version>2.52.0</selenium.htmlunit.version>
         <jquery-ui.version>1.11.3</jquery-ui.version>
         <jquery.version>2.1.3</jquery.version>
-        <jetty.version>9.2.3.v20140905</jetty.version>
-        <spring.version>4.1.7.RELEASE</spring.version>
+        <jetty.version>9.3.7.v20160115</jetty.version>
+        <spring.version>4.2.5.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -68,7 +69,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-htmlunit-driver</artifactId>
-            <version>${selenium.version}</version>
+            <version>${selenium.htmlunit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -82,24 +83,6 @@
             <artifactId>selenium-ie-driver</artifactId>
             <version>${selenium.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- not-official version -->
-            <groupId>com.codeborne</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>1.2.1</version>
-            <scope>test</scope>
-            <!-- this will be behind -->
-            <exclusions>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-java</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-remote-driver</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.appium</groupId>
@@ -158,7 +141,7 @@
         <dependency>
             <groupId>org.littleshoot</groupId>
             <artifactId>littleproxy</artifactId>
-            <version>1.1.0-beta1</version>
+            <version>1.1.0-beta2</version>
             <exclusions>
                 <exclusion>
                     <groupId>log4j</groupId>
@@ -170,12 +153,12 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.1.3</version>
+            <version>1.1.7</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.12</version>
+            <version>1.7.21</version>
         </dependency>
         <!-- server -->
         <dependency>
@@ -264,6 +247,7 @@
                 <groupId>com.lazerycode.selenium</groupId>
                 <artifactId>driver-binary-downloader-maven-plugin</artifactId>
                 <version>1.0.7</version>
+<!--
                 <executions>
                     <execution>
                         <phase>pre-integration-test</phase>
@@ -272,6 +256,7 @@
                         </goals>
                     </execution>
                 </executions>
+-->
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>

@@ -1,18 +1,16 @@
 package swip.ch17jquerydatepicker.jquery.v1;
 
 import org.openqa.selenium.By;
-import swip.ch15pageflow.framework.Browser;
-import swip.ch17jquerydatepicker.locators.JQueryById;
-import swip.ch17jquerydatepicker.locators.JQueryPredicates;
-
+import swip.framework.Browser;
+import swip.framework.ElementVisible;
+import swip.locators.jquery.JQueryById;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.function.Supplier;
 
-import static swip.ch17jquerydatepicker.locators.JQueryByClassName.*;
-import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
-
+import static swip.locators.jquery.JQueryByClassName.*;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class JQueryDatepicker {
 
@@ -23,7 +21,7 @@ public class JQueryDatepicker {
     }
 
     public String getDate() {                                  //<7>
-        return browser.getInputText(JQueryById.DATE_FIELD);
+        return browser.getInputText(JQueryById.TRIGGER_BY);
     }
 
     public void pick(Month month, int day, int year) {
@@ -35,19 +33,7 @@ public class JQueryDatepicker {
     }
 
     private void show() {
-        browser.click(JQueryById.DATE_FIELD);
-    }
-
-    private void pickYear(int year) {
-        if (displayedYear() < year) {        //<1>
-            while (displayedYear() != year) {
-                nextYear();
-            }
-        } else if (displayedYear() > year) {
-            while (displayedYear() != year) {
-                previousYear();
-            }
-        }
+        browser.click(JQueryById.TRIGGER_BY);
     }
 
     private void previousYear() {
@@ -62,38 +48,46 @@ public class JQueryDatepicker {
         }
     }
 
-    private int displayedYear() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(YEAR);
+    private int displayYear() {
+        String text = browser.untilFound(CALENDAR).getText(YEAR);
         return Integer.parseInt(text);
     }
 
-    private void pickMonth(int month) {
-        if (displayedMonth() < month) {             //<2>
-            while (displayedMonth() != month) {
-                nextMonth();
+    private void pickYear(int year) {
+        if (displayYear() < year) {        //<1>
+            while (displayYear() != year) {
+                nextYear();
             }
-        } else if (displayedMonth() > month) {
-            while (displayedMonth() != month) {
-                previousMonth();
+        } else if (displayYear() > year) {
+            while (displayYear() != year) {
+                previousYear();
             }
         }
     }
 
     private void previousMonth() {
-        browser.untilFound(CALENDAR)
-            .click(PREV_MONTH_BUTTON);  //<3>
+        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(CALENDAR)
-            .click(NEXT_MONTH_BUTTON);  //<4>
+        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
-    private int displayedMonth() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(MONTH).toUpperCase();
+    private int displayMonth() {
+        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
         return Month.valueOf(text).ordinal();   //<7>
+    }
+
+    private void pickMonth(int month) {
+        if (displayMonth() < month) {             //<2>
+            while (displayMonth() != month) {
+                nextMonth();
+            }
+        } else if (displayMonth() > month) {
+            while (displayMonth() != month) {
+                previousMonth();
+            }
+        }
     }
 
     private void pickDay(int day) {
@@ -104,6 +98,6 @@ public class JQueryDatepicker {
                     return By.linkText(String.valueOf(day));
                 }
             }); //<9>
-        browser.until(JQueryPredicates.CALENDAR_CLOSED);  //<11>
+        browser.until(new ElementVisible(CALENDAR).negate());  //<11>
     }
 }

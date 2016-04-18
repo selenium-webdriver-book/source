@@ -1,10 +1,11 @@
 package swip.ch17jquerydatepicker.jquery.v2;
 
-import swip.ch15pageflow.framework.Browser;
-import swip.ch17jquerydatepicker.locators.JQueryById;
+import swip.framework.Browser;
+import swip.framework.ElementVisible;
+import swip.locators.jquery.JQueryById;
 
 import static org.openqa.selenium.By.linkText;
-import static swip.ch17jquerydatepicker.locators.JQueryPredicates.CALENDAR_CLOSED;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class JQueryDayPicker {
 
@@ -17,6 +18,6 @@ public class JQueryDayPicker {
     public void pickDay(int day) {
         browser.untilFound(JQueryById.CALENDAR)
             .click(() -> linkText(String.valueOf(day))); //<9>
-        browser.until(CALENDAR_CLOSED);  //<11>
+        browser.until(new ElementVisible(CALENDAR).negate());  //<11>
     }
 }

@@ -1,6 +1,5 @@
 package swip.ch15pageflow.domain;
 
-
 public enum Countries {
     Australia,
     China,

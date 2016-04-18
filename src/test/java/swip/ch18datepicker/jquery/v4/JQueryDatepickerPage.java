@@ -1,56 +1,55 @@
 package swip.ch18datepicker.jquery.v4;
 
-import swip.ch15pageflow.framework.Browser;
+import swip.ch18datepicker.jquery.v3.JQueryDayPicker;
+import swip.framework.Browser;
+import swip.framework.datepicker.Calendar;
+import swip.framework.datepicker.CalendarPicker;
+import swip.framework.datepicker.Datepicker;
 
 import java.time.Month;
 
-import static swip.ch17jquerydatepicker.locators.JQueryByClassName.*;
-import static swip.ch17jquerydatepicker.locators.JQueryById.DATE_FIELD;
-import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
-
+import static swip.locators.jquery.JQueryByClassName.*;
+import static swip.locators.jquery.JQueryById.CALENDAR;
+import static swip.locators.jquery.JQueryById.TRIGGER_BY;
 
 public class JQueryDatepickerPage {
 
     private final Browser browser;
-
     private final Datepicker datepicker;
+
+    public JQueryDatepickerPage(Browser browser) {
+        this.browser = browser;
+        this.datepicker = new Datepicker(
+            new Calendar(browser,
+                b -> browser.click(TRIGGER_BY)
+            ),
+            new CalendarPicker(browser,
+                b -> previousYear(),
+                b -> nextYear(),
+                b -> displayYear()
+            ),
+            new CalendarPicker(browser,
+                b -> previousMonth(),
+                b -> nextMonth(),
+                b -> displayMonth()
+            ), new JQueryDayPicker(browser));
+    }
 
     public void pick(Month month, int day, int year) {
         datepicker.pick(month, day, year);
     }
 
     public String getDate() {
-        return browser.getInputText(DATE_FIELD);
-    }
-
-    public JQueryDatepickerPage(Browser b) {
-        this.browser = b;
-        this.datepicker = new Datepicker(
-            new Calendar(browser,
-                browser -> browser.click(DATE_FIELD)
-            ),
-            new YearPicker(browser,
-                browser -> previousYear(),
-                browser -> nextYear(),
-                browser -> displayYear()
-            ),
-            new MonthPicker(browser,
-                browser -> previousMonth(),
-                browser -> nextMonth(),
-                browser -> displayMonth()
-            ), new JQueryDayPicker(browser));
+        return browser.getInputText(TRIGGER_BY);
     }
 
     private int displayMonth() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(MONTH)
-            .toUpperCase();
+        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
         return Month.valueOf(text).ordinal();
     }
 
     private int displayYear() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(YEAR);
+        String text = browser.untilFound(CALENDAR).getText(YEAR);
         return Integer.parseInt(text);
     }
 
@@ -67,10 +66,10 @@ public class JQueryDatepickerPage {
     }
 
     private void previousMonth() {
-        browser.findElement(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
+        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.findElement(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
+        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 }

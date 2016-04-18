@@ -1,26 +1,22 @@
 package swip.ch17jquerydatepicker.jquery.v2;
 
-
-
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
 import java.time.Month;
 
-import static swip.ch17jquerydatepicker.locators.JQueryByClassName.*;
-import static swip.ch17jquerydatepicker.locators.JQueryById.CALENDAR;
-
+import static swip.locators.jquery.JQueryByClassName.*;
+import static swip.locators.jquery.JQueryById.CALENDAR;
 
 public class JQueryMonthPicker {
 
     private final Browser browser;
-
 
     public JQueryMonthPicker(Browser browser) {
         this.browser = browser;
     }
 
     public void pickMonth(int month) {
-        int difference = displayedMonth() - month;
+        int difference = displayMonth() - month;
         if (difference < 0) {
             for (int i = difference; i < 0; i++) {
                 nextMonth();
@@ -40,7 +36,7 @@ public class JQueryMonthPicker {
         browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
-    private int displayedMonth() {
+    private int displayMonth() {
         String text = browser.untilFound(CALENDAR)
             .getText(MONTH).toUpperCase();
         return Month.valueOf(text).ordinal();   //<7>

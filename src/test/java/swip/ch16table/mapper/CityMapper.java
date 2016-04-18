@@ -1,6 +1,6 @@
 package swip.ch16table.mapper;
 
-import swip.ch15pageflow.framework.Element;
+import swip.framework.Element;
 import swip.ch16table.domain.City;
 
 import java.util.List;
@@ -13,6 +13,4 @@ public class CityMapper {
             new City(Integer.parseInt(cells.get(0).getText()),
                 cells.get(1).getText(),
                 cells.get(2).getText());
-
-
 }

@@ -1,7 +1,7 @@
 package swip.ch14elements.pages;
 
 import org.openqa.selenium.By;
-import swip.ch14elements.framework.Browser;
+import swip.ch14elements.framework.v4.Browser;
 
 public class NaiveShoppingCartPage {
 

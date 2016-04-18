@@ -1,10 +1,10 @@
 package swip.ch15pageflow.pages.v2;
 
-import swip.ch15pageflow.framework.Browser;
+import swip.framework.Browser;
 
-import static swip.ch15pageflow.locators.ClassName.CART_BUTTON;
-import static swip.ch15pageflow.locators.Id.TOP_NAV;
-import static swip.ch15pageflow.locators.TagName.INPUT;
+import static swip.locators.ClassName.CART_BUTTON;
+import static swip.locators.Id.TOP_NAV;
+import static swip.locators.TagName.INPUT;
 
 public class BookPage {
 

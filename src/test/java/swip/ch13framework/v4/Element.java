@@ -1,27 +1,11 @@
 package swip.ch13framework.v4;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Element implements ExplicitWait, SearchScope {
-    private final WebElement webElement;
+public class Element extends DelegatingWebElement  {
 
-    public Element(WebElement webElement) {
-        this.webElement = webElement;
+    public Element(WebElement delegate) {
+        super(delegate);
     }
-
-    public void click() {
-        webElement.click();
-    }
-
-    @Override
-    public Element findElement(By by) {
-        return new Element(webElement.findElement(by));
-    }
-
-    public String getText() {
-        return webElement.getText();
-    }
-
 
 }
