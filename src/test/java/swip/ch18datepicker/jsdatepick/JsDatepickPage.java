@@ -23,7 +23,7 @@ public class JsDatepickPage {
             new Calendar(browser, TRIGGER),
             new CalendarPicker(browser, PREVIOUS_YEAR, NEXT_YEAR, DISPLAY_YEAR),
             new CalendarPicker(browser, PREVIOUS_MONTH, NEXT_MONTH, DISPLAY_MONTH),
-            new JsDayPicker(browser)
+            new JsDatepickDayPicker(browser)
         );
     }
 

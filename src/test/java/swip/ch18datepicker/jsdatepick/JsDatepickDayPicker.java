@@ -8,11 +8,11 @@ import swip.framework.datepicker.DayPicker;
 import static swip.locators.jsdatepick.JsDatepickByClassName.CALENDAR;
 import static swip.locators.TagName.DIV;
 
-public class JsDayPicker implements DayPicker {
+public class JsDatepickDayPicker implements DayPicker {
 
     private Browser browser;
 
-    public JsDayPicker(Browser browser) {
+    public JsDatepickDayPicker(Browser browser) {
         this.browser = browser;
     }
 
