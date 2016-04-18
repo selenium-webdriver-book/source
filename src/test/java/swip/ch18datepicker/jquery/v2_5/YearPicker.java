@@ -1,4 +1,4 @@
-package swip.ch18datepicker.jquery.v3;
+package swip.ch18datepicker.jquery.v2_5;
 
 import swip.framework.Browser;
 

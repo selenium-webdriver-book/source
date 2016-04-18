@@ -2,6 +2,8 @@ package swip.ch18datepicker.jquery.v3;
 
 import swip.framework.Browser;
 import swip.framework.datepicker.Calendar;
+import swip.framework.datepicker.CalendarPicker;
+import swip.framework.datepicker.Datepicker;
 
 import java.time.Month;
 
@@ -16,9 +18,9 @@ public class JQueryDatepickerPage {
         this.browser = browser;
         this.datepicker = new Datepicker(  //<4>
             new Calendar(browser, new Trigger()),
-            new YearPicker(browser,
+            new CalendarPicker(browser,
                 new PreviousYear(), new NextYear(), new DisplayYear()),
-            new MonthPicker(browser,
+            new CalendarPicker(browser,
                 new PreviousMonth(), new NextMonth(), new DisplayMonth()),
             new JQueryDayPicker(browser)
         );

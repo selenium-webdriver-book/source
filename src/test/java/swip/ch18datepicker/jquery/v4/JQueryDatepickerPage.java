@@ -1,11 +1,10 @@
 package swip.ch18datepicker.jquery.v4;
 
-import swip.ch18datepicker.jquery.v3.Datepicker;
 import swip.ch18datepicker.jquery.v3.JQueryDayPicker;
-import swip.ch18datepicker.jquery.v3.MonthPicker;
-import swip.ch18datepicker.jquery.v3.YearPicker;
 import swip.framework.Browser;
 import swip.framework.datepicker.Calendar;
+import swip.framework.datepicker.CalendarPicker;
+import swip.framework.datepicker.Datepicker;
 
 import java.time.Month;
 
@@ -24,12 +23,12 @@ public class JQueryDatepickerPage {
             new Calendar(browser,
                 b -> browser.click(TRIGGER_BY)
             ),
-            new YearPicker(browser,
+            new CalendarPicker(browser,
                 b -> previousYear(),
                 b -> nextYear(),
                 b -> displayYear()
             ),
-            new MonthPicker(browser,
+            new CalendarPicker(browser,
                 b -> previousMonth(),
                 b -> nextMonth(),
                 b -> displayMonth()

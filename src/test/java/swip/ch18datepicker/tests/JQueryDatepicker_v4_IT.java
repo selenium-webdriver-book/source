@@ -1,13 +1,11 @@
 package swip.ch18datepicker.tests;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
+import swip.ch18datepicker.jquery.v4.JQueryDatepickerPage;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
-import swip.ch18datepicker.jquery.v4.JQueryDatepickerPage;
 import swip.tests.TestTimer;
 
 import javax.inject.Inject;
@@ -18,8 +16,6 @@ import static org.junit.Assert.assertEquals;
 @RunWith(BrowserRunner.class)
 public class JQueryDatepicker_v4_IT extends TestTimer {
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
     @Inject
     private Browser browser;
     private JQueryDatepickerPage jQueryDatePickerPage;
