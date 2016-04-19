@@ -10,7 +10,7 @@ public class DelegatingWebElement
     implements WebElement, Locatable, WrapsElement {
 
     public DelegatingWebElement(WebElement delegate) {
-      super( delegate);
+        super(delegate);
     }
 
     @Override
@@ -60,7 +60,11 @@ public class DelegatingWebElement
 
     @Override
     public boolean isDisplayed() {
-        return delegate.isDisplayed();
+        try {
+            return delegate.isDisplayed();
+        } catch (StaleElementReferenceException e) {
+            return false;
+        }
     }
 
     @Override
