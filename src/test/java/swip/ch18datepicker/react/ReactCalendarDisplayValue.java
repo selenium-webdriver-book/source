@@ -32,7 +32,8 @@ public enum ReactCalendarDisplayValue implements Function<Browser, Integer> {
     };
 
     private static String extract(Browser browser, int i) {  //<1>
-        return browser.untilFound(CALENDAR).getText(DISPLAY_MONTH_YEAR).split(" ")[i];
+        return browser.untilFound(CALENDAR)
+            .getText(DISPLAY_MONTH_YEAR).split(" ")[i];
     }
 
 }

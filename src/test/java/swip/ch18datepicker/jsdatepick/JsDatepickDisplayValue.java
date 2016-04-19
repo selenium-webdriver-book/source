@@ -9,7 +9,6 @@ import static swip.locators.jsdatepick.JsDatepickByClassName.CALENDAR;
 import static swip.locators.jsdatepick.JsDatepickByClassName.DISPLAY_MONTH_YEAR;
 import static swip.locators.StringToMonth.TO_MONTH;
 
-
 public enum JsDatepickDisplayValue implements Function<Browser, Integer> {
 
     /**
@@ -33,7 +32,8 @@ public enum JsDatepickDisplayValue implements Function<Browser, Integer> {
     };
 
     private static String extract(Browser browser, int i) {  //<1>
-        return browser.untilFound(CALENDAR).getText(DISPLAY_MONTH_YEAR).split(",")[i];
+        return browser.untilFound(CALENDAR)
+            .getText(DISPLAY_MONTH_YEAR).split(",")[i];
     }
 
 }
