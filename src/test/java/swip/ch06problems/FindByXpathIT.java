@@ -11,19 +11,20 @@ import swip.tests.TestTimer;
 import javax.inject.Inject;
 
 @RunWith(WebDriverRunner.class)
-public class TriggerByXpathIT extends TestTimer {
+public class FindByXpathIT extends TestTimer {
 
     @Inject
-    private WebDriver browser;
+    private WebDriver driver;
 
     @Before
     public void setup() {
-        browser.get("/react-datepicker.html");
+        driver.get("/react-datepicker.html");
     }
 
     @Test
     public void locateSuccessfully() {
-        browser.findElement(By.xpath("//*[@id=\"app\"]/descendant::input"));
+        driver.findElement(
+            By.xpath("//*[@id=\"app\"]/descendant::input"));
     }
 
 }

@@ -3,18 +3,15 @@ package swip.ch18datepicker.tests;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.TimeoutException;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
-import swip.locators.react.ReactByClassName;
+import swip.locators.react.ReactByXpath;
 import swip.tests.TestTimer;
 
 import javax.inject.Inject;
 
-import static swip.locators.react.ReactByClassName.TRIGGER_CONTAINER;
-
 @RunWith(BrowserRunner.class)
-public class TriggerByClassName_v2_IT extends TestTimer {
+public class FindByXpath_v2_IT extends TestTimer {
 
     @Inject
     private Browser browser;
@@ -24,8 +21,8 @@ public class TriggerByClassName_v2_IT extends TestTimer {
         browser.get("/react-datepicker.html");
     }
 
-    @Test(expected = TimeoutException.class)
+    @Test
     public void trigger() {
-        browser.untilFound(TRIGGER_CONTAINER).click(ReactByClassName.TRIGGER_BY);
+         browser.click(ReactByXpath.TRIGGER_BY);
     }
 }
