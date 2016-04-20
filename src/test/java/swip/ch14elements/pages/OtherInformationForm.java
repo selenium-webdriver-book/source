@@ -3,7 +3,7 @@ package swip.ch14elements.pages;
 import org.openqa.selenium.By;
 import swip.ch14elements.domain.MailingOption;
 import swip.ch14elements.domain.OtherInformation;
-import swip.ch14elements.framework.v5.Browser;
+import swip.ch14elements.v5.Browser;
 
 public class OtherInformationForm {
     private final Browser browser;

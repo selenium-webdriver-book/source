@@ -1,4 +1,4 @@
-package swip.ch14elements.framework.v5;
+package swip.ch14elements.v5;
 
 import org.junit.runners.model.InitializationError;
 import org.springframework.test.context.ContextConfiguration;

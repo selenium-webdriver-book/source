@@ -3,8 +3,8 @@ package swip.ch14elements.tests;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import swip.ch14elements.framework.v5.Browser;
-import swip.ch14elements.framework.v5.BrowserRunner;
+import swip.ch14elements.v5.Browser;
+import swip.ch14elements.v5.BrowserRunner;
 
 import javax.inject.Inject;
 

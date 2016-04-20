@@ -1,7 +1,7 @@
 package swip.ch14elements.pages;
 
 import swip.ch14elements.domain.OtherInformation;
-import swip.ch14elements.framework.v5.Browser;
+import swip.ch14elements.v5.Browser;
 
 public class ShoppingCartPage {
 
