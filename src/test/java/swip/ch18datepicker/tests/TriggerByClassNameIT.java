@@ -1,4 +1,4 @@
-package swip.ch17reactdatepicker.tests;
+package swip.ch18datepicker.tests;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package swip.ch17reactdatepicker.tests;
+package swip.ch18datepicker.tests;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,10 +10,11 @@ import swip.tests.TestTimer;
 
 import javax.inject.Inject;
 
-import static swip.locators.react.ReactByXpath.TRIGGER_BY;
+import static swip.locators.react.ReactByClassName.TRIGGER_CONTAINER;
+import static swip.locators.TagName.INPUT;
 
 @RunWith(BrowserRunner.class)
-public class TriggerByXpathIT extends TestTimer {
+public class TriggerByTagNameIT extends TestTimer {
 
     @Inject
     private Browser browser;
@@ -25,11 +26,12 @@ public class TriggerByXpathIT extends TestTimer {
 
     @Test
     public void locateSuccessfully() {
-        browser.findElement(By.xpath("//*[@id=\"app\"]/descendant::input"));
+        browser.findElement(By.className("react-datepicker__input-container"))
+            .findElement(By.tagName("input"));
     }
 
     @Test
     public void trigger() {
-         browser.click(TRIGGER_BY);
+        browser.untilFound(TRIGGER_CONTAINER).click(INPUT);
     }
 }

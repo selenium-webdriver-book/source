@@ -1,4 +1,4 @@
-package swip.ch14elements.framework.v4;
+package swip.ch14elements.framework.v5;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.context.annotation.Bean;
