@@ -1,23 +1,26 @@
-package swip.ch18datepicker.tests;
+package swip.ch06problems;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
+import swip.framework.WebDriverRunner;
 import swip.tests.TestTimer;
 
 import javax.inject.Inject;
 
-import static swip.locators.react.ReactByClassName.TRIGGER_CONTAINER;
 import static swip.locators.TagName.INPUT;
+import static swip.locators.react.ReactByClassName.TRIGGER_CONTAINER;
 
-@RunWith(BrowserRunner.class)
+@RunWith(WebDriverRunner.class)
 public class TriggerByTagNameIT extends TestTimer {
 
     @Inject
-    private Browser browser;
+    private WebDriver browser;
 
     @Before
     public void setup() {
@@ -27,11 +30,7 @@ public class TriggerByTagNameIT extends TestTimer {
     @Test
     public void locateSuccessfully() {
         browser.findElement(By.className("react-datepicker__input-container"))
-            .findElement(By.tagName("input"));
+            .findElement(By.tagName("input")).click();
     }
 
-    @Test
-    public void trigger() {
-        browser.untilFound(TRIGGER_CONTAINER).click(INPUT);
-    }
 }

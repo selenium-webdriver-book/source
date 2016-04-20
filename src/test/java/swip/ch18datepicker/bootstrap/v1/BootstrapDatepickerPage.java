@@ -4,11 +4,11 @@ import swip.framework.Browser;
 import swip.framework.datepicker.Calendar;
 import swip.framework.datepicker.CalendarPicker;
 import swip.framework.datepicker.Datepicker;
-import swip.locators.StringToMonth;
 
 import java.time.Month;
 
 import static java.lang.Integer.parseInt;
+import static swip.locators.StringToMonth.TO_MONTH;
 import static swip.locators.bootstrap.BootstrapByClassName.*;
 
 public class BootstrapDatepickerPage {
@@ -31,7 +31,8 @@ public class BootstrapDatepickerPage {
                 b -> previousMonth(),
                 b -> nextMonth(),
                 b -> displayMonth()
-            ), new BootstrapDayPicker(browser));
+            ),
+            new BootstrapDayPicker(browser));
     }
 
     public void pick(Month month, int day, int year) {
@@ -59,7 +60,8 @@ public class BootstrapDatepickerPage {
     }
 
     private String extract(int i) {  //<1>
-        return browser.untilFound(CALENDAR).getText(DISPLAY_MONTH_YEAR).split(" ")[i];
+        return browser.untilFound(CALENDAR)
+            .getText(DISPLAY_MONTH_YEAR).split(" ")[i];
     }
 
     private void previousMonth() {
@@ -71,7 +73,7 @@ public class BootstrapDatepickerPage {
     }
 
     private int displayMonth() {
-        return StringToMonth.TO_MONTH.apply(extract(0)).ordinal();
+        return TO_MONTH.apply(extract(0)).ordinal();
     }
 
 }
