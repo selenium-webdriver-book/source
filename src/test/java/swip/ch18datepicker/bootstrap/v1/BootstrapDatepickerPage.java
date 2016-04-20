@@ -42,12 +42,8 @@ public class BootstrapDatepickerPage {
         return browser.getInputText(TRIGGER_BY);
     }
 
-    private int displayMonth() {
-        return StringToMonth.TO_MONTH.apply(extract(browser, 0)).ordinal();
-    }
-
     private int displayYear() {
-        return parseInt(extract(browser, 1));       //<1>
+        return parseInt(extract(1));       //<1>
     }
 
     private void nextYear() {
@@ -62,6 +58,10 @@ public class BootstrapDatepickerPage {
         }
     }
 
+    private String extract(int i) {  //<1>
+        return browser.untilFound(CALENDAR).getText(DISPLAY_MONTH_YEAR).split(" ")[i];
+    }
+
     private void previousMonth() {
         browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
@@ -70,7 +70,8 @@ public class BootstrapDatepickerPage {
         browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
-    private static String extract(Browser browser, int i) {  //<1>
-        return browser.untilFound(CALENDAR).getText(DISPLAY_MONTH_YEAR).split(" ")[i];
+    private int displayMonth() {
+        return StringToMonth.TO_MONTH.apply(extract(0)).ordinal();
     }
+
 }
