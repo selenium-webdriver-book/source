@@ -14,7 +14,7 @@ import static swip.locators.react.ReactByClassName.TRIGGER_BY;
 import static swip.locators.react.ReactByClassName.TRIGGER_CONTAINER;
 
 @RunWith(BrowserRunner.class)
-public class FindByClassName_v2_IT extends TestTimer {
+public class FindByClassName_v3_IT extends TestTimer {
 
     @Inject
     private Browser browser;

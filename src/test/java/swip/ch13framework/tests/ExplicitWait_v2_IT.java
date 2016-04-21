@@ -27,12 +27,12 @@ public class ExplicitWait_v2_IT {
     @Test
     public void searchScope() throws Exception {
         browser.get("/location-chooser.html");
-        browser.findElement(linkText("change location")).click();
+        browser.findElement(linkText("choose location")).click();
         Element tabMenu = browser.findElement(By.id("location"));
-        tabMenu.untilFound(linkText("CANADA")).click();
-        tabMenu.untilFound(linkText("Ontario")).click();
-        assertFalse(tabMenu.optionalElement(linkText("Ontario")).isPresent());
-        assertEquals("Ontario", browser
+        tabMenu.untilFound(linkText("MEXICO")).click();
+        tabMenu.untilFound(linkText("Cancun")).click();
+        assertFalse(tabMenu.optionalElement(linkText("Toronto")).isPresent());
+        assertEquals("Cancun", browser
                 .findElement(By.cssSelector(".tools-location strong"))
                 .getText());
     }

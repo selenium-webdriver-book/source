@@ -25,12 +25,12 @@ public class LocatingLogicWithImplicitWaitIT extends TestTimer{
     public void usingImplicitWait() {
         driver.manage().timeouts().implicitlyWait(5, SECONDS); // <1>
         driver.get("/location-chooser.html");
-        driver.findElement(linkText("change location")).click();
+        driver.findElement(linkText("choose location")).click();
         WebElement tabMenu = driver.findElement(By.id("location"));
-        tabMenu.findElement(linkText("CANADA")).click();
-        tabMenu.findElement(linkText("Ontario")).click();
-        assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
-        assertEquals("Ontario", driver
+        tabMenu.findElement(linkText("MEXICO")).click();
+        tabMenu.findElement(linkText("Cancun")).click();
+        assertEquals(0, tabMenu.findElements(linkText("Cancun")).size());
+        assertEquals("Cancun", driver
             .findElement(By.cssSelector(".tools-location strong"))
             .getText());
     }
@@ -39,12 +39,12 @@ public class LocatingLogicWithImplicitWaitIT extends TestTimer{
     public void usingImplicitWaitButNotFound() {
         driver.manage().timeouts().implicitlyWait(5, SECONDS); // <1>
         driver.get("/location-chooser.html");
-        driver.findElement(linkText("change location")).click();
+        driver.findElement(linkText("choose location")).click();
         WebElement tabMenu = driver.findElement(By.id("location"));
-        tabMenu.findElement(linkText("CANADA")).click();
-        tabMenu.findElement(linkText("Ontario")).click();
-        assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
-        assertEquals("Ontario", driver
+        tabMenu.findElement(linkText("MEXICO")).click();
+        tabMenu.findElement(linkText("Cancun")).click();
+        assertEquals(0, tabMenu.findElements(linkText("Cancun")).size());
+        assertEquals("Cancun", driver
             .findElement(By.cssSelector(".tools-locati"))
             .getText());
     }

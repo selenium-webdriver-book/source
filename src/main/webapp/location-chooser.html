@@ -11,11 +11,11 @@
 </head>
 <body>
 <div class="container">
-    <h1>Location Chooser</h1>
+    <h1>Where is your next vacation?</h1>
 
     <p class="tools tools-location">
         <strong id="chosenLocation">No location chosen.</strong>
-        <a class="btn btn-primary btn-xs" href="#" id="changeLocation">change location</a>
+        <a class="btn btn-primary btn-xs" href="#" id="changeLocation">choose location</a>
     </p>
 
     <div id="location" style="display:none;" role="tabpanel">
@@ -26,24 +26,33 @@
             <li role="presentation">
                 <a href="#canada" aria-controls="canada" role="tab" data-toggle="tab">CANADA</a>
             </li>
+            <li role="presentation">
+                <a href="#mexico" aria-controls="mexico" role="tab" data-toggle="tab">MEXICO</a>
+            </li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active fade in" id="us">
                 <p>
-                    <a class="btn btn-default btn-s" href="javascript:choose('East Coast')">East Coast</a>
-                    <a class="btn btn-default btn-s" href="javascript:choose('Central')">Central</a>
-                    <a class="btn btn-default btn-s" href="javascript:choose('Mountain')">Mountain</a>
-                    <a class="btn btn-default btn-s" href="javascript:choose('South')">South</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('New York')">New York</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Denver')">Denver</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('San Francisc')">San Francisco</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Orlando')">Orlando</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Orlando')">Orlando</a>
                 </p>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="canada">
                 <p>
-                    <a class="btn btn-default btn-s" href="javascript:choose('Alberta')">Alberta</a>
-                    <a class="btn btn-default btn-s" href="javascript:choose('Ontario')">Ontario</a>
-                    <a class="btn btn-default btn-s" href="javascript:choose('Québec')">Québec</a>
-                    <a class="btn btn-default btn-s" href="javascript:choose('All Canada')">All Canada</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Vancouver')">Vancouver</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Toronto')">Toronto</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Montréal')">Montréal</a>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Calgary')">Calgary</a>
+                </p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="mexico">
+                <p>
+                    <a class="btn btn-default btn-s" href="javascript:choose('Cancun')">Cancun</a>
                 </p>
             </div>
         </div>

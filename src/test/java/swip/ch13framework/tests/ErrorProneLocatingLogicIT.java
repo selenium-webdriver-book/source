@@ -40,12 +40,12 @@ public class ErrorProneLocatingLogicIT extends TestTimer {
     @Test(expected = NoSuchElementException.class)
     public void errorProneLocatingLogicWithoutMessage() {
         driver.get("/location-chooser.html");
-        driver.findElement(linkText("change location")).click();
+        driver.findElement(linkText("choose location")).click();
         WebElement tabMenu = driver.findElement(By.id("location"));
-        tabMenu.findElement(linkText("CANADA")).click();
-        tabMenu.findElement(linkText("Ontario")).click();                  //<2>
-        assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
-        assertEquals("Ontario", driver
+        tabMenu.findElement(linkText("MEXICO")).click();
+        tabMenu.findElement(linkText("Cancun")).click();                  //<2>
+        assertEquals(0, tabMenu.findElements(linkText("Cancun")).size());
+        assertEquals("Cancun", driver
             .findElement(By.cssSelector(".tools-location strong"))
             .getText());
     }

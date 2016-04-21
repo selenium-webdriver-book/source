@@ -27,7 +27,7 @@ public class LocatingLogicWithExplicitWaitIT extends TestTimer {
     @Test
     public void usingExplicitWait() {
         driver.get("/location-chooser.html");
-        driver.findElement(linkText("change location")).click();
+        driver.findElement(linkText("choose location")).click();
 
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5);  //<1>
 
@@ -48,7 +48,7 @@ public class LocatingLogicWithExplicitWaitIT extends TestTimer {
             new Function<WebElement, WebElement>() {
                 @Override
                 public WebElement apply(WebElement element) {
-                    return location.findElement(linkText("CANADA"));
+                    return location.findElement(linkText("MEXICO"));
                 }
             }
         );
@@ -57,13 +57,13 @@ public class LocatingLogicWithExplicitWaitIT extends TestTimer {
             new Function<WebElement, WebElement>() {
                 @Override
                 public WebElement apply(WebElement element) {
-                    return location.findElement(linkText("Ontario"));
+                    return location.findElement(linkText("Cancun"));
                 }
             }
         );
         allCanada.click();
-        assertEquals(0, driver.findElements(linkText("Ontario")).size());
-        assertEquals("Ontario", driver
+        assertEquals(0, driver.findElements(linkText("Cancun")).size());
+        assertEquals("Cancun", driver
             .findElement(By.cssSelector(".tools-location strong"))
             .getText());
     }
@@ -71,7 +71,7 @@ public class LocatingLogicWithExplicitWaitIT extends TestTimer {
     @Test
     public void usingExplicitWaitLambda() {
         driver.get("/location-chooser.html");
-        driver.findElement(linkText("change location")).click();
+        driver.findElement(linkText("choose location")).click();
         WebDriverWait webDriverWait = new WebDriverWait(driver, 5); // <1>
 
         WebElement tabMenu = webDriverWait
@@ -83,13 +83,13 @@ public class LocatingLogicWithExplicitWaitIT extends TestTimer {
             .ignoring(Exception.class);
 
         webElementWait.until(
-            (WebElement element) -> tabMenu.findElement(linkText("CANADA")))
+            (WebElement element) -> tabMenu.findElement(linkText("MEXICO")))
             .click();
         webElementWait
-            .until((WebElement element) -> tabMenu.findElement(linkText("Ontario")))
+            .until((WebElement element) -> tabMenu.findElement(linkText("Cancun")))
             .click();
-        assertEquals(0, tabMenu.findElements(linkText("Ontario")).size());
-        assertEquals("Ontario", driver
+        assertEquals(0, tabMenu.findElements(linkText("Cancun")).size());
+        assertEquals("Cancun", driver
             .findElement(By.cssSelector(".tools-location strong"))
             .getText());
     }

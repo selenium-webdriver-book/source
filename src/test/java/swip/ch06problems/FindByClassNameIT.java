@@ -40,7 +40,7 @@ public class FindByClassNameIT extends TestTimer {
                 return driver.findElement(
                     By.className("ignore-react-onclickoutside"));
             }
-        });
+        }).click();
     }
 
     @Test(expected = TimeoutException.class)
@@ -58,7 +58,6 @@ public class FindByClassNameIT extends TestTimer {
                 return webElement.findElement(
                     By.className("ignore-react-onclickoutside"));
             }
-        });
-
+        }).click();
     }
 }

@@ -26,11 +26,11 @@ public class ExplicitWait_v1_nonjava8_IT {
     @Test
     public void explicitWait() throws Exception {
         browser.get("/location-chooser.html");
-        browser.untilFound(linkText("change location")).click();
+        browser.untilFound(linkText("choose location")).click();
         Element tabMenu = new Element(browser.findElement(By.id("location")));
-        tabMenu.untilFound(linkText("CANADA")).click();
-        tabMenu.untilFound(linkText("Ontario")).click();
-        assertEquals("Ontario", browser
+        tabMenu.untilFound(linkText("MEXICO")).click();
+        tabMenu.untilFound(linkText("Cancun")).click();
+        assertEquals("Cancun", browser
                 .findElement(By.cssSelector(".tools-location strong"))
                 .getText());
     }

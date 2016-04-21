@@ -24,7 +24,7 @@ public class FindByXpathIT extends TestTimer {
     @Test
     public void locateSuccessfully() {
         driver.findElement(
-            By.xpath("//*[@id=\"app\"]/descendant::input"));
+            By.xpath("//*[@id=\"app\"]/descendant::input")).click();
     }
 
 }

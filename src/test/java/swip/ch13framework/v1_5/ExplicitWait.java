@@ -15,7 +15,7 @@ public interface ExplicitWait {
     default Element untilFound(By by) {  //<2>
         return new FluentWait<>(this)
             .withTimeout(5, SECONDS)
-            .pollingEvery(100, MILLISECONDS)
+            .pollingEvery(10, MILLISECONDS)
             .ignoring(NoSuchElementException.class)
             .until((ExplicitWait e) -> findElement(by)); // <3>
     }
