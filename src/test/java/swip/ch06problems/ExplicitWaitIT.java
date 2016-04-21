@@ -54,7 +54,7 @@ public class ExplicitWaitIT {
 
         driver.findElement(By.id("fadeInText")).click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 3, 100);
+        WebDriverWait wait = new WebDriverWait(driver, 1, 10);
 
         wait
                 .until(slowLoadingTextIsVisible);
@@ -66,7 +66,7 @@ public class ExplicitWaitIT {
 
         driver.get("/slow-loading-elements.html");
         try {
-            new WebDriverWait(driver, 1, 100)
+            new WebDriverWait(driver, 1, 10)
                     .withMessage("could not find the slowly loading text")
                     .until(
                             ExpectedConditions
@@ -87,8 +87,8 @@ public class ExplicitWaitIT {
 
         WebDriverWait wait = new WebDriverWait(
                 driver,
-                3, // <1>
-                100 // <2>
+                1, // <1>
+                10 // <2>
         );
 
         WebElement paraElement = wait

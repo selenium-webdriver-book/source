@@ -33,7 +33,7 @@ public class FindByClassNameIT extends TestTimer {
 
     @Test(expected = TimeoutException.class)
     public void failedToLocateWithExplicitWaut() {
-        WebDriverWait wait = new WebDriverWait(driver, 3, 100);
+        WebDriverWait wait = new WebDriverWait(driver, 1, 10);
         wait.until(new Function<WebDriver, WebElement>() {
             @Override
             public WebElement apply(WebDriver webDriver) {
@@ -49,8 +49,8 @@ public class FindByClassNameIT extends TestTimer {
             By.className("react-datepicker__input-container"));
 
         FluentWait<WebElement> webElementFluentWait = new FluentWait<>(webElement)
-            .withTimeout(3, SECONDS)
-            .pollingEvery(20, MILLISECONDS)
+            .withTimeout(1, SECONDS)
+            .pollingEvery(10, MILLISECONDS)
             .ignoring(NoSuchElementException.class);
         webElementFluentWait.until(new Function<WebElement, WebElement>() {
             @Override

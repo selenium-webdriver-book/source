@@ -14,7 +14,7 @@ public interface ExplicitWait extends SearchScope {
 
     default Element untilFound(By by) {  // <2>
         return new FluentWait<>(this)
-            .withTimeout(5, SECONDS)
+            .withTimeout(1, SECONDS)
             .pollingEvery(10, MILLISECONDS)
             .ignoring(NoSuchElementException.class)
             .until((ExplicitWait e) -> findElement(by)); // <3>
@@ -22,7 +22,7 @@ public interface ExplicitWait extends SearchScope {
 
     default void until(Predicate<SearchScope> predicate) {
         new FluentWait<>(this)
-            .withTimeout(5, SECONDS)
+            .withTimeout(1, SECONDS)
             .pollingEvery(10, MILLISECONDS)
             .ignoring(NoSuchElementException.class)
             .until(
