@@ -14,6 +14,19 @@ public class SimpleTable extends DelegatingWebElement implements Table {
     }
 
     @Override
+    public WebElement getHeader(int columnNumber) {
+        return delegate
+            .findElement(By.tagName("thead"))
+            .findElement(TdBy.tableHeader(columnNumber));
+    }
+
+    @Override
+    public WebElement getHeader(String header) {
+        int columnNumber = columnNumberFinder.find(header);
+        return getHeader(columnNumber);
+    }
+
+    @Override
     public WebElement getBodyCell(int rowNumber, int columnNumber) {
         return delegate
                 .findElement(By.tagName("tbody"))

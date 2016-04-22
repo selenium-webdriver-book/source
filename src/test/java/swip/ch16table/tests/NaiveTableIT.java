@@ -4,67 +4,55 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import swip.ch02locatingelements.SimpleTable;
+import swip.ch02locatingelements.Table;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
-import swip.framework.Element;
-
 
 import javax.inject.Inject;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static swip.locators.TagName.TABLE;
 
 @RunWith(BrowserRunner.class)
 public class NaiveTableIT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-    @Inject private Browser browser;
+    @Inject
+    private Browser browser;
 
     @Test
     public void testReadFromTable() {
 
         browser.get("/people-table.html");
 
-        WebElement table = browser.findElement(By.tagName("table"));
+        Table table = new SimpleTable(browser.untilFound(TABLE));
 
-        List<WebElement> headers = table.findElements(By.tagName("tr"))
-            .get(0).findElements(By.tagName("th"));
+        assertEquals("Id", table.getHeader(1).getText());
+        assertEquals("First Name", table.getHeader(2).getText());
+        assertEquals("Last Name", table.getHeader(3).getText());
+        assertEquals("Age", table.getHeader(4).getText());
 
-        assertEquals("Id", headers.get(0).getText());
-        assertEquals("First Name", headers.get(1).getText());
-        assertEquals("Last Name", headers.get(2).getText());
-        assertEquals("Age", headers.get(3).getText());
+        assertEquals("1", table.getBodyCell(1, 1).getText());
+        assertEquals("Eve", table.getBodyCell(1, 2).getText());
+        assertEquals("Jackson", table.getBodyCell(1, 3).getText());
+        assertEquals("94", table.getBodyCell(1, 4).getText());
 
-        List<WebElement> row1 = table.findElements(By.tagName("tr"))
-            .get(1).findElements(By.tagName("td"));
-        assertEquals("1", row1.get(0).getText());
-        assertEquals("Eve", row1.get(1).getText());
-        assertEquals("Jackson", row1.get(2).getText());
-        assertEquals("94", row1.get(3).getText());
+        assertEquals("2", table.getBodyCell(2, 1).getText());
+        assertEquals("John", table.getBodyCell(2, 2).getText());
+        assertEquals("Doe", table.getBodyCell(2, 3).getText());
+        assertEquals("80", table.getBodyCell(2, 4).getText());
 
-        List<WebElement> row2 = table.findElements(By.tagName("tr"))
-            .get(2).findElements(By.tagName("td"));
-        assertEquals("2", row2.get(0).getText());
-        assertEquals("John", row2.get(1).getText());
-        assertEquals("Doe", row2.get(2).getText());
-        assertEquals("80", row2.get(3).getText());
+        assertEquals("3", table.getBodyCell(3, 1).getText());
+        assertEquals("Adam", table.getBodyCell(3, 2).getText());
+        assertEquals("Johnson", table.getBodyCell(3, 3).getText());
+        assertEquals("67", table.getBodyCell(3, 4).getText());
 
-        List<WebElement> row3 = table.findElements(By.tagName("tr"))
-            .get(3).findElements(By.tagName("td"));
-        assertEquals("3", row3.get(0).getText());
-        assertEquals("Adam", row3.get(1).getText());
-        assertEquals("Johnson", row3.get(2).getText());
-        assertEquals("67", row3.get(3).getText());
-
-        List<WebElement> row4 = table.findElements(By.tagName("tr"))
-            .get(4).findElements(By.tagName("td"));
-        assertEquals("4", row4.get(0).getText());
-        assertEquals("Jill", row4.get(1).getText());
-        assertEquals("Smith", row4.get(2).getText());
-        assertEquals("50", row4.get(3).getText());
+        assertEquals("4", table.getBodyCell(4, 1).getText());
+        assertEquals("Jill", table.getBodyCell(4, 2).getText());
+        assertEquals("Smith", table.getBodyCell(4, 3).getText());
+        assertEquals("50", table.getBodyCell(4, 4).getText());
 
     }
 

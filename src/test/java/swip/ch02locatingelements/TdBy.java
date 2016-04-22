@@ -11,4 +11,11 @@ public final class TdBy {
         // not supported by htmldriver
         // return By.cssSelector(String.format("tr:nth-child(%d) td:nth-child(%d)", rowNumber, columnNumber));
     }
+
+    public static By tableHeader( int columnNumber) {
+        return By.xpath(String.format("//tr/th[%d]", columnNumber));
+        // not supported by htmldriver
+        // return By.cssSelector(String.format("tr:nth-child(%d) td:nth-child(%d)", rowNumber, columnNumber));
+    }
 }
+//*[@id="users-table"]/thead/tr/th[1]
