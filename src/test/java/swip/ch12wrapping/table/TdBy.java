@@ -1,4 +1,4 @@
-package swip.ch12wrapping.v0_8.tablecelllocator;
+package swip.ch12wrapping.table;
 
 import org.openqa.selenium.By;
 
