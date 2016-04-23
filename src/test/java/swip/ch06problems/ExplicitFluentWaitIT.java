@@ -2,10 +2,7 @@ package swip.ch06problems;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -32,7 +29,8 @@ public class ExplicitFluentWaitIT {
 
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(3, TimeUnit.SECONDS)
-                .pollingEvery(100, TimeUnit.MILLISECONDS);
+                .pollingEvery(100, TimeUnit.MILLISECONDS)
+                .ignoring(NotFoundException.class);
 
         WebElement paraElement = wait
                 .withMessage("could not find the slowly loading text") // <3>
@@ -53,7 +51,8 @@ public class ExplicitFluentWaitIT {
 
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(1, TimeUnit.SECONDS)
-                .pollingEvery(10, TimeUnit.MILLISECONDS);
+                .pollingEvery(10, TimeUnit.MILLISECONDS)
+                .ignoring(NotFoundException.class);
 
         wait
                 .until(slowLoadingTextIsVisible);
@@ -68,6 +67,7 @@ public class ExplicitFluentWaitIT {
             new FluentWait<>(driver)
                     .withTimeout(1, TimeUnit.SECONDS)
                     .pollingEvery(10, TimeUnit.MILLISECONDS)
+                    .ignoring(NotFoundException.class)
                     .withMessage("could not find the slowly loading text")
                     .until(
                             ExpectedConditions
