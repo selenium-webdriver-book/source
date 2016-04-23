@@ -1,9 +1,10 @@
-package swip.ch02locatingelements;
+package swip.ch12wrapping.tests;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import swip.ch12wrapping.v0_8.ShoppingCartBySupplier;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;

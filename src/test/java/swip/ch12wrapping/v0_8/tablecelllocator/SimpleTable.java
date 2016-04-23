@@ -1,7 +1,8 @@
-package swip.ch02locatingelements;
+package swip.ch12wrapping.v0_8.tablecelllocator;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import swip.ch02locatingelements.DelegatingWebElement;
 
 public class SimpleTable extends DelegatingWebElement implements Table {
 

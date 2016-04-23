@@ -4,8 +4,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import swip.ch02locatingelements.SimpleTable;
-import swip.ch02locatingelements.Table;
+import swip.ch12wrapping.v0_8.tablecelllocator.SimpleTable;
+import swip.ch12wrapping.v0_8.tablecelllocator.Table;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
 

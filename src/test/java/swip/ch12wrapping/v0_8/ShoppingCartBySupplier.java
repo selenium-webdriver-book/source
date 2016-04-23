@@ -1,4 +1,4 @@
-package swip.ch02locatingelements;
+package swip.ch12wrapping.v0_8;
 
 import org.openqa.selenium.By;
 

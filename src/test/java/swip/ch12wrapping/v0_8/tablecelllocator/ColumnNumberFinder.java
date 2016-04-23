@@ -1,13 +1,13 @@
-package swip.ch02locatingelements;
+package swip.ch12wrapping.v0_8.tablecelllocator;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 
-class ColumnNumberFinder {
+public class ColumnNumberFinder {
 
     private final SearchContext context;
 
-    ColumnNumberFinder(SearchContext context) {
+    public ColumnNumberFinder(SearchContext context) {
         this.context = context;
     }
 

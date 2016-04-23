@@ -1,4 +1,4 @@
-package swip.ch12wrapping.webdriverlistener;
+package swip.ch12wrapping.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

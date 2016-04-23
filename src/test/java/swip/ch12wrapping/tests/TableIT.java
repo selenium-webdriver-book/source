@@ -1,10 +1,13 @@
-package swip.ch02locatingelements;
+package swip.ch12wrapping.tests;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import swip.ch12wrapping.v0_8.tablecelllocator.ColumnNumberFinder;
+import swip.ch12wrapping.v0_8.tablecelllocator.SimpleTable;
+import swip.ch12wrapping.v0_8.tablecelllocator.Table;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
