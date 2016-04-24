@@ -114,6 +114,16 @@ public class Browser extends DelegatingWebDriver {
         return new Select(element);
     }
 
+    public void selectByVisibleText(By by, String ... values) {
+        for (String v: values) {
+            getSelect(by).selectByVisibleText(v);
+        }
+    }
+
+    public void click(By by) {
+        untilFound(by).click();
+    }
+
     public void doubleClick(By by) {
         Element element = untilFound(by);
         new Actions(delegate).doubleClick(element).perform();

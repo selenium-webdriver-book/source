@@ -18,7 +18,7 @@ public class MouseInputIT {
     public void completeAFormUsingBothMouseAndKeyboard() throws Exception {
         driver.get("/mailing-list.html");
         driver.setInputText((By.name("email")), "john.doe@swip.com");
-        driver.untilFound(By.name("terms")).click();
+        driver.setCheckboxValue(By.name("terms"), true);
         driver.doubleClick(By.tagName("button"));
     }
 }

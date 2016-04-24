@@ -1,4 +1,4 @@
-package swip.ch15pageflow.pages.v2;
+package swip.ch15pageflow.pages;
 
 import swip.framework.Browser;
 

@@ -11,7 +11,7 @@ import swip.framework.WebDriverRunner;
 import javax.inject.Inject;
 
 @RunWith(WebDriverRunner.class)
-public class Login_v2_IT {
+public class RegistrationForm_v2_IT {
 
     private Browser driver;
 
@@ -21,8 +21,8 @@ public class Login_v2_IT {
     }
 
     @Test
-    public void login() throws Exception {
-        driver.get("/login.html");
+    public void register() throws Exception {
+        driver.get("/registration-form.html");
 
         Element email = driver.untilFound(By.name("email"));
         email.clear();
@@ -32,7 +32,7 @@ public class Login_v2_IT {
         password.clear();
         password.sendKeys("secret");
 
-        driver.untilFound(By.cssSelector("input[type='submit']"))
+        driver.untilFound(By.cssSelector("button[type='submit']"))
             .click();
     }
 }

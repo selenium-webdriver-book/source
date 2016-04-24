@@ -6,11 +6,11 @@ import org.junit.runner.RunWith;
 import swip.ch14elements.domain.MailingOption;
 import swip.ch14elements.domain.OtherInformation;
 import swip.ch15pageflow.domain.*;
+import swip.ch15pageflow.pages.BookPage;
+import swip.ch15pageflow.pages.BookstoreHomepage;
+import swip.ch15pageflow.pages.ShoppingCartPage;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
-import swip.ch15pageflow.pages.v2.BookPage;
-import swip.ch15pageflow.pages.v2.BookstoreHomepage;
-import swip.ch15pageflow.pages.v2.ShoppingCartPage;
 
 import javax.inject.Inject;
 import java.time.Month;

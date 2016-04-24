@@ -7,6 +7,7 @@ import swip.framework.robust.Retry;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public interface FormElements extends ExplicitWait {
 
@@ -71,21 +72,11 @@ public interface FormElements extends ExplicitWait {
         return new Select(element);
     }
 
-    default void select(Supplier<By> by, Object select) {
-        getSelect(by).selectByVisibleText(select.toString());
+    default void select(Supplier<By> by, Object ...select) {
+        Stream.of(select).map(Object::toString).forEach(getSelect(by)::selectByVisibleText);
         try {
-            if (!getSelect(by)
-                .getFirstSelectedOption()
-                .getText()
-                .equals(select.toString())) {
-                getSelect(by)
-                    .getOptions()
-                    .stream()
-                    .filter(
-                        e -> e.getText().equals(select.toString()))
-                    .findFirst()
-                    .get()
-                    .click();
+            if (getSelect(by).getAllSelectedOptions().size()  != select.length) {
+                select(by, select);
             }
         } catch (Exception e) {
             //Don't need to handle it.

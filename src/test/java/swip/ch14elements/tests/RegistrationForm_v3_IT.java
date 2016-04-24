@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import swip.ch14elements.v5.Browser;
 import swip.ch14elements.v5.BrowserRunner;
 
@@ -14,14 +13,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(BrowserRunner.class)
-public class BrowserIT {
-
-    private Browser browser;
+public class RegistrationForm_v3_IT {
 
     @Inject
-    private void setWebDriver(WebDriver driver) {
-        this.browser = new Browser(driver);
-    }
+    private Browser browser;
 
     @Before
     public void setUp() throws Exception {
@@ -61,4 +56,6 @@ public class BrowserIT {
     public void selectLambda() throws Exception {
         browser.getSelectLambda(By.name("interest")).selectByVisibleText("Music");
     }
+
+
 }

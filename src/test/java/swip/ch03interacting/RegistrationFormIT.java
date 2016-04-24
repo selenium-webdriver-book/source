@@ -14,7 +14,7 @@ import javax.inject.Inject;
 import java.net.URI;
 
 @RunWith(WebDriverRunner.class)
-public class FormIT {
+public class RegistrationFormIT {
     @Inject
     private WebDriver driver;
     @Inject
