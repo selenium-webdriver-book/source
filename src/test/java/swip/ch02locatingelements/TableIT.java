@@ -1,4 +1,4 @@
-package swip.ch12wrapping.tests;
+package swip.ch02locatingelements;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,15 +61,4 @@ public class TableIT {
                         .getText());
     }
 
-    @Test
-    public void tableEncapsulation() throws Exception {
-
-        Table table = new SimpleTable(driver.findElement(By.id("users-table")));
-
-        assertEquals("John Doe", table.getBodyCell(1, 3).getText());
-        assertEquals("John Doe", table.getBodyCell(1, "Name").getText());
-        assertEquals(3, table.getWidth());
-        assertEquals(2, table.getBodyHeight());
-
-    }
 }
