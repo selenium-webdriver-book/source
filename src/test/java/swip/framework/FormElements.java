@@ -16,7 +16,7 @@ public interface FormElements extends ExplicitWait {
 
         retry.attempt(
             () -> {
-                Element element = findElement(by);
+                Element element = untilFound(by);
                 element.clear();
                 element.sendKeys(value.toString());
                 assert value.toString().equals(element.getAttribute("value"));

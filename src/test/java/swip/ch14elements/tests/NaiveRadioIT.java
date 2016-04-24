@@ -41,7 +41,6 @@ public class NaiveRadioIT {
         assertEquals("email", value);
     }
 
-
     @Test
     public void frequency() throws Exception {
         List<WebElement> radiobuttons = browser

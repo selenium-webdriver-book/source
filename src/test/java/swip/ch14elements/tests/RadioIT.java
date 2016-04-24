@@ -16,7 +16,6 @@ public class RadioIT {
 
     @Inject
     private Browser browser;
-    private String value;
 
     @Before
     public void setup() {
@@ -25,14 +24,12 @@ public class RadioIT {
 
     @Test
     public void conact() throws Exception {
-        value = browser.getRadio(By.name("contact"));
-        assertEquals("email",  value);
+        assertEquals("email",  browser.getRadio(By.name("contact")));
     }
 
     @Test
     public void frequency() throws Exception {
-        value = browser.getRadio(By.name("frequency"));
-        assertEquals("hourly", value);
+        assertEquals("hourly", browser.getRadio(By.name("frequency")));
     }
 
 }

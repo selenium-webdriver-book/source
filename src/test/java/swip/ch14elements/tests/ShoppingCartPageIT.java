@@ -18,7 +18,10 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(BrowserRunner.class)
 public class ShoppingCartPageIT {
-    @Inject private Browser browser;
+    @Inject
+    private Browser browser;
+
+    private ShoppingCartPage page;
 
     private OtherInformation info = new OtherInformation(
         "no code",
@@ -35,29 +38,12 @@ public class ShoppingCartPageIT {
         BookPage bookPage = new BookPage(browser);
         bookPage.addToCart();
         bookPage.gotoCart();
-    }
-
-    @Test
-    public void weShouldBeABleToCompleteOtherInformationIndividually() {
-        NaiveShoppingCartPage page = new NaiveShoppingCartPage(browser);
-        page.setComment("no comments");                                    //<1>
-        page.setCoupon("no code");
-        page.setEmail("joe@email.com");
-        page.setRating(true);
-        page.setSendOrderMessages(true);
-
-        assertEquals("no comments", page.getComment());
-        assertEquals("no code", page.getCoupon());
-        assertEquals("joe@email.com", page.getEmail());
-        assertTrue(page.isSendRatingEmail());
-        assertTrue(page.isSendOrderMessages());
+        page = new ShoppingCartPage(browser);
     }
 
     @Test
     public void weShouldBeABleToCompleteOtherInformation() {
-        ShoppingCartPage page = new ShoppingCartPage(browser);
         page.setOtherInformation(info);
-
         assertEquals(this.info, page.getOtherInformation());
     }
 

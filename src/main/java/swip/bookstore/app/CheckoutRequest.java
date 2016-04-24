@@ -14,7 +14,7 @@ public class CheckoutRequest {
     private String billingLastName;
     @NotEmpty
     private String billingAddress1;
-    @NotEmpty
+
     private String billingAddress2;
     @NotEmpty
     private String billingCity;

@@ -28,7 +28,7 @@ public class Browser extends DelegatingWebDriver {
             new Attemptable() {
                 @Override
                 public void attempt() throws Exception {
-                    Element element = findElement(by);
+                    Element element = untilFound(by);
                     element.clear();
                     element.sendKeys(value);
                     assert value.equals(element.getAttribute("value"));
@@ -42,7 +42,7 @@ public class Browser extends DelegatingWebDriver {
 
         retry.attempt(
             () -> {
-                Element element = findElement(by);
+                Element element = untilFound(by);
                 element.clear();
                 element.sendKeys(value);
                 assert value.equals(element.getAttribute("value"));
