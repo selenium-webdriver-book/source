@@ -22,7 +22,7 @@ public class NaiveRadioIT {
 
     @Before
     public void setup() {
-        browser.get("/registration-form-v2.html");
+        browser.get("/registration-form.html");
     }
 
     @Test

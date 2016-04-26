@@ -1,4 +1,4 @@
-package swip.ch13framework.v1_0_prejava8;
+package swip.ch13framework.v1_0_nonjava8;
 
 import com.google.common.base.Function;
 import org.openqa.selenium.By;
