@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import swip.ch13framework.v1.Element;
-import swip.ch13framework.v1_0_nonjava8.Browser;
+import swip.ch13framework.v1_0_prejava8.Browser;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
 
 @RunWith(WebDriverRunner.class)
-public class ExplicitWait_v1_nonjava8_IT {
+public class ExplicitWait_v1_prejava8_IT {
 
     private Browser browser;
 
