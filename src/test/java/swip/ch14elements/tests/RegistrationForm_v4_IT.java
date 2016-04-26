@@ -17,7 +17,7 @@ public class RegistrationForm_v4_IT {
 
     @Test
     public void register() throws Exception {
-        driver.get("/registration-form.html");
+        driver.get("/registration-form-new.html");
 
         driver.setInputText(By.name("email"), "john@doe.com");
         driver.setInputText(By.name("password"), "secret");

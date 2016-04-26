@@ -19,7 +19,7 @@ public class RadioIT {
 
     @Before
     public void setup() {
-        browser.get("/registration-form.html");
+        browser.get("/registration-form-new.html");
     }
 
     @Test
