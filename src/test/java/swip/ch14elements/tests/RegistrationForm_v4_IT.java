@@ -2,12 +2,14 @@ package swip.ch14elements.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import swip.ch13framework.v4.SearchScope;
-import swip.ch14elements.v5.Browser;
-import swip.ch14elements.v5.BrowserRunner;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
+import swip.framework.SearchScope;
 
 import javax.inject.Inject;
+
+import static swip.locators.Name.*;
+import static swip.locators.TagName.BUTTON;
 
 @RunWith(BrowserRunner.class)
 public class RegistrationForm_v4_IT {
@@ -19,14 +21,14 @@ public class RegistrationForm_v4_IT {
     public void register() throws Exception {
         driver.get("/registration-form-new.html");
 
-        driver.setInputText(By.name("email"), "john@doe.com");
-        driver.setInputText(By.name("password"), "secret");
-        driver.selectByVisibleText(By.name("hearAbout"), "Friend");
-        driver.setRadio(By.name("contact"), "email");
-        driver.selectByVisibleText(By.name("interest"), "Movies", "Music");
-        driver.setInputText(By.name("tellus"), "---");
-        driver.setCheckboxValue(By.name("terms"), true);
-        driver.click(By.tagName("button"));
+        driver.setInputText(EMAIL, "john@doe.com");
+        driver.setInputText(PASSWORD, "secret");
+        driver.selectByVisibleText(HEAR_ABOUT, "Friend");
+        driver.setRadio(CONTACT, "email");
+        driver.selectByVisibleText(INTEREST, "Movies", "Music");
+        driver.setInputText(TELLUS, "---");
+        driver.setCheckboxValue(TERMS, true);
+        driver.click(BUTTON);
 
         driver.until((SearchScope d) -> driver.getTitle().contains("Thank You"));
     }

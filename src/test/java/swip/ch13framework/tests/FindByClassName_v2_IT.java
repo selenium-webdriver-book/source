@@ -3,10 +3,10 @@ package swip.ch13framework.tests;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import swip.ch13framework.v4.Browser;
 import swip.ch13framework.v4.BrowserRunner;
+import swip.locators.react.ReactByClassName;
 import swip.tests.TestTimer;
 
 import javax.inject.Inject;
@@ -24,7 +24,7 @@ public class FindByClassName_v2_IT extends TestTimer {
 
     @Test(expected = TimeoutException.class)
     public void trigger() {
-        browser.untilFound(By.className("react-datepicker__input-container"))
-            .untilFound(By.className("ignore-react-onclickoutside")).click();
+        browser.untilFound(ReactByClassName.TRIGGER_CONTAINER)
+            .untilFound(ReactByClassName.TRIGGER_BY).click();
     }
 }

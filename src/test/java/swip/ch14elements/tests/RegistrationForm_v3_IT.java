@@ -3,14 +3,15 @@ package swip.ch14elements.tests;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import swip.ch14elements.v5.Browser;
-import swip.ch14elements.v5.BrowserRunner;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
 
 import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static swip.locators.CssSelector.CONTACT;
+import static swip.locators.Name.*;
 
 @RunWith(BrowserRunner.class)
 public class RegistrationForm_v3_IT {
@@ -25,37 +26,25 @@ public class RegistrationForm_v3_IT {
 
     @Test
     public void textInput() throws Exception {
-        browser.setInputText(By.name("email"), "john.doe@email.com");
-        assertEquals("john.doe@email.com", browser.getInputText(By.name("email")));
-    }
-
-    @Test
-    public void textInputLambda() throws Exception {
-        browser.setInputTextLambda(By.name("email"), "john.lambda@email.com");
-        assertEquals("john.lambda@email.com", browser.getInputText(By.name("email")));
+        browser.setInputText(EMAIL, "john.doe@email.com");
+        assertEquals("john.doe@email.com", browser.getInputText(EMAIL));
     }
 
     @Test
     public void checkbox() throws Exception {
-        browser.setCheckboxValue(By.name("terms"), true);
-        assertTrue(browser.isChecked(By.name("terms")));
+        browser.setCheckboxValue(TERMS, true);
+        assertTrue(browser.isChecked(TERMS));
     }
 
     @Test
     public void radio() throws Exception {
-        browser.setRadio(By.cssSelector("input[name='contact']"), "email");
-        assertEquals("email", browser.getRadio(By.cssSelector("input[name='contact']")));
+        browser.setRadio(CONTACT, "email");
+        assertEquals("email", browser.getRadio(CONTACT));
     }
 
     @Test
     public void select() throws Exception {
-        browser.getSelect(By.name("interest")).selectByVisibleText("Music");
+        browser.getSelect(INTEREST).selectByVisibleText("Music");
     }
-
-    @Test
-    public void selectLambda() throws Exception {
-        browser.getSelectLambda(By.name("interest")).selectByVisibleText("Music");
-    }
-
 
 }

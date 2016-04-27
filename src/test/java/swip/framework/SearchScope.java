@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-interface SearchScope extends SearchContext {
+public interface SearchScope extends SearchContext {
 
     default Element findElement(Supplier<By> by) {
         return new Element(findElement(by.get()));

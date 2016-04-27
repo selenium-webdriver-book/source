@@ -3,7 +3,9 @@ package swip.ch13framework.v1_0_prejava8;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.function.Supplier;
+
 public interface ExplicitWait {
-    WebElement findElement(By by); // <1>
-    WebElement untilFound(By by);
+    WebElement findElement(Supplier<By> by); // <1>
+    WebElement untilFound(Supplier<By> by);
 }

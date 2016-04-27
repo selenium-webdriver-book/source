@@ -6,9 +6,10 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
-import swip.ch12wrapping.v0_5.DelegatingWebDriver;
+import swip.ch12wrapping.v0_8.DelegatingWebDriver;
 
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 public class Browser extends DelegatingWebDriver implements ExplicitWait {
 
@@ -16,7 +17,7 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait {
         super(driver);
     }
 
-    public WebElement untilFound(final By by) {  // <2>
+    public WebElement untilFound(final Supplier<By> by) {  // <2>
         return new FluentWait<>(this)
             .withTimeout(5, TimeUnit.SECONDS)
             .pollingEvery(10, TimeUnit.MILLISECONDS)

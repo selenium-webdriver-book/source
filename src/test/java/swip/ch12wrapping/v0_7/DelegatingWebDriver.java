@@ -1,4 +1,4 @@
-package swip.ch12wrapping.v0_8;
+package swip.ch12wrapping.v0_7;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.HasInputDevices;
@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Mouse;
 
 import java.util.List;
 import java.util.Set;
-import java.util.function.Supplier;
 
 public class DelegatingWebDriver
     implements WebDriver, JavascriptExecutor, TakesScreenshot,
@@ -38,6 +37,7 @@ public class DelegatingWebDriver
     public String getTitle() {
         return delegate.getTitle();
     }
+
 
     @Override
     public List<WebElement> findElements(By by) {
@@ -112,9 +112,5 @@ public class DelegatingWebDriver
     @Override
     public Capabilities getCapabilities() {
         return ((HasCapabilities) delegate).getCapabilities();
-    }
-
-    public WebElement findElement(Supplier<By> by) {
-        return findElement(by.get());
     }
 }

@@ -3,6 +3,8 @@ package swip.ch13framework.v1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.function.Supplier;
+
 public class Element implements ExplicitWait {
 
     private final WebElement webElement;
@@ -12,7 +14,7 @@ public class Element implements ExplicitWait {
     }
 
     @Override
-    public WebElement findElement(By by) {
-        return webElement.findElement(by);
+    public WebElement findElement(Supplier<By> by) {
+        return webElement.findElement(by.get());
     }
 }

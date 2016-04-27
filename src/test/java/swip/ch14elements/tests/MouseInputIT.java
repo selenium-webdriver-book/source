@@ -2,11 +2,14 @@ package swip.ch14elements.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import swip.ch14elements.v5.Browser;
-import swip.ch14elements.v5.BrowserRunner;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
 
 import javax.inject.Inject;
+
+import static swip.locators.Name.EMAIL;
+import static swip.locators.Name.TERMS;
+import static swip.locators.TagName.BUTTON;
 
 @RunWith(BrowserRunner.class)
 public class MouseInputIT {
@@ -17,8 +20,8 @@ public class MouseInputIT {
     @Test
     public void completeAFormUsingBothMouseAndKeyboard() throws Exception {
         driver.get("/mailing-list.html");
-        driver.setInputText((By.name("email")), "john.doe@swip.com");
-        driver.setCheckboxValue(By.name("terms"), true);
-        driver.doubleClick(By.tagName("button"));
+        driver.setInputText(EMAIL, "john.doe@swip.com");
+        driver.setCheckboxValue(TERMS, true);
+        driver.doubleClick(BUTTON);
     }
 }

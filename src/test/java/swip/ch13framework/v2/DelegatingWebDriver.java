@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Mouse;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 
 class DelegatingWebDriver
     implements WebDriver, JavascriptExecutor, TakesScreenshot,
@@ -38,7 +39,6 @@ class DelegatingWebDriver
         return driver.getTitle();
     }
 
-
     @Override
     public List<WebElement> findElements(By by) {
         return driver.findElements(by);
@@ -47,6 +47,11 @@ class DelegatingWebDriver
     @Override
     public Element findElement(By by) {
         return new Element(driver.findElement(by));
+    }
+
+    @Override
+    public Element findElement(Supplier<By> by) {
+        return new Element(driver.findElement(by.get()));
     }
 
     @Override

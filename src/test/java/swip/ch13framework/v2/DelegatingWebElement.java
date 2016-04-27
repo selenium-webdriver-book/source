@@ -3,6 +3,7 @@ package swip.ch13framework.v2;
 import org.openqa.selenium.*;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class DelegatingWebElement implements WebElement {
     protected final WebElement delegate;
@@ -19,6 +20,10 @@ public class DelegatingWebElement implements WebElement {
     @Override
     public Element findElement(By by) {
         return new Element(delegate.findElement(by));
+    }
+
+    public Element findElement(Supplier<By> by) {
+        return new Element(delegate.findElement(by.get()));
     }
 
     @Override

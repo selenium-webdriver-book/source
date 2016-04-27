@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 public class Element implements ExplicitWait {
 
@@ -17,11 +18,11 @@ public class Element implements ExplicitWait {
     }
 
     @Override
-    public WebElement findElement(By by) {
-        return webElement.findElement(by);
+    public WebElement findElement(Supplier<By> by) {
+        return webElement.findElement(by.get());
     }
 
-    public WebElement untilFound(final By by) {  // <2>
+    public WebElement untilFound(final Supplier<By> by) {  // <2>
         return new FluentWait<>(this)
             .withTimeout(5, TimeUnit.SECONDS)
             .pollingEvery(10, TimeUnit.MILLISECONDS)

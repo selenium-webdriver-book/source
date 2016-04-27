@@ -16,9 +16,9 @@ public class CreditCardForm {
     public void setCreditCard(CreditCard card) {
         browser.setInputText(CARD_CVV, card.cardCvv);
         browser.setInputText(CARD_NUMBER, card.cardNumber);
-        browser.select(CARD_TYPE, card.cardType);
-        browser.select(CARD_EXP_MONTH, card.expirationMonth);
-        browser.select(CARD_EXP_YEAR, card.expirationYear);
+        browser.selectByVisibleText(CARD_TYPE, card.cardType);
+        browser.selectByVisibleText(CARD_EXP_MONTH, card.expirationMonth);
+        browser.selectByVisibleText(CARD_EXP_YEAR, card.expirationYear);
     }
 }
 

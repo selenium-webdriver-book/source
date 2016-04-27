@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import swip.ch12wrapping.v0_8.ShoppingCartBySupplier;
+import swip.ch12wrapping.v0_7.ShoppingCartBySupplier;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;

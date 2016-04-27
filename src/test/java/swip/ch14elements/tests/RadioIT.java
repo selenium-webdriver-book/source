@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import swip.ch14elements.v5.Browser;
-import swip.ch14elements.v5.BrowserRunner;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
 
 import javax.inject.Inject;
 
@@ -24,12 +24,12 @@ public class RadioIT {
 
     @Test
     public void conact() throws Exception {
-        assertEquals("email",  browser.getRadio(By.name("contact")));
+        assertEquals("email", browser.getRadio(() -> By.name("contact")));
     }
 
     @Test
     public void frequency() throws Exception {
-        assertEquals("hourly", browser.getRadio(By.name("frequency")));
+        assertEquals("hourly", browser.getRadio(() -> By.name("frequency")));
     }
 
 }

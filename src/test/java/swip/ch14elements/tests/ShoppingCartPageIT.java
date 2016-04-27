@@ -5,16 +5,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch14elements.domain.MailingOption;
 import swip.ch14elements.domain.OtherInformation;
-import swip.ch14elements.v5.Browser;
-import swip.ch14elements.v5.BrowserRunner;
 import swip.ch14elements.pages.BookPage;
-import swip.ch14elements.pages.NaiveShoppingCartPage;
 import swip.ch14elements.pages.ShoppingCartPage;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
 
 import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(BrowserRunner.class)
 public class ShoppingCartPageIT {

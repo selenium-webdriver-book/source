@@ -1,7 +1,8 @@
 package swip.ch14elements.pages;
 
-import org.openqa.selenium.By;
-import swip.ch14elements.v5.Browser;
+import swip.framework.Browser;
+
+import static swip.locators.Id.*;
 
 public class NaiveShoppingCartPage {
 
@@ -12,42 +13,42 @@ public class NaiveShoppingCartPage {
     }
 
     public void setCoupon(String coupon) {
-        browser.setInputText(By.id("gc-redemption-code"), coupon);
+        browser.setInputText(COUPON_CODE, coupon);
     }
 
     public String getCoupon() {
-        return browser.getInputText(By.id("gc-redemption-code"));
+        return browser.getInputText(COUPON_CODE);
     }
 
     public void setEmail(String email) {
-        browser.setInputText(By.id("billing-email"), email);
+        browser.setInputText(BILLING_EMAIL, email);
     }
 
     public void setSendOrderMessages(boolean value) {
-        browser.setCheckboxValue(By.id("confirm-email"), value);
+        browser.setCheckboxValue(CONFIRM_EMAIL, value);
     }
 
     public void setRating(boolean rating) {
-        browser.setCheckboxValue(By.id("ratings"), rating);
+        browser.setCheckboxValue(RATINGS, rating);
     }
 
     public void setComment(String comments) {
-        browser.setInputText(By.id("comments"), comments);
+        browser.setInputText(COMMENTS, comments);
     }
 
     public String getComment() {
-        return browser.getInputText(By.id("comments"));
+        return browser.getInputText(COMMENTS);
     }
 
     public String getEmail() {
-        return browser.getInputText(By.id("billing-email"));
+        return browser.getInputText(BILLING_EMAIL);
     }
 
     public boolean isSendRatingEmail() {
-        return browser.isChecked(By.id("ratings"));
+        return browser.isChecked(RATINGS);
     }
 
     public boolean isSendOrderMessages() {
-        return browser.isChecked(By.id("confirm-email"));
+        return browser.isChecked(CONFIRM_EMAIL);
     }
 }

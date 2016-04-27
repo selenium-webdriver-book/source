@@ -4,12 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public interface SearchScope {
 
-    Element findElement(By by);
+    Element findElement(Supplier<By> by);
 
-    default Optional<Element> optionalElement(By by) {
+    default Optional<Element> optionalElement(Supplier<By> by) {
         try {
             return Optional.of(findElement(by));
         } catch (NoSuchElementException ignored) {

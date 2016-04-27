@@ -1,7 +1,12 @@
 package swip.ch14elements.pages;
 
-import org.openqa.selenium.By;
-import swip.ch14elements.v5.Browser;
+import swip.framework.Browser;
+import swip.locators.ClassName;
+import swip.locators.Id;
+
+import static swip.locators.ClassName.CART_BUTTON;
+import static swip.locators.Id.TOP_NAV;
+import static swip.locators.TagName.INPUT;
 
 public class BookPage {
 
@@ -12,8 +17,7 @@ public class BookPage {
     }
 
     public void addToCart() throws InterruptedException {
-        browser.findElements(By.tagName("input"))
-            .stream()
+        browser.findElements(INPUT)
             .filter(e -> e.getAttribute("value").equals("add to cart"))
             .findFirst()
             .get()
@@ -21,7 +25,6 @@ public class BookPage {
     }
 
     public void gotoCart() {
-        browser.untilFound(By.id("primary-navbar"))
-            .untilFound(By.className("cart-button")).click();
+        browser.untilFound(TOP_NAV).untilFound(CART_BUTTON).click();
     }
 }

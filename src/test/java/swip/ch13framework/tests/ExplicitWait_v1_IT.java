@@ -12,6 +12,11 @@ import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.By.linkText;
+import static swip.locators.CssSelector.TOOLS_LOCATION_STRONG;
+import static swip.locators.Id.LOCATION;
+import static swip.locators.LinkText.CANCUN;
+import static swip.locators.LinkText.CHOOSE_LOCATION;
+import static swip.locators.LinkText.MEXICO;
 
 @RunWith(WebDriverRunner.class)
 public class ExplicitWait_v1_IT {
@@ -26,12 +31,11 @@ public class ExplicitWait_v1_IT {
     @Test
     public void explicitWait() throws Exception {
         browser.get("/location-chooser.html");
-        browser.untilFound(linkText("choose location")).click();
-        Element tabMenu = new Element(browser.findElement(By.id("location")));
-        tabMenu.untilFound(linkText("MEXICO")).click();
-        tabMenu.untilFound(linkText("Cancun")).click();
-        assertEquals("Cancun", browser
-            .findElement(By.cssSelector(".tools-location strong"))
+        browser.untilFound(CHOOSE_LOCATION).click();                   //<1>
+        Element tabMenu = new Element(browser.findElement(LOCATION));  //<2>
+        tabMenu.untilFound(MEXICO).click();                            //<3>
+        tabMenu.untilFound(CANCUN).click();
+        assertEquals("Cancun", browser.findElement(TOOLS_LOCATION_STRONG)
             .getText());
     }
 }

@@ -1,9 +1,11 @@
 package swip.ch14elements.pages;
 
-import org.openqa.selenium.By;
 import swip.ch14elements.domain.MailingOption;
 import swip.ch14elements.domain.OtherInformation;
-import swip.ch14elements.v5.Browser;
+import swip.framework.Browser;
+
+import static swip.locators.Id.*;
+import static swip.locators.Name.MAILING_OPTION;
 
 public class OtherInformationForm {
     private final Browser browser;
@@ -13,28 +15,23 @@ public class OtherInformationForm {
     }
 
     public OtherInformation getOtherInformation() {
-        String mailingOptionValue =
-                browser.getRadio(By.name("customFieldDS.customfield_ROW0_value"));
-        MailingOption mailingOption = MailingOption.from(mailingOptionValue);
+
         return new OtherInformation(
-                browser.getInputText(By.id("gc-redemption-code")),
-                browser.getInputText(By.id("billing-email")),
-                browser.isChecked(By.id("confirm-email")),
-                browser.isChecked(By.id("ratings")),
-                mailingOption,
-                browser.getInputText(By.id("comments"))
+                browser.getInputText(COUPON_CODE),
+                browser.getInputText(BILLING_EMAIL),
+                browser.isChecked(CONFIRM_EMAIL),
+                browser.isChecked(RATINGS),
+                MailingOption.from(browser.getRadio(MAILING_OPTION)),
+                browser.getInputText(COMMENTS)
         );
     }
 
-    public void setOtherInformation(OtherInformation otherInformation) {
-        browser.setInputText(By.id("gc-redemption-code"),
-                otherInformation.couponCode);
-        browser.setInputText(By.id("billing-email"),
-                otherInformation.email);
-        browser.setCheckboxValue(By.id("confirm-email"),
-                otherInformation.sendOrdersToEmail);
-        browser.setCheckboxValue(By.id("ratings"),
-                otherInformation.sendRatingEmail);
-        browser.setInputText(By.id("comments"), otherInformation.comments);
+    public void setOtherInformation(OtherInformation info) {
+        browser.setInputText(COUPON_CODE, info.couponCode);
+        browser.setInputText(BILLING_EMAIL, info.email);
+        browser.setInputText(COMMENTS, info.comments);
+        browser.setCheckboxValue(CONFIRM_EMAIL, info.sendOrdersToEmail);
+        browser.setCheckboxValue(RATINGS, info.sendRatingEmail);
+        browser.setRadio(MAILING_OPTION, info.mailingOption);
     }
 }

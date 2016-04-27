@@ -2,13 +2,16 @@ package swip.ch14elements.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import swip.ch13framework.v4.Browser;
 import swip.ch13framework.v4.Element;
 import swip.framework.WebDriverRunner;
 
 import javax.inject.Inject;
+
+import static swip.locators.CssSelector.SUBMIT;
+import static swip.locators.Name.EMAIL;
+import static swip.locators.Name.PASSWORD;
 
 @RunWith(WebDriverRunner.class)
 public class RegistrationForm_v2_IT {
@@ -24,15 +27,14 @@ public class RegistrationForm_v2_IT {
     public void register() throws Exception {
         driver.get("/registration-form.html");
 
-        Element email = driver.untilFound(By.name("email"));
+        Element email = driver.untilFound(EMAIL);
         email.clear();
         email.sendKeys("john@doe.com");
 
-        Element password = driver.untilFound(By.name("password"));
+        Element password = driver.untilFound(PASSWORD);
         password.clear();
         password.sendKeys("secret");
 
-        driver.untilFound(By.cssSelector("button[type='submit']"))
-            .click();
+        driver.untilFound(SUBMIT).click();
     }
 }

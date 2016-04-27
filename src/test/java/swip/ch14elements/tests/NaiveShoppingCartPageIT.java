@@ -8,8 +8,9 @@ import swip.ch14elements.domain.OtherInformation;
 import swip.ch14elements.pages.BookPage;
 import swip.ch14elements.pages.NaiveShoppingCartPage;
 import swip.ch14elements.pages.ShoppingCartPage;
-import swip.ch14elements.v5.Browser;
-import swip.ch14elements.v5.BrowserRunner;
+import swip.framework.Browser;
+import swip.framework.BrowserRunner;
+
 
 import javax.inject.Inject;
 

@@ -4,25 +4,23 @@ import org.openqa.selenium.By;
 
 import java.util.function.Supplier;
 
-import static org.openqa.selenium.By.cssSelector;
+import static org.openqa.selenium.By.linkText;
 
 /**
  * This enum is a Supplier of ByCssSelector from Selenium By API.
  */
-public enum CssSelector implements Supplier<By> {
+public enum LinkText implements Supplier<By> {
 
-    CONTINUE("input[value='Continue']"),
-    CONTACT("input[name='contact']"),
-    SUBMIT("button[type='submit']"),
-    TOOLS_LOCATION_STRONG(".tools-location strong"),
-
+    CHOOSE_LOCATION("choose location"),
+    MEXICO("MEXICO"),
+    CANCUN("Cancun"),
 
     ;
 
     private final By by;
 
-    CssSelector(String id) {
-        this.by = cssSelector(id);
+    LinkText(String id) {
+        this.by = linkText(id);
     }
 
     /**

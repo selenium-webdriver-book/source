@@ -9,7 +9,16 @@ import java.util.function.Supplier;
  */
 public enum Name implements Supplier<By> {
 
-    MAILING_OPTION("customFieldDS.customfield_ROW0_value"),;
+    MAILING_OPTION("customFieldDS.customfield_ROW0_value"),
+    EMAIL("email"),
+    PASSWORD("password"),
+    TERMS("terms"),
+    CONTACT("contact"),
+    INTEREST("interest"),
+    TELLUS("tellus"),
+    HEAR_ABOUT("hearAbout"),
+
+    ;
 
     private final By by;
 

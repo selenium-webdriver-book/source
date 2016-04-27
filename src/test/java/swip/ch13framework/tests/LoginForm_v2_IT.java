@@ -3,7 +3,6 @@ package swip.ch13framework.tests;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import swip.ch05pageobjects.LoginForm;
@@ -12,6 +11,8 @@ import swip.ch13framework.v4.BrowserRunner;
 import swip.ch13framework.v4.Element;
 
 import javax.inject.Inject;
+
+import static swip.locators.Id.LOGIN;
 
 @RunWith(BrowserRunner.class)
 public class LoginForm_v2_IT {
@@ -25,7 +26,7 @@ public class LoginForm_v2_IT {
 
     @Test
     public void checkLoginForm() throws Exception {
-        Element login = driver.untilFound(By.id("login"));
+        Element login = driver.untilFound(LOGIN);
 
         LoginForm loginForm = new LoginForm(login);
         loginForm.loginAs("foo@bar.com", "secret");

@@ -1,6 +1,7 @@
 package swip.framework;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import swip.framework.robust.Retry;
 
@@ -72,14 +73,27 @@ public interface FormElements extends ExplicitWait {
         return new Select(element);
     }
 
-    default void select(Supplier<By> by, Object ...select) {
-        Stream.of(select).map(Object::toString).forEach(getSelect(by)::selectByVisibleText);
-        try {
-            if (getSelect(by).getAllSelectedOptions().size()  != select.length) {
-                select(by, select);
+    default void selectByVisibleText(Supplier<By> by, Object ... values) {
+        for (Object v: values) {
+            getSelect(by).selectByVisibleText(v.toString());
+            try {
+                if (!getSelect(by)
+                    .getFirstSelectedOption()
+                    .getText()
+                    .equals(v.toString())) {
+                    getSelect(by)
+                        .getOptions()
+                        .stream()
+                        .filter(
+                            e -> e.getText().equals(v.toString()))
+                        .findFirst()
+                        .get()
+                        .click();
+                }
+            } catch (Exception e) {
+                //Don't need to handle it.
             }
-        } catch (Exception e) {
-            //Don't need to handle it.
         }
     }
+
 }
