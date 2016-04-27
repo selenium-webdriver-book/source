@@ -18,4 +18,12 @@ public interface ExplicitWait extends SearchScope {
             .ignoring(NoSuchElementException.class)
             .until((ExplicitWait e) -> findElement(by)); // <3>
     }
+
+    default void click(Supplier<By> by) {
+        untilFound(by).click();
+    }
+
+    default String getText(Supplier<By> by) {
+        return untilFound(by).getText();
+    }
 }

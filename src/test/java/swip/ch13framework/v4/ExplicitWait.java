@@ -30,4 +30,12 @@ public interface ExplicitWait extends SearchScope {
                 (SearchScope where) -> predicate.test(where)
             );
     }
+
+    default void click(Supplier<By> by) {
+        untilFound(by).click();
+    }
+
+    default String getText(Supplier<By> by) {
+        return untilFound(by).getText();
+    }
 }

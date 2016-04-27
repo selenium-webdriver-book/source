@@ -17,4 +17,8 @@ public interface SearchScope {
             return Optional.empty();
         }
     }
+
+    default boolean isPresent(Supplier<By> by) {
+        return optionalElement(by).isPresent();
+    }
 }
