@@ -29,4 +29,16 @@ public interface ExplicitWait extends SearchScope {
                 (SearchScope where) -> predicate.test(where)
             );
     }
+
+    default String getText(Supplier<By> by) {
+        return untilFound(by).getText();
+    }
+
+    default String getUpperText(Supplier<By> by) {
+        return untilFound(by).getText().toUpperCase();
+    }
+
+    default void click(Supplier<By> by) {
+        untilFound(by).click();
+    }
 }

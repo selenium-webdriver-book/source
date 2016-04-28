@@ -1,14 +1,12 @@
 package swip.framework;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import swip.framework.robust.Retry;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public interface FormElements extends ExplicitWait {
 

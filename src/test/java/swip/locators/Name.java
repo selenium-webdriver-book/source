@@ -14,6 +14,7 @@ public enum Name implements Supplier<By> {
     PASSWORD("password"),
     TERMS("terms"),
     CONTACT("contact"),
+    FREQUENCY("frequency"),
     INTEREST("interest"),
     TELLUS("tellus"),
     HEAR_ABOUT("hearAbout"),

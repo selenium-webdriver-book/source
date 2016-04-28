@@ -23,9 +23,9 @@ public class RegistrationForm_v4_IT {
 
         driver.setInputText(EMAIL, "john@doe.com");
         driver.setInputText(PASSWORD, "secret");
-        driver.selectByVisibleText(HEAR_ABOUT, "Friend");
+        driver.selectByVisibleText(HEAR_ABOUT, "Friend");       //<1>
         driver.setRadio(CONTACT, "email");
-        driver.selectByVisibleText(INTEREST, "Movies", "Music");
+        driver.selectByVisibleText(INTEREST, "Movies", "Music");     //<2>
         driver.setInputText(TELLUS, "---");
         driver.setCheckboxValue(TERMS, true);
         driver.click(BUTTON);

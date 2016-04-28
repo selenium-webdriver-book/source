@@ -26,12 +26,12 @@ public class OtherInformationForm {
         );
     }
 
-    public void setOtherInformation(OtherInformation info) {
+    public void setOtherInformation(OtherInformation info) {     //<1>
         browser.setInputText(COUPON_CODE, info.couponCode);
         browser.setInputText(BILLING_EMAIL, info.email);
         browser.setInputText(COMMENTS, info.comments);
         browser.setCheckboxValue(CONFIRM_EMAIL, info.sendOrdersToEmail);
-        browser.setCheckboxValue(RATINGS, info.sendRatingEmail);
+        browser.setCheckboxValue(RATINGS, info.sendRatingEmail);     //<2>
         browser.setRadio(MAILING_OPTION, info.mailingOption);
     }
 }
