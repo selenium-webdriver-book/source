@@ -15,6 +15,7 @@ public class BookstoreSearchIT {
 
     @Test
     public void searchBook() {
+        browser.get("/bookstore/");
         new BookstoreHomepage(browser) {{
             searchBook("Selenium WebDriver in Practice");
         }};
