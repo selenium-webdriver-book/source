@@ -93,8 +93,9 @@ public class BookstoreShoppingIT {
             confirm();
         }};
         new ConfirmationPage(browser) {{
-            assertEquals(EXPECTED_ORDER_NUMBER, getOrderNumber());  //<2>
+            assertEquals(EXPECTED_ORDER_NUMBER, this.getOrderNumber());  //<2>
         }};
     }
+
 }
 
