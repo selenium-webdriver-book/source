@@ -3,7 +3,6 @@ package swip.ch14elements.tests;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import swip.ch14elements.domain.MailingOption;
 import swip.ch14elements.domain.OtherInformation;
 import swip.ch14elements.pages.BookPage;
 import swip.ch14elements.pages.ShoppingCartPage;
@@ -26,7 +25,7 @@ public class ShoppingCartPageIT {
         "joe@email.com",
         true,
         true,
-        MailingOption.WEEKLY_NEWSLETTER,
+        "Weekly newsletter--New books, updates, news, and special offers",
         "no comments"
     );
 

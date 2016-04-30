@@ -1,6 +1,5 @@
 package swip.ch14elements.pages;
 
-import swip.ch14elements.domain.MailingOption;
 import swip.ch14elements.domain.OtherInformation;
 import swip.framework.Browser;
 
@@ -21,7 +20,7 @@ public class OtherInformationForm {
                 browser.getInputText(BILLING_EMAIL),
                 browser.isChecked(CONFIRM_EMAIL),
                 browser.isChecked(RATINGS),
-                MailingOption.from(browser.getRadio(MAILING_OPTION)),
+                browser.getRadio(MAILING_OPTION),
                 browser.getInputText(COMMENTS)
         );
     }

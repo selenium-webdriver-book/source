@@ -1,4 +1,4 @@
-package swip.ch14elements.domain;
+package swip.ch15pageflow.domain;
 
 import java.util.Arrays;
 import java.util.Optional;

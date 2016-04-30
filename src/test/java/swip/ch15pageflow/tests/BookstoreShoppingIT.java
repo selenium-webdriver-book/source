@@ -3,8 +3,7 @@ package swip.ch15pageflow.tests;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import swip.ch14elements.domain.MailingOption;
-import swip.ch14elements.domain.OtherInformation;
+import swip.ch15pageflow.domain.MailingOption;
 import swip.ch15pageflow.domain.*;
 import swip.ch15pageflow.pages.*;
 import swip.framework.Browser;
@@ -14,7 +13,7 @@ import javax.inject.Inject;
 import java.time.Month;
 
 import static org.junit.Assert.assertEquals;
-import static swip.locators.Id.ERROR_MESSAGE;
+import static swip.locators.Id.CARDNUMBER_ERROR;
 
 @RunWith(BrowserRunner.class)
 public class BookstoreShoppingIT {
@@ -81,7 +80,7 @@ public class BookstoreShoppingIT {
         cartPage.setCreditCard(invalidCreditCard);          //<9>
         cartPage.confirm();                               //<10>
 
-        assertEquals(EXPECTED_ERROR_MESSAGE, browser.getText(ERROR_MESSAGE));  //<11>
+        assertEquals(EXPECTED_ERROR_MESSAGE, browser.getText(CARDNUMBER_ERROR));  //<11>
     }
 
     @Test

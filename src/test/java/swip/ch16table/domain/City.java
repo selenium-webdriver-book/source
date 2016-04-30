@@ -1,5 +1,7 @@
 package swip.ch16table.domain;
 
+import swip.framework.domain.DomainBase;
+
 public class City extends DomainBase {
     private final int id;
     private final String name;

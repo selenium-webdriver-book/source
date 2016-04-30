@@ -3,11 +3,8 @@ package swip.ch14elements.tests;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import swip.ch14elements.domain.MailingOption;
-import swip.ch14elements.domain.OtherInformation;
 import swip.ch14elements.pages.BookPage;
 import swip.ch14elements.pages.NaiveShoppingCartPage;
-import swip.ch14elements.pages.ShoppingCartPage;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
 

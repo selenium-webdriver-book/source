@@ -1,7 +1,7 @@
 package swip.ch16table.v1;
 
 import swip.ch16table.domain.City;
-import swip.ch16table.domain.DomainBase;
+import swip.framework.domain.DomainBase;
 
 import java.util.ArrayList;
 import java.util.List;

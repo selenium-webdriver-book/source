@@ -34,7 +34,7 @@ public enum Id implements Supplier<By> {
     SECOND_NAVBAR("secondary-navbar"),
     TOP_NAV("primary-navbar"),
     ORDER_NUMBER_ID("orderNumber"),
-    ERROR_MESSAGE("cardNumber.errors"),
+    CARDNUMBER_ERROR("cardNumber.errors"),
 
     LOCATION("location"),
     LOGIN("login"),
