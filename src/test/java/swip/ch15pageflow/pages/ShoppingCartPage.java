@@ -5,9 +5,7 @@ import swip.ch15pageflow.domain.Address;
 import swip.ch15pageflow.domain.CreditCard;
 import swip.framework.Browser;
 
-import static swip.locators.ClassName.ORDER_NUMBER;
-import static swip.locators.CssSelector.CONTINUE;
-import static swip.locators.Id.ORDER_NUMBER_ID;
+import static swip.locators.CssSelector.CONFIRM;
 
 public class ShoppingCartPage {
 
@@ -35,11 +33,7 @@ public class ShoppingCartPage {
         creditCardForm.setCreditCard(card);
     }
 
-    public void continues() {                 //<1>
-        browser.click(CONTINUE);
-    }
-
-    public String getOrderNumber() {
-        return browser.untilFound(ORDER_NUMBER_ID).getText(ORDER_NUMBER);    //<2>
+    public void confirm() {                 //<1>
+        browser.click(CONFIRM);
     }
 }

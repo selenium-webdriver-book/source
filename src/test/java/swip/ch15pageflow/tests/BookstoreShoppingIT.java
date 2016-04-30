@@ -6,9 +6,7 @@ import org.junit.runner.RunWith;
 import swip.ch14elements.domain.MailingOption;
 import swip.ch14elements.domain.OtherInformation;
 import swip.ch15pageflow.domain.*;
-import swip.ch15pageflow.pages.BookPage;
-import swip.ch15pageflow.pages.BookstoreHomepage;
-import swip.ch15pageflow.pages.ShoppingCartPage;
+import swip.ch15pageflow.pages.*;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
 
@@ -24,6 +22,7 @@ public class BookstoreShoppingIT {
     public static final String EXPECTED_ERROR_MESSAGE =
         "The cardNumber must be between 19 and 19 characters long";
     public static final String EXPECTED_ORDER_NUMBER = "#00008";
+    public static final String BOOKNAME = "Selenium WebDriver in Practice";
 
     @Inject
     private Browser browser;
@@ -62,8 +61,12 @@ public class BookstoreShoppingIT {
 
     @Before
     public void searchBookAndAddToCart() {
+        browser.get("/bookstore/");
         BookstoreHomepage homePage = new BookstoreHomepage(browser);   //<1>
-        homePage.searchBook("Selenium WebDriver in Practice");         //<2>
+        homePage.searchBook(BOOKNAME);         //<2>
+
+        BookListPage bookListPage = new BookListPage(browser);
+        bookListPage.chooseBook(BOOKNAME);
 
         BookPage bookPage = new BookPage(browser);                    //<3>
         bookPage.addToCart();                                         //<4>
@@ -76,7 +79,7 @@ public class BookstoreShoppingIT {
         cartPage.setBillingAddress(billingAddress);                   //<7>
         cartPage.setOtherInformation(otherInformation);               //<8>
         cartPage.setCreditCard(invalidCreditCard);          //<9>
-        cartPage.continues();                               //<10>
+        cartPage.confirm();                               //<10>
 
         assertEquals(EXPECTED_ERROR_MESSAGE, browser.getText(ERROR_MESSAGE));  //<11>
     }
@@ -87,7 +90,9 @@ public class BookstoreShoppingIT {
             setBillingAddress(billingAddress);
             setOtherInformation(otherInformation);
             setCreditCard(creditCard);    //<1>
-            continues();
+            confirm();
+        }};
+        new ConfirmationPage(browser) {{
             assertEquals(EXPECTED_ORDER_NUMBER, getOrderNumber());  //<2>
         }};
     }

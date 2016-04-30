@@ -4,12 +4,12 @@ import org.openqa.selenium.By;
 
 import java.util.function.Supplier;
 
-public enum ByName implements Supplier<By> {
+public enum Name implements Supplier<By> {
     QUANTITY("cartDS.shoppingcart_ROW0_m_orderItemVector_ROW0_m_quantity");
 
     private final By by;
 
-    ByName(String by) {
+    Name(String by) {
         this.by = By.name(by);
     }
 

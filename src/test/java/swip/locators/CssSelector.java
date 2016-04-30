@@ -11,7 +11,7 @@ import static org.openqa.selenium.By.cssSelector;
  */
 public enum CssSelector implements Supplier<By> {
 
-    CONTINUE("input[value='Continue']"),
+    CONFIRM("input[value='Continue']"),
     CONTACT("input[name='contact']"),
     SUBMIT("button[type='submit']"),
     TOOLS_LOCATION_STRONG(".tools-location strong"),

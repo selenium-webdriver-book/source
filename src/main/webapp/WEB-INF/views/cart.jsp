@@ -202,7 +202,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="card-number">Credit Card:</label>
+                    <label for="card-number">Credit Card Number:</label>
                     <input type="text" class="form-control" id="card-number" name="cardNumber" value="${request.cardNumber}">
                     <form:errors path="cardNumber" cssClass="help-inline" cssStyle="color: red"/>
                 </div>
@@ -253,7 +253,7 @@
 
         </div>
         <jsp:include page="cart/other-information.jsp"/>
-        <input type="submit" class="btn btn-primary" value="Continue"/>
+        <input type="submit" class="btn btn-primary" value="Confirm"/>
     </form:form>
 </div>
 </body>
