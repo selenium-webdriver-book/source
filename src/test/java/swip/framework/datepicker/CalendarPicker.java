@@ -37,6 +37,10 @@ public class CalendarPicker {
                     previous.accept(browser);
                 }
             }
+            if (difference == displayValue.apply(browser) - value) {
+                break;
+            }
         }
+
     }
 }
