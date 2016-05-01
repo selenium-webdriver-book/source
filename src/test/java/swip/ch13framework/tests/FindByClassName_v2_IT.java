@@ -25,6 +25,6 @@ public class FindByClassName_v2_IT extends TestTimer {
     @Test(expected = TimeoutException.class)
     public void trigger() {
         browser.untilFound(ReactByClassName.TRIGGER_CONTAINER)
-            .untilFound(ReactByClassName.TRIGGER_BY).click();
+            .click(ReactByClassName.TRIGGER_BY);
     }
 }
