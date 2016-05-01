@@ -12,7 +12,12 @@ import swip.framework.BrowserRunner;
 import javax.inject.Inject;
 import java.time.Month;
 
+import static java.time.Month.DECEMBER;
 import static org.junit.Assert.assertEquals;
+import static swip.ch15pageflow.domain.Countries.United_States;
+import static swip.ch15pageflow.domain.CreditCardType.MasterCard;
+import static swip.ch15pageflow.domain.MailingOption.WEEKLY_NEWSLETTER;
+import static swip.ch15pageflow.domain.UnitedStates.New_Jersey;
 import static swip.locators.Id.CARDNUMBER_ERROR;
 
 @RunWith(BrowserRunner.class)
@@ -31,8 +36,8 @@ public class BookstoreShoppingIT {
         "14052014",
         "Edison",
         "08820",
-        UnitedStates.New_Jersey,
-        Countries.United_States,
+        New_Jersey,
+        United_States,
         "Sanjay",
         "Rao");
 
@@ -41,22 +46,20 @@ public class BookstoreShoppingIT {
         "joe@email.com",
         true,
         true,
-        MailingOption.WEEKLY_NEWSLETTER,
+        WEEKLY_NEWSLETTER,
         "no comments"
     );
 
     private CreditCard invalidCreditCard = new CreditCard(
-        CreditCardType.MasterCard,
+        MasterCard,
         "4111-1111-1111",
-        "123",
-        Month.DECEMBER, 2020);
+        DECEMBER, 2020);
 
 
     private CreditCard creditCard = new CreditCard(
-        CreditCardType.MasterCard,
+        MasterCard,
         "4111-1111-1111-1111",
-        "123",
-        Month.DECEMBER, 2020);
+        DECEMBER, 2020);
 
     @Before
     public void searchBookAndAddToCart() {

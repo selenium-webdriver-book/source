@@ -61,8 +61,6 @@
                     <input type="text" class="form-control" id="billing-last-name" name="billingLastName" value="${request.billingLastName}">
                     <form:errors path="billingLastName" cssClass="help-inline" cssStyle="color: red"/>
                 </div>
-            </div>
-            <div class="col-md-4">
                 <div class="form-group">
                     <label for="billing-address1">Street Address 1:</label>
                     <input type="text" class="form-control" id="billing-address1" name="billingAddress1" value="${request.billingAddress1}">
@@ -73,10 +71,14 @@
                     <input type="text" class="form-control" id="billing-address2" name="billingAddress2" value="${request.billingAddress2}">
                     <form:errors path="billingAddress2" cssClass="help-inline" cssStyle="color: red"/>
                 </div>
+            </div>
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="billing-city">City:</label>
                     <input type="text" class="form-control" id="billing-city" name="billingCity" value="${request.billingCity}">
                     <form:errors path="billingCity" cssClass="help-inline" cssStyle="color: red"/>
+                </div>
+                <div class="form-group">
                     <label for="billing-state">State:</label>
                     <input type="text" class="form-control" id="billing-state" name="billingState" value="${request.billingState}">
                     <form:errors path="billingState" cssClass="help-inline" cssStyle="color: red"/>
@@ -85,8 +87,10 @@
                     <label for="billing-zip">Zip:</label>
                     <input type="text" class="form-control" id="billing-zip" name="billingZip" value="${request.billingZip}">
                     <form:errors path="billingZip" cssClass="help-inline" cssStyle="color: red"/>
+                </div>
+                <div class="form-group">
                     <label for="billing-country">Country:</label><br/>
-                    <select name="shippingAddressDS.shipping_ROW0_country" id="billing-country">
+                    <select name="shippingAddressDS.shipping_ROW0_country" id="billing-country" class="form-control">
                         <option value="AR">Argentina</option>
                         <option value="AW">Aruba</option>
                         <option value="AU">Australia</option>
@@ -191,7 +195,7 @@
                 <div class="form-group">
                     <label for="ccType">Credit Card Type:</label><br/>
                     <select name="ccType" id="card-type"
-                            onchange="togCvn(this.options[this.selectedIndex].value);">
+                            onchange="togCvn(this.options[this.selectedIndex].value);" class="form-control">
                         <option value="American Express" selected="selected">American Express</option>
                         <option value="JCB">JCB</option>
                         <option value="MasterCard">MasterCard</option>
@@ -207,8 +211,8 @@
                     <form:errors path="cardNumber" cssClass="help-inline" cssStyle="color: red"/>
                 </div>
                 <div class="form-group">
-                    <label for="card-exp-month">Expiry Month:</label> <br>
-                    <select name="ccPaymentDS.ccpayment_ROW0_expMonth" id="card-exp-month">
+                    <label for="card-exp-month">Expiry Month:</label><br>
+                    <select name="ccPaymentDS.ccpayment_ROW0_expMonth" id="card-exp-month" class="form-control">
                         <option value="">----</option>
                         <option value="1" ${request.expiryMonth == 1 ? "selected" : ""}>Jan (1)</option>
                         <option value="2" ${request.expiryMonth == 2 ? "selected" : ""}>Feb (2)</option>
@@ -224,8 +228,10 @@
                         <option value="12" ${request.expiryMonth == 12 ? "selected" : ""}>Dec (12)</option>
                     </select>
                     <form:errors path="expiryMonth" cssClass="help-inline" cssStyle="color: red"/>
-                    <label for="card-exp-year">Expiry Year:</label>
-                    <select name="ccPaymentDS.ccpayment_ROW0_expYear" id="card-exp-year">
+                </div>
+                <div class="form-group">
+                    <label for="card-exp-year">Expiry Year:</label><br>
+                    <select name="ccPaymentDS.ccpayment_ROW0_expYear" id="card-exp-year" class="form-control">
                         <option value="">----</option>
                         <option value="2015" ${request.expiryYear == 2015 ? "selected" : ""}>2015</option>
                         <option value="2016" ${request.expiryYear == 2016 ? "selected" : ""}>2016</option>
@@ -243,15 +249,9 @@
                     </select>
                     <form:errors path="expiryYear" cssClass="help-inline" cssStyle="color: red"/>
                 </div>
-                <div class="form-group">
-                    <label for="card-number">Card Verification Number::</label>
-                    <input type="text" class="form-control" id="card-cvv" name="ccPaymentDS.ccpayment_ROW0_cvcHandle" value="${request.cardVerificationNumber}">
-                    <form:errors path="cardVerificationNumber" cssClass="help-inline" cssStyle="color: red"/>
-                </div>
-
             </div>
-
         </div>
+
         <jsp:include page="cart/other-information.jsp"/>
         <input type="submit" class="btn btn-primary" value="Confirm"/>
     </form:form>

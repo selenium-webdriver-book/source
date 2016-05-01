@@ -29,9 +29,6 @@ public class CheckoutRequest {
     @Size(min = 19, max = 19)
     @ParamName("cardNumber")
     private String cardNumber;
-    @NotEmpty
-    @ParamName("ccPaymentDS.ccpayment_ROW0_cvcHandle")
-    private String cardVerificationNumber;
     @Min(1)
     @Max(12)
     @ParamName("ccPaymentDS.ccpayment_ROW0_expMonth")
@@ -107,14 +104,6 @@ public class CheckoutRequest {
 
     public String getCardNumber() {
         return cardNumber;
-    }
-
-    public String getCardVerificationNumber() {
-        return cardVerificationNumber;
-    }
-
-    public void setCardVerificationNumber(String cardVerificationNumber) {
-        this.cardVerificationNumber = cardVerificationNumber;
     }
 
     public void setCardNumber(String cardNumber) {

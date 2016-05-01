@@ -20,7 +20,6 @@ public enum Id implements Supplier<By> {
 
     CARD_TYPE("card-type"),
     CARD_NUMBER("card-number"),
-    CARD_CVV("card-cvv"),
     CARD_EXP_MONTH("card-exp-month"),
     CARD_EXP_YEAR("card-exp-year"),
 
