@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.FluentWait;
 
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -27,6 +28,16 @@ public interface ExplicitWait extends SearchScope {
             .ignoring(NoSuchElementException.class)
             .until(
                 (SearchScope where) -> predicate.test(where)
+            );
+    }
+
+    default <T> T until(Function<SearchScope, T> function) {
+        return new FluentWait<>(this)
+            .withTimeout(1, SECONDS)
+            .pollingEvery(10, MILLISECONDS)
+            .ignoring(Exception.class)
+            .until(
+                (SearchScope where) -> function.apply(where)
             );
     }
 

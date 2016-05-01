@@ -1,8 +1,8 @@
-package swip.ch18datepicker.material_ui;
+package swip.ch18datepicker.material_ui.v1;
 
+import swip.ch18datepicker.datepicker.v1.DayPicker;
 import swip.framework.Browser;
 import swip.framework.ElementVisible;
-import swip.framework.datepicker.DayPicker;
 
 import static swip.locators.TagName.BUTTON;
 import static swip.locators.material_ui.MaterialByXpath.CALENDAR;

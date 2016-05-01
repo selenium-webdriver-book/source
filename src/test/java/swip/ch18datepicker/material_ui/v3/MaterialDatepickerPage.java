@@ -1,17 +1,18 @@
-package swip.ch18datepicker.material_ui;
+package swip.ch18datepicker.material_ui.v3;
 
+import swip.ch18datepicker.datepicker.v1.Calendar;
+import swip.ch18datepicker.datepicker.v2.CalendarPicker;
+import swip.ch18datepicker.datepicker.v2.Datepicker;
+import swip.ch18datepicker.material_ui.v1.MaterialCalendarControls;
+import swip.ch18datepicker.material_ui.v1.MaterialDayPicker;
 import swip.framework.Browser;
-import swip.framework.datepicker.Calendar;
-import swip.framework.datepicker.CalendarPicker;
-import swip.framework.datepicker.Datepicker;
 
 import java.time.Month;
 
-import static swip.ch18datepicker.material_ui.MaterialCalendarControls.*;
-import static swip.ch18datepicker.material_ui.MaterialCalendarDisplayValue.DISPLAY_MONTH;
-import static swip.ch18datepicker.material_ui.MaterialCalendarDisplayValue.DISPLAY_YEAR;
+import static swip.ch18datepicker.material_ui.v1.MaterialCalendarControls.*;
+import static swip.ch18datepicker.material_ui.v3.MaterialCalendarDisplayValue.DISPLAY_MONTH;
+import static swip.ch18datepicker.material_ui.v3.MaterialCalendarDisplayValue.DISPLAY_YEAR;
 import static swip.locators.material_ui.MaterialByXpath.TRIGGER_BY;
-
 
 public class MaterialDatepickerPage {
 

@@ -1,6 +1,7 @@
-package swip.ch18datepicker.material_ui;
+package swip.ch18datepicker.material_ui.v3;
 
 import swip.framework.Browser;
+import swip.framework.SearchScope;
 
 import java.util.function.Function;
 
@@ -31,7 +32,9 @@ public enum MaterialCalendarDisplayValue implements Function<Browser, Integer> {
     };
 
     private static String extract(Browser browser, int i) {  //<1>
-        return browser.getText(DISPLAY_MONTH_YEAR).split(" ")[i];
+        return browser.until(
+            (SearchScope s) ->
+                browser.getText(DISPLAY_MONTH_YEAR).split(" ")[i]);
     }
 
 }

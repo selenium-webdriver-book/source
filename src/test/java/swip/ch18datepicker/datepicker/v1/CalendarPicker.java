@@ -1,4 +1,4 @@
-package swip.framework.datepicker;
+package swip.ch18datepicker.datepicker.v1;
 
 import swip.framework.Browser;
 
@@ -7,10 +7,10 @@ import java.util.function.Function;
 
 public class CalendarPicker {
 
-    private final Browser browser;  //<1>
-    private final Consumer<Browser> previous;      //<2>
-    private final Consumer<Browser> next;          //<3>
-    private final Function<Browser, Integer> displayValue; //<4>
+    protected final Browser browser;  //<1>
+    protected final Consumer<Browser> previous;      //<2>
+    protected final Consumer<Browser> next;          //<3>
+    protected final Function<Browser, Integer> displayValue; //<4>
 
     public CalendarPicker(Browser browser,
                           Consumer<Browser> previous,
@@ -26,8 +26,8 @@ public class CalendarPicker {
      * @param value the year or month to pick
      */
     void pick(int value) {
-        int difference;
-        while ((difference = displayValue.apply(browser) - value) != 0) {
+        int difference = displayValue.apply(browser) - value;   //<6>
+        if (difference != 0) {
             if (difference < 0) {                                 //<7>
                 for (int i = difference; i < 0; i++) {       //<8>
                     next.accept(browser);

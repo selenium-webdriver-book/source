@@ -1,4 +1,4 @@
-package swip.ch18datepicker.material_ui;
+package swip.ch18datepicker.material_ui.v1;
 
 import swip.framework.Browser;
 
