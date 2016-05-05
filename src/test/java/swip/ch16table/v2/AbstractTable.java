@@ -21,6 +21,4 @@ public abstract class AbstractTable {
         }
         return headers;
     }
-
-
 }
