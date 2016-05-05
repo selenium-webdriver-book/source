@@ -17,9 +17,9 @@ public class TableContents<T> extends DomainBase {
     }
 
     public String describeDiff(TableContents<T> other) {
-        return diffHeaders(other)
+        return (diffHeaders(other)
             + diff(this.rows, other.rows, "expected rows not found: ")
-            + diff(other.rows, this.rows, "unexpected rows appeared: ");
+            + diff(other.rows, this.rows, "unexpected rows appeared: ")).trim();
     }
 
     private String diffHeaders(TableContents<T> other) {
