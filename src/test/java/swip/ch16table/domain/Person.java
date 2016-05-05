@@ -17,8 +17,6 @@ public class Person extends DomainBase {
 
     @Override
     public String toString() {
-        return "new Person(\"" + id +
-            "\",\"" + firstName + "\",\"" +
-            lastName + "\"," + age + ")\n";
+        return "new Person(" + id + ", \"" +firstName + "\", \"" + lastName + "\", " + age + ")\n";
     }
 }

@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
 import swip.ch16table.domain.Person;
-import swip.ch16table.v2.Table;
-import swip.ch16table.v2.TableContents;
+import swip.ch16table.v3.Table;
+import swip.ch16table.v3.TableContents;
 
 import javax.inject.Inject;
 import java.util.Arrays;

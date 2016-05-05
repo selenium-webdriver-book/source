@@ -16,7 +16,7 @@ public class City extends DomainBase {
     @Override
     public String toString() {
         return "new City(" + id +
-            ",\"" + name + "\",\"" +
+            ", \"" + name + "\", \"" +
             stateName + "\")\n";
     }
 }

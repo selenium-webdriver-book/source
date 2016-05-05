@@ -1,28 +1,28 @@
-package swip.ch16table.v1;
+package swip.ch16table.v3;
 
+import swip.ch16table.v2.AbstractTableContents;
 import swip.framework.domain.DomainBase;
-import swip.ch16table.domain.Person;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonTableContents extends DomainBase {
+public class TableContents<T> extends DomainBase {
 
     private final List<String> headers;
-    private final List<Person> rows;
+    private final List<T> rows;
 
-    public PersonTableContents(List<String> headers, List<Person> rows) {
+    public TableContents(List<String> headers, List<T> rows) {
         this.headers = headers;
         this.rows = rows;
     }
 
-    public String describeDiff(PersonTableContents other) {
+    public String describeDiff(TableContents<T> other) {
         return diffHeaders(other)
             + diff(this.rows, other.rows, "expected rows not found: ")
             + diff(other.rows, this.rows, "unexpected rows appeared: ");
     }
 
-    public  String diffHeaders( PersonTableContents other) {
+    private String diffHeaders(TableContents<T> other) {
         StringBuilder diff = new StringBuilder();
         if (!headers.equals(other.headers)) {
             diff.append("headers differ ")
@@ -32,7 +32,7 @@ public class PersonTableContents extends DomainBase {
         return diff.toString();
     }
 
-    public  <T> String diff(List<T> rows1, List<T> rows2, String s) {
+    private String diff(List<T> rows1, List<T> rows2, String s) {
         List<T> diff = new ArrayList<>(rows1);
         diff.removeAll(rows2);
 
