@@ -37,8 +37,7 @@ public class JQueryMonthPicker {
     }
 
     private int displayMonth() {
-        String text = browser.untilFound(CALENDAR)
-            .getText(MONTH).toUpperCase();
+        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
         return Month.valueOf(text).ordinal();   //<7>
     }
 }

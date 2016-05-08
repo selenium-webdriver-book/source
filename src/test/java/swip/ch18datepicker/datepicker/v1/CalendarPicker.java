@@ -27,15 +27,13 @@ public class CalendarPicker {
      */
     void pick(int value) {
         int difference = displayValue.apply(browser) - value;   //<6>
-        if (difference != 0) {
-            if (difference < 0) {                                 //<7>
-                for (int i = difference; i < 0; i++) {       //<8>
-                    next.accept(browser);
-                }
-            } else if (difference > 0) {         //<9>
-                for (int i = 0; i < difference; i++) {   //<10>
-                    previous.accept(browser);
-                }
+        if (difference < 0) {                                 //<7>
+            for (int i = difference; i < 0; i++) {       //<8>
+                next.accept(browser);
+            }
+        } else if (difference > 0) {         //<9>
+            for (int i = 0; i < difference; i++) {   //<10>
+                previous.accept(browser);
             }
         }
     }
