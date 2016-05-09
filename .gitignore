@@ -1,6 +1,6 @@
 /target
 /.idea
-/*.iml
+**/*.iml
 .DS_Store
 /tmp*.txt
 /selenium_standalone
