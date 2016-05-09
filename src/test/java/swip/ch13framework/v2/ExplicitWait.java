@@ -16,7 +16,7 @@ public interface ExplicitWait extends SearchScope {
             .withTimeout(1, SECONDS)
             .pollingEvery(10, MILLISECONDS)
             .ignoring(NoSuchElementException.class)
-            .until((ExplicitWait e) -> findElement(by)); // <3>
+            .until((SearchScope e) -> findElement(by)); // <3>
     }
 
     default void click(Supplier<By> by) {

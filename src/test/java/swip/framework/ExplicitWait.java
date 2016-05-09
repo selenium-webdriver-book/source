@@ -18,7 +18,7 @@ public interface ExplicitWait extends SearchScope {
             .withTimeout(1, SECONDS)
             .pollingEvery(10, MILLISECONDS)
             .ignoring(Exception.class)
-            .until((ExplicitWait e) -> e.findElement(by));
+            .until((SearchScope e) -> e.findElement(by));
     }
 
     default void until(Predicate<SearchScope> predicate) {
