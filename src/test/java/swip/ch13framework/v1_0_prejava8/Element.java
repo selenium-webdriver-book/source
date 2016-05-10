@@ -23,13 +23,13 @@ public class Element implements ExplicitWait {
     }
 
     public WebElement untilFound(final Supplier<By> by) {  // <2>
-        return new FluentWait<>(this)
+        return new FluentWait<>((ExplicitWait) this)
             .withTimeout(5, TimeUnit.SECONDS)
             .pollingEvery(10, TimeUnit.MILLISECONDS)
             .ignoring(NoSuchElementException.class)
-            .until(new Function<Element, WebElement>() {
+            .until(new Function<ExplicitWait, WebElement>() {
                 @Override
-                public WebElement apply(Element element) {
+                public WebElement apply(ExplicitWait element) {
                     return element.findElement(by);
                 }
             }); // <3>

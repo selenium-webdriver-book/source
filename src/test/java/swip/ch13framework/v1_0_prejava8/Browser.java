@@ -18,13 +18,13 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait {
     }
 
     public WebElement untilFound(final Supplier<By> by) {  // <2>
-        return new FluentWait<>(this)
+        return new FluentWait<>((ExplicitWait) this)
             .withTimeout(5, TimeUnit.SECONDS)
             .pollingEvery(10, TimeUnit.MILLISECONDS)
             .ignoring(NoSuchElementException.class)
-            .until(new Function<Browser, WebElement>() {
+            .until(new Function<ExplicitWait, WebElement>() {
                 @Override
-                public WebElement apply(Browser browser) {
+                public WebElement apply(ExplicitWait browser) {
                     return browser.findElement(by);
                 }
             }); // <3>
