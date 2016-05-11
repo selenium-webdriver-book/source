@@ -31,7 +31,6 @@ public class ExplicitWait_v1_IT {
         Element tabMenu = new Element(browser.findElement(LOCATION));  //<2>
         tabMenu.await(MEXICO).click();                            //<3>
         tabMenu.await(CANCUN).click();
-        assertEquals("Cancun", browser.findElement(TOOLS_LOCATION_STRONG)
-            .getText());
+        assertEquals("Cancun", browser.await(TOOLS_LOCATION_STRONG).getText());
     }
 }

@@ -6,10 +6,12 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.TimeoutException;
 import swip.ch13framework.v4.Browser;
 import swip.ch13framework.v4.BrowserRunner;
-import swip.locators.react.ReactByClassName;
 import swip.tests.TestTimer;
 
 import javax.inject.Inject;
+
+import static swip.locators.react.ReactByClassName.TRIGGER_BY;
+import static swip.locators.react.ReactByClassName.TRIGGER_CONTAINER;
 
 @RunWith(BrowserRunner.class)
 public class FindByClassName_v2_IT extends TestTimer {
@@ -24,7 +26,6 @@ public class FindByClassName_v2_IT extends TestTimer {
 
     @Test(expected = TimeoutException.class)
     public void trigger() {
-        browser.await(ReactByClassName.TRIGGER_CONTAINER)
-            .click(ReactByClassName.TRIGGER_BY);
+        browser.await(TRIGGER_CONTAINER).click(TRIGGER_BY);
     }
 }
