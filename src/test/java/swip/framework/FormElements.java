@@ -1,30 +1,35 @@
 package swip.framework;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import swip.framework.robust.Retry;
+import swip.locators.TagName;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static swip.locators.TagName.OPTION;
+
 public interface FormElements extends ExplicitWait {
 
     default void setInputText(Supplier<By> by, Object value) {
-        Retry retry = new Retry(5, 1, TimeUnit.SECONDS);
+        Retry retry = new Retry(5, 1, SECONDS);
 
         retry.attempt(
             () -> {
                 Element element = await(by);
                 element.clear();
                 element.sendKeys(value.toString());
-                assert value.toString().equals(element.getAttribute("value"));
+                assert value.toString().equals(element.getValue());
             }
         );
     }
 
     default String getInputText(Supplier<By> by) {
-        return await(by).getAttribute("value");
+        return await(by).getValue();
     }
 
     default void setCheckboxValue(Supplier<By> by, boolean value) {
@@ -41,7 +46,7 @@ public interface FormElements extends ExplicitWait {
     default void setRadio(Supplier<By> by, Object value) {
         Optional<Element> radio =
             findElements(by)
-                .filter(e -> e.getAttribute("value").equals(value.toString()))
+                .filter(e -> e.getValue().equals(value.toString()))
                 .findFirst();
         if (radio.isPresent()) {
             radio.get().click();
@@ -58,7 +63,7 @@ public interface FormElements extends ExplicitWait {
                 .filter(e -> Boolean.valueOf(e.getAttribute("checked")))
                 .findFirst();
 
-        return radio.isPresent() ? radio.get().getAttribute("value") : null;
+        return radio.isPresent() ? radio.get().getValue() : null;
 
     }
 
@@ -66,7 +71,7 @@ public interface FormElements extends ExplicitWait {
         Element element = await(by);
         await((SearchScope driver) -> {
             element.click();
-            return !element.findElements(By.tagName("option")).isEmpty();
+            return element.findElements(OPTION).count() != 0;
         });
         return new Select(element);
     }

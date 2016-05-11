@@ -16,7 +16,7 @@ public class Browser extends DelegatingWebDriver {
     }
 
     public void setInputText(Supplier<By> by, String value) {
-        Element element = findElement(by);
+        Element element = await(by);
         element.clear();
         element.sendKeys(value);
     }

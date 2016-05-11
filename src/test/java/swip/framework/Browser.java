@@ -13,10 +13,8 @@ public class Browser extends DelegatingWebDriver implements FormElements {
     }
 
     public void doubleClick(Supplier<By> by) {
-
-        Element element = await(by);
         new Actions(this) // #C create actions from the driver
-            .doubleClick(element) // #D add a double-click to the sequence
+            .doubleClick(await(by)) // #D add a double-click to the sequence
             .perform(); // #E perform the sequence
     }
 }

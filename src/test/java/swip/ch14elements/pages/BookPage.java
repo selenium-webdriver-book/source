@@ -1,8 +1,6 @@
 package swip.ch14elements.pages;
 
 import swip.framework.Browser;
-import swip.locators.ClassName;
-import swip.locators.Id;
 
 import static swip.locators.ClassName.CART_BUTTON;
 import static swip.locators.Id.TOP_NAV;
@@ -18,7 +16,7 @@ public class BookPage {
 
     public void addToCart() throws InterruptedException {
         browser.findElements(INPUT)
-            .filter(e -> e.getAttribute("value").equals("add to cart"))
+            .filter(e -> e.getValue().equals("add to cart"))
             .findFirst()
             .get()
             .click();

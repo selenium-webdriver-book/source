@@ -67,6 +67,10 @@ public class DelegatingWebElement
         }
     }
 
+    public String getValue() {
+        return delegate.getAttribute("value");
+    }
+
     @Override
     public Point getLocation() {
         return delegate.getLocation();

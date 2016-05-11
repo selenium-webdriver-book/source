@@ -20,7 +20,8 @@ public enum TagName implements Supplier<By> {
     TBODY("tbody"),
     TD("td"),
     TR("tr"),
-    TH("th"),;
+    TH("th"),
+    OPTION("option");
 
     private final By by;
 
