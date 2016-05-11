@@ -25,6 +25,6 @@ public class FindByTagName_v2_IT extends TestTimer {
 
     @Test
     public void trigger() {
-        browser.untilFound(TRIGGER_CONTAINER).click(INPUT);
+        browser.await(TRIGGER_CONTAINER).click(INPUT);
     }
 }

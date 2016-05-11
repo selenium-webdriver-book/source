@@ -41,7 +41,7 @@ public class JQueryYearPicker {
     }
 
     private int displayYear() {
-        String text = browser.untilFound(CALENDAR).getText(YEAR);
+        String text = browser.await(CALENDAR).getText(YEAR);
         return Integer.parseInt(text);
     }
 

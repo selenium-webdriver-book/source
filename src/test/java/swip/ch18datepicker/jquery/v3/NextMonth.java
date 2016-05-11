@@ -11,6 +11,6 @@ public class NextMonth implements Consumer<Browser> {
 
     @Override
     public void accept(Browser browser) {
-        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);
+        browser.await(CALENDAR).click(NEXT_MONTH_BUTTON);
     }
 }

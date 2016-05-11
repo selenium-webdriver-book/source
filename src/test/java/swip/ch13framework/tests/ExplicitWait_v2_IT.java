@@ -29,7 +29,7 @@ public class ExplicitWait_v2_IT {
     public void searchScope() throws Exception {
         browser.get("/location-chooser.html");
         browser.click(CHOOSE_LOCATION);
-        Element tabMenu = browser.untilFound(LOCATION);
+        Element tabMenu = browser.await(LOCATION);
         tabMenu.click(MEXICO);
         tabMenu.click(CANCUN);
         assertFalse(tabMenu.isPresent(CANCUN));       //<1>

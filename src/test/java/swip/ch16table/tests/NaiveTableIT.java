@@ -27,7 +27,7 @@ public class NaiveTableIT {
 
         browser.get("/people-table.html");
 
-        Table table = new SimpleTable(browser.untilFound(TABLE));
+        Table table = new SimpleTable(browser.await(TABLE));
 
         assertEquals("Id", table.getHeader(1).getText());
         assertEquals("First Name", table.getHeader(2).getText());

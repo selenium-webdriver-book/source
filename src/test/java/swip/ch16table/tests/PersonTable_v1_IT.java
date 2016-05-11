@@ -45,7 +45,7 @@ public class PersonTable_v1_IT {
     @Test
     public void testReadFromPersonTable() {
 
-        PersonTable table = new PersonTable(browser.untilFound(TABLE));
+        PersonTable table = new PersonTable(browser.await(TABLE));
 
         PersonTableContents actual = table.getContents();
 
@@ -67,7 +67,7 @@ public class PersonTable_v1_IT {
     @Ignore("You can remove this to run it and check the output")
     public void testReadFromPersonTableButFailed() {
 
-        PersonTable table = new PersonTable(browser.untilFound(TABLE));
+        PersonTable table = new PersonTable(browser.await(TABLE));
 
         PersonTableContents actual = table.getContents();
 

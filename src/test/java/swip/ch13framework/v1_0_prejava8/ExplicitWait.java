@@ -7,5 +7,5 @@ import java.util.function.Supplier;
 
 public interface ExplicitWait {
     WebElement findElement(Supplier<By> by); // <1>
-    WebElement untilFound(Supplier<By> by);
+    WebElement await(Supplier<By> by);
 }

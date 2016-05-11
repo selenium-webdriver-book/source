@@ -18,12 +18,12 @@ public class MaterialDayPicker implements DayPicker {
 
     @Override
     public void pick(int day) {
-        browser.untilFound(CALENDAR).findElements(BUTTON)
+        browser.await(CALENDAR).findElements(BUTTON)
             .filter(e -> e.getText().equals(String.valueOf(day)))
             .findFirst()
             .get()
             .click();
         browser.click(OK_BUTTON);
-        browser.until(new ElementVisible(CALENDAR).negate());
+        browser.await(new ElementVisible(CALENDAR).negate());
     }
 }

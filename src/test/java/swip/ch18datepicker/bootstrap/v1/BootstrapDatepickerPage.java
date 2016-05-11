@@ -60,16 +60,16 @@ public class BootstrapDatepickerPage {
     }
 
     private String extract(int i) {  //<1>
-        return browser.untilFound(CALENDAR)
+        return browser.await(CALENDAR)
             .getText(DISPLAY_MONTH_YEAR).split(" ")[i];
     }
 
     private void previousMonth() {
-        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
+        browser.await(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
+        browser.await(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayMonth() {

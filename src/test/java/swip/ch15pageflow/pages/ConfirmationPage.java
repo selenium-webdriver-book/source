@@ -14,6 +14,6 @@ public class ConfirmationPage {
     }
 
     public String getOrderNumber() {
-        return browser.untilFound(ORDER_NUMBER_ID).getText(ORDER_NUMBER);    //<2>
+        return browser.await(ORDER_NUMBER_ID).getText(ORDER_NUMBER);    //<2>
     }
 }

@@ -30,6 +30,6 @@ public class RegistrationForm_v4_IT {
         driver.setCheckboxValue(TERMS, true);
         driver.click(BUTTON);
 
-        driver.until((SearchScope d) -> driver.getTitle().contains("Thank You"));
+        driver.await((SearchScope d) -> driver.getTitle().contains("Thank You"));
     }
 }

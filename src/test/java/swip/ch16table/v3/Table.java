@@ -25,7 +25,7 @@ public class Table<T> {
     }
 
     private List<T> getRows() {           //<2>
-        return table.untilFound(TBODY)  //<6>
+        return table.await(TBODY)  //<6>
             .findElements(TR)         //<7>
             .map(                   //<8>
                 tr ->

@@ -23,7 +23,7 @@ public class NaiveSingleAsserionTableIT {
     @Before
     public void readTable() {
         browser.get("/people-table.html");
-        table = new SimpleTable(browser.untilFound(TABLE));
+        table = new SimpleTable(browser.await(TABLE));
     }
 
     @Test

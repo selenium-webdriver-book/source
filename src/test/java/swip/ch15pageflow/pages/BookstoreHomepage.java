@@ -16,6 +16,6 @@ public class BookstoreHomepage {
 
     public void searchBook(String bookname) {
         browser.setInputText(SEARCH_INPUT, bookname);
-        browser.untilFound(SECOND_NAVBAR).click(SEARCH_BUTTON);
+        browser.await(SECOND_NAVBAR).click(SEARCH_BUTTON);
     }
 }

@@ -1,7 +1,6 @@
 package swip.framework;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.FluentWait;
 
 import java.util.function.Function;
@@ -13,25 +12,15 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public interface ExplicitWait extends SearchScope {
 
-    default Element untilFound(Supplier<By> by) {
-        return new FluentWait<>(this)
-            .withTimeout(1, SECONDS)
-            .pollingEvery(10, MILLISECONDS)
-            .ignoring(Exception.class)
-            .until((SearchScope e) -> e.findElement(by));
+    default Element await(Supplier<By> by) {
+        return await((SearchScope e) -> e.findElement(by));
     }
 
-    default void until(Predicate<SearchScope> predicate) {
-        new FluentWait<>(this)
-            .withTimeout(1, SECONDS)
-            .pollingEvery(10, MILLISECONDS)
-            .ignoring(NoSuchElementException.class)
-            .until(
-                (SearchScope where) -> predicate.test(where)
-            );
+    default void await(Predicate<SearchScope> predicate) {
+        await((Function<SearchScope, Boolean>) predicate::test);
     }
 
-    default <T> T until(Function<SearchScope, T> function) {
+    default <T> T await(Function<SearchScope, T> function) {
         return new FluentWait<>(this)
             .withTimeout(1, SECONDS)
             .pollingEvery(10, MILLISECONDS)
@@ -42,14 +31,14 @@ public interface ExplicitWait extends SearchScope {
     }
 
     default String getText(Supplier<By> by) {
-        return untilFound(by).getText();
+        return await(by).getText();
     }
 
     default String getUpperText(Supplier<By> by) {
-        return untilFound(by).getText().toUpperCase();
+        return await(by).getText().toUpperCase();
     }
 
     default void click(Supplier<By> by) {
-        untilFound(by).click();
+        await(by).click();
     }
 }

@@ -14,7 +14,7 @@ public interface ExplicitWait {
 
     Element findElement(Supplier<By> by); // <1>
 
-    default Element untilFound(Supplier<By> by) {  //<2>
+    default Element await(Supplier<By> by) {  //<2>
         return new FluentWait<>(this)
             .withTimeout(1, SECONDS)
             .pollingEvery(10, MILLISECONDS)

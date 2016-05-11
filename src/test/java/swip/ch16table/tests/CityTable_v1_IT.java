@@ -53,7 +53,7 @@ public class CityTable_v1_IT {
     @Test
     public void testReadFromTable() {
 
-        CityTable table = new CityTable(browser.untilFound(TABLE));
+        CityTable table = new CityTable(browser.await(TABLE));
 
         CityTableContents actual = table.getContents();
 
@@ -75,7 +75,7 @@ public class CityTable_v1_IT {
     @Ignore("You can remove this to run it and check the output")
     public void failedToReadFromTable() {
 
-        CityTable table = new CityTable(browser.untilFound(TABLE));
+        CityTable table = new CityTable(browser.await(TABLE));
 
         CityTableContents actual = table.getContents();
 

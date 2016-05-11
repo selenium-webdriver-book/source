@@ -15,7 +15,7 @@ public interface FormElements extends ExplicitWait {
 
         retry.attempt(
             () -> {
-                Element element = untilFound(by);
+                Element element = await(by);
                 element.clear();
                 element.sendKeys(value.toString());
                 assert value.toString().equals(element.getAttribute("value"));
@@ -24,18 +24,18 @@ public interface FormElements extends ExplicitWait {
     }
 
     default String getInputText(Supplier<By> by) {
-        return untilFound(by).getAttribute("value");
+        return await(by).getAttribute("value");
     }
 
     default void setCheckboxValue(Supplier<By> by, boolean value) {
-        Element checkbox = untilFound(by);
+        Element checkbox = await(by);
         if (checkbox.isSelected() != value) {
             checkbox.click();
         }
     }
 
     default boolean isChecked(Supplier<By> by) {
-        return untilFound(by).isSelected();
+        return await(by).isSelected();
     }
 
     default void setRadio(Supplier<By> by, Object value) {
@@ -63,8 +63,8 @@ public interface FormElements extends ExplicitWait {
     }
 
     default Select getSelect(Supplier<By> by) {
-        Element element = untilFound(by);
-        until((SearchScope driver) -> {
+        Element element = await(by);
+        await((SearchScope driver) -> {
             element.click();
             return !element.findElements(By.tagName("option")).isEmpty();
         });

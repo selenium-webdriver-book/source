@@ -27,14 +27,14 @@ public class RegistrationForm_v2_IT {
     public void register() throws Exception {
         driver.get("/registration-form.html");
 
-        Element email = driver.untilFound(EMAIL);
+        Element email = driver.await(EMAIL);
         email.clear();
         email.sendKeys("john@doe.com");
 
-        Element password = driver.untilFound(PASSWORD);
+        Element password = driver.await(PASSWORD);
         password.clear();
         password.sendKeys("secret");
 
-        driver.untilFound(SUBMIT).click();
+        driver.click(SUBMIT);
     }
 }

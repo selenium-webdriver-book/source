@@ -32,7 +32,7 @@ public enum MaterialCalendarDisplayValue implements Function<Browser, Integer> {
     };
 
     private static String extract(Browser browser, int i) {  //<1>
-        return browser.until(
+        return browser.await(
             (SearchScope s) ->
                 browser.getText(DISPLAY_MONTH_YEAR).split(" ")[i]);
     }

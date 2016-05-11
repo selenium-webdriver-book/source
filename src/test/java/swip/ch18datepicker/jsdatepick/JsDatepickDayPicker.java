@@ -18,11 +18,11 @@ public class JsDatepickDayPicker implements DayPicker {
 
     @Override
     public void pick(int day) {
-        browser.untilFound(CALENDAR).findElements(DIV)
+        browser.await(CALENDAR).findElements(DIV)
             .filter(e -> e.getText().equals(String.valueOf(day)))
             .findFirst()
             .get()
             .click();
-        browser.until(new ElementVisible(CALENDAR).negate());
+        browser.await(new ElementVisible(CALENDAR).negate());
     }
 }

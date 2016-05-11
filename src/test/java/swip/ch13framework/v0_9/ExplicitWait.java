@@ -14,7 +14,7 @@ public abstract class ExplicitWait {
 
     public abstract WebElement findElement(Supplier<By> by); // <1>
 
-    public WebElement untilFound(Supplier<By> by) {  // <2>
+    public WebElement await(Supplier<By> by) {  // <2>
         return new FluentWait<>(this)
             .withTimeout(5, SECONDS)
             .pollingEvery(10, MILLISECONDS)

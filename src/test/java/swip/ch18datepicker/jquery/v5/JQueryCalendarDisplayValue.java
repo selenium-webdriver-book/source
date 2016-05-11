@@ -17,7 +17,7 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
     DISPLAY_YEAR {
         @Override
         public Integer apply(Browser browser) {
-            String text = browser.untilFound(CALENDAR).getText(YEAR);
+            String text = browser.await(CALENDAR).getText(YEAR);
             return Integer.parseInt(text);
         }
     },
@@ -28,7 +28,7 @@ public enum JQueryCalendarDisplayValue implements Function<Browser, Integer> {
     DISPLAY_MONTH {
         @Override
         public Integer apply(Browser browser) {
-            String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
+            String text = browser.await(CALENDAR).getUpperText(MONTH);
             return Month.valueOf(text).ordinal();
         }
     }

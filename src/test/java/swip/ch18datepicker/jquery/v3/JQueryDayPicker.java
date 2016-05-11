@@ -17,8 +17,8 @@ public class JQueryDayPicker implements DayPicker {
 
     @Override
     public void pick(int day) {
-        browser.untilFound(CALENDAR)
+        browser.await(CALENDAR)
             .click(() -> linkText(String.valueOf(day))); //<9>
-        browser.until(new ElementVisible(CALENDAR).negate());  //<11>
+        browser.await(new ElementVisible(CALENDAR).negate());  //<11>
     }
 }

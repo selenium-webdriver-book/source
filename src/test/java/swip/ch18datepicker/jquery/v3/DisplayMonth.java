@@ -12,7 +12,7 @@ public class DisplayMonth implements Function<Browser, Integer> {
 
     @Override
     public Integer apply(Browser browser) {
-        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
+        String text = browser.await(CALENDAR).getUpperText(MONTH);
         return Month.valueOf(text).ordinal();
     }
 }

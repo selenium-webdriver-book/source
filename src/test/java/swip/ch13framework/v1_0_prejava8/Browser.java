@@ -17,7 +17,7 @@ public class Browser extends DelegatingWebDriver implements ExplicitWait {
         super(driver);
     }
 
-    public WebElement untilFound(final Supplier<By> by) {  // <2>
+    public WebElement await(final Supplier<By> by) {  // <2>
         return new FluentWait<>((ExplicitWait) this)
             .withTimeout(5, TimeUnit.SECONDS)
             .pollingEvery(10, TimeUnit.MILLISECONDS)

@@ -17,14 +17,14 @@ public enum ReactCalendarControls implements Consumer<Browser> {    //<6>
     NEXT_MONTH {
         @Override
         public void accept(Browser browser) {
-            browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);          // <2>
+            browser.await(CALENDAR).click(NEXT_MONTH_BUTTON);          // <2>
         }
 
     },
     PREVIOUS_MONTH {
         @Override
         public void accept(Browser browser) {
-            browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);           //<3>
+            browser.await(CALENDAR).click(PREV_MONTH_BUTTON);           //<3>
         }
     },
 

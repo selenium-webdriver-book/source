@@ -55,7 +55,7 @@ public class PersonTable_v2_IT {
     @Test
     public void testReadFromTable() {
 
-        Table<Person> table = new Table<>(browser.untilFound(TABLE),
+        Table<Person> table = new Table<>(browser.await(TABLE),
             cells ->
                 new Person(Integer.parseInt(cells.get(0).getText()),
                     cells.get(1).getText(),
@@ -72,7 +72,7 @@ public class PersonTable_v2_IT {
     @Ignore("You can remove this to run it and check the output")
     public void missingExpectedValues() {
 
-        Table<Person> table = new Table<>(browser.untilFound(TABLE), MAPPER_NON_JAVA_8);
+        Table<Person> table = new Table<>(browser.await(TABLE), MAPPER_NON_JAVA_8);
 
         TableContents<Person> actual = table.getContents();
 

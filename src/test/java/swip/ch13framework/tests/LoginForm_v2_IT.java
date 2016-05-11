@@ -26,7 +26,7 @@ public class LoginForm_v2_IT {
 
     @Test
     public void checkLoginForm() throws Exception {
-        Element login = driver.untilFound(LOGIN);
+        Element login = driver.await(LOGIN);
 
         LoginForm loginForm = new LoginForm(login);
         loginForm.loginAs("foo@bar.com", "secret");

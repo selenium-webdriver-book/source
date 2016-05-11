@@ -22,8 +22,8 @@ public class Browser extends DelegatingWebDriver {
     }
 
     public Select getSelectLambda(Supplier<By> by) {
-        Element element = untilFound(by);
-        until((SearchScope driver) -> {
+        Element element = await(by);
+        await((SearchScope driver) -> {
             element.click();
             return !element.findElements(By.tagName("option"))
                 .isEmpty();

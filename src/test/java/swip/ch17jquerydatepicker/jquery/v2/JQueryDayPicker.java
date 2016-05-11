@@ -16,8 +16,8 @@ public class JQueryDayPicker {
     }
 
     public void pickDay(int day) {
-        browser.untilFound(JQueryById.CALENDAR)
+        browser.await(JQueryById.CALENDAR)
             .click(() -> linkText(String.valueOf(day))); //<9>
-        browser.until(new ElementVisible(CALENDAR).negate());  //<11>
+        browser.await(new ElementVisible(CALENDAR).negate());  //<11>
     }
 }

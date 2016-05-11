@@ -49,7 +49,7 @@ public class JQueryDatepicker {
     }
 
     private int displayYear() {
-        String text = browser.untilFound(CALENDAR).getText(YEAR);
+        String text = browser.await(CALENDAR).getText(YEAR);
         return Integer.parseInt(text);
     }
 
@@ -66,15 +66,15 @@ public class JQueryDatepicker {
     }
 
     private void previousMonth() {
-        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
+        browser.await(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
+        browser.await(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayMonth() {
-        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
+        String text = browser.await(CALENDAR).getUpperText(MONTH);
         return Month.valueOf(text).ordinal();   //<7>
     }
 
@@ -91,13 +91,13 @@ public class JQueryDatepicker {
     }
 
     private void pickDay(int day) {
-        browser.untilFound(CALENDAR)
+        browser.await(CALENDAR)
             .click(new Supplier<By>() {
                 @Override
                 public By get() {
                     return By.linkText(String.valueOf(day));
                 }
             }); //<9>
-        browser.until(new ElementVisible(CALENDAR).negate());  //<11>
+        browser.await(new ElementVisible(CALENDAR).negate());  //<11>
     }
 }

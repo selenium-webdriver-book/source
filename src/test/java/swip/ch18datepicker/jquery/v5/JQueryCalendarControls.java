@@ -20,13 +20,13 @@ public enum JQueryCalendarControls implements Consumer<Browser> {
     NEXT_MONTH {
         @Override
         public void accept(Browser browser) {
-            browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);
+            browser.await(CALENDAR).click(NEXT_MONTH_BUTTON);
         }
     },
     PREVIOUS_MONTH {
         @Override
         public void accept(Browser browser) {
-            browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);
+            browser.await(CALENDAR).click(PREV_MONTH_BUTTON);
         }
     },
     NEXT_YEAR {

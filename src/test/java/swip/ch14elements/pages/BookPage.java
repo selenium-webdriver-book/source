@@ -25,6 +25,6 @@ public class BookPage {
     }
 
     public void gotoCart() {
-        browser.untilFound(TOP_NAV).untilFound(CART_BUTTON).click();
+        browser.await(TOP_NAV).click(CART_BUTTON);
     }
 }

@@ -53,7 +53,7 @@ public class CityTable_v2_IT {
     @Test
     public void testReadFromTableJava8() {
 
-        Table<City> table = new Table<>(browser.untilFound(TABLE),
+        Table<City> table = new Table<>(browser.await(TABLE),
             cells ->
                 new City(Integer.parseInt(cells.get(0).getText()),
                     cells.get(1).getText(),
@@ -80,7 +80,7 @@ public class CityTable_v2_IT {
     public void testReadFromTableButFailed() {
 
         Table<City> table = new Table<>(
-            browser.untilFound(TABLE), MAPPER_LAMBDA
+            browser.await(TABLE), MAPPER_LAMBDA
         );
 
         TableContents<City> actual = table.getContents();

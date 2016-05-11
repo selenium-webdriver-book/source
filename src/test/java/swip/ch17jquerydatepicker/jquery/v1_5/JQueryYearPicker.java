@@ -39,16 +39,16 @@ public class JQueryYearPicker {
     }
 
     private int displayYear() {
-        String text = browser.untilFound(CALENDAR).getText(YEAR);
+        String text = browser.await(CALENDAR).getText(YEAR);
         return Integer.parseInt(text);
     }
 
     private void previousMonth() {
-        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
+        browser.await(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     private void nextMonth() {
-        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
+        browser.await(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
 }

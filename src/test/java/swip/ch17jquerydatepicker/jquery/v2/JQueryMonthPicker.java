@@ -29,15 +29,15 @@ public class JQueryMonthPicker {
     }
 
     public void previousMonth() {
-        browser.untilFound(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
+        browser.await(CALENDAR).click(PREV_MONTH_BUTTON);  //<3>
     }
 
     public void nextMonth() {
-        browser.untilFound(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
+        browser.await(CALENDAR).click(NEXT_MONTH_BUTTON);  //<4>
     }
 
     private int displayMonth() {
-        String text = browser.untilFound(CALENDAR).getUpperText(MONTH);
+        String text = browser.await(CALENDAR).getUpperText(MONTH);
         return Month.valueOf(text).ordinal();   //<7>
     }
 }

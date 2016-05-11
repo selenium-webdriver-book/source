@@ -23,7 +23,7 @@ public class BookPage {
     }
 
     public void gotoCart() {
-        browser.untilFound(TOP_NAV).click(CART_BUTTON);
+        browser.await(TOP_NAV).click(CART_BUTTON);
     }
 
 }
