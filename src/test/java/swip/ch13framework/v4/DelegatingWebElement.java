@@ -62,6 +62,10 @@ public class DelegatingWebElement extends DelegatingSearchContext<WebElement> //
         return delegate.isDisplayed();
     }
 
+    public String getValue() {
+        return delegate.getAttribute("value");
+    }
+
     @Override
     public Point getLocation() {
         return delegate.getLocation();
