@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import swip.ch18datepicker.jsdatepick.JsDatepickPage;
+import swip.ch18datepicker.jsdatepick.JsDatepickPageLambda;
 import swip.framework.Browser;
 import swip.framework.BrowserRunner;
 import swip.tests.TestTimer;
@@ -42,7 +43,7 @@ public class BackToFutureUsingJsDatepickIT extends TestTimer {
 
     @Test
     public void backToFuture3() {
-        new JsDatepickPage(browser) {{
+        new JsDatepickPageLambda(browser) {{
             pick(SEPTEMBER, 2, 1885);
             assertEquals("02-SEP-1885", super.getDate());
         }};
