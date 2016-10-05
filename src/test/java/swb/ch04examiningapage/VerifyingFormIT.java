@@ -42,7 +42,7 @@ public class VerifyingFormIT {
         driver.get("/pre-filled-form.html");
 
         WebElement emailInput = driver.findElement(By.name("email"));
-        assertEquals("john.doe@swip.com", emailInput.getAttribute("value"));
+        assertEquals("john.doe@swb.com", emailInput.getAttribute("value"));
         //assertTrue(Boolean.parseBoolean(emailInput.getAttribute("readonly")));
 
         WebElement passwordInput = driver.findElement(By.name("password"));
