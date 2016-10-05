@@ -17,7 +17,7 @@
 
     <servlet>
         <servlet-name>upload</servlet-name>
-        <servlet-class>swip.UploadServlet</servlet-class>
+        <servlet-class>swb.UploadServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>upload</servlet-name>
@@ -37,7 +37,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>swip.bookstore.config.WebSpringConfig</param-value>
+            <param-value>swb.bookstore.config.WebSpringConfig</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
