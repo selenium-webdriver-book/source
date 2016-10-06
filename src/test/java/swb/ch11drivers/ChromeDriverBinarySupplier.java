@@ -31,7 +31,7 @@ public class ChromeDriverBinarySupplier implements WebDriverBinarySupplier {
     private String osArch = getProperty("os.arch");
     private String os = osName.contains("win") ? "win" :
         osName.contains("nix") ? "linux" : "mac";
-    private int arch = os.equals("linux") && osArch.endsWith("64") ? 64 : 32;   //<2>
+    private int arch = os.matches("linux|mac") && osArch.endsWith("64") ? 64 : 32;   //<2>
 
     @Override
     public Path get(Path driverDir) throws IOException {
