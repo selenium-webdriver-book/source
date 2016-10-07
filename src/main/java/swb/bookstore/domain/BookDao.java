@@ -12,7 +12,7 @@ public class BookDao {
 
     private final List<Book> books = Collections.singletonList(
             new Book(
-                    "selenium-webdriver-in-practice",
+                    "selenium-webdriver-book",
                     "Selenium WebDriver Book",
                     "Yujun Liang and Alex Collins",
                     "Selenium WebDriver Book is a hands-on guide to dozens of specific techniques you can use to get the most of WebDriver in your test automation development. Following a cookbook-style Problem/Solution/Discussion format, this practical handbook gives you instantly-useful solutions for important areas like interacting with and testing web applications and using the WebDriver APIs. As you read, you'll graduate from WebDriver fundamentals to must-have practices ranging from how to interact with, control and verify web pages and exception handling, to more complex interactions like page objects, alerts, and JavaScript, as well as integrating with Continuous Integration tools, mobile testing, and much more. By the end of the book, you’ll be confident and skilled at testing your web applications with WebDriver.",

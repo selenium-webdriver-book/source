@@ -22,7 +22,7 @@ public class NaiveShoppingCartPageIT {
 
     @Before
     public void addBookToCart() throws InterruptedException {
-        browser.get("/bookstore/books/selenium-webdriver-in-practice");
+        browser.get("/bookstore/books/selenium-webdriver-book");
         BookPage bookPage = new BookPage(browser);
         bookPage.addToCart();
         bookPage.gotoCart();
