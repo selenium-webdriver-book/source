@@ -45,6 +45,6 @@ public class AppiumAndroidIT {
 
         driver.findElement(By.tagName("a"));
 
-        assertEquals("Selenium WebDriver In Practice - Index", driver.getTitle());
+        assertEquals("Selenium WebDriver Book - Index", driver.getTitle());
     }
 }

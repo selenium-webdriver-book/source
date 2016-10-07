@@ -24,7 +24,7 @@ public class BookstoreShoppingIT {
     public static final String EXPECTED_ERROR_MESSAGE =
         "The cardNumber must be between 19 and 19 characters long";
     public static final String EXPECTED_ORDER_NUMBER = "#00008";
-    public static final String BOOKNAME = "Selenium WebDriver in Practice";
+    public static final String BOOKNAME = "Selenium WebDriver Book";
 
     @Inject
     private Browser browser;

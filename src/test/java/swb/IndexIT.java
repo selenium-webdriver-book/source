@@ -19,6 +19,6 @@ public class IndexIT {
     public void indexPageTitle() throws Exception {
         driver.get("");
 
-        assertEquals("Selenium WebDriver In Practice - Index", driver.getTitle());
+        assertEquals("Selenium WebDriver Book - Index", driver.getTitle());
     }
 }

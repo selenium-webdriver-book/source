@@ -27,6 +27,6 @@ public class HttpsIT {
 
     @Test
     public void canLoadIndexPageViaHttps() throws Exception {
-        assertEquals("Selenium WebDriver In Practice - Index", driver.getTitle());
+        assertEquals("Selenium WebDriver Book - Index", driver.getTitle());
     }
 }

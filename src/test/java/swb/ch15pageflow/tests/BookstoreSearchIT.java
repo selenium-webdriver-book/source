@@ -17,7 +17,7 @@ public class BookstoreSearchIT {
     public void searchBook() {
         browser.get("/bookstore/");
         new BookstoreHomepage(browser) {{
-            searchBook("Selenium WebDriver in Practice");
+            searchBook("Selenium WebDriver Book");
         }};
     }
 }

@@ -30,6 +30,6 @@ public class ScreenshotIT {
 
         WebElement heading = driver.findElement(By.cssSelector("h1"));
 
-        assertEquals("Selenium WebDriver In Practice - Index", heading.getText());
+        assertEquals("Selenium WebDriver Book - Index", heading.getText());
     }
 }
