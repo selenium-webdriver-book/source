@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/selenium-webdriver-book/source.svg?style=svg)](https://circleci.com/gh/selenium-webdriver-in-practice/source)
+[![Circle CI](https://circleci.com/gh/selenium-webdriver-book/source.svg?style=svg)](https://circleci.com/gh/selenium-webdriver-book/source)
 
 # Selenium WebDriver Book
 ## Pre-requisites
@@ -105,6 +105,3 @@ You can run your tests as follows:
 
     mvn clean install -Dwebdriver.remote=true -Dwebdriver.remote.url=http://192.168.10.2:4444/wd/hub
 
-Problems
----
-Please let us know in if you have any issues in [the forums](https://forums.manning.com/forums/selenium-webdriver-in-practice). If you are on Windows, then please [read this](https://forums.manning.com/posts/list/36669.page).
