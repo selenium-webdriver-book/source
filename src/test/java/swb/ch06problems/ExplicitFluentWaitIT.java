@@ -11,7 +11,7 @@ import swb.framework.WebDriverRunner;
 import javax.inject.Inject;
 import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.core.StringStartsWith.startsWith;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.*;
 
 @RunWith(WebDriverRunner.class)
@@ -75,7 +75,7 @@ public class ExplicitFluentWaitIT {
                     );
             fail();
         } catch (TimeoutException expected) {
-            assertThat(expected.getMessage(), startsWith("Timed out after 1 seconds: could not find the slowly loading text"));
+            assertThat(expected.getMessage(), containsString("could not find the slowly loading text"));
         }
     }
 

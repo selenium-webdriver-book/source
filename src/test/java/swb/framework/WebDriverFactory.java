@@ -15,7 +15,6 @@ import swb.ch11drivers.ChromeDriverBinarySupplier;
 import swb.ch11drivers.FirefoxDriverBinarySupplier;
 
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -30,13 +29,7 @@ public class WebDriverFactory {
         this.remoteUrl = remoteUrl;
     }
 
-    private static int freePort() throws IOException {
-        try (ServerSocket serverSocket = new ServerSocket(0)) {
-            return serverSocket.getLocalPort();
-        }
-    }
-
-    public WebDriver webDriver(DesiredCapabilities desiredCapabilities, URI baseUrl) throws IOException {
+    WebDriver webDriver(DesiredCapabilities desiredCapabilities, URI baseUrl) throws IOException {
 
         WebDriver baseDriver = remoteDriver ?
                 remoteDriver(remoteUrl, desiredCapabilities) :

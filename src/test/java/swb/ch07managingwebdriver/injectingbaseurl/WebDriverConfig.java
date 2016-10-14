@@ -11,8 +11,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import swb.ch11drivers.FirefoxDriverBinarySupplier;
 
+import java.io.IOException;
 import java.net.URI;
+import java.nio.file.Paths;
 
 @Configuration
 public class WebDriverConfig {
@@ -30,11 +33,12 @@ public class WebDriverConfig {
     }
 
     @Bean(destroyMethod = "quit")
-    public WebDriver webDriver(DesiredCapabilities desiredCapabilities) {
+    public WebDriver webDriver(DesiredCapabilities desiredCapabilities) throws IOException {
         switch (desiredCapabilities.getBrowserName()) {
             case BrowserType.CHROME:
                 return new ChromeDriver(desiredCapabilities);
             case BrowserType.FIREFOX:
+                System.setProperty("webdriver.gecko.driver", String.valueOf(new FirefoxDriverBinarySupplier().get(Paths.get("target"))));
                 return new FirefoxDriver(desiredCapabilities);
             case BrowserType.PHANTOMJS:
                 return new PhantomJSDriver(desiredCapabilities);
