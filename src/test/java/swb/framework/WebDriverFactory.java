@@ -50,6 +50,7 @@ public class WebDriverFactory {
                 System.setProperty("webdriver.chrome.driver", String.valueOf(new ChromeDriverBinarySupplier().get(Paths.get("target"))));
                 return new ChromeDriver(desiredCapabilities);
             case BrowserType.FIREFOX:
+                //System.setProperty("webdriver.gecko.driver", String.valueOf(new FirefoxDriverBinarySupplier().get(Paths.get("target"))));
                 return new FirefoxDriver(desiredCapabilities);
             case BrowserType.HTMLUNIT:
                 return new HtmlUnitDriver(desiredCapabilities);
