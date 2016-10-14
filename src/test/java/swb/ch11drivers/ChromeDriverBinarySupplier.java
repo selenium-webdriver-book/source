@@ -9,11 +9,11 @@ public class ChromeDriverBinarySupplier extends AbstractDriverBinarySupplier {
 
     private static final String BASE_PATH = "http://chromedriver.storage.googleapis.com";
     private static final String FILE_BASE = "chromedriver";
-    private static final int ARCH = OS.matches("linux|mac") && OS_ARCH.endsWith("64") ? 64 : 32;
 
     @Override
     URL createUrl() throws IOException {
-        return new URL(BASE_PATH + "/" + lastRelease() + "/" + FILE_BASE + OS + ARCH + ".zip");
+        int arch = OS.matches("linux|mac") && OS_ARCH.endsWith("64") ? 64 : 32;
+        return new URL(BASE_PATH + "/" + lastRelease() + "/" + FILE_BASE + "_" + OS + arch + ".zip");
     }
 
     @Override
