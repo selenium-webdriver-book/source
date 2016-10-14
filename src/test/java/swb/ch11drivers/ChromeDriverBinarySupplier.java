@@ -12,13 +12,18 @@ public class ChromeDriverBinarySupplier extends AbstractDriverBinarySupplier {
 
     @Override
     URL createUrl() throws IOException {
-        int arch = OS.matches("linux|mac") && OS_ARCH.endsWith("64") ? 64 : 32;
-        return new URL(BASE_PATH + "/" + lastRelease() + "/" + FILE_BASE + "_" + OS + arch + ".zip");
+        int arch = OS_NAME.matches(".*(linux|mac).*") && OS_ARCH.endsWith("64") ? 64 : 32;
+        return new URL(String.format("%s/%s/%s_%s%d.zip",
+                BASE_PATH,
+                lastRelease(),
+                FILE_BASE,
+                OS_NAME.contains("win") ? "win" : OS_NAME.contains("nix") ? "linux" : "mac",
+                arch));
     }
 
     @Override
     Path resolvePath(Path driverDir) {
-        return driverDir.resolve(OS.equals("win") ? FILE_BASE + ".exe" : FILE_BASE);
+        return driverDir.resolve(OS_NAME.contains("win") ? FILE_BASE + ".exe" : FILE_BASE);
     }
 
     private String lastRelease() throws IOException {
