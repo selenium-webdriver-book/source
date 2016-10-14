@@ -29,7 +29,7 @@ abstract class AbstractDriverBinarySupplier implements WebDriverBinarySupplier {
         Path driverPath = resolvePath(driverDir);
 
         if (!driverPath.toFile().exists()) { //<4>
-            if (true || !download.toFile().exists()) {
+            if (!download.toFile().exists()) {
                 download(url, download);
             }
             unpackFile(download, driverPath);
