@@ -16,6 +16,7 @@ public class HelloWebDriverIT { // we use the IT suffix for test in this book, t
 
     @Before
     public void setUp() throws Exception {
+        System.setProperty("webdriver.gecko.driver", "target/geckodriver");
         driver = new FirefoxDriver(); // create a new driver which connected to an instance of the Firefox browser
     }
 

@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import swb.ch11drivers.ChromeDriverBinarySupplier;
+import swb.ch11drivers.FirefoxDriverBinarySupplier;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -50,7 +51,7 @@ public class WebDriverFactory {
                 System.setProperty("webdriver.chrome.driver", String.valueOf(new ChromeDriverBinarySupplier().get(Paths.get("target"))));
                 return new ChromeDriver(desiredCapabilities);
             case BrowserType.FIREFOX:
-                //System.setProperty("webdriver.gecko.driver", String.valueOf(new FirefoxDriverBinarySupplier().get(Paths.get("target"))));
+                System.setProperty("webdriver.gecko.driver", String.valueOf(new FirefoxDriverBinarySupplier().get(Paths.get("target"))));
                 return new FirefoxDriver(desiredCapabilities);
             case BrowserType.HTMLUNIT:
                 return new HtmlUnitDriver(desiredCapabilities);
