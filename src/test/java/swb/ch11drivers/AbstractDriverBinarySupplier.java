@@ -16,15 +16,27 @@ import static java.nio.channels.Channels.newChannel;
 import static org.slf4j.LoggerFactory.getLogger;
 
 abstract class AbstractDriverBinarySupplier implements WebDriverBinarySupplier {
-    static final String OS_NAME = getProperty("os.name").toLowerCase();
-    static final String OS_ARCH = getProperty("os.arch");
     static final Logger LOGGER = getLogger(ChromeDriverBinarySupplier.class);
+    private static final String OS_NAME = getProperty("os.name").toLowerCase();
+    private static final String OS_ARCH = getProperty("os.arch");
     private static final String TMP = getProperty("java.io.tmpdir");
 
     static {
         LOGGER.info("os.name=" + OS_NAME);
         LOGGER.info("os.arch=" + OS_ARCH);
         LOGGER.info("tmp=" + TMP);
+    }
+
+    static boolean isLinux() {
+        return OS_NAME.contains("nix");
+    }
+
+    static boolean isWin() {
+        return OS_NAME.contains("win");
+    }
+
+    static boolean is64Bit() {
+        return OS_ARCH.endsWith("64");
     }
 
     @Override

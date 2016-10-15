@@ -16,15 +16,15 @@ public class FirefoxDriverBinarySupplier extends AbstractDriverBinarySupplier {
 
     @Override
     URL createUrl() throws IOException {
-        int arch = OS_ARCH.endsWith("64") ? 64 : 32;
+        int arch = is64Bit() ? 64 : 32;
         return new URL(String.format("https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-%s.%s",
-                OS_NAME.contains("win") ? "win" + arch : OS_NAME.contains("nix") ? "linux" + arch : "macos",
-                OS_NAME.contains("win") ? "zip" : "tar.gz"));
+                isWin() ? "win" + arch : isLinux() ? "linux" + arch : "macos",
+                isWin() ? "zip" : "tar.gz"));
     }
 
     @Override
     Path resolvePath(Path driverDir) {
-        return driverDir.resolve(OS_NAME.contains("win") ? FILE_BASE + ".exe" : FILE_BASE);
+        return driverDir.resolve(isWin() ? FILE_BASE + ".exe" : FILE_BASE);
     }
 
     @Override
