@@ -16,10 +16,16 @@ import static java.nio.channels.Channels.newChannel;
 import static org.slf4j.LoggerFactory.getLogger;
 
 abstract class AbstractDriverBinarySupplier implements WebDriverBinarySupplier {
-    static final String OS_ARCH = getProperty("os.arch");
     static final String OS_NAME = getProperty("os.name").toLowerCase();
+    static final String OS_ARCH = getProperty("os.arch");
     static final Logger LOGGER = getLogger(ChromeDriverBinarySupplier.class);
     private static final String TMP = getProperty("java.io.tmpdir");
+
+    static {
+        LOGGER.info("os.name=" + OS_NAME);
+        LOGGER.info("os.arch=" + OS_ARCH);
+        LOGGER.info("tmp=" + TMP);
+    }
 
     @Override
     public Path get(Path driverDir) throws IOException {
