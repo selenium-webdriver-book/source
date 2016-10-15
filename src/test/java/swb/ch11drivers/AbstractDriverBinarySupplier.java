@@ -28,7 +28,7 @@ abstract class AbstractDriverBinarySupplier implements WebDriverBinarySupplier {
     }
 
     static boolean isLinux() {
-        return OS_NAME.contains("nix");
+        return OS_NAME.contains("linux");
     }
 
     static boolean isWin() {
