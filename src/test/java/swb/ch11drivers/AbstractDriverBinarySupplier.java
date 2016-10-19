@@ -46,10 +46,10 @@ abstract class AbstractDriverBinarySupplier implements WebDriverBinarySupplier {
         Path download = Paths.get(TMP, url.getFile().replaceFirst("^.*/", ""));
         Path driverPath = resolvePath(driverDir);
 
-        if (!driverPath.toFile().exists()) { //<4>
-            if (!download.toFile().exists()) {
-                download(url, download);
-            }
+        if (!download.toFile().exists()) {
+            download(url, download);
+        }
+        if (!driverPath.toFile().exists()) {
             unpackFile(download, driverPath);
             makeExecutable(driverPath);
         }
@@ -62,8 +62,8 @@ abstract class AbstractDriverBinarySupplier implements WebDriverBinarySupplier {
 
     private void download(URL url, Path download) throws IOException {
         LOGGER.info("downloading " + url + " to " + download);
-        try (FileOutputStream fos = new FileOutputStream(download.toFile())) {
-            fos.getChannel().transferFrom(newChannel(url.openStream()), 0, Long.MAX_VALUE);
+        try (FileOutputStream out = new FileOutputStream(download.toFile())) {
+            out.getChannel().transferFrom(newChannel(url.openStream()), 0, Long.MAX_VALUE);
         }
     }
 
