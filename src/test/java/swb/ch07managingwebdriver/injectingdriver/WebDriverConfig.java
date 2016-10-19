@@ -31,6 +31,7 @@ public class WebDriverConfig {
     public WebDriver webDriver(DesiredCapabilities desiredCapabilities) {
         switch (desiredCapabilities.getBrowserName()) {
             case BrowserType.FIREFOX:
+                System.setProperty("webdriver.gecko.driver", "target/geckodriver");
                 return new FirefoxDriver(desiredCapabilities);
             case BrowserType.HTMLUNIT:
                 return new HtmlUnitDriver(desiredCapabilities);

@@ -13,6 +13,7 @@ public class ShutdownHookWebDriverIT {
 
     @Before
     public void setUp() throws Exception {
+        System.setProperty("webdriver.gecko.driver", "target/geckodriver");
         driver = new FirefoxDriver();
         Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
     }
