@@ -1,5 +1,6 @@
 package swb.tests;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Platform;
@@ -27,6 +28,7 @@ public class WebDriverConfigIT {
     }
 
     @Test
+    @Ignore()
     public void firefoxBrowser() throws Exception {
         assertEquals(System.getProperty("webdriver.capabilities.browserName", "firefox"),
                 desiredCapabilities.getBrowserName());
