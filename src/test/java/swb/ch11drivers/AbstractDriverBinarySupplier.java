@@ -61,6 +61,7 @@ abstract class AbstractDriverBinarySupplier implements WebDriverBinarySupplier {
     abstract URL createUrl() throws IOException;
 
     private void download(URL url, Path download) throws IOException {
+        LOGGER.info("downloading " + url + " to " + download);
         try (FileOutputStream fos = new FileOutputStream(download.toFile())) {
             fos.getChannel().transferFrom(newChannel(url.openStream()), 0, Long.MAX_VALUE);
         }
