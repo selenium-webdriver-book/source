@@ -7,7 +7,7 @@ You'll need to install
 
 * Java 8.
 * Maven.
-* Firefox.
+* Chrome.
 
 Running Application
 ---
@@ -33,9 +33,9 @@ To run a single test (using the Maven Failsafe Plugin):
 
 	mvn test-compile failsafe:integration-test failsafe:verify -Dit.test=HelloWebDriverIT
 
-On just in another browser, other than Firefox:
+On just in another browser, other than Chrome:
 
-	mvn ... -Dwebdriver.capabilities.browserName=chrome
+	mvn ... -Dwebdriver.capabilities.browserName=firefox
 	mvn ... -Dwebdriver.capabilities.browserName=htmlunit -Dwebdriver.screenshots.enabled=false
 	mvn ... -Dwebdriver.capabilities.browserName=safari
 	mvn ... -Dwebdriver.capabilities.browserName=phantomjs
