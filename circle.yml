@@ -4,6 +4,7 @@ machine:
 dependencies:
   pre:
     - google-chrome --version
+    - sudo apt-get install --only-upgrade lsb-base
     - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - sudo dpkg -i google-chrome*.deb
     - google-chrome --version
