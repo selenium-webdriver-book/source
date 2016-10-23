@@ -23,7 +23,7 @@ public class VerifyingStylesIT {
 
         WebElement element = driver.findElement(By.id("red"));
 
-        assertEquals("rgb(255, 0, 0)", element.getCssValue("color"));
+        assertEquals("rgba(255, 0, 0, 1)", element.getCssValue("color"));
     }
 
     @Test

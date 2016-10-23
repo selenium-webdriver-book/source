@@ -1,12 +1,9 @@
 package swb.ch09unicorns.actionchains;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import swb.framework.WebDriverRunner;
 
@@ -20,6 +17,7 @@ public class CopyAndPasteIT {
     private WebDriver driver;
 
     @Test
+    @Ignore("does not work in Chrome")
     public void copyAndPaste() throws Exception {
 
         driver.get("/registration-form.html");
