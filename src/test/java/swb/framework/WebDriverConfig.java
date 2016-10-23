@@ -64,7 +64,7 @@ public class WebDriverConfig {
     @Bean
     public DesiredCapabilities desiredCapabilities(
             HttpProxyServer proxyServer,
-            @Value("${webdriver.capabilities.browserName:firefox}") String browserName,
+            @Value("${webdriver.capabilities.browserName:chrome}") String browserName,
             @Value("${webdriver.proxy.enabled:true}") boolean proxyEnabled
     )
         throws UnknownHostException {

@@ -22,7 +22,7 @@ public class WebDriverConfig {
 
     @Bean
     public DesiredCapabilities desiredCapabilities(
-            @Value("${webdriver.capabilities.browserName:firefox}") String browserName
+            @Value("${webdriver.capabilities.browserName:chrome}") String browserName
     ) {
         return new DesiredCapabilities(browserName, "", Platform.ANY);
     }
