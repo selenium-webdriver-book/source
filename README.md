@@ -9,6 +9,12 @@ You'll need to install
 * Maven.
 * Chrome.
 
+Download the Application
+---
+
+    git clone git@github.com:selenium-webdriver-book/source.git
+    cd source
+
 Running Application
 ---
 This is an example application with tests. To run the application:
