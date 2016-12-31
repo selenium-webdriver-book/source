@@ -14,7 +14,7 @@ public enum MailingOption {
         "I will still receive updates on my MEAPs and other books."),
     KEEP_ME("Keep me on the lists I'm already on.");
 
-    private final String string;
+    public String string;
 
     MailingOption(String string) {
         this.string = string;

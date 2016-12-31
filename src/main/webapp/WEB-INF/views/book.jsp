@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <img src="/images/${book.id}.png"/>
+            <img src="/images/${book.id}.png" width="250" height="340"/>
         </div>
         <div class="col-md-7">
             <h1>${book.title}</h1>
