@@ -29,7 +29,7 @@ public class WyswygInputIT {
         body.sendKeys("A paragraph of text, some of which is"); // #4 send our un-formatted text
 
         driver.switchTo().defaultContent(); // #5 switch back to the original frame
-        driver.findElement(By.className("mce-i-italic")).click(); // #6 click the bold button
+        driver.findElement(By.className("mce-i-italic")).click(); // #6 click the italic button
 
         driver.switchTo().frame(editorFrame); // #7 switch back to the editor
         body.sendKeys(" italics."); // #8 type italic text
